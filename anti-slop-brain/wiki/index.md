@@ -11,9 +11,9 @@ tags:
   - "#confidence/evidence-based"
 confidence: "evidence-based"
 related:
-  - "[[Overview]]"
-  - "[[Hot]]"
-  - "[[Log]]"
+  - "[[overview|Overview]]"
+  - "[[hot|Hot]]"
+  - "[[log|Log]]"
   - "[[Note Conventions]]"
   - "[[The Firewall]]"
   - "[[Evidence Tiers]]"
@@ -24,13 +24,13 @@ source_urls: []
 
 # Index
 
-Entry point for the Anti-Slop Brain. Start at [[Overview]] for the argument,
+Entry point for the Anti-Slop Brain. Start at [[overview|Overview]] for the argument,
 [[The Firewall]] for the rules, or [[Evidence Tiers]] for how a signal becomes
 an action.
 
 ## Read order for a new reader
 
-1. [[Overview]], for what this brain claims and what it refuses to claim.
+1. [[overview|Overview]], for what this brain claims and what it refuses to claim.
 2. [[Signs Are Not The Problem]], the doctrine everything else follows from.
 3. [[Why Structural Not Judgmental]], the measurement that forces the design.
 4. [[The Firewall]], the four rules that constrain every procedure.

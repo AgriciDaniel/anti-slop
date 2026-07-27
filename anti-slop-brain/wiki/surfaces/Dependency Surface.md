@@ -156,4 +156,4 @@ is the easy case, and the easy case should be automated first.
 - [[Fabricated Citations]]
 - [[Provenance Trace Policy]]
 - [[Note Conventions]]
-- [[Index]]
+- [[index|Index]]

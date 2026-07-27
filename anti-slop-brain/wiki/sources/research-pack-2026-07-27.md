@@ -11,8 +11,8 @@ tags:
   - "#confidence/evidence-based"
 confidence: "evidence-based"
 related:
-  - "[[Index]]"
-  - "[[Overview]]"
+  - "[[index|Index]]"
+  - "[[overview|Overview]]"
   - "[[Evidence Tiers]]"
   - "[[Evidence Quality Ladder]]"
   - "[[Superseded Figures]]"

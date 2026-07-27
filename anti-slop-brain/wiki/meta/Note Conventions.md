@@ -11,8 +11,8 @@ tags:
   - "#confidence/evidence-based"
 confidence: "evidence-based"
 related:
-  - "[[Index]]"
-  - "[[Overview]]"
+  - "[[index|Index]]"
+  - "[[overview|Overview]]"
   - "[[Evidence Tiers]]"
   - "[[The Firewall]]"
 source_urls: []
