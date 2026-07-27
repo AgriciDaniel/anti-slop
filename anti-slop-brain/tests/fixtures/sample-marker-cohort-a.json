@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "cohort_id": "anti-slop-markers-2026-04-15",
+  "snapshot_date": "2026-04-15",
+  "ledger_path": "references/source-ledger.json",
+  "notes": "Baseline cohort. Refresh dates are copied from the ledger at snapshot time and are never rewritten afterwards, which is exactly how a marker ends up cited past its own expiry date. The em dash still sits at Tier 1 here on vendor numbers, before the pre-registered medRxiv study landed.",
+  "markers": [
+    {
+      "marker_id": "excess-vocabulary-density",
+      "marker_class": "Excess vocabulary density",
+      "tier": 1,
+      "routes_to": "deletion",
+      "surface": "prose",
+      "ledger_source_id": "kobak-excess-vocabulary",
+      "source_url": "https://www.science.org/doi/10.1126/sciadv.adt3813",
+      "source_refresh_due": "2026-10-25",
+      "false_positive_class": "Technical registers that legitimately need the same vocabulary, and writers whose training used the same style corpora.",
+      "vault_note": "wiki/markers/Excess Vocabulary.md"
+    },
+    {
+      "marker_id": "puffery-undue-emphasis",
+      "marker_class": "Puffery and undue emphasis",
+      "tier": 1,
+      "routes_to": "inversion",
+      "surface": "prose",
+      "ledger_source_id": "wikipedia-signs-of-ai-writing",
+      "source_url": "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing",
+      "source_refresh_due": "2026-08-26",
+      "false_positive_class": "Marketing copy and grant prose, where the register is puffery by design and the reader knows it.",
+      "vault_note": "wiki/markers/Puffery and Undue Emphasis.md"
+    },
+    {
+      "marker_id": "vague-attribution",
+      "marker_class": "Vague attribution and over-attribution",
+      "tier": 1,
+      "routes_to": "attribution",
+      "surface": "prose",
+      "ledger_source_id": "wikipedia-signs-of-ai-writing",
+      "source_url": "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing",
+      "source_refresh_due": "2026-08-26",
+      "false_positive_class": "Summaries whose sources are named once at the top and then referred to collectively for the rest of the section.",
+      "vault_note": "wiki/markers/Puffery and Undue Emphasis.md"
+    },
+    {
+      "marker_id": "tricolon-density",
+      "marker_class": "Tricolon and rule of three density",
+      "tier": 1,
+      "routes_to": "deletion",
+      "surface": "prose",
+      "ledger_source_id": "bakhshi-saying-more",
+      "source_url": "https://arxiv.org/abs/2604.19768",
+      "source_refresh_due": "2026-10-25",
+      "false_positive_class": "Speechwriting and any prose written to be read aloud, where the tricolon is a deliberate rhetorical choice.",
+      "vault_note": "wiki/markers/Tricolon and Rule of Three.md"
+    },
+    {
+      "marker_id": "hedging-hesitancy-density",
+      "marker_class": "Hedging and hesitancy density",
+      "tier": 1,
+      "routes_to": "inversion",
+      "surface": "prose",
+      "ledger_source_id": "bakhshi-saying-more",
+      "source_url": "https://arxiv.org/abs/2604.19768",
+      "source_refresh_due": "2026-10-25",
+      "false_positive_class": "Scientific writing under peer review conventions, where hedging is the honest expression of a real confidence interval.",
+      "vault_note": "wiki/markers/Hedging and Hesitancy.md"
+    },
+    {
+      "marker_id": "em-dash-density",
+      "marker_class": "Em dash density",
+      "tier": 1,
+      "routes_to": "deletion",
+      "surface": "prose",
+      "ledger_source_id": "pangram-supporting-evidence",
+      "source_url": "https://www.pangram.com/solutions/evidence",
+      "source_refresh_due": "2026-08-26",
+      "false_positive_class": "Editors and publications whose house style uses the long dash, and any writer trained on twentieth century literary prose.",
+      "vault_note": "wiki/markers/The Em Dash.md"
+    },
+    {
+      "marker_id": "sycophantic-verbal-tics",
+      "marker_class": "Sycophantic verbal tics",
+      "tier": 3,
+      "routes_to": "deletion",
+      "surface": "agent-transcript",
+      "false_positive_class": "Support and teaching registers where affirmation is the job, so the tic is indistinguishable from the professional norm.",
+      "vault_note": "wiki/concepts/Sycophancy.md"
+    },
+    {
+      "marker_id": "boldface-density",
+      "marker_class": "Boldface density",
+      "tier": 3,
+      "routes_to": "deletion",
+      "surface": "prose",
+      "ledger_source_id": "wikipedia-signs-of-ai-writing",
+      "source_url": "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing",
+      "source_refresh_due": "2026-08-26",
+      "false_positive_class": "Reference documentation and checklists, where bolding is navigation rather than emphasis.",
+      "vault_note": "wiki/surfaces/Prose Surface.md"
+    },
+    {
+      "marker_id": "curly-quotation-marks",
+      "marker_class": "Curly quotation marks alone",
+      "tier": 3,
+      "routes_to": "deletion",
+      "surface": "prose",
+      "ledger_source_id": "wikipedia-signs-of-ai-writing",
+      "source_url": "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing",
+      "source_refresh_due": "2026-08-26",
+      "false_positive_class": "Any word processor with smart quotes switched on, which is nearly all of them by default.",
+      "vault_note": "wiki/markers/Evidence Tiers.md"
+    },
+    {
+      "marker_id": "burstiness-uniform-sentence-length",
+      "marker_class": "Burstiness and uniform sentence length",
+      "tier": 3,
+      "routes_to": "deletion",
+      "surface": "prose",
+      "false_positive_class": "Controlled language standards, plain English mandates, and translated text, all of which flatten sentence length on purpose.",
+      "vault_note": "wiki/markers/Evidence Tiers.md"
+    },
+    {
+      "marker_id": "single-ai-vocabulary-word",
+      "marker_class": "Single AI vocabulary word in isolation",
+      "tier": 3,
+      "routes_to": "deletion",
+      "surface": "prose",
+      "ledger_source_id": "wikipedia-signs-of-ai-writing",
+      "source_url": "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing",
+      "source_refresh_due": "2026-05-14",
+      "false_positive_class": "Everyone, now. Human speech is converging on the same vocabulary, so a single word in isolation carries no information at all.",
+      "vault_note": "wiki/markers/Excess Vocabulary.md"
+    },
+    {
+      "marker_id": "uniform-paragraph-length",
+      "marker_class": "Uniform paragraph length",
+      "tier": 3,
+      "routes_to": "deletion",
+      "surface": "prose",
+      "false_positive_class": "Every content management system with a paragraph length house rule, and every writer who follows one.",
+      "vault_note": "wiki/markers/Evidence Tiers.md"
+    }
+  ]
+}

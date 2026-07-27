@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/agricidaniel/anti-slop-brain/schemas/cohort-diff.schema.json",
+  "title": "Anti-Slop marker cohort diff",
+  "description": "Output of scripts/synthesize_cohort_diff.py. Reports markers added, markers removed, markers whose evidence tier changed, markers whose routed procedure changed, and every marker whose ledger source refresh_due has passed relative to the supplied reference date. Carries no authorship field of any kind.",
+  "type": "object",
+  "required": [
+    "envelope_version",
+    "tool",
+    "ok",
+    "reference_date",
+    "before",
+    "after",
+    "counts",
+    "added",
+    "removed",
+    "tier_changed",
+    "routing_changed",
+    "stale_evidence",
+    "unchanged",
+    "note"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "envelope_version": { "const": 1 },
+    "tool": { "const": "synthesize_cohort_diff" },
+    "ok": {
+      "type": "boolean",
+      "description": "True when nothing was added, removed, retiered or rerouted and no source is overdue for refresh."
+    },
+    "reference_date": { "$ref": "#/$defs/isoDate" },
+    "before": { "$ref": "#/$defs/snapshotRef" },
+    "after": { "$ref": "#/$defs/snapshotRef" },
+    "counts": {
+      "type": "object",
+      "required": [
+        "added",
+        "removed",
+        "tier_changed",
+        "routing_changed",
+        "stale_evidence",
+        "unchanged",
+        "days_between_snapshots"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "added": { "type": "integer", "minimum": 0 },
+        "removed": { "type": "integer", "minimum": 0 },
+        "tier_changed": { "type": "integer", "minimum": 0 },
+        "routing_changed": { "type": "integer", "minimum": 0 },
+        "stale_evidence": { "type": "integer", "minimum": 0 },
+        "unchanged": { "type": "integer", "minimum": 0 },
+        "days_between_snapshots": { "type": "integer" }
+      }
+    },
+    "added": { "type": "array", "items": { "$ref": "#/$defs/markerRef" } },
+    "removed": { "type": "array", "items": { "$ref": "#/$defs/markerRef" } },
+    "tier_changed": { "type": "array", "items": { "$ref": "#/$defs/tierChange" } },
+    "routing_changed": { "type": "array", "items": { "$ref": "#/$defs/routingChange" } },
+    "stale_evidence": { "type": "array", "items": { "$ref": "#/$defs/staleEvidence" } },
+    "unchanged": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 2 },
+      "description": "Marker ids present in both snapshots with identical tier and routing."
+    },
+    "note": { "type": "string", "minLength": 20 }
+  },
+  "$defs": {
+    "isoDate": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "tier": { "type": "integer", "enum": [1, 2, 3] },
+    "procedure": {
+      "type": "string",
+      "enum": ["deletion", "inversion", "stranger", "attribution", "load-bearing"]
+    },
+    "surface": {
+      "type": "string",
+      "enum": ["prose", "code", "documentation", "commit", "pull-request", "agent-transcript"]
+    },
+    "direction": {
+      "type": "string",
+      "enum": ["promoted", "demoted"],
+      "description": "promoted means the evidence tier number fell, so the evidence got stronger."
+    },
+    "snapshotRef": {
+      "type": "object",
+      "required": ["cohort_id", "snapshot_date", "marker_count"],
+      "additionalProperties": false,
+      "properties": {
+        "cohort_id": { "type": "string", "minLength": 3 },
+        "snapshot_date": { "$ref": "#/$defs/isoDate" },
+        "marker_count": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "markerRef": {
+      "type": "object",
+      "required": ["marker_id", "marker_class", "tier", "routes_to", "surface"],
+      "additionalProperties": false,
+      "properties": {
+        "marker_id": { "type": "string", "minLength": 2 },
+        "marker_class": { "type": "string", "minLength": 2 },
+        "tier": { "$ref": "#/$defs/tier" },
+        "routes_to": { "$ref": "#/$defs/procedure" },
+        "surface": { "$ref": "#/$defs/surface" },
+        "ledger_source_id": { "type": "string", "minLength": 2 },
+        "source_refresh_due": { "$ref": "#/$defs/isoDate" },
+        "vault_note": { "type": "string", "maxLength": 200 }
+      }
+    },
+    "tierChange": {
+      "type": "object",
+      "required": ["marker_id", "marker_class", "from_tier", "to_tier", "direction", "consequence"],
+      "additionalProperties": false,
+      "properties": {
+        "marker_id": { "type": "string", "minLength": 2 },
+        "marker_class": { "type": "string", "minLength": 2 },
+        "from_tier": { "$ref": "#/$defs/tier" },
+        "to_tier": { "$ref": "#/$defs/tier" },
+        "direction": { "$ref": "#/$defs/direction" },
+        "ledger_source_id": { "type": "string", "minLength": 2 },
+        "consequence": { "type": "string", "minLength": 10 }
+      }
+    },
+    "routingChange": {
+      "type": "object",
+      "required": ["marker_id", "marker_class", "from_procedure", "to_procedure"],
+      "additionalProperties": false,
+      "properties": {
+        "marker_id": { "type": "string", "minLength": 2 },
+        "marker_class": { "type": "string", "minLength": 2 },
+        "from_procedure": { "$ref": "#/$defs/procedure" },
+        "to_procedure": { "$ref": "#/$defs/procedure" }
+      }
+    },
+    "staleEvidence": {
+      "type": "object",
+      "required": ["marker_id", "marker_class", "tier", "refresh_due", "days_overdue"],
+      "additionalProperties": false,
+      "properties": {
+        "marker_id": { "type": "string", "minLength": 2 },
+        "marker_class": { "type": "string", "minLength": 2 },
+        "tier": { "$ref": "#/$defs/tier" },
+        "ledger_source_id": { "type": "string", "minLength": 2 },
+        "refresh_due": { "$ref": "#/$defs/isoDate" },
+        "days_overdue": { "type": "integer", "minimum": 0 },
+        "vault_note": { "type": "string", "maxLength": 200 }
+      }
+    }
+  }
+}

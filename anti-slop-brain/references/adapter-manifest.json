@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "status": "scaffold",
+  "status": "domain-adapted",
   "domain": "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection",
-  "generic_only": true,
+  "generic_only": false,
   "raw_input_types": [
     "Drafts, diffs, commit messages, pull request descriptions, agent transcripts, and documents supplied by the operator"
   ],
@@ -15,10 +15,181 @@
       "tests for importer, synthesis, rendering, malformed input, and missing credentials"
     ]
   },
-  "input_schemas": [],
-  "importers": [],
-  "synthesis_modules": [],
-  "report_renderers": [],
-  "fixtures": [],
-  "tests": []
+  "lanes": [
+    {
+      "id": "review-run",
+      "title": "Review run",
+      "description": "Turns one artifact under review, plus Layer 0 scanner findings and Layer 1 structural procedure artifacts, into a findings report with severity and confidence on separate axes.",
+      "stages": [
+        "scripts/ingest_review_input.py",
+        "scripts/synthesize_findings.py",
+        "scripts/render_findings_report.py"
+      ]
+    },
+    {
+      "id": "marker-cohort-refresh",
+      "title": "Marker cohort refresh",
+      "description": "Diffs two dated snapshots of the marker taxonomy and flags every marker whose ledger source refresh_due has passed, because marker cohorts rot as vocabulary shifts by model generation.",
+      "stages": [
+        "scripts/ingest_marker_cohort.py",
+        "scripts/synthesize_cohort_diff.py",
+        "scripts/render_cohort_report.py"
+      ]
+    }
+  ],
+  "shared_modules": [
+    {
+      "id": "adapter-common",
+      "path": "scripts/adapter_common.py",
+      "description": "Schema validation, structured refusal envelopes, span normalization, and the severity and confidence ordering shared by both lanes.",
+      "status": "implemented",
+      "planned": false
+    }
+  ],
+  "input_schemas": [
+    {
+      "id": "review-input",
+      "path": "schemas/review-input.schema.json",
+      "raw_input_type": "Drafts, diffs, commit messages, pull request descriptions, agent transcripts, and documents supplied by the operator",
+      "lane": "review-run",
+      "description": "One artifact under review with its scanner findings, marker hits and structural procedure artifacts. Draft 2020-12, with enums for severity, confidence, procedure, tier and surface.",
+      "status": "implemented",
+      "planned": false
+    },
+    {
+      "id": "findings",
+      "path": "schemas/findings.schema.json",
+      "lane": "review-run",
+      "description": "Output contract for the findings report. Severity and confidence are separate required fields, additionalProperties is false at every level, and no authorship property exists anywhere in the schema.",
+      "status": "implemented",
+      "planned": false
+    },
+    {
+      "id": "marker-cohort",
+      "path": "schemas/marker-cohort.schema.json",
+      "raw_input_type": "Dated snapshot of the marker taxonomy with evidence tiers and ledger refresh dates",
+      "lane": "marker-cohort-refresh",
+      "description": "One dated marker cohort snapshot: marker class, evidence tier, routed procedure, surface, ledger source id and that source's refresh_due.",
+      "status": "implemented",
+      "planned": false
+    },
+    {
+      "id": "cohort-diff",
+      "path": "schemas/cohort-diff.schema.json",
+      "lane": "marker-cohort-refresh",
+      "description": "Output contract for the cohort diff: added, removed, tier changed, routing changed and stale evidence.",
+      "status": "implemented",
+      "planned": false
+    }
+  ],
+  "importers": [
+    {
+      "id": "ingest-review-input",
+      "path": "scripts/ingest_review_input.py",
+      "lane": "review-run",
+      "validates": "schemas/review-input.schema.json",
+      "description": "Validates and normalizes one review input document into the canonical envelope. Refuses malformed JSON, schema violations, impossible ISO dates, non-http URLs, duplicate ids and dangling marker references with a structured error envelope and a non-zero exit.",
+      "status": "implemented",
+      "planned": false
+    },
+    {
+      "id": "ingest-marker-cohort",
+      "path": "scripts/ingest_marker_cohort.py",
+      "lane": "marker-cohort-refresh",
+      "validates": "schemas/marker-cohort.schema.json",
+      "description": "Validates and normalizes one dated marker cohort snapshot. Also refuses a Tier 1 or Tier 2 marker that names no ledger source, because a marker claiming measured evidence must name the measurement.",
+      "status": "implemented",
+      "planned": false
+    }
+  ],
+  "synthesis_modules": [
+    {
+      "id": "synthesize-findings",
+      "path": "scripts/synthesize_findings.py",
+      "lane": "review-run",
+      "emits": "schemas/findings.schema.json",
+      "description": "The firewall enforcement point. Emits separate severity and confidence, attaches the structural procedure that convicted each finding, orders by severity then confidence, refuses any finding with no evidence span, never lets a Tier 2 or Tier 3 marker convict on its own, and emits no authorship field of any kind.",
+      "status": "implemented",
+      "planned": false
+    },
+    {
+      "id": "synthesize-cohort-diff",
+      "path": "scripts/synthesize_cohort_diff.py",
+      "lane": "marker-cohort-refresh",
+      "emits": "schemas/cohort-diff.schema.json",
+      "description": "Computes added, removed, tier changed and routing changed markers between two snapshots, and flags every marker whose source refresh_due has passed relative to --reference-date.",
+      "status": "implemented",
+      "planned": false
+    }
+  ],
+  "report_renderers": [
+    {
+      "id": "render-findings-report",
+      "path": "scripts/render_findings_report.py",
+      "lane": "review-run",
+      "consumes": "schemas/findings.schema.json",
+      "description": "Renders the findings envelope as markdown, including the severity by confidence matrix, each finding's evidence span and procedure artifact, the routed procedures, the procedures that passed, and every refusal. Adds no judgement of its own.",
+      "status": "implemented",
+      "planned": false
+    },
+    {
+      "id": "render-cohort-report",
+      "path": "scripts/render_cohort_report.py",
+      "lane": "marker-cohort-refresh",
+      "consumes": "schemas/cohort-diff.schema.json",
+      "description": "Renders the cohort diff as markdown, stale evidence first, then tier changes with their stated consequences, then routing changes, additions and removals.",
+      "status": "implemented",
+      "planned": false
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "sample-review-input",
+      "path": "tests/fixtures/sample-review-input.json",
+      "lane": "review-run",
+      "schema": "schemas/review-input.schema.json",
+      "description": "A prose and code review carrying real ledger source ids, real marker classes from wiki/markers, five scanner findings, six marker hits across all three evidence tiers, and six procedure results including one conviction with no evidence span and one procedure that passed.",
+      "status": "implemented",
+      "planned": false
+    },
+    {
+      "id": "sample-marker-cohort-a",
+      "path": "tests/fixtures/sample-marker-cohort-a.json",
+      "lane": "marker-cohort-refresh",
+      "schema": "schemas/marker-cohort.schema.json",
+      "description": "Baseline cohort dated 2026-04-15, with the em dash still at Tier 1 on vendor numbers and sycophantic verbal tics still unsourced folklore.",
+      "status": "implemented",
+      "planned": false
+    },
+    {
+      "id": "sample-marker-cohort-b",
+      "path": "tests/fixtures/sample-marker-cohort-b.json",
+      "lane": "marker-cohort-refresh",
+      "schema": "schemas/marker-cohort.schema.json",
+      "description": "Refresh cohort dated 2026-07-27: the em dash demoted to Tier 2 and reattributed to the pre-registered study, sycophancy promoted to Tier 2, one marker rerouted, two added, one removed, and two markers left carrying refresh dates that have gone stale in place.",
+      "status": "implemented",
+      "planned": false
+    }
+  ],
+  "tests": [
+    {
+      "id": "test-adapters",
+      "path": "tests/test_adapters.py",
+      "covers": [
+        "happy path for both lanes, importer to synthesis to renderer",
+        "determinism: every stage run twice and compared byte for byte",
+        "malformed JSON produces a structured error envelope and a non-zero exit, never a traceback",
+        "an invalid ISO date is rejected, in the document, on the flag and in a refresh_due",
+        "a non-http URL is rejected, for file, javascript and ftp schemes",
+        "a finding with no evidence span is refused",
+        "a Tier 2 marker alone produces no finding, only a routed procedure suggestion",
+        "no output object anywhere contains an authorship verdict key",
+        "no long dash characters in any adapter source, schema or fixture",
+        "this manifest resolves on disk and is marked domain adapted"
+      ],
+      "description": "Plain script with main() -> int, matching tests/test_pipeline.py and tests/test_scanners.py. Writes only inside tempfile.TemporaryDirectory.",
+      "status": "implemented",
+      "planned": false
+    }
+  ]
 }

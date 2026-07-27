@@ -14,12 +14,12 @@ related:
   - "[[Evidence Tiers]]"
   - "[[Marker Cohort Rot]]"
   - "[[Superseded Figures]]"
-  - "[[Human LLM Convergence]]"
+  - "[[The Moving Baseline Objection|Human LLM Convergence]]"
   - "[[Puffery and Undue Emphasis]]"
   - "[[Distributional Convergence]]"
-  - "[[Deletion Test]]"
+  - "[[The Deletion Test|Deletion Test]]"
   - "[[Detector Bias Against Language Learners]]"
-  - "[[Slop Is Not Always Worse]]"
+  - "[[The Accessibility Objection|Slop Is Not Always Worse]]"
   - "[[Prose Surface]]"
 source_urls:
   - "https://www.science.org/doi/10.1126/sciadv.adt3813"
@@ -95,7 +95,7 @@ confirmed entrenchment in active vocabulary.
 This is not a footnote. It means the human comparison baseline that makes
 excess vocabulary measurable is itself shifting toward the model distribution.
 The marker is dated by construction, and the mechanism is set out in
-[[Marker Cohort Rot]] and [[Human LLM Convergence]]. A 2028 recount using a
+[[Marker Cohort Rot]] and [[The Moving Baseline Objection|Human LLM Convergence]]. A 2028 recount using a
 2022 baseline would measure something different from what it thinks it is
 measuring.
 
@@ -131,7 +131,7 @@ routes rather than concludes.
    never a percentage-like score.
 2. If the count is at or below two distinct cohort members, stop. Record and
    take no action.
-3. Above that, take each occurrence to the [[Deletion Test]]: remove the
+3. Above that, take each occurrence to the [[The Deletion Test|Deletion Test]]: remove the
    adjective or adverb, and state what the sentence stopped saying. Stylistic
    excess words fail this test by definition, because they carry no content.
 4. For each survivor, write down the content it carried. A word that survives
@@ -147,7 +147,7 @@ everything above, and that expert readers nonetheless rated the modified text
 as more understandable and more exciting. Excess vocabulary is a reliable
 signal of a distribution. It is not, on this evidence, a reliable signal that
 the reader is worse off. That argument is developed in
-[[Slop Is Not Always Worse]].
+[[The Accessibility Objection|Slop Is Not Always Worse]].
 
 ## Related
 
@@ -157,7 +157,7 @@ the reader is worse off. That argument is developed in
 - [[Puffery and Undue Emphasis]]
 - [[Hedging and Hesitancy]]
 - [[Distributional Convergence]]
-- [[Human LLM Convergence]]
-- [[Deletion Test]]
-- [[Stranger Test]]
+- [[The Moving Baseline Objection|Human LLM Convergence]]
+- [[The Deletion Test|Deletion Test]]
+- [[The Stranger Test|Stranger Test]]
 - [[Documentation Surface]]

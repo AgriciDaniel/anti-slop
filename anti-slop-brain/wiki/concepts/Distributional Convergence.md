@@ -15,10 +15,10 @@ related:
   - "[[Model Collapse]]"
   - "[[Signs Are Not The Problem]]"
   - "[[Marker Cohort Rot]]"
-  - "[[Em Dash Density]]"
+  - "[[The Em Dash|Em Dash Density]]"
   - "[[Excess Vocabulary]]"
-  - "[[Model Specific Fingerprints]]"
-  - "[[Human Speech Is Converging Too]]"
+  - "[[Model Fingerprints|Model Specific Fingerprints]]"
+  - "[[The Moving Baseline Objection|Human Speech Is Converging Too]]"
   - "[[Evidence Tiers]]"
   - "[[Why Pangram Is Not Cited]]"
 source_urls:
@@ -117,7 +117,7 @@ baseline is being reshaped by the thing being measured against it. That is a
 convergence between populations, not just within one, and it is the strongest
 argument in the vault against treating any word list as durable. The
 consequence is worked out in [[Marker Cohort Rot]] and
-[[Human Speech Is Converging Too]].
+[[The Moving Baseline Objection|Human Speech Is Converging Too]].
 
 ## The sibling note in the Gogh vault
 
@@ -143,8 +143,8 @@ raising vocabulary diversity and word length, and rewritten texts converge in
 feature space regardless of where they started, even under explicit
 instructions to preserve the author's voice (`vannuenen-voice-under-revision`).
 The doctrine that follows is in [[Signs Are Not The Problem]], and the
-structural tests that do the real work are [[Deletion Test]],
-[[Inversion Test]] and [[Stranger Test]].
+structural tests that do the real work are [[The Deletion Test|Deletion Test]],
+[[The Inversion Test|Inversion Test]] and [[The Stranger Test|Stranger Test]].
 
 ## Related
 
@@ -152,9 +152,9 @@ structural tests that do the real work are [[Deletion Test]],
 - [[Signs Are Not The Problem]]
 - [[Model Collapse]]
 - [[Marker Cohort Rot]]
-- [[Model Specific Fingerprints]]
-- [[Human Speech Is Converging Too]]
-- [[Em Dash Density]]
+- [[Model Fingerprints|Model Specific Fingerprints]]
+- [[The Moving Baseline Objection|Human Speech Is Converging Too]]
+- [[The Em Dash|Em Dash Density]]
 - [[Excess Vocabulary]]
 - [[Why Pangram Is Not Cited]]
 - [[Constraint Beats Coaxing]]

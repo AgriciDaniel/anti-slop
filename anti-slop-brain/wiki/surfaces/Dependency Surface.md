@@ -13,12 +13,12 @@ confidence: "practitioner"
 related:
   - "[[Package Hallucination and Slopsquatting]]"
   - "[[Code Surface]]"
-  - "[[The Load-Bearing Test]]"
+  - "[[The Load Bearing Test|The Load-Bearing Test]]"
   - "[[The Firewall]]"
   - "[[Evidence Tiers]]"
-  - "[[Severity and Confidence]]"
+  - "[[The Firewall|Severity and Confidence]]"
   - "[[Marker Cohort Rot]]"
-  - "[[Generation-Verification Asymmetry]]"
+  - "[[The Generation Verification Asymmetry|Generation-Verification Asymmetry]]"
   - "[[Commit and Review Surface]]"
 source_urls:
   - "https://www.usenix.org/system/files/usenixsecurity25-spracklen.pdf"
@@ -39,7 +39,7 @@ execution on a developer machine, so the gate is allowed to hard-fail and does.
 entry, or install command in the diff names a package that does not resolve in
 its registry. There is no severity ladder and no confidence axis on this gate.
 A name resolves or it does not. This is the one place in the brain where
-[[Severity and Confidence]] collapses to a single boolean, and the reason is
+[[The Firewall|Severity and Confidence]] collapses to a single boolean, and the reason is
 that the check consults an authority rather than a judgement.
 
 The gate covers, at minimum: PyPI, npm, crates.io, RubyGems, Packagist,
@@ -119,7 +119,7 @@ the standing rule under [[Marker Cohort Rot]].
 | --- | --- | --- | --- |
 | Unresolvable package name | Layer 0 | hard fail | private or internal registry not configured in the scanner |
 | Package resolves but is days old | Layer 1 | human review | genuinely new library that the author chose deliberately |
-| Plausible-sounding name near a real one | Layer 1 | [[The Load-Bearing Test]] on the import | legitimate forks and scoped rewrites, such as a `-ng` or `2` suffix |
+| Plausible-sounding name near a real one | Layer 1 | [[The Load Bearing Test|The Load-Bearing Test]] on the import | legitimate forks and scoped rewrites, such as a `-ng` or `2` suffix |
 | Import present but unused | Layer 1 | delete and rebuild | re-export modules and plugin registration side effects |
 | Version pin that does not exist | Layer 0 | hard fail | yanked release that the lockfile still references |
 | Install command inside prose | Layer 0 | hard fail | documentation deliberately showing a wrong command as a counterexample |
@@ -140,7 +140,7 @@ does not get removed because the incidence dropped, any more than seatbelts get
 removed because crash rates fell.
 
 There is a second reason that is specific to this brain. The dependency gate is
-the clearest worked example of the principle in [[Generation-Verification Asymmetry]]:
+the clearest worked example of the principle in [[The Generation Verification Asymmetry|Generation-Verification Asymmetry]]:
 generating a plausible package name is free, and verifying it is nearly free
 too, which is exactly the shape of problem where a deterministic check beats
 every form of judgement. Most of this vault deals with the opposite shape, where
@@ -153,7 +153,7 @@ is the easy case, and the easy case should be automated first.
 - [[Documentation Surface]]
 - [[Agent Output Surface]]
 - [[Package Hallucination and Slopsquatting]]
-- [[Fabricated Citations]]
+- [[The Attribution Test|Fabricated Citations]]
 - [[Provenance Trace Policy]]
 - [[Note Conventions]]
 - [[index|Index]]

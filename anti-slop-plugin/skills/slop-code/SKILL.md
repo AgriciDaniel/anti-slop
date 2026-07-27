@@ -51,7 +51,9 @@ this skill with a live supply chain attack attached. Frontier 2026 models
 hallucinate package names at roughly 4.62% to 6.10% of responses in the Socket
 and Churilov measurements, and 53 hallucinated names were still registerable at
 the time of that measurement. Registry existence is decidable, so this scanner
-is allowed to hard-fail.
+is allowed to hard-fail. Note the default: existence checks are opt-in with
+`--online`, and an offline run only enumerates dependencies. Reporting an
+offline exit 0 as "packages verified" is itself a defect.
 
 **Verify APIs against the pinned version, not against memory.** Read the
 lockfile, the vendored source, or the installed package. "This method exists"
@@ -95,13 +97,15 @@ in front of you.
 Scripts live at `../anti-slop-brain/scripts/` relative to this plugin's parent
 directory. Do not reimplement them and do not guess their flags.
 
-| Script | On code |
-|---|---|
-| `scan_packages.py` | every import resolves to a real registry entry |
-| `scan_residue.py` | vendor artifacts leaked into comments, docstrings, commit bodies or PR text |
-| `scan_placeholders.py` | `TODO: quote`, `[Your Name]`, `INSERT_SOURCE_URL`, `YYYY-MM-DD` left in code or docs |
-| `scan_refs.py` | URLs and DOIs in comments, READMEs and docstrings resolve |
-| `lint_voice.py` | house style in prose files and in comment text |
+Exit codes are uniform: 0 clean, 1 findings, 2 usage error.
+
+| Script | On code | Flag that matters |
+|---|---|---|
+| `scan_packages.py` | every import resolves to a real registry entry | `--online` required for existence checks; `--allowlist FILE` for internal names |
+| `scan_residue.py` | vendor artifacts leaked into comments, docstrings, commit bodies or PR text | `--include-code` to scan fenced blocks and inline code spans, skipped by default in markdown |
+| `scan_placeholders.py` | `TODO: quote`, `[Your Name]`, `INSERT_SOURCE_URL`, `YYYY-MM-DD` left in code or docs | `--include-code` as above |
+| `scan_refs.py` | URLs and DOIs in comments, READMEs and docstrings | `--online` required for resolution; offline checks shape and checksums only |
+| `lint_voice.py` | house style in prose files and in comment text | `--voice FILE` for the banned-token list |
 
 Comment out nothing to make a scanner pass. If a scanner fires on a legitimate
 case, record it as a scanner false positive in your report and leave the code

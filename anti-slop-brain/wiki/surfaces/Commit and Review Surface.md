@@ -11,14 +11,14 @@ tags:
   - "#confidence/practitioner"
 confidence: "practitioner"
 related:
-  - "[[Signs of AI Writing]]"
+  - "[[Signs Are Not The Problem|Signs of AI Writing]]"
   - "[[Code Surface]]"
   - "[[The Attribution Test]]"
   - "[[The Deletion Test]]"
   - "[[The Firewall]]"
-  - "[[Severity and Confidence]]"
+  - "[[The Firewall|Severity and Confidence]]"
   - "[[Evidence Tiers]]"
-  - "[[Vendor Evidence Conflicts]]"
+  - "[[Evidence Quality Ladder|Vendor Evidence Conflicts]]"
   - "[[Agent Output Surface]]"
 source_urls:
   - "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"

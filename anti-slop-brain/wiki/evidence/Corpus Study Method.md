@@ -11,7 +11,7 @@ tags:
   - "#confidence/evidence-based"
 confidence: "evidence-based"
 related:
-  - "[[Excess Vocabulary in Biomedical Abstracts]]"
+  - "[[Excess Vocabulary|Excess Vocabulary in Biomedical Abstracts]]"
   - "[[Em Dash Population Prevalence]]"
   - "[[Evidence Quality Ladder]]"
   - "[[Superseded Figures]]"
@@ -20,7 +20,7 @@ related:
   - "[[Evidence Tiers]]"
   - "[[Marker Cohort Rot]]"
   - "[[The Moving Baseline Objection]]"
-  - "[[Signs of AI Writing]]"
+  - "[[Signs Are Not The Problem|Signs of AI Writing]]"
 source_urls:
   - "https://www.science.org/doi/10.1126/sciadv.adt3813"
   - "https://arxiv.org/abs/2606.29540"
@@ -153,7 +153,7 @@ looking for. It never tells you what any one document is.
 
 ## Related
 
-- [[Excess Vocabulary in Biomedical Abstracts]]
+- [[Excess Vocabulary|Excess Vocabulary in Biomedical Abstracts]]
 - [[Em Dash Population Prevalence]]
 - [[Evidence Quality Ladder]]
 - [[Superseded Figures]]
@@ -162,4 +162,4 @@ looking for. It never tells you what any one document is.
 - [[Marker Cohort Rot]]
 - [[The Moving Baseline Objection]]
 - [[The Accessibility Objection]]
-- [[Signs of AI Writing]]
+- [[Signs Are Not The Problem|Signs of AI Writing]]

@@ -51,7 +51,7 @@ a fluency comparison against the original only **26.0%** of the time.
 
 ## 3. Design: three layers, one firewall
 
-### Layer 0 — deterministic scanners (no model judgment at all)
+### Layer 0, deterministic scanners (no model judgment at all)
 
 Python scripts, exit codes, unit tested. These are the only things allowed to
 hard-fail, because they are the only things that are actually decidable.
@@ -68,7 +68,7 @@ hard-fail, because they are the only things that are actually decidable.
 claude-blog 2.1.0 rather than reimplementing it. Fence-aware and
 backtick-aware behaviour is already solved there.
 
-### Layer 1 — structural procedures (the model executes, and must show work)
+### Layer 1, structural procedures (the model executes, and must show work)
 
 Each test is mechanical and produces an artifact. No ratings, no scores from
 vibes. This is where the deletion / stranger / inversion tests live, plus two
@@ -92,7 +92,7 @@ the evidence demands.
    try/except, the assertion-free test. Does anything break or become
    unclear? Artifact: what broke, or nothing.
 
-### Layer 2 — evidence-tiered soft signals (trigger Layer 1, never fail alone)
+### Layer 2, evidence-tiered soft signals (trigger Layer 1, never fail alone)
 
 Tiering follows the corpus evidence, and every tier records its own citation
 and its own false-positive class.

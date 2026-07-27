@@ -14,9 +14,9 @@ related:
   - "[[Evidence Tiers]]"
   - "[[Excess Vocabulary]]"
   - "[[Distributional Convergence]]"
-  - "[[Inversion Test]]"
-  - "[[Stranger Test]]"
-  - "[[Attribution Test]]"
+  - "[[The Inversion Test|Inversion Test]]"
+  - "[[The Stranger Test|Stranger Test]]"
+  - "[[The Attribution Test|Attribution Test]]"
   - "[[Marker Cohort Rot]]"
   - "[[Prose Surface]]"
   - "[[Documentation Surface]]"
@@ -87,7 +87,7 @@ a widely held view, referring to reviewers or scholars in the plural while
 citing one person, or implying a list is non-exhaustive when the sources give
 no indication that other examples exist. Retrieval-augmented systems produce a
 sharper version, stapling a hollow evaluative claim to a named real source that
-says nothing close to it. That form routes to [[Attribution Test]], not to a
+says nothing close to it. That form routes to [[The Attribution Test|Attribution Test]], not to a
 style fix.
 
 ## Topic-specific variants
@@ -135,12 +135,12 @@ testament to" from an unsourced claim leaves an unsourced claim.
 
 The procedure, in order:
 
-1. Run [[Inversion Test]] on the evaluative clause. Negate it. If nobody would
+1. Run [[The Inversion Test|Inversion Test]] on the evaluative clause. Negate it. If nobody would
    ever write the negation, the clause carried no information and comes out.
-2. Run [[Stranger Test]] on what remains. Name the fact in the sentence that
+2. Run [[The Stranger Test|Stranger Test]] on what remains. Name the fact in the sentence that
    only someone who read the source could know. If there is none, the sentence
    is generic regardless of its adjectives.
-3. Run [[Attribution Test]] on every vague authority. Resolve it to a named
+3. Run [[The Attribution Test|Attribution Test]] on every vague authority. Resolve it to a named
    source that supports the specific claim, or report it as unresolved.
 4. Only then edit the wording. The wording was never the finding.
 5. Never state or imply who or what wrote the passage. That rule is
@@ -152,8 +152,8 @@ The procedure, in order:
 - [[Excess Vocabulary]]
 - [[Negative Parallelism]]
 - [[Hedging and Hesitancy]]
-- [[Inversion Test]]
-- [[Attribution Test]]
+- [[The Inversion Test|Inversion Test]]
+- [[The Attribution Test|Attribution Test]]
 - [[Marker Cohort Rot]]
 - [[Distributional Convergence]]
 - [[Prose Surface]]

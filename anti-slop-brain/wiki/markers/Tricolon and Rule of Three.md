@@ -14,8 +14,8 @@ related:
   - "[[Evidence Tiers]]"
   - "[[Why Pangram Is Not Cited]]"
   - "[[Negative Parallelism]]"
-  - "[[Deletion Test]]"
-  - "[[Stranger Test]]"
+  - "[[The Deletion Test|Deletion Test]]"
+  - "[[The Stranger Test|Stranger Test]]"
   - "[[Puffery and Undue Emphasis]]"
   - "[[Distributional Convergence]]"
   - "[[Prose Surface]]"
@@ -135,12 +135,12 @@ so nobody later quotes them as a finding.
 A tricolon is not repaired by making it a pair. Cutting one item at random
 produces the same empty sentence with a worse rhythm. The repair is:
 
-1. Take each item to the [[Deletion Test]]. Remove it and state what the
+1. Take each item to the [[The Deletion Test|Deletion Test]]. Remove it and state what the
    sentence stopped claiming.
 2. Items that survive stay, however many there are. Two survivors give a pair,
    four give a list of four, and both are fine.
 3. If no item survives, the whole triple is decoration and the sentence goes.
-4. If exactly one item survives, ask the [[Stranger Test]] question about it:
+4. If exactly one item survives, ask the [[The Stranger Test|Stranger Test]] question about it:
    could someone who never read the source have written it? If yes, the
    sentence is generic even after repair, and the finding is the missing
    specific, not the triple.
@@ -152,8 +152,8 @@ produces the same empty sentence with a worse rhythm. The repair is:
 - [[Negative Parallelism]]
 - [[Hedging and Hesitancy]]
 - [[Puffery and Undue Emphasis]]
-- [[Deletion Test]]
-- [[Stranger Test]]
+- [[The Deletion Test|Deletion Test]]
+- [[The Stranger Test|Stranger Test]]
 - [[Distributional Convergence]]
 - [[Marker Cohort Rot]]
 - [[Prose Surface]]

@@ -12,7 +12,7 @@ tags:
 confidence: "evidence-based"
 related:
   - "[[The Firewall]]"
-  - "[[Measuring AI Slop in Text]]"
+  - "[[Why Structural Not Judgmental|Measuring AI Slop in Text]]"
   - "[[AI-AI Evaluator Bias]]"
   - "[[Why Detection Fails]]"
   - "[[The Deletion Test]]"
@@ -180,7 +180,7 @@ gap is recorded rather than papered over.
 ## Related
 
 - [[The Firewall]]
-- [[Measuring AI Slop in Text]]
+- [[Why Structural Not Judgmental|Measuring AI Slop in Text]]
 - [[AI-AI Evaluator Bias]]
 - [[The Deletion Test]]
 - [[The Attribution Test]]

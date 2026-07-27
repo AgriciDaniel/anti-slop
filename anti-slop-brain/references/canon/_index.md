@@ -1,8 +1,8 @@
 ---
 type: "reference"
 title: "Canon Reference Layer"
-created: "2026-07-27"
-updated: "2026-07-27"
+created: "2026-07-28"
+updated: "2026-07-28"
 status: "active"
 ---
 

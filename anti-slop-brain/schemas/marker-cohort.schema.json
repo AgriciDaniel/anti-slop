@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/agricidaniel/anti-slop-brain/schemas/marker-cohort.schema.json",
+  "title": "Anti-Slop marker cohort snapshot",
+  "description": "One dated snapshot of the marker taxonomy: every marker class, its evidence tier, the structural procedure it routes to, and the ledger source that carries its evidence together with that source's refresh_due. Two snapshots are diffed by scripts/synthesize_cohort_diff.py because marker cohorts rot as vocabulary shifts by model generation.",
+  "type": "object",
+  "required": ["schema_version", "cohort_id", "snapshot_date", "markers"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": 1 },
+    "cohort_id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "snapshot_date": { "$ref": "#/$defs/isoDate" },
+    "ledger_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repository relative path of the source ledger the source ids in this snapshot refer to."
+    },
+    "notes": { "type": "string", "maxLength": 2000 },
+    "markers": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/marker" }
+    }
+  },
+  "$defs": {
+    "isoDate": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "httpUrl": { "type": "string", "format": "uri", "pattern": "^https?://" },
+    "tier": {
+      "type": "integer",
+      "enum": [1, 2, 3],
+      "description": "1 corpus validated, 2 measured but high false positive, 3 folk wisdom."
+    },
+    "procedure": {
+      "type": "string",
+      "enum": ["deletion", "inversion", "stranger", "attribution", "load-bearing"]
+    },
+    "surface": {
+      "type": "string",
+      "enum": ["prose", "code", "documentation", "commit", "pull-request", "agent-transcript"]
+    },
+    "marker": {
+      "type": "object",
+      "required": ["marker_id", "marker_class", "tier", "routes_to", "surface"],
+      "additionalProperties": false,
+      "properties": {
+        "marker_id": { "type": "string", "minLength": 2, "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "marker_class": { "type": "string", "minLength": 2, "maxLength": 200 },
+        "tier": { "$ref": "#/$defs/tier" },
+        "routes_to": { "$ref": "#/$defs/procedure" },
+        "surface": { "$ref": "#/$defs/surface" },
+        "ledger_source_id": {
+          "type": "string",
+          "minLength": 2,
+          "pattern": "^[a-z0-9][a-z0-9-]*$",
+          "description": "Id of the entry in references/source-ledger.json that carries this marker's evidence. Omit only for a Tier 3 marker with no ledger entry, which is folklore by definition."
+        },
+        "source_url": { "$ref": "#/$defs/httpUrl" },
+        "source_refresh_due": {
+          "$ref": "#/$defs/isoDate",
+          "description": "Copied from the ledger entry. When this date has passed relative to --reference-date the marker is flagged as resting on stale evidence."
+        },
+        "false_positive_class": { "type": "string", "maxLength": 500 },
+        "vault_note": { "type": "string", "maxLength": 200 }
+      }
+    }
+  }
+}

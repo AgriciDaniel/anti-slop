@@ -16,7 +16,7 @@ related:
   - "[[Human Expert Review]]"
   - "[[Evidence Tiers]]"
   - "[[Marker Cohort Rot]]"
-  - "[[Human Speech Is Converging]]"
+  - "[[The Moving Baseline Objection|Human Speech Is Converging]]"
   - "[[Excess Vocabulary]]"
   - "[[Superseded Figures]]"
   - "[[Model Fingerprints]]"
@@ -98,7 +98,7 @@ same language.
 
 The convergence problem compounds this. Vocabulary that reads as machine-like
 is entering ordinary human usage, which is documented in
-[[Human Speech Is Converging]] and is the reason [[Marker Cohort Rot]] exists as
+[[The Moving Baseline Objection|Human Speech Is Converging]] and is the reason [[Marker Cohort Rot]] exists as
 a standing maintenance obligation. A learner drilled on formal academic register
 is being penalised for producing the register they were taught.
 
@@ -145,7 +145,7 @@ a decision to make. It is written to be handed over as-is.
 - [[Human Expert Review]]
 - [[Evidence Tiers]]
 - [[Marker Cohort Rot]]
-- [[Human Speech Is Converging]]
+- [[The Moving Baseline Objection|Human Speech Is Converging]]
 - [[Superseded Figures]]
 - [[The Attribution Test]]
 - [[The Deletion Test]]

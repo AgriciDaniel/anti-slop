@@ -17,7 +17,7 @@ related:
   - "[[The Generation Verification Asymmetry]]"
   - "[[Evidence Tiers]]"
   - "[[The Firewall]]"
-  - "[[Slop Is Not Always Worse]]"
+  - "[[The Accessibility Objection|Slop Is Not Always Worse]]"
   - "[[Detector Bias Against Language Learners]]"
   - "[[Note Conventions]]"
   - "[[Marker Cohort Rot]]"
@@ -122,22 +122,22 @@ coexist with a reader-side improvement.
 
 This is why the vault splits severity from confidence, and why it refuses to
 treat any single stylistic feature as a defect on its own. The argument is
-worked out in [[Slop Is Not Always Worse]] and the routing rule is in
+worked out in [[The Accessibility Objection|Slop Is Not Always Worse]] and the routing rule is in
 [[Evidence Tiers]].
 
 ## What follows for everything downstream
 
 - Markers never conclude. They route to a procedure. See
   [[Signs Are Not The Problem]] for the doctrine and the marker folder for the
-  individual cohorts, including [[Excess Vocabulary]] and [[Em Dash Density]].
+  individual cohorts, including [[Excess Vocabulary]] and [[The Em Dash|Em Dash Density]].
 - Anything that cannot be checked mechanically gets checked by a structural
   test with a written artifact, not by asking a model for a rating. The reason
   is the kappa figures above, developed further in
-  [[LLM As Judge Fails At Slop]].
+  [[Why Structural Not Judgmental|LLM As Judge Fails At Slop]].
 - Volume, the "produced usually in quantity" half of the dictionary
   definition, is a distribution problem rather than a text problem. It is
   handled in [[Workslop]] and in the surface notes such as
-  [[Pull Request Descriptions]] and [[Chat And Agent Output]].
+  [[Commit and Review Surface|Pull Request Descriptions]] and [[Agent Output Surface|Chat And Agent Output]].
 - The word itself will drift. Marker vocabulary already does, and the same
   pressure applies to the term. See [[Marker Cohort Rot]].
 
@@ -147,7 +147,7 @@ worked out in [[Slop Is Not Always Worse]] and the routing rule is in
 - [[The Generation Verification Asymmetry]]
 - [[Distributional Convergence]]
 - [[Workslop]]
-- [[Slop Is Not Always Worse]]
+- [[The Accessibility Objection|Slop Is Not Always Worse]]
 - [[Evidence Tiers]]
 - [[The Firewall]]
 - [[Detector Bias Against Language Learners]]

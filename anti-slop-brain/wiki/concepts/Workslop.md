@@ -14,12 +14,12 @@ related:
   - "[[The Generation Verification Asymmetry]]"
   - "[[AI Slop]]"
   - "[[Documentation Surface]]"
-  - "[[Pull Request Descriptions]]"
-  - "[[Commit Messages]]"
-  - "[[Chat And Agent Output]]"
-  - "[[Stranger Test]]"
-  - "[[Deletion Test]]"
-  - "[[METR Developer Slowdown]]"
+  - "[[Commit and Review Surface|Pull Request Descriptions]]"
+  - "[[Commit and Review Surface|Commit Messages]]"
+  - "[[Agent Output Surface|Chat And Agent Output]]"
+  - "[[The Stranger Test|Stranger Test]]"
+  - "[[The Deletion Test|Deletion Test]]"
+  - "[[The Code Slop Disagreement|METR Developer Slowdown]]"
   - "[[Evidence Tiers]]"
 source_urls:
   - "https://www.betterup.com/workslop"
@@ -123,17 +123,17 @@ magnitude is unestablished and its existence is well attested.
 Because the defect is in the handoff, the intervention belongs at the receiving
 end, and it is a routing decision rather than a judgment.
 
-1. Apply [[Stranger Test]] to the document. Name one fact in it that only
+1. Apply [[The Stranger Test|Stranger Test]] to the document. Name one fact in it that only
    someone who did the work could know. If nothing qualifies, the document did
    not transfer any work.
-2. Apply [[Deletion Test]] to each section. Cut it, state what was lost. Sections
+2. Apply [[The Deletion Test|Deletion Test]] to each section. Cut it, state what was lost. Sections
    that lose nothing are the padding the two hours is being spent on.
 3. Return the specific missing item, not a verdict about the document. Asking
    "which build did you see this on" is actionable. Saying "this reads like AI"
    is an authorship verdict, which [[The Firewall]] forbids and which is also
    unfalsifiable across a desk.
 4. Where the surface has a structure, use it. Handoff artifacts are covered
-   individually in [[Pull Request Descriptions]], [[Commit Messages]] and
+   individually in [[Commit and Review Surface|Pull Request Descriptions]], [[Commit and Review Surface|Commit Messages]] and
    [[Documentation Surface]], each of which has cheaper checks available than
    general prose does.
 
@@ -147,13 +147,13 @@ missing fact can.
 
 - [[The Generation Verification Asymmetry]]
 - [[AI Slop]]
-- [[Stranger Test]]
-- [[Deletion Test]]
+- [[The Stranger Test|Stranger Test]]
+- [[The Deletion Test|Deletion Test]]
 - [[Documentation Surface]]
-- [[Pull Request Descriptions]]
-- [[Commit Messages]]
-- [[Chat And Agent Output]]
-- [[METR Developer Slowdown]]
-- [[Borg Null Result]]
+- [[Commit and Review Surface|Pull Request Descriptions]]
+- [[Commit and Review Surface|Commit Messages]]
+- [[Agent Output Surface|Chat And Agent Output]]
+- [[The Code Slop Disagreement|METR Developer Slowdown]]
+- [[The Code Slop Disagreement|Borg Null Result]]
 - [[The Firewall]]
 - [[Evidence Tiers]]

@@ -11,10 +11,10 @@ tags:
   - "#confidence/practitioner"
 confidence: "practitioner"
 related:
-  - "[[Signs of AI Writing]]"
+  - "[[Signs Are Not The Problem|Signs of AI Writing]]"
   - "[[Prose Surface]]"
   - "[[Code Surface]]"
-  - "[[Diff-Anchored Writing]]"
+  - "[[Commit and Review Surface|Diff-Anchored Writing]]"
   - "[[The Deletion Test]]"
   - "[[The Stranger Test]]"
   - "[[Evidence Tiers]]"
@@ -44,7 +44,7 @@ answers, and a check that cannot tell them apart will fight the genre.
 | --- | --- | --- | --- |
 | README and guide prose | persuade and orient a reader who has not decided yet | benefits framing, a quick-start ordering | puffery, generic positive conclusion |
 | API reference | let a reader who already decided look up one symbol | rigid per-symbol template, repeated phrasing | template convergence, elegant variation absent |
-| Changelog and release notes | say what changed between two versions | narrating the diff, version-scoped framing | [[Diff-Anchored Writing]] |
+| Changelog and release notes | say what changed between two versions | narrating the diff, version-scoped framing | [[Commit and Review Surface|Diff-Anchored Writing]] |
 | Migration guide | move a reader from version A to version B | before-and-after pairs, imperative steps | uniform sentence length, inline-header lists |
 | ADR and design doc | record a decision and the alternatives rejected | passive constructions, hedged tradeoffs | passive voice, hedging density |
 
@@ -125,7 +125,7 @@ where one exists.
 
 **Fabricated cross-references.** Links to sections, anchors, and pages that do
 not exist. Cheap to check, so it is checked mechanically rather than reasoned
-about. See [[Fabricated Citations]] for the same defect class in prose.
+about. See [[The Attribution Test|Fabricated Citations]] for the same defect class in prose.
 
 **Documentation that describes the intended system.** A README describing
 behaviour the code does not have. [[The Stranger Test]] catches most of it: name
@@ -136,16 +136,16 @@ page contains none, nobody ran the thing.
 
 | Marker | Tier | Procedure | Acquitting genre |
 | --- | --- | --- | --- |
-| [[Section Inflation]] | 2 | [[The Deletion Test]] on the heading | mandated compliance document structure |
+| [[Documentation Surface|Section Inflation]] | 2 | [[The Deletion Test]] on the heading | mandated compliance document structure |
 | Unsupported superlative | 1 | [[The Inversion Test]] | marketing landing copy, which is a different artifact |
-| [[Diff-Anchored Writing]] | 1 | genre check first | changelog, release notes, migration guide |
+| [[Commit and Review Surface|Diff-Anchored Writing]] | 1 | genre check first | changelog, release notes, migration guide |
 | Passive voice | 3 | none, routes only | reference prose where the actor is irrelevant |
 | Title case heading | 3 | house style check only | any project whose style guide chooses it |
-| [[Inline-Header Vertical Lists]] | 2 | [[The Deletion Test]] | option tables and parameter lists |
+| [[Documentation Surface|Inline-Header Vertical Lists]] | 2 | [[The Deletion Test]] | option tables and parameter lists |
 | Template convergence across pages | 2 | none on this surface | API reference, where it is required |
 | Broken anchor or link | Layer 0 | scanner | none |
 | Unrunnable example | Layer 0 | doc test | none |
-| [[Knowledge-Cutoff Disclaimers]] | 1 | [[The Deletion Test]] | none in documentation |
+| [[Vendor Residue Markers|Knowledge-Cutoff Disclaimers]] | 1 | [[The Deletion Test]] | none in documentation |
 
 ## The cost that justifies the work
 
@@ -166,7 +166,7 @@ time again.
 - [[Code Surface]]
 - [[Commit and Review Surface]]
 - [[Knowledge Base Surface]]
-- [[Excess Vocabulary in Biomedical Abstracts]]
+- [[Excess Vocabulary|Excess Vocabulary in Biomedical Abstracts]]
 - [[Marker Cohort Rot]]
 - [[Note Conventions]]
 - [[overview|Overview]]

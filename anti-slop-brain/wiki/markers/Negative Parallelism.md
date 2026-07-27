@@ -12,14 +12,14 @@ tags:
 confidence: "practitioner"
 related:
   - "[[Evidence Tiers]]"
-  - "[[Inversion Test]]"
-  - "[[Deletion Test]]"
-  - "[[Model Specific Fingerprints]]"
+  - "[[The Inversion Test|Inversion Test]]"
+  - "[[The Deletion Test|Deletion Test]]"
+  - "[[Model Fingerprints|Model Specific Fingerprints]]"
   - "[[Puffery and Undue Emphasis]]"
   - "[[Tricolon and Rule of Three]]"
   - "[[Marker Cohort Rot]]"
   - "[[Prose Surface]]"
-  - "[[Chat Transcripts]]"
+  - "[[Agent Output Surface|Chat Transcripts]]"
   - "[[Distributional Convergence]]"
 source_urls:
   - "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
@@ -75,7 +75,7 @@ summarization. That result supports the existence of stable per-model
 idiolects, which is what makes a claim like "this form is characteristic of one
 vendor's model" a coherent claim at all. It does not license reading a vendor
 name off a paragraph, and this note does not do that. See
-[[Model Specific Fingerprints]] and [[The Firewall]].
+[[Model Fingerprints|Model Specific Fingerprints]] and [[The Firewall]].
 
 ## The distributed form
 
@@ -122,7 +122,7 @@ positively, it was empty.
 1. Locate the negated term Y. Write it down as a standalone assertion.
 2. Ask whether any identified person or source actually holds Y. Not "could
    someone", but "does the document, its audience, or a cited source assert
-   it". This is a light form of [[Inversion Test]].
+   it". This is a light form of [[The Inversion Test|Inversion Test]].
 3. If Y is held by someone real, keep the construction and, where the surface
    allows it, name who holds it. The sentence becomes stronger, not weaker.
 4. If Y is held by nobody, delete the negated half and keep the assertion.
@@ -130,7 +130,7 @@ positively, it was empty.
    actually is, stated once.
 5. If deleting the negated half leaves a sentence that says nothing, the
    sentence was carrying the contrast rather than a claim. Run
-   [[Deletion Test]] on the whole sentence and record what was lost.
+   [[The Deletion Test|Deletion Test]] on the whole sentence and record what was lost.
 6. Count instances per 1,000 words and record the count. Do not convert it into
    a score, and do not fail a document on it. Under [[Evidence Tiers]] no tier
    licenses a hard failure on its own.
@@ -148,9 +148,9 @@ span.
 - [[Evidence Tiers]]
 - [[Tricolon and Rule of Three]]
 - [[Puffery and Undue Emphasis]]
-- [[Inversion Test]]
-- [[Deletion Test]]
-- [[Model Specific Fingerprints]]
+- [[The Inversion Test|Inversion Test]]
+- [[The Deletion Test|Deletion Test]]
+- [[Model Fingerprints|Model Specific Fingerprints]]
 - [[The Em Dash]]
 - [[The Firewall]]
 - [[Marker Cohort Rot]]

@@ -18,7 +18,7 @@ related:
   - "[[Evidence Tiers]]"
   - "[[What This Brain Does Not Claim]]"
   - "[[The ESL Objection]]"
-  - "[[Research Pack 2026-07-27]]"
+  - "[[research-pack-2026-07-27|Research Pack 2026-07-27]]"
 source_urls:
   - "https://arxiv.org/abs/2509.19163"
   - "https://arxiv.org/abs/2512.09292"

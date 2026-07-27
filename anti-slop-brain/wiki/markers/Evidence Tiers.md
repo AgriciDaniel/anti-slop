@@ -18,9 +18,9 @@ related:
   - "[[Vendor Residue Markers]]"
   - "[[Why Pangram Is Not Cited]]"
   - "[[Marker Cohort Rot]]"
-  - "[[Severity and Confidence]]"
-  - "[[Deletion Test]]"
-  - "[[Inversion Test]]"
+  - "[[The Firewall|Severity and Confidence]]"
+  - "[[The Deletion Test|Deletion Test]]"
+  - "[[The Inversion Test|Inversion Test]]"
 source_urls:
   - "https://www.science.org/doi/10.1126/sciadv.adt3813"
   - "https://arxiv.org/abs/2604.19768"
@@ -37,7 +37,7 @@ marker, and nothing else. It is not a severity, not a confidence that a given
 document is defective, and above all not a probability that a human wrote it.
 Two markers can sit in the same tier and matter wildly differently to a reader.
 Severity and certainty are tracked on separate axes, described in
-[[Severity and Confidence]]; this note only answers the question "how well is
+[[The Firewall|Severity and Confidence]]; this note only answers the question "how well is
 this pattern actually measured, and by whom".
 
 ## Why tiers exist at all
@@ -124,8 +124,8 @@ happens:
 
 1. Record the span, the marker class, and the tier.
 2. Select the structural procedure the marker class routes to: usually
-   [[Deletion Test]], [[Inversion Test]], [[Stranger Test]], or
-   [[Attribution Test]].
+   [[The Deletion Test|Deletion Test]], [[The Inversion Test|Inversion Test]], [[The Stranger Test|Stranger Test]], or
+   [[The Attribution Test|Attribution Test]].
 3. Run that procedure and emit its artifact. The artifact is the evidence, not
    the marker. A deletion test emits the cut span and the named loss; an
    inversion test emits the written-out negation.
@@ -175,7 +175,7 @@ its correction both stay visible, per [[Superseded Figures]].
 - [[Vendor Residue Markers]]
 - [[Why Pangram Is Not Cited]]
 - [[Distributional Convergence]]
-- [[Why Detectors Fail]]
+- [[Why Detection Fails|Why Detectors Fail]]
 - [[Detector Bias Against Language Learners]]
-- [[Stranger Test]]
-- [[Attribution Test]]
+- [[The Stranger Test|Stranger Test]]
+- [[The Attribution Test|Attribution Test]]
