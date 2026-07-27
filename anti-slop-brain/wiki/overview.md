@@ -11,7 +11,7 @@ tags:
   - "#confidence/evidence-based"
 confidence: "evidence-based"
 related:
-  - "[[Index]]"
+  - "[[index|Index]]"
   - "[[Signs Are Not The Problem]]"
   - "[[Why Structural Not Judgmental]]"
   - "[[The Firewall]]"

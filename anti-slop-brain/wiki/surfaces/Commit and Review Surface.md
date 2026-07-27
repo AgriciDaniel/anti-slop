@@ -180,4 +180,4 @@ that none of it licenses a statement about who or what wrote a given commit. See
 - [[Marker Cohort Rot]]
 - [[Workslop Downstream Cost]]
 - [[Note Conventions]]
-- [[Index]]
+- [[index|Index]]
