@@ -1,0 +1,120 @@
+# Brainstein spec v3 for the Anti-Slop Brain
+# Parser is line-based: keys at column 0, list items indented exactly two spaces.
+spec_version: 3
+slug: "anti-slop-brain"
+title: "Anti-Slop Brain"
+domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
+buyer: "Writers, engineers, and agent operators who ship AI-assisted work and need a defensible, source-cited way to find and fix substance defects without accusing anyone of using AI."
+owner: "Daniel Agrici"
+repo_url: "https://github.com/AgriciDaniel/anti-slop-brain"
+license_name: "Custom license"
+research_refresh_cadence: "30 days for model-specific marker cohorts and detector claims; 90 days for corpus studies and regulation; before every release for any numeric claim"
+workflows:
+  - "Structural review of a draft, diff, or document"
+  - "Deterministic scan for residue, placeholders, and fabricated references"
+  - "Evidence-tiered marker triage that routes to structural tests"
+  - "Repair pass that consumes findings without re-deriving them"
+  - "Marker cohort refresh and evidence re-verification"
+raw_sources:
+  - "Drafts, diffs, commit messages, pull request descriptions, agent transcripts, and documents supplied by the operator"
+enrichment_sources:
+  - "Peer-reviewed corpus studies of LLM stylistic markers and detector reliability"
+  - "Wikipedia WikiProject AI Cleanup and the Signs of AI writing guide"
+  - "Official regulatory texts on AI content transparency and provenance standards"
+  - "Primary repository sources for prior-art skills and linters"
+deliverables:
+  - "Findings report with severity and confidence on separate axes"
+  - "Structural test worksheet showing the artifact for each test"
+  - "Deterministic scan report"
+  - "Repair diff with re-scan evidence"
+  - "Marker cohort refresh log"
+refusal_rules:
+  - "No authorship verdict, ever; this brain reports defects, not origin"
+  - "No hard failure on a stylistic marker alone; markers route to structural tests"
+  - "No claim about detector accuracy, marker frequency, or prevalence without a current cited source"
+  - "No credentials, tokens, or private operator content in repo artifacts"
+  - "No model self-grading as a release gate; deterministic scanners re-run after every repair"
+safety_risks:
+  - "False accusation of AI authorship, which peer-reviewed work shows falls hardest on English-language learners"
+  - "Marker lists rotting as model cohorts shift and human speech converges on LLM vocabulary"
+  - "Vendor marketing quoted as measured research"
+  - "Surface repair that removes the sign while leaving the substance defect intact"
+  - "Rubber-stamp regime where model self-review raises acceptance while correctness falls"
+playbook_steps:
+  - "Run deterministic scanners before any judgment is formed"
+  - "Triage markers by evidence tier and route each to a structural test"
+  - "Execute structural tests and record the artifact for each"
+  - "Repair only what a test convicted, then re-run the scanners"
+  - "Refresh marker cohorts and re-verify numeric claims before release"
+audit_focus:
+  - "source-ledger freshness for marker and detector claims"
+  - "citation coverage on every numeric assertion"
+  - "firewall rules present and unambiguous in every skill surface"
+next_action_signals:
+  - "stale refresh_due on any marker cohort source"
+  - "numeric claim present with no ledger citation"
+  - "structural test documented without a required artifact"
+claim_ledger_policy: "single-source marked; second source preferred"
+second_source_policy: "required for market, current, comparative, numeric, and high-stakes claims"
+source_refresh_days: 30
+confidence_policy: "evidence-based, practitioner, contested, folklore"
+canon_seed_count: 10
+canon_targets:
+  - "Signs of AI Writing"
+  - "Measuring AI Slop in Text"
+  - "Excess Vocabulary in Biomedical Abstracts"
+  - "Detector Bias Against Language Learners"
+  - "Humanizer Quality Degradation"
+  - "Em Dash Population Prevalence"
+  - "Model Collapse on Recursive Data"
+  - "Package Hallucination and Slopsquatting"
+  - "Workslop Downstream Cost"
+  - "AI-AI Evaluator Bias"
+canon_fold_targets:
+  - "Evidence Tiers"
+  - "The Inversion Test"
+  - "Why Detection Fails"
+  - "Marker Cohort Rot"
+seed_gaps:
+  - "No peer-reviewed study measures commercial humanizer output with human raters or counts introduced factual errors"
+seed_questions:
+  - "Which marker cohorts have shifted since the current ledger snapshot"
+seed_experiments:
+  - "Deletion-test spot check against a known-padded corpus sample"
+flow_playbooks:
+  - "Claim Verification Flow"
+  - "Explore Plan Code Commit"
+  - "Multi-Agent Fan-Out Research Flow"
+  - "Context Compaction Routine"
+verification_modes:
+  - "tool-result audit"
+  - "fresh-context verifier"
+  - "claim-ledger review"
+eval_seed_count: 20
+secretary_mode: "single"
+curator_themes:
+  - "Markers and Evidence Tiers"
+  - "Structural Tests"
+  - "Detection and Provenance"
+publish_surface: "sanitized-quartz"
+public_exclude_patterns:
+  - ".raw"
+  - ".obsidian"
+  - "hot.md"
+  - "log.md"
+  - "references/source-ledger.json"
+  - "references/claim-ledger.md"
+public_content_policy: "publish summaries, links, and compliant short quotes only"
+corpus_scope_policy: "each corpus note states harness, date, source, and non-scope"
+context_budget_policy: "hot cache plus progress file plus just-in-time retrieval"
+retrieval_pattern: "wiki plus hybrid search plus graph traversal"
+provenance_trace_policy: "source to claim to note to decision to deliverable"
+memory_governance_policy: "write, store, retrieve, execute, share, forget, rollback"
+mutation_policy: "advisory-read-only-v1"
+adapter_domain_depth: "schemas plus importers plus synthesis plus renderers plus fixtures plus tests"
+live_api_spend_cap_usd: 0
+answer_engine_policy: "useful crawlable primary-source passages, no GEO hacks"
+substance_profile: "fable-grade"
+uncertainty_eval_policy: "reward no data; penalize confident unsupported answers"
+note_line_floor: 80
+wikilink_target: 8

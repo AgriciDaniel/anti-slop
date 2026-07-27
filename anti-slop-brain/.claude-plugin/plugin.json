@@ -1,0 +1,33 @@
+{
+  "name": "anti-slop-brain",
+  "version": "0.1.0",
+  "description": "Anti-Slop Brain Obsidian brain for detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection.",
+  "author": {
+    "name": "Daniel Agrici",
+    "url": "https://github.com/AgriciDaniel"
+  },
+  "homepage": "https://github.com/AgriciDaniel/anti-slop-brain",
+  "repository": "https://github.com/AgriciDaniel/anti-slop-brain",
+  "license": "Custom license",
+  "keywords": [
+    "anti-slop",
+    "ai-slop",
+    "writing-quality",
+    "code-review",
+    "obsidian",
+    "brain",
+    "citations",
+    "provenance"
+  ],
+  "skills": [
+    "./SKILL.md"
+  ],
+  "allowed-tools": [
+    "Read",
+    "Grep",
+    "Glob",
+    "Bash",
+    "Write",
+    "Edit"
+  ]
+}
