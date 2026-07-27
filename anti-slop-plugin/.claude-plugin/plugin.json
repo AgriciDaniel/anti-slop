@@ -1,0 +1,33 @@
+{
+  "name": "anti-slop",
+  "version": "0.1.0",
+  "description": "Detect and repair AI slop in prose, code, documentation, commits and agent output. Reports defects, never authorship. Runs deterministic scanners for vendor residue, placeholders, citations and packages, then structural procedures (deletion, inversion, stranger, attribution, load-bearing) that each emit a verifiable artifact. Stylistic markers are evidence-tiered and route to structural tests instead of failing on their own.",
+  "author": {
+    "name": "Daniel Agrici",
+    "url": "https://github.com/AgriciDaniel"
+  },
+  "homepage": "https://github.com/AgriciDaniel/anti-slop",
+  "repository": "https://github.com/AgriciDaniel/anti-slop",
+  "license": "MIT",
+  "keywords": [
+    "anti-slop",
+    "ai-slop",
+    "content-quality",
+    "code-review",
+    "citation-verification",
+    "hallucinated-packages",
+    "vendor-residue",
+    "editorial-review",
+    "structural-tests",
+    "false-positive-control"
+  ],
+  "allowed-tools": [
+    "Read",
+    "Grep",
+    "Glob",
+    "Bash",
+    "Write",
+    "Edit",
+    "WebFetch"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "collapse-filter": false,
+  "search": "path:wiki",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "colorGroups": [
+    {
+      "query": "tag:#domain/detection-and-repair-of-ai-slop-in-prose-code-documentation-and",
+      "color": {
+        "a": 1,
+        "rgb": 743376
+      }
+    },
+    {
+      "query": "tag:#type/meta OR tag:#type/hot OR tag:#type/index OR tag:#type/overview OR tag:#type/log OR tag:#type/hub",
+      "color": {
+        "a": 1,
+        "rgb": 13886461
+      }
+    },
+    {
+      "query": "tag:#type/flow",
+      "color": {
+        "a": 1,
+        "rgb": 1733608
+      }
+    },
+    {
+      "query": "tag:#type/source",
+      "color": {
+        "a": 1,
+        "rgb": 14233637
+      }
+    },
+    {
+      "query": "tag:#type/concept",
+      "color": {
+        "a": 1,
+        "rgb": 2002494
+      }
+    },
+    {
+      "query": "tag:#type/decision",
+      "color": {
+        "a": 1,
+        "rgb": 16362240
+      }
+    },
+    {
+      "query": "tag:#type/deliverable OR tag:#type/report",
+      "color": {
+        "a": 1,
+        "rgb": 16437967
+      }
+    },
+    {
+      "query": "tag:#type/account OR tag:#type/platform OR tag:#type/entity",
+      "color": {
+        "a": 1,
+        "rgb": 13560534
+      }
+    },
+    {
+      "query": "tag:#type/experiment OR tag:#type/question OR tag:#type/gap",
+      "color": {
+        "a": 1,
+        "rgb": 16707523
+      }
+    }
+  ],
+  "showArrow": true,
+  "textFadeMultiplier": 0.2,
+  "nodeSizeMultiplier": 1.25,
+  "lineSizeMultiplier": 1.25,
+  "centerStrength": 0.5,
+  "repelStrength": 11,
+  "linkDistance": 155
+}

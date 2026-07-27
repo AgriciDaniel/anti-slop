@@ -1,0 +1,146 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "file",
+      "file": "wiki/meta/Start Here.md",
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 180
+    },
+    {
+      "id": "hot",
+      "type": "file",
+      "file": "wiki/hot.md",
+      "x": 380,
+      "y": 0,
+      "width": 300,
+      "height": 170
+    },
+    {
+      "id": "conventions",
+      "type": "file",
+      "file": "wiki/meta/CONVENTIONS.md",
+      "x": 740,
+      "y": 0,
+      "width": 320,
+      "height": 200
+    },
+    {
+      "id": "taxonomy",
+      "type": "file",
+      "file": "wiki/meta/Tag Taxonomy.md",
+      "x": 740,
+      "y": 260,
+      "width": 320,
+      "height": 180
+    },
+    {
+      "id": "dashboard",
+      "type": "file",
+      "file": "wiki/meta/dashboard.md",
+      "x": 380,
+      "y": 260,
+      "width": 320,
+      "height": 210
+    },
+    {
+      "id": "gap",
+      "type": "file",
+      "file": "wiki/gaps/No peer-reviewed study measures commercial humanizer output with human raters or.md",
+      "x": 0,
+      "y": 250,
+      "width": 320,
+      "height": 180
+    },
+    {
+      "id": "question",
+      "type": "file",
+      "file": "wiki/questions/Which marker cohorts have shifted since the current ledger snapshot.md",
+      "x": 0,
+      "y": 500,
+      "width": 340,
+      "height": 180
+    },
+    {
+      "id": "experiment",
+      "type": "file",
+      "file": "wiki/experiments/Deletion-test spot check against a known-padded corpus sample.md",
+      "x": 380,
+      "y": 540,
+      "width": 330,
+      "height": 180
+    },
+    {
+      "id": "source-flow",
+      "type": "file",
+      "file": "wiki/flows/Source Intake Workflow.md",
+      "x": 1120,
+      "y": 0,
+      "width": 320,
+      "height": 190
+    },
+    {
+      "id": "claim-flow",
+      "type": "file",
+      "file": "wiki/flows/Claim Verification Flow.md",
+      "x": 1120,
+      "y": 260,
+      "width": 320,
+      "height": 190
+    }
+  ],
+  "edges": [
+    {
+      "id": "o1",
+      "fromNode": "start",
+      "toNode": "hot"
+    },
+    {
+      "id": "o2",
+      "fromNode": "hot",
+      "toNode": "conventions"
+    },
+    {
+      "id": "o3",
+      "fromNode": "conventions",
+      "toNode": "taxonomy"
+    },
+    {
+      "id": "o4",
+      "fromNode": "taxonomy",
+      "toNode": "dashboard"
+    },
+    {
+      "id": "o5",
+      "fromNode": "dashboard",
+      "toNode": "gap"
+    },
+    {
+      "id": "o6",
+      "fromNode": "gap",
+      "toNode": "question"
+    },
+    {
+      "id": "o7",
+      "fromNode": "question",
+      "toNode": "experiment"
+    },
+    {
+      "id": "o8",
+      "fromNode": "conventions",
+      "toNode": "source-flow"
+    },
+    {
+      "id": "o9",
+      "fromNode": "source-flow",
+      "toNode": "claim-flow"
+    },
+    {
+      "id": "o10",
+      "fromNode": "claim-flow",
+      "toNode": "dashboard"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "nodes": [
+    {
+      "id": "raw",
+      "type": "text",
+      "text": ".raw/\nImmutable source captures\nsha256 manifest",
+      "x": -760,
+      "y": 0,
+      "width": 260,
+      "height": 160
+    },
+    {
+      "id": "source-intake",
+      "type": "file",
+      "file": "wiki/flows/Source Intake Workflow.md",
+      "x": -440,
+      "y": 0,
+      "width": 280,
+      "height": 190
+    },
+    {
+      "id": "source-notes",
+      "type": "file",
+      "file": "wiki/sources/Source Manifest Guide.md",
+      "x": -120,
+      "y": -170,
+      "width": 300,
+      "height": 180
+    },
+    {
+      "id": "canon",
+      "type": "file",
+      "file": "wiki/concepts/Best Practices Kernel.md",
+      "x": -120,
+      "y": 90,
+      "width": 300,
+      "height": 180
+    },
+    {
+      "id": "concepts",
+      "type": "file",
+      "file": "wiki/concepts/_index.md",
+      "x": 240,
+      "y": -170,
+      "width": 280,
+      "height": 180
+    },
+    {
+      "id": "claim-flow",
+      "type": "file",
+      "file": "wiki/flows/Claim Verification Flow.md",
+      "x": 240,
+      "y": 90,
+      "width": 300,
+      "height": 190
+    },
+    {
+      "id": "dashboard",
+      "type": "file",
+      "file": "wiki/meta/dashboard.md",
+      "x": 610,
+      "y": -170,
+      "width": 310,
+      "height": 220
+    },
+    {
+      "id": "approval",
+      "type": "file",
+      "file": "wiki/decisions/Approval Queue.md",
+      "x": 610,
+      "y": 110,
+      "width": 300,
+      "height": 180
+    },
+    {
+      "id": "deliverables",
+      "type": "file",
+      "file": "wiki/deliverables/Action Roadmap.md",
+      "x": 980,
+      "y": -130,
+      "width": 300,
+      "height": 190
+    },
+    {
+      "id": "reports",
+      "type": "file",
+      "file": "wiki/reports/Weekly Report.md",
+      "x": 980,
+      "y": 130,
+      "width": 300,
+      "height": 180
+    },
+    {
+      "id": "agents",
+      "type": "text",
+      "text": "Agents\nresearch-scout\nsource-curator\nsecretary\nbrain-auditor",
+      "x": 240,
+      "y": 360,
+      "width": 300,
+      "height": 170
+    },
+    {
+      "id": "log",
+      "type": "file",
+      "file": "wiki/log.md",
+      "x": 610,
+      "y": 390,
+      "width": 300,
+      "height": 160
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "fromNode": "raw",
+      "toNode": "source-intake"
+    },
+    {
+      "id": "e2",
+      "fromNode": "source-intake",
+      "toNode": "source-notes"
+    },
+    {
+      "id": "e3",
+      "fromNode": "source-notes",
+      "toNode": "concepts"
+    },
+    {
+      "id": "e4",
+      "fromNode": "source-notes",
+      "toNode": "canon"
+    },
+    {
+      "id": "e5",
+      "fromNode": "canon",
+      "toNode": "claim-flow"
+    },
+    {
+      "id": "e6",
+      "fromNode": "concepts",
+      "toNode": "claim-flow"
+    },
+    {
+      "id": "e7",
+      "fromNode": "claim-flow",
+      "toNode": "dashboard"
+    },
+    {
+      "id": "e8",
+      "fromNode": "claim-flow",
+      "toNode": "approval"
+    },
+    {
+      "id": "e9",
+      "fromNode": "dashboard",
+      "toNode": "deliverables"
+    },
+    {
+      "id": "e10",
+      "fromNode": "approval",
+      "toNode": "deliverables"
+    },
+    {
+      "id": "e11",
+      "fromNode": "deliverables",
+      "toNode": "reports"
+    },
+    {
+      "id": "e12",
+      "fromNode": "agents",
+      "toNode": "claim-flow"
+    },
+    {
+      "id": "e13",
+      "fromNode": "agents",
+      "toNode": "log"
+    },
+    {
+      "id": "e14",
+      "fromNode": "reports",
+      "toNode": "log"
+    }
+  ]
+}

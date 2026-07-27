@@ -1,0 +1,34 @@
+{
+  "name": "agricidaniel-anti-slop-brain",
+  "owner": {
+    "name": "Daniel Agrici"
+  },
+  "metadata": {
+    "description": "Anti-Slop Brain template and skill layer",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "anti-slop-brain",
+      "source": "./",
+      "description": "Obsidian brain for detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Daniel Agrici"
+      },
+      "repository": "https://github.com/AgriciDaniel/anti-slop-brain",
+      "license": "Custom license",
+      "category": "anti-slop",
+      "tags": [
+        "obsidian",
+        "brain",
+        "anti-slop"
+      ],
+      "keywords": [
+        "anti-slop-brain",
+        "anti-slop",
+        "obsidian"
+      ]
+    }
+  ]
+}

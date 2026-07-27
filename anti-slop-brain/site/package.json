@@ -1,0 +1,12 @@
+{
+  "name": "anti-slop-brain-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sanitize": "node scripts/sanitize-public.mjs",
+    "build": "quartz build && node scripts/sanitize-public.mjs"
+  },
+  "devDependencies": {
+    "@quartz-org/quartz": "^4.5.2"
+  }
+}

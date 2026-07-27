@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "status": "scaffold",
+  "domain": "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection",
+  "generic_only": true,
+  "raw_input_types": [
+    "Drafts, diffs, commit messages, pull request descriptions, agent transcripts, and documents supplied by the operator"
+  ],
+  "rules": {
+    "domain_adapted_requires": [
+      "one real domain importer or ingestion path",
+      "one domain-specific synthesis module",
+      "one report renderer",
+      "one fixture per supported input type",
+      "tests for importer, synthesis, rendering, malformed input, and missing credentials"
+    ]
+  },
+  "input_schemas": [],
+  "importers": [],
+  "synthesis_modules": [],
+  "report_renderers": [],
+  "fixtures": [],
+  "tests": []
+}
