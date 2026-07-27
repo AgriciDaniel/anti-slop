@@ -3,8 +3,8 @@ type: "log"
 title: "Log"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "active"
-created: "2026-07-27"
-updated: "2026-07-27"
+created: "2026-07-28"
+updated: "2026-07-28"
 tags:
   - "#domain/detection-and-repair-of-ai-slop-in-prose-code-documentation-and"
   - "#type/log"
@@ -44,6 +44,6 @@ source_urls: []
 
 Related: [[Hot]] | [[Index]] | [[Dashboard]]
 
-- 2026-07-27 - Anti-Slop Brain scaffolded.
-- 2026-07-27 - Ingested source [[sample-source]] from `.raw/sources/sample-source.md`.
-- 2026-07-27 - Synthesized source-cited starter deliverables. Folded 42 source-ledger canon entries.
+- 2026-07-28 - Anti-Slop Brain scaffolded.
+- 2026-07-28 - Ingested source [[sample-source]] from `.raw/sources/sample-source.md`.
+- 2026-07-28 - Synthesized source-cited starter deliverables. Folded 42 source-ledger canon entries.

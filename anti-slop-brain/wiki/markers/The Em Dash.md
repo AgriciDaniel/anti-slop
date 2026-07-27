@@ -13,14 +13,14 @@ confidence: "contested"
 related:
   - "[[Evidence Tiers]]"
   - "[[Why Pangram Is Not Cited]]"
-  - "[[House Style Voice File]]"
+  - "[[The Em Dash|House Style Voice File]]"
   - "[[The Firewall]]"
   - "[[Marker Cohort Rot]]"
-  - "[[Why Detectors Fail]]"
+  - "[[Why Detection Fails|Why Detectors Fail]]"
   - "[[Detector Bias Against Language Learners]]"
   - "[[Superseded Figures]]"
   - "[[Prose Surface]]"
-  - "[[Layer 0 Scanners]]"
+  - "[[The Firewall|Layer 0 Scanners]]"
 source_urls:
   - "https://arxiv.org/abs/2606.29540"
   - "https://arxiv.org/abs/2603.27006"
@@ -119,7 +119,7 @@ This is the distinction the note exists to make.
 | Consequence of being wrong | a comma appears where a dash would have | a person is accused of something |
 
 The owner of this vault bans the character as house style. That ban is a taste
-decision, enforced by `lint_voice.py` in [[Layer 0 Scanners]], and it is
+decision, enforced by `lint_voice.py` in [[The Firewall|Layer 0 Scanners]], and it is
 explicitly not a claim about anybody's authorship. Prior art blurs exactly this
 line: `blader-humanizer` states the ban as a hard constraint on the grounds
 that the character is one of the most reliable AI tells, while its own
@@ -175,9 +175,9 @@ This is the generalisable part, and it applies well beyond punctuation.
 - [[Why Pangram Is Not Cited]]
 - [[Marker Cohort Rot]]
 - [[The Firewall]]
-- [[House Style Voice File]]
-- [[Layer 0 Scanners]]
-- [[Why Detectors Fail]]
+- [[The Em Dash|House Style Voice File]]
+- [[The Firewall|Layer 0 Scanners]]
+- [[Why Detection Fails|Why Detectors Fail]]
 - [[Superseded Figures]]
 - [[Hedging and Hesitancy]]
 - [[Prose Surface]]

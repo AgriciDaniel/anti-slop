@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/agricidaniel/anti-slop-brain/schemas/findings.schema.json",
+  "title": "Anti-Slop findings report",
+  "description": "Output of scripts/synthesize_findings.py. Severity and confidence are two separate required fields and are never merged. Every finding names the structural procedure that convicted it and carries its own evidence span. There is no authorship field in this schema and additionalProperties is false at every level, so one cannot be added by a caller.",
+  "type": "object",
+  "required": [
+    "envelope_version",
+    "tool",
+    "ok",
+    "review_id",
+    "reference_date",
+    "artifact",
+    "counts",
+    "findings",
+    "routed_procedures",
+    "survived_procedures",
+    "refusals",
+    "firewall",
+    "note"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "envelope_version": { "const": 1 },
+    "tool": { "const": "synthesize_findings" },
+    "ok": {
+      "type": "boolean",
+      "description": "True when no finding was emitted. Routed procedures and refusals do not make ok false."
+    },
+    "review_id": { "type": "string", "minLength": 3 },
+    "reference_date": { "$ref": "#/$defs/isoDate" },
+    "artifact": {
+      "type": "object",
+      "required": ["artifact_id", "surface", "title"],
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "surface": { "$ref": "#/$defs/surface" },
+        "title": { "type": "string", "minLength": 1 },
+        "source_uri": { "$ref": "#/$defs/httpUrl" },
+        "word_count": { "type": "integer", "minimum": 0 },
+        "reviewed_paths": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": ["total", "by_severity", "by_confidence", "by_procedure"],
+      "additionalProperties": false,
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "by_severity": {
+          "type": "object",
+          "required": ["HIGH", "MEDIUM", "LOW"],
+          "additionalProperties": false,
+          "properties": {
+            "HIGH": { "type": "integer", "minimum": 0 },
+            "MEDIUM": { "type": "integer", "minimum": 0 },
+            "LOW": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "by_confidence": {
+          "type": "object",
+          "required": ["high", "medium", "low"],
+          "additionalProperties": false,
+          "properties": {
+            "high": { "type": "integer", "minimum": 0 },
+            "medium": { "type": "integer", "minimum": 0 },
+            "low": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "by_procedure": {
+          "type": "object",
+          "required": ["deletion", "inversion", "stranger", "attribution", "load-bearing"],
+          "additionalProperties": false,
+          "properties": {
+            "deletion": { "type": "integer", "minimum": 0 },
+            "inversion": { "type": "integer", "minimum": 0 },
+            "stranger": { "type": "integer", "minimum": 0 },
+            "attribution": { "type": "integer", "minimum": 0 },
+            "load-bearing": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "description": "Ordered by severity, then confidence, then span position, then finding id.",
+      "items": { "$ref": "#/$defs/finding" }
+    },
+    "routed_procedures": {
+      "type": "array",
+      "description": "Markers that fired but convicted nothing. A Tier 2 or Tier 3 marker can never leave this array.",
+      "items": { "$ref": "#/$defs/routedProcedure" }
+    },
+    "survived_procedures": {
+      "type": "array",
+      "description": "Procedures that were run and passed. Recorded because saying a marker was a false positive for this document costs nothing.",
+      "items": { "$ref": "#/$defs/survivedProcedure" }
+    },
+    "refusals": {
+      "type": "array",
+      "description": "Candidate findings the synthesizer refused, with the reason.",
+      "items": { "$ref": "#/$defs/refusal" }
+    },
+    "firewall": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "type": "string", "minLength": 8 },
+      "description": "The standing rules this output was produced under, restated in the output itself."
+    },
+    "note": { "type": "string", "minLength": 20 }
+  },
+  "$defs": {
+    "isoDate": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "httpUrl": { "type": "string", "format": "uri", "pattern": "^https?://" },
+    "severity": {
+      "type": "string",
+      "enum": ["HIGH", "MEDIUM", "LOW"],
+      "description": "Impact only."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "Certainty only."
+    },
+    "procedure": {
+      "type": "string",
+      "enum": ["deletion", "inversion", "stranger", "attribution", "load-bearing"]
+    },
+    "tier": { "type": "integer", "enum": [1, 2, 3] },
+    "surface": {
+      "type": "string",
+      "enum": ["prose", "code", "documentation", "commit", "pull-request", "agent-transcript"]
+    },
+    "defectKind": {
+      "type": "string",
+      "enum": [
+        "fabricated_citation",
+        "fabricated_reference",
+        "fabricated_package_or_api",
+        "unsupported_attribution",
+        "vendor_residue",
+        "unfilled_placeholder",
+        "padding",
+        "empty_claim",
+        "generic_filler",
+        "dead_scaffold"
+      ]
+    },
+    "evidenceSpan": {
+      "type": "object",
+      "required": ["path", "start_line", "start_column", "end_line", "end_column", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "start_line": { "type": "integer", "minimum": 1 },
+        "start_column": { "type": "integer", "minimum": 1 },
+        "end_line": { "type": "integer", "minimum": 1 },
+        "end_column": { "type": "integer", "minimum": 1 },
+        "text": { "type": "string", "minLength": 1 }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": [
+        "finding_id",
+        "severity",
+        "confidence",
+        "procedure",
+        "defect_kind",
+        "origin",
+        "summary",
+        "evidence_span",
+        "why_severity",
+        "why_confidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "finding_id": { "type": "string", "pattern": "^ASF-[0-9a-f]{12}$" },
+        "severity": { "$ref": "#/$defs/severity" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "procedure": { "$ref": "#/$defs/procedure" },
+        "defect_kind": { "$ref": "#/$defs/defectKind" },
+        "origin": { "type": "string", "enum": ["layer0-scanner", "layer1-procedure"] },
+        "summary": { "type": "string", "minLength": 5, "maxLength": 500 },
+        "evidence_span": { "$ref": "#/$defs/evidenceSpan" },
+        "procedure_artifact": { "type": "string", "maxLength": 2000 },
+        "scanner": { "type": "string", "minLength": 3 },
+        "rule": { "type": "string", "minLength": 3 },
+        "routed_from_marker_id": { "type": "string", "minLength": 2 },
+        "routed_from_tier": { "$ref": "#/$defs/tier" },
+        "ledger_source_id": { "type": "string", "minLength": 2 },
+        "corroborated_by": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 3 },
+          "description": "Layer 0 scanner rules whose span overlaps this finding."
+        },
+        "why_severity": { "type": "string", "minLength": 10 },
+        "why_confidence": { "type": "string", "minLength": 10 }
+      }
+    },
+    "routedProcedure": {
+      "type": "object",
+      "required": ["marker_id", "marker_class", "tier", "suggested_procedure", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "marker_id": { "type": "string", "minLength": 2 },
+        "marker_class": { "type": "string", "minLength": 2 },
+        "tier": { "$ref": "#/$defs/tier" },
+        "suggested_procedure": { "$ref": "#/$defs/procedure" },
+        "ledger_source_id": { "type": "string", "minLength": 2 },
+        "occurrences": { "type": "integer", "minimum": 1 },
+        "observed": { "type": "string", "maxLength": 500 },
+        "evidence_span": { "$ref": "#/$defs/evidenceSpan" },
+        "reason": { "type": "string", "minLength": 10 }
+      }
+    },
+    "survivedProcedure": {
+      "type": "object",
+      "required": ["result_id", "procedure", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "result_id": { "type": "string", "minLength": 2 },
+        "procedure": { "$ref": "#/$defs/procedure" },
+        "routed_from_marker_id": { "type": "string", "minLength": 2 },
+        "procedure_artifact": { "type": "string", "maxLength": 2000 },
+        "evidence_span": { "$ref": "#/$defs/evidenceSpan" },
+        "note": { "type": "string", "minLength": 10 }
+      }
+    },
+    "refusal": {
+      "type": "object",
+      "required": ["candidate", "reason_code", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "candidate": { "type": "string", "minLength": 2 },
+        "reason_code": {
+          "type": "string",
+          "enum": [
+            "no_evidence_span",
+            "marker_alone_cannot_convict",
+            "house_style_is_not_a_defect",
+            "unknown_marker_reference"
+          ]
+        },
+        "reason": { "type": "string", "minLength": 10 }
+      }
+    }
+  }
+}

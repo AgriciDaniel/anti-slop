@@ -17,7 +17,7 @@ related:
   - "[[Note Conventions]]"
   - "[[The Firewall]]"
   - "[[Evidence Tiers]]"
-  - "[[Research Pack 2026-07-27]]"
+  - "[[research-pack-2026-07-27|Research Pack 2026-07-27]]"
   - "[[Signs Are Not The Problem]]"
 source_urls: []
 ---
@@ -48,7 +48,7 @@ an action.
 | `detection/` | Why origin detection fails, and what replaces it | [[Why Detection Fails]] |
 | `evidence/` | The studies, and the figures this brain refuses to use | [[Superseded Figures]] |
 | `counterarguments/` | The strongest objections, taken seriously | [[The ESL Objection]] |
-| `sources/` | The dated research pack | [[Research Pack 2026-07-27]] |
+| `sources/` | The dated research pack | [[research-pack-2026-07-27|Research Pack 2026-07-27]] |
 | `meta/` | Conventions and operating policy | [[Note Conventions]] |
 
 ## The three layers

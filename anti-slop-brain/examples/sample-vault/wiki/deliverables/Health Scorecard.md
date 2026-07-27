@@ -3,8 +3,8 @@ type: "deliverable"
 title: "Health Scorecard"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "draft"
-created: "2026-07-27"
-updated: "2026-07-27"
+created: "2026-07-28"
+updated: "2026-07-28"
 tags:
   - "#domain/detection-and-repair-of-ai-slop-in-prose-code-documentation-and"
   - "#type/deliverable"
@@ -24,7 +24,7 @@ source_urls: []
 
 | Source | Hash | Retrieved |
 |---|---|---:|
-| `.raw/sources/sample-source.md` | `e81467496631` | 2026-07-27 |
+| `.raw/sources/sample-source.md` | `e81467496631` | 2026-07-28 |
 
 ## Current Read
 

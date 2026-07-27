@@ -3,8 +3,8 @@ type: "note"
 title: "{{title}}"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "draft"
-created: "2026-07-27"
-updated: "2026-07-27"
+created: "2026-07-28"
+updated: "2026-07-28"
 tags:
   - "#domain/detection-and-repair-of-ai-slop-in-prose-code-documentation-and"
   - "#type/note"
@@ -31,4 +31,4 @@ Write the current sourced truth here.
 
 ## Timeline
 
-- 2026-07-27 - Note created.
+- 2026-07-28 - Note created.

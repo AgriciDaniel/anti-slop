@@ -58,13 +58,22 @@ relative to this plugin's parent directory.
 |---|---|
 | `scan_residue.py` | vendor artifacts: `oaicite`, `[cite: 1]`, lenticular-bracket citations, `(start_span)`, `grok-card`, `:::writing{`, `[attached_file:1]`, `utm_source=chatgpt.com`, `referrer=grok.com` |
 | `scan_placeholders.py` | `[Your Name]`, `INSERT_SOURCE_URL`, `access-date=2025-XX-XX`, `YYYY-MM-DD`, `TODO: quote` |
-| `scan_refs.py` | every DOI, ISBN, arXiv ID and URL resolves, and the DOI title matches the cited title |
-| `scan_packages.py` | every imported package exists in its registry |
+| `scan_refs.py` | DOI, ISBN and arXiv shape and checksums offline; resolution of DOIs, arXiv IDs and URLs with `--online` |
+| `scan_packages.py` | dependency inventory offline; registry existence with `--online` |
 | `lint_voice.py` | house style: no U+2014, no U+2013, no ` -- `, plus banned tokens from a voice file |
-| `score_substance.py` | near-duplicate, skeleton-reuse and specific-word-density floors |
+| `score_substance.py` | near-duplicate, skeleton-reuse and specific-word-density floors over a note vault, via `--vault DIR` |
 
-Run them, read their exit codes, quote their output. Do not reimplement them
-and do not guess their flags; run one with `--help` if you need options.
+Run them, read their exit codes, quote their output. Exit codes are uniform: 0
+clean, 1 findings, 2 usage error. Do not reimplement them and do not guess
+their flags; run one with `--help` if you need options.
+
+Two defaults matter and are easy to misreport. `scan_refs.py` and
+`scan_packages.py` are **offline by default** and decide nothing about
+resolution or registry existence until you pass `--online`. An offline run is
+not a clean bill of health. `scan_refs.py` also does not compare a cited title
+to the resolved title; that comparison is deliberately a Layer 1 attribution
+test with a human-readable artifact, not a scanner output.
+
 `lint_voice.py` enforces a house rule. Its findings are style violations, never
 slop verdicts.
 

@@ -14,13 +14,13 @@ related:
   - "[[AI Slop]]"
   - "[[Constraint Beats Coaxing]]"
   - "[[Marker Cohort Rot]]"
-  - "[[Chat And Agent Output]]"
-  - "[[Hedging Density]]"
-  - "[[Puffery And Undue Emphasis]]"
-  - "[[Inversion Test]]"
+  - "[[Agent Output Surface|Chat And Agent Output]]"
+  - "[[Hedging and Hesitancy|Hedging Density]]"
+  - "[[Puffery and Undue Emphasis|Puffery And Undue Emphasis]]"
+  - "[[The Inversion Test|Inversion Test]]"
   - "[[Evidence Tiers]]"
   - "[[The Firewall]]"
-  - "[[Model Specific Fingerprints]]"
+  - "[[Model Fingerprints|Model Specific Fingerprints]]"
 source_urls:
   - "https://doi.org/10.1126/science.aec8352"
   - "https://www.anthropic.com/research/sycophancy"
@@ -77,16 +77,16 @@ claim than saying it is annoying:
 
 1. **Inversion.** "That is a great question" inverts to "that is a poor
    question". Nobody writes the negation in a professional context, so the
-   original carries no information. The full procedure is [[Inversion Test]].
+   original carries no information. The full procedure is [[The Inversion Test|Inversion Test]].
 2. **Deletion.** Cut the affirming clause. Name what was lost. In the affirming
    case the answer is reliably nothing, which is the definition of padding
-   under [[Deletion Test]].
+   under [[The Deletion Test|Deletion Test]].
 3. **Both-sides affirmation is a live failure, not a hypothetical.** Affirming
    both sides of a moral conflict 48 percent of the time
    (`cheng-elephant-sycophancy`) is the same defect at paragraph scale: text
    shaped like a judgment that has not made one.
 
-The connection to [[Hedging Density]] is direct. Both are ways of occupying the
+The connection to [[Hedging and Hesitancy|Hedging Density]] is direct. Both are ways of occupying the
 position where a claim should be without incurring the cost of making one.
 
 ## The claim this vault will not make
@@ -118,7 +118,7 @@ narrow. It still never fails a build on its own.
 
 1. Scan the opening 200 characters of each assistant turn or each response
    section for affirming openers. Emit spans, not scores.
-2. For each hit, apply [[Inversion Test]] and record the negation in writing.
+2. For each hit, apply [[The Inversion Test|Inversion Test]] and record the negation in writing.
 3. Where the negation is a sentence a competent professional might actually
    write, keep the text: it is a real assessment, not flattery.
 4. Where the negation is absurd, mark the span as empty and route to deletion.
@@ -143,19 +143,19 @@ humans do, is the durable part; the leaderboard is not.
 There is also a measurement asymmetry worth flagging. Sycophancy is easy for
 a model to detect and hard for a model to resist, which is exactly the pattern
 that makes self-review unreliable. That argument continues in
-[[Constraint Beats Coaxing]] and in [[LLM As Judge Fails At Slop]], where the
+[[Constraint Beats Coaxing]] and in [[Why Structural Not Judgmental|LLM As Judge Fails At Slop]], where the
 under-flagging rates from `shaib-measuring-slop` are set out in full.
 
 ## Related
 
 - [[AI Slop]]
 - [[Constraint Beats Coaxing]]
-- [[Inversion Test]]
-- [[Deletion Test]]
-- [[Hedging Density]]
-- [[Puffery And Undue Emphasis]]
+- [[The Inversion Test|Inversion Test]]
+- [[The Deletion Test|Deletion Test]]
+- [[Hedging and Hesitancy|Hedging Density]]
+- [[Puffery and Undue Emphasis|Puffery And Undue Emphasis]]
 - [[Marker Cohort Rot]]
-- [[Chat And Agent Output]]
+- [[Agent Output Surface|Chat And Agent Output]]
 - [[Evidence Tiers]]
 - [[The Firewall]]
 - [[Note Conventions]]

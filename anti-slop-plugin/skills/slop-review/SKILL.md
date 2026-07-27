@@ -60,7 +60,16 @@ findings are decidable and yours are not. Quote their exit codes and output.
 Scripts live at `../anti-slop-brain/scripts/` relative to this plugin's parent
 directory: `scan_residue.py`, `scan_placeholders.py`, `scan_refs.py`,
 `scan_packages.py`, `lint_voice.py`, `score_substance.py`. Do not reimplement
-them and do not guess their flags.
+them and do not guess their flags. Exit codes are uniform: 0 clean, 1 findings,
+2 usage error.
+
+Two defaults you must report accurately. `scan_refs.py` and `scan_packages.py`
+are **offline by default** and decide nothing about resolution or registry
+existence without `--online`, so an offline exit 0 goes in the table as
+"offline, resolution unchecked", never as "clean". `score_substance.py` scores
+a note vault via `--vault DIR` and a frontmatter `--note-type`; it is not a
+general prose scanner, so if the artifact is not a vault, list it under
+"Scanners not run" with that reason.
 
 **Markers never appear as findings on their own.** A tier 1 marker selects a
 span. The structural test on that span is what you report. If the structural

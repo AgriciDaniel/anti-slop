@@ -14,7 +14,7 @@ related:
   - "[[Why Detection Fails]]"
   - "[[Detector Bias Against Language Learners]]"
   - "[[The Firewall]]"
-  - "[[Signs of AI Writing]]"
+  - "[[Signs Are Not The Problem|Signs of AI Writing]]"
   - "[[Evidence Tiers]]"
   - "[[The Stranger Test]]"
   - "[[The Deletion Test]]"
@@ -97,7 +97,7 @@ detection harder. It also maintains an ineffective-indicators list, a set of
 signals editors are told not to treat as evidence, which is a governance move
 almost no vendor makes.
 
-The design lesson this vault takes from that guide is in [[Signs of AI Writing]]
+The design lesson this vault takes from that guide is in [[Signs Are Not The Problem|Signs of AI Writing]]
 and in [[Evidence Tiers]]: a marker is a routing device, never a conclusion.
 The guide's markup and citation taxonomies, covering vendor residue such as
 `oaicite` tokens and tracking parameters, and fabricated references with invalid
@@ -148,7 +148,7 @@ authorship.
 - [[Why Detection Fails]]
 - [[Detector Bias Against Language Learners]]
 - [[The Firewall]]
-- [[Signs of AI Writing]]
+- [[Signs Are Not The Problem|Signs of AI Writing]]
 - [[Evidence Tiers]]
 - [[The Stranger Test]]
 - [[The Deletion Test]]

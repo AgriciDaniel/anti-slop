@@ -11,15 +11,15 @@ tags:
   - "#confidence/practitioner"
 confidence: "practitioner"
 related:
-  - "[[The Load-Bearing Test]]"
+  - "[[The Load Bearing Test|The Load-Bearing Test]]"
   - "[[Dependency Surface]]"
   - "[[Commit and Review Surface]]"
   - "[[Evidence Tiers]]"
-  - "[[Severity and Confidence]]"
+  - "[[The Firewall|Severity and Confidence]]"
   - "[[The Firewall]]"
   - "[[Package Hallucination and Slopsquatting]]"
-  - "[[Vendor Evidence Conflicts]]"
-  - "[[Generation-Verification Asymmetry]]"
+  - "[[Evidence Quality Ladder|Vendor Evidence Conflicts]]"
+  - "[[The Generation Verification Asymmetry|Generation-Verification Asymmetry]]"
   - "[[Prose Surface]]"
 source_urls:
   - "https://arxiv.org/abs/2507.09089"
@@ -76,7 +76,7 @@ before data collection and published at ICSME 2025, it found no significant
 differences in subsequent code evolution, completion time, or quality between
 AI-assisted and unassisted development. Cite it whenever the vendor figures are
 cited. This vault's rule is that the two are quoted together or not at all;
-[[Vendor Evidence Conflicts]] holds the general policy.
+[[Evidence Quality Ladder|Vendor Evidence Conflicts]] holds the general policy.
 
 Nothing above is resolved. What survives the disagreement is narrow and
 sufficient: duplication is measurably rising in at least one large telemetry
@@ -86,7 +86,7 @@ justify mechanical review and not enough to justify a moratorium.
 
 ## Defect catalogue
 
-Every row is convicted or acquitted by [[The Load-Bearing Test]]: delete the
+Every row is convicted or acquitted by [[The Load Bearing Test|The Load-Bearing Test]]: delete the
 construct, then state what broke or became unclear. If nothing did, the construct
 was ceremony. The final column is the legitimate case that stops the row from
 being a blanket rule.
@@ -114,7 +114,7 @@ rest are Layer 1 and require an artifact before an edit, exactly as
 
 Code has a property prose does not: the compiler, the type checker, and the test
 suite are ground truth that costs seconds to consult. That collapses the
-[[Generation-Verification Asymmetry]] on this surface more than on any other.
+[[The Generation Verification Asymmetry|Generation-Verification Asymmetry]] on this surface more than on any other.
 A comment that claims the function is thread-safe is checkable. A docstring that
 lists a parameter the signature does not have is checkable. Wherever a check is
 mechanical, this vault runs it rather than reasoning about it.
@@ -154,7 +154,7 @@ the rate seen through 2025, the confirmed-vulnerability rate returned to 15 to
 16 percent, and curl returned to HackerOne on 2026-03-01 without a bounty. It is
 a maintainer account rather than a controlled study, but it directly contradicts
 the common claim that curl abandoned bug bounties permanently. The lesson it
-supports is [[Triage Over Bans]]: raise the cost of submitting an unverified
+supports is [[Code Surface|Triage Over Bans]]: raise the cost of submitting an unverified
 artifact, do not ban a tool.
 
 ## Related
@@ -162,7 +162,7 @@ artifact, do not ban a tool.
 - [[Dependency Surface]]
 - [[Commit and Review Surface]]
 - [[Agent Output Surface]]
-- [[The Load-Bearing Test]]
+- [[The Load Bearing Test|The Load-Bearing Test]]
 - [[Workslop Downstream Cost]]
 - [[Marker Cohort Rot]]
 - [[Note Conventions]]

@@ -1,0 +1,24 @@
+{
+  "description": "Anti-slop house style gate. After any Write or Edit, runs the voice linter at ${CLAUDE_PLUGIN_ROOT}/../anti-slop-brain/scripts/lint_voice.py over the file that was just written. On a house style violation it exits 2, which blocks and feeds the linter output back for self-correction. It is scoped to this plugin and touches no global settings.",
+  "comment": {
+    "what_this_is": "This is the plugin-level hooks file. Claude Code reads it from the plugin root, so installing or removing the plugin installs or removes this hook. It never writes to ~/.claude/settings.json and never edits any global or project settings file. Removing the plugin removes the behaviour completely.",
+    "exit_codes": "Exit code 2 is the only blocking code. On 2, the hook's stderr is fed back to the model as the reason and the model gets a chance to correct itself. Exit code 1 does nothing useful here: it is treated as a non-blocking error, the output goes to the transcript rather than back to the model, and execution continues, so a linter failure surfaced as 1 is silently ignored. Exit code 0 is success and the stdout is not shown to the model. The wrapper therefore translates lint_voice.py's own exit 1 (findings) into exit 2, and writes the findings to stderr. lint_voice.py's exit 2 (usage error) also becomes 2, which is correct: a misconfigured gate should be loud, not silent.",
+    "what_it_does_not_do": "lint_voice.py enforces house style: no U+2014, no U+2013, no spaced double hyphen, plus banned tokens from a voice file. A hit is a style violation and nothing else. It is not a slop verdict, not a quality score, and never evidence about who or what wrote the text. See references/false-positives.md and references/markers-tier2.md. This hook deliberately does not run scan_residue.py or scan_placeholders.py: those are Layer 0 scanners whose findings belong in a review report, and the slop-rewrite skill carries its own scoped hook for them.",
+    "failure_behaviour": "Silent no-op when the linter script is absent (the sibling brain repo is not checked out), when the tool input carried no file_path, or when the written path no longer exists. A missing gate must not block unrelated work, and a blocked write on a missing dependency would be impossible for the model to fix.",
+    "environment": "${CLAUDE_PLUGIN_ROOT} is exported to hook commands as CLAUDE_PLUGIN_ROOT and resolves to this plugin's root directory. The linter lives in the sibling brain repo, one level up, so the path is $CLAUDE_PLUGIN_ROOT/../anti-slop-brain/scripts/lint_voice.py."
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json,os,subprocess,sys; d=json.load(sys.stdin); p=(d.get('tool_input') or {}).get('file_path') or ''; s=os.path.join(os.environ.get('CLAUDE_PLUGIN_ROOT',''),'..','anti-slop-brain','scripts','lint_voice.py'); r=(subprocess.run([sys.executable,s,p],capture_output=True,text=True) if (p and os.path.isfile(p) and os.path.isfile(s)) else None); bad=bool(r) and r.returncode!=0; sys.stderr.write((r.stdout+r.stderr) if bad else ''); sys.exit(2 if bad else 0)\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

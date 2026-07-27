@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/agricidaniel/anti-slop-brain/schemas/review-input.schema.json",
+  "title": "Anti-Slop review input",
+  "description": "One artifact under review, the Layer 0 scanner findings recorded against it, the Layer 2 marker hits observed in it, and the artifacts produced by any Layer 1 structural procedure that was run. Marker hits are routing information only; they never convict a span by themselves.",
+  "type": "object",
+  "required": ["schema_version", "review_id", "reference_date", "artifact"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "description": "Envelope version of this input document.",
+      "const": 1
+    },
+    "review_id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "description": "Stable slug for this review run. Used in the report header and in derived finding ids."
+    },
+    "reference_date": {
+      "$ref": "#/$defs/isoDate",
+      "description": "The date the review is anchored to. Supplied rather than read from the clock so that a rerun is byte identical."
+    },
+    "artifact": { "$ref": "#/$defs/artifact" },
+    "scanner_findings": {
+      "type": "array",
+      "description": "Findings copied from the deterministic Layer 0 scanners.",
+      "items": { "$ref": "#/$defs/scannerFinding" }
+    },
+    "marker_hits": {
+      "type": "array",
+      "description": "Layer 2 marker observations. A marker routes to a structural procedure; it is never itself a finding.",
+      "items": { "$ref": "#/$defs/markerHit" }
+    },
+    "procedure_results": {
+      "type": "array",
+      "description": "Artifacts produced by the five Layer 1 structural procedures.",
+      "items": { "$ref": "#/$defs/procedureResult" }
+    }
+  },
+  "$defs": {
+    "isoDate": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "httpUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://",
+      "description": "http or https only. Every other scheme is refused at ingestion."
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["HIGH", "MEDIUM", "LOW"],
+      "description": "Impact of the defect. HIGH for a fabricated fact, citation or API. MEDIUM for padding or filler that changes nothing when cut. LOW for a stylistic tell."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "Certainty that the finding is real. Never merged with severity."
+    },
+    "procedure": {
+      "type": "string",
+      "enum": ["deletion", "inversion", "stranger", "attribution", "load-bearing"],
+      "description": "The Layer 1 structural procedure that convicts a span. See PLAN.md section 3."
+    },
+    "tier": {
+      "type": "integer",
+      "enum": [1, 2, 3],
+      "description": "Evidence tier of a marker class. 1 corpus validated, 2 measured but high false positive, 3 folk wisdom."
+    },
+    "surface": {
+      "type": "string",
+      "enum": ["prose", "code", "documentation", "commit", "pull-request", "agent-transcript"]
+    },
+    "scanner": {
+      "type": "string",
+      "enum": ["scan_residue", "scan_placeholders", "scan_refs", "scan_packages", "lint_voice"]
+    },
+    "evidenceSpan": {
+      "type": "object",
+      "description": "The exact text a finding rests on. A finding with no evidence span is refused.",
+      "required": ["path", "start_line", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "start_line": { "type": "integer", "minimum": 1 },
+        "start_column": { "type": "integer", "minimum": 1 },
+        "end_line": { "type": "integer", "minimum": 1 },
+        "end_column": { "type": "integer", "minimum": 1 },
+        "text": { "type": "string", "minLength": 1, "maxLength": 2000 }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "required": ["artifact_id", "surface", "title"],
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "surface": { "$ref": "#/$defs/surface" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "source_uri": { "$ref": "#/$defs/httpUrl" },
+        "word_count": { "type": "integer", "minimum": 0 },
+        "reviewed_paths": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "scannerFinding": {
+      "type": "object",
+      "required": ["scanner", "rule", "evidence_span"],
+      "additionalProperties": false,
+      "properties": {
+        "scanner": { "$ref": "#/$defs/scanner" },
+        "rule": { "type": "string", "minLength": 3, "pattern": "^[a-z_]+\\.[a-z0-9_]+$" },
+        "message": { "type": "string", "maxLength": 500 },
+        "evidence_span": { "$ref": "#/$defs/evidenceSpan" }
+      }
+    },
+    "markerHit": {
+      "type": "object",
+      "required": ["marker_id", "marker_class", "tier", "routes_to"],
+      "additionalProperties": false,
+      "properties": {
+        "marker_id": { "type": "string", "minLength": 2, "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "marker_class": { "type": "string", "minLength": 2, "maxLength": 200 },
+        "tier": { "$ref": "#/$defs/tier" },
+        "routes_to": { "$ref": "#/$defs/procedure" },
+        "ledger_source_id": { "type": "string", "minLength": 2, "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "observed": { "type": "string", "maxLength": 500 },
+        "occurrences": { "type": "integer", "minimum": 1 },
+        "evidence_span": { "$ref": "#/$defs/evidenceSpan" }
+      }
+    },
+    "procedureResult": {
+      "type": "object",
+      "description": "The artifact a structural procedure produced. `outcome` convicted means the span failed the procedure; survived means it passed and no finding follows.",
+      "required": ["result_id", "procedure", "outcome"],
+      "additionalProperties": false,
+      "properties": {
+        "result_id": { "type": "string", "minLength": 2, "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+        "procedure": { "$ref": "#/$defs/procedure" },
+        "outcome": { "type": "string", "enum": ["convicted", "survived"] },
+        "artifact": {
+          "type": "string",
+          "maxLength": 2000,
+          "description": "The work the procedure showed: the cut span and the named loss, the written out negation, the specific fact only an insider would know, the resolved citation, or what broke."
+        },
+        "routed_from_marker_id": { "type": "string", "minLength": 2, "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "evidence_span": { "$ref": "#/$defs/evidenceSpan" }
+      }
+    }
+  }
+}

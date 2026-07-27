@@ -4,14 +4,14 @@
       "client": "sample-vault",
       "client_name": "Sample Client",
       "owner": "Daniel Agrici",
-      "created": "2026-07-27"
+      "created": "2026-07-28"
     }
   ],
   "sources": [
     {
       "path": ".raw/sources/sample-source.md",
       "sha256": "e81467496631a9e90c21bf67dc4dde2f73557eb26d301e51cc2798e5c7b1089a",
-      "retrieved": "2026-07-27",
+      "retrieved": "2026-07-28",
       "source_type": "fixture"
     }
   ]

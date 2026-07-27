@@ -22,10 +22,29 @@
       "authority",
       "api-docs"
     ],
-    "confidence_enum": ["high", "medium", "low"],
-    "evidence_tier_enum": ["EVIDENCE-BASED", "PRACTITIONER", "CONTESTED", "FOLKLORE"],
-    "date_fields": ["published", "retrieved", "last_verified", "refresh_due"],
-    "date_precision_enum": ["day", "month", "year", "unknown"],
+    "confidence_enum": [
+      "high",
+      "medium",
+      "low"
+    ],
+    "evidence_tier_enum": [
+      "EVIDENCE-BASED",
+      "PRACTITIONER",
+      "CONTESTED",
+      "FOLKLORE"
+    ],
+    "date_fields": [
+      "published",
+      "retrieved",
+      "last_verified",
+      "refresh_due"
+    ],
+    "date_precision_enum": [
+      "day",
+      "month",
+      "year",
+      "unknown"
+    ],
     "downgrade_rules": [
       "Vendor study with no methodology or sample size: cap confidence at low and tier at CONTESTED",
       "Single-author unaffiliated preprint: cap confidence at medium and tier at CONTESTED",
@@ -55,7 +74,9 @@
         "Models flag slop at a 0.03 to 0.08 rate versus humans at 0.34, under-flagging by roughly five times",
         "Span-level slop extraction by GPT-5 runs at precision 0.14 and recall 0.11; a fine-tuned Qwen-7B reaches 0.32 and 0.30"
       ],
-      "supports_claims": ["architecture-no-holistic-judgment"],
+      "supports_claims": [
+        "architecture-no-holistic-judgment"
+      ],
       "limitations": "Preprint, verified at abstract level. Revision date 2026-01-24.",
       "methodology": "LLM judges evaluated against human slop annotations on a labelled corpus."
     },
@@ -76,7 +97,10 @@
         "GPT-4 preferred LLM-written product pitches 89 percent of the time versus human raters at 36 percent",
         "The same bias appears for papers at 78 versus 61 percent and movies at 70 versus 58 percent, p below 10 to the minus 16"
       ],
-      "supports_claims": ["architecture-no-holistic-judgment", "judge-bias-favors-slop"],
+      "supports_claims": [
+        "architecture-no-holistic-judgment",
+        "judge-bias-favors-slop"
+      ],
       "methodology": "Peer reviewed in PNAS 122(31):e2415697122."
     },
     {
@@ -95,7 +119,9 @@
       "claims": [
         "LLM judge preferences do not correlate with factuality or safety measures"
       ],
-      "supports_claims": ["judge-bias-favors-slop"],
+      "supports_claims": [
+        "judge-bias-favors-slop"
+      ],
       "methodology": "Published at ICLR 2025."
     },
     {
@@ -115,7 +141,9 @@
         "Judge style bias ranges from 0.10 to 0.76, with markdown preferred over plain text, against position bias of 0.04 or less",
         "Verbosity bias is model-family specific: Gemini and Llama plus 0.24 to plus 0.44, Claude minus 0.12, GPT-4o minus 0.04"
       ],
-      "supports_claims": ["judge-bias-favors-slop"],
+      "supports_claims": [
+        "judge-bias-favors-slop"
+      ],
       "limitations": "TMLR 2026 acceptance stated; verified at abstract level."
     },
     {
@@ -134,7 +162,9 @@
       "claims": [
         "When the judge is no more accurate than the model it evaluates, no debiasing method can reduce required ground-truth labels by more than half"
       ],
-      "supports_claims": ["architecture-no-holistic-judgment"],
+      "supports_claims": [
+        "architecture-no-holistic-judgment"
+      ],
       "methodology": "Published at ICLR 2025."
     },
     {
@@ -153,7 +183,9 @@
       "claims": [
         "Self-recognition ability correlates linearly with self-preference strength, argued to be causal"
       ],
-      "supports_claims": ["architecture-no-holistic-judgment"]
+      "supports_claims": [
+        "architecture-no-holistic-judgment"
+      ]
     },
     {
       "id": "song-rubber-stamp-regime",
@@ -171,7 +203,9 @@
       "claims": [
         "AI self-review gates enter a rubber-stamp regime where acceptance scores rise while benchmark correctness falls"
       ],
-      "supports_claims": ["firewall-no-self-gating"],
+      "supports_claims": [
+        "firewall-no-self-gating"
+      ],
       "limitations": "Preprint verified at abstract level only."
     },
     {
@@ -192,9 +226,12 @@
         "Excess words are overwhelmingly stylistic verbs and adjectives rather than content words",
         "The method is detector-free, comparing observed against extrapolated word frequencies"
       ],
-      "supports_claims": ["tier1-excess-vocabulary"],
+      "supports_claims": [
+        "tier1-excess-vocabulary"
+      ],
       "limitations": "The widely quoted 10 percent and 30 percent figures come from the withdrawn June 2024 preprint version and must not be used.",
-      "methodology": "Over 15 million PubMed abstracts, 2010 to 2024. Peer reviewed, Science Advances 11(27), DOI 10.1126/sciadv.adt3813."
+      "methodology": "Over 15 million PubMed abstracts, 2010 to 2024. Peer reviewed, Science Advances 11(27), DOI 10.1126/sciadv.adt3813.",
+      "source_date_note": "Crossref reports the publication date as 2025-07-04 while this ledger records 2025-07-02. Most likely an online-first versus issue date difference, but that was not confirmed. Both dates are recorded rather than one being silently overwritten. Crossref independently confirms the title, journal, volume 11 and issue 27; science.org returns HTTP 403 to automated fetch, which is a publisher block rather than non-resolution."
     },
     {
       "id": "czuma-em-dash-prevalence",
@@ -215,7 +252,9 @@
         "A placebo split within the pre-LLM era showed no change, plus 0.13 points",
         "The author concludes the em-dash is a population-level indicator, not a per-paper detector of LLM use"
       ],
-      "supports_claims": ["tier2-em-dash"],
+      "supports_claims": [
+        "tier2-em-dash"
+      ],
       "methodology": "Pre-registered on OSF as HFT8C. 69,632 medRxiv preprints.",
       "limitations": "Preprint. Pre-registration substantially raises confidence relative to unregistered vendor claims."
     },
@@ -259,7 +298,10 @@
         "Em-dash rate is a signature of a specific fine-tuning procedure rather than a universal AI tell",
         "RLHF can eliminate the marker as well as amplify it: base Llama 3.1 8B at 0.49 per 1,000 versus instruction-tuned at 0.00"
       ],
-      "supports_claims": ["tier2-em-dash", "marker-cohort-rot"],
+      "supports_claims": [
+        "tier2-em-dash",
+        "marker-cohort-rot"
+      ],
       "limitations": "Single-author, unaffiliated, non-peer-reviewed preprint. Must not be cited alongside peer-reviewed work without this flag.",
       "methodology": "12 models across 5 providers, roughly 240,000 words."
     },
@@ -280,7 +322,10 @@
         "LLMs produce tricolons at nearly twice the expert human rate",
         "LLMs produce hesitancy markers at roughly twice human density"
       ],
-      "supports_claims": ["tier1-tricolon", "tier1-hedging"],
+      "supports_claims": [
+        "tier1-tricolon",
+        "tier1-hedging"
+      ],
       "methodology": "225 texts, roughly 600,000 tokens.",
       "limitations": "Preprint verified at abstract level."
     },
@@ -302,7 +347,10 @@
         "Human evaluation with n equal to 120 found a correlation of minus 0.87 between sycophancy and perceived naturalness",
         "Top tics include Absolutely, That's a great question, It's important to note, and delve"
       ],
-      "supports_claims": ["tier1-sycophancy", "marker-cohort-rot"],
+      "supports_claims": [
+        "tier1-sycophancy",
+        "marker-cohort-rot"
+      ],
       "methodology": "160,000 responses across 8 frontier models.",
       "limitations": "Preprint. The model roster differs between versions, so per-model numbers are cohort-specific and will rot."
     },
@@ -323,7 +371,9 @@
         "Five-way model attribution reaches 97.1 percent accuracy across ChatGPT, Claude, Grok, Gemini, and DeepSeek",
         "The signal survives rewriting, translation, and summarization"
       ],
-      "supports_claims": ["model-specific-fingerprints"],
+      "supports_claims": [
+        "model-specific-fingerprints"
+      ],
       "methodology": "Published at ICML 2025."
     },
     {
@@ -344,7 +394,9 @@
         "68.4 percent accuracy on six-way model attribution",
         "The Claude signature is notably flat event escalation"
       ],
-      "supports_claims": ["model-specific-fingerprints"],
+      "supports_claims": [
+        "model-specific-fingerprints"
+      ],
       "methodology": "61,608 stories.",
       "limitations": "Preprint verified at abstract level."
     },
@@ -366,7 +418,9 @@
         "The shift persists even under explicit instructions to preserve the author's voice",
         "Rewritten texts converge in feature space regardless of their starting point"
       ],
-      "supports_claims": ["repair-degrades-voice"],
+      "supports_claims": [
+        "repair-degrades-voice"
+      ],
       "methodology": "300 personal narratives across 3 models.",
       "limitations": "Preprint verified at abstract level."
     },
@@ -387,7 +441,9 @@
         "A majority vote of five expert annotators misclassified only 1 of 300 articles",
         "Expert humans outperformed commercial and open-source detectors even under paraphrase evasion"
       ],
-      "supports_claims": ["human-review-beats-detectors"],
+      "supports_claims": [
+        "human-review-beats-detectors"
+      ],
       "methodology": "Published at ACL 2025."
     },
     {
@@ -408,7 +464,10 @@
         "Non-White ELL students were disproportionately flagged relative to White ELL peers",
         "Human annotators showed no significant demographic bias on the same essays"
       ],
-      "supports_claims": ["esl-false-positive-risk", "firewall-no-authorship-verdict"],
+      "supports_claims": [
+        "esl-false-positive-risk",
+        "firewall-no-authorship-verdict"
+      ],
       "methodology": "16 detection models on student essays labelled for gender, race and ethnicity, ELL status, and socioeconomic status. Published at ACL 2026 by Pindrop researchers.",
       "limitations": "Supersedes the 2023 Liang finding as the current peer-reviewed citation for detector demographic bias."
     },
@@ -429,7 +488,9 @@
         "Seven detectors misclassified 61.3 percent of TOEFL essays as AI-generated",
         "19.8 percent of those essays were unanimously flagged by all detectors"
       ],
-      "supports_claims": ["esl-false-positive-risk"],
+      "supports_claims": [
+        "esl-false-positive-risk"
+      ],
       "methodology": "Patterns 4(7):100779. Seven detectors on 91 TOEFL essays.",
       "limitations": "The n equals 91 sample size must be stated whenever the 61.3 percent figure is quoted. Essays predate 2020. Superseded for currency by Stowe et al. ACL 2026."
     },
@@ -453,7 +514,9 @@
         "It incorrectly labelled human-written text as AI-written 9 percent of the time",
         "OpenAI withdrew the classifier on 2023-07-20 due to its low rate of accuracy"
       ],
-      "supports_claims": ["detection-unreliable"],
+      "supports_claims": [
+        "detection-unreliable"
+      ],
       "limitations": "The OpenAI page returns 403 to automated fetch. Figures confirmed through Search Engine Land and The Register coverage of the withdrawal note."
     },
     {
@@ -475,7 +538,10 @@
         "Documented failure modes include hallucinated citations, comment leakage, and nonsensical strings",
         "SynthID-Text true positive rate at 5 percent false positive rate falls from 87.6 percent to 5.4 percent after DIPPER paraphrase"
       ],
-      "supports_claims": ["humanizers-degrade-quality", "watermarking-fragile"],
+      "supports_claims": [
+        "humanizers-degrade-quality",
+        "watermarking-fragile"
+      ],
       "methodology": "Published at GenAIDetect, COLING 2025.",
       "limitations": "Authored by Pangram employees, who sell a detector. The finding that humanizers evade detection serves their commercial interest; the finding that humanizers degrade quality does not, which raises confidence in the latter."
     },
@@ -497,7 +563,10 @@
         "The authors conclude that detectors capture artifacts of instruction tuning rather than machine generation",
         "Iterative paraphrasing reaches 100 percent human probability by round 10 while semantic preservation collapses from 99 to 100 down to a 33 to 99 range"
       ],
-      "supports_claims": ["detection-unreliable", "humanizers-degrade-quality"],
+      "supports_claims": [
+        "detection-unreliable",
+        "humanizers-degrade-quality"
+      ],
       "methodology": "Carnegie Mellon University.",
       "limitations": "Preprint verified at abstract level."
     },
@@ -524,7 +593,12 @@
         "It maintains an ineffective-indicators list of signals that should not be treated as evidence",
         "It notes that AI vocabulary shifts by model era and gives dated cohorts"
       ],
-      "supports_claims": ["signs-are-not-the-problem", "residue-markers", "citation-defects", "marker-cohort-rot"],
+      "supports_claims": [
+        "signs-are-not-the-problem",
+        "residue-markers",
+        "citation-defects",
+        "marker-cohort-rot"
+      ],
       "limitations": "A living community guide, descriptive rather than prescriptive. Snapshot captured 2026-07-27; the page changes continuously."
     },
     {
@@ -546,7 +620,9 @@
         "Two exceptions survive: copyediting your own writing, and LLM-assisted translation, both under mandatory human review",
         "It is a content guideline, not a policy"
       ],
-      "supports_claims": ["governance-norms"],
+      "supports_claims": [
+        "governance-norms"
+      ],
       "limitations": "Commonly mis-described as a policy. The distinction matters when citing it as authority."
     },
     {
@@ -575,7 +651,9 @@
         "Its section 14 bans en dashes outright, which breaks legitimate numeric and date ranges",
         "Its own runtime prompt contains an em dash, violating its own stated hard constraint"
       ],
-      "supports_claims": ["prior-art-gap"],
+      "supports_claims": [
+        "prior-art-gap"
+      ],
       "limitations": "Repository state changes continuously; snapshot taken 2026-07-27. Star count is a moving figure and must be re-checked before quoting."
     },
     {
@@ -597,7 +675,9 @@
         "Commercial models hallucinated at 5.2 percent against 21.7 percent for open-source models",
         "43 percent of hallucinations recurred across all ten reruns of the same prompt and 58 percent recurred more than once"
       ],
-      "supports_claims": ["slopsquatting-gate"],
+      "supports_claims": [
+        "slopsquatting-gate"
+      ],
       "methodology": "Published at USENIX Security 2025.",
       "limitations": "Model cohort is from 2024. See the Churilov source for current rates before quoting the 19.7 percent figure as current."
     },
@@ -619,7 +699,9 @@
         "Claude Haiku 4.5 measured 4.62 percent and GPT-5.4-mini measured 6.10 percent",
         "53 hallucinated package names remained registerable at time of measurement"
       ],
-      "supports_claims": ["slopsquatting-gate"],
+      "supports_claims": [
+        "slopsquatting-gate"
+      ],
       "methodology": "Corroborated by Socket, 2026-07-22, across 199,845 responses.",
       "limitations": "Preprint verified at abstract level."
     },
@@ -642,7 +724,9 @@
         "Developers forecast a 24 percent speedup and still estimated a 20 percent speedup after the fact",
         "Economists forecast a 39 percent speedup and machine learning experts 38 percent"
       ],
-      "supports_claims": ["perception-gap"],
+      "supports_claims": [
+        "perception-gap"
+      ],
       "methodology": "Randomized controlled trial, 16 developers, 246 real tasks.",
       "limitations": "Small n. METR's own 2026-02-24 follow-up could not obtain a clean signal because developers increasingly refused to work without AI."
     },
@@ -663,7 +747,9 @@
         "No significant differences were found in subsequent code evolution, completion time, or quality between AI-assisted and unassisted development",
         "The study was pre-registered with In-Principle Acceptance before data collection"
       ],
-      "supports_claims": ["code-slop-contested"],
+      "supports_claims": [
+        "code-slop-contested"
+      ],
       "methodology": "151 participants. Published at ICSME 2025.",
       "limitations": "Methodologically the strongest single item in the AI code quality literature, and it is a null result. Cite it whenever vendor code-slop figures are cited."
     },
@@ -684,7 +770,9 @@
         "Block duplication climbed from 40.3 per million changed lines in 2023 to 73.0 in 2026 year to date, a rise of 81 percent",
         "The 2026 report measures two-week code churn at plus 15 percent rather than reporting a churn level"
       ],
-      "supports_claims": ["code-duplication-rising"],
+      "supports_claims": [
+        "code-duplication-rising"
+      ],
       "methodology": "623 million changes analysed.",
       "limitations": "Correlational, not causal. GitClear sells code-quality tooling, so the finding serves its commercial interest. The often-quoted 7.1 percent churn figure is a discarded 2024 projection, never an actual measurement; the 2024 actual was 5.7 percent."
     },
@@ -707,7 +795,9 @@
         "There was an eight-fold increase in code blocks containing five or more duplicated lines during 2024",
         "Code churn was 3.1 percent in 2020, 3.3 percent in 2021 and 2022, 4.5 percent in 2023, projected 7.1 percent for 2024 and actually 5.7 percent"
       ],
-      "supports_claims": ["code-duplication-rising"],
+      "supports_claims": [
+        "code-duplication-rising"
+      ],
       "methodology": "211 million changed lines, 2020 to 2024.",
       "limitations": "Vendor-produced and correlational."
     },
@@ -730,7 +820,9 @@
         "The confirmed-vulnerability rate returned to 15 to 16 percent",
         "curl returned to HackerOne on 2026-03-01 without a bounty"
       ],
-      "supports_claims": ["triage-not-bans"],
+      "supports_claims": [
+        "triage-not-bans"
+      ],
       "limitations": "First-hand maintainer account, not a controlled study. Directly contradicts the common narrative that curl abandoned bug bounties permanently."
     },
     {
@@ -752,7 +844,9 @@
         "The estimated cost is 186 dollars per employee per month, or about 9 million dollars a year at 10,000 employees",
         "Roughly 15 percent of received content qualified as workslop"
       ],
-      "supports_claims": ["downstream-cost"],
+      "supports_claims": [
+        "downstream-cost"
+      ],
       "methodology": "BetterUp Labs with Stanford Social Media Lab, n equals 1,150 United States desk workers, fielded September 2025. Published in Harvard Business Review 2025-09-22.",
       "limitations": "Self-reported survey estimates, not controlled measurement. The Harvard Business Review article body is paywalled; figures confirmed on BetterUp's own page."
     },
@@ -773,7 +867,9 @@
         "Recursive training on generated data causes early collapse where distribution tails and variance are lost, and late collapse where the model converges to a low-variance point estimate",
         "The effect was demonstrated on Gaussian mixture models, variational autoencoders, and OPT language models"
       ],
-      "supports_claims": ["model-collapse"],
+      "supports_claims": [
+        "model-collapse"
+      ],
       "methodology": "Nature 631:755-759.",
       "limitations": "An Author Correction exists, Nature s41586-025-08905-3, whose scope could not be read behind the publisher auth wall. The collapse result assumes data replacement; the accumulation literature argues collapse is largely avoided when synthetic data accumulates alongside human data with curation."
     },
@@ -794,7 +890,9 @@
         "The canonical definition is behavioural: not all AI-generated content is slop, but if it is mindlessly generated and thrust upon someone who did not ask for it, slop is the perfect term for it",
         "Willison proposed slom for the AI-generated subset of spam in a 2024-05-09 update"
       ],
-      "supports_claims": ["definition-behavioural"],
+      "supports_claims": [
+        "definition-behavioural"
+      ],
       "limitations": "An influential essay, not a study. Cited for the definition it established, not for any empirical claim."
     },
     {
@@ -816,7 +914,9 @@
         "Runners-up were gerrymander, performative, touch grass, six seven, and Lake Chargoggagoggmanchauggagoggchaubunagungamaugg",
         "The American Dialect Society also selected slop, voting 2026-01-09"
       ],
-      "supports_claims": ["definition-mainstream"],
+      "supports_claims": [
+        "definition-mainstream"
+      ],
       "limitations": "merriam-webster.com is Cloudflare-blocked to automated fetch, so the announcement was verified through the GlobeNewswire press release wire copy dated 2025-12-15. The frequently repeated claim that tariff was a runner-up is false."
     },
     {
@@ -838,7 +938,9 @@
         "Generative systems already on the market before 2026-08-02 have until 2026-12-02 for the Article 50(2) machine-readable marking requirement",
         "Penalties reach 15 million euro or 3 percent of turnover"
       ],
-      "supports_claims": ["governance-norms"],
+      "supports_claims": [
+        "governance-norms"
+      ],
       "limitations": "A consolidated third-party rendering of the regulation rather than the Official Journal text. Verify against EUR-Lex before relying on it for compliance advice."
     },
     {
@@ -859,7 +961,9 @@
         "It states the specifications should not yet be relied upon for high-stakes uses such as financial disclosures, journalism, or legal evidence",
         "It finds that specification version 2.4 does not address the identified problems"
       ],
-      "supports_claims": ["provenance-immature"],
+      "supports_claims": [
+        "provenance-immature"
+      ],
       "limitations": "Preprint verified at abstract level. Claims that C2PA is now ISO/IEC 22144 could not be verified against any primary source and appear only in marketing material."
     },
     {
@@ -879,7 +983,9 @@
         "Language models preserve user face 45 percentage points more than humans do",
         "Models affirm both sides in 48 percent of moral conflicts"
       ],
-      "supports_claims": ["tier1-sycophancy"],
+      "supports_claims": [
+        "tier1-sycophancy"
+      ],
       "limitations": "Publication date precision is year only, pending confirmation of the issue date."
     },
     {
@@ -901,7 +1007,9 @@
         "The rate was 25 percent for relationships and 38 percent for spirituality",
         "Opus 4.7 showed roughly half the sycophancy rate of Opus 4.6"
       ],
-      "supports_claims": ["tier1-sycophancy"],
+      "supports_claims": [
+        "tier1-sycophancy"
+      ],
       "methodology": "Roughly 639,000 conversations analysed.",
       "limitations": "First-party vendor research about the vendor's own models. No published study counts the specific phrase You're absolutely right in coding-agent transcripts."
     },
@@ -923,7 +1031,10 @@
         "Delve usage rose 48 percent, realm 35 percent, and adept 51 percent within 18 months of ChatGPT's release",
         "A preregistered experiment with n equal to 496 confirmed entrenchment in active vocabulary"
       ],
-      "supports_claims": ["marker-cohort-rot", "esl-false-positive-risk"],
+      "supports_claims": [
+        "marker-cohort-rot",
+        "esl-false-positive-risk"
+      ],
       "methodology": "Over 740,000 hours across 824,634 podcast episodes and 20,000 academic YouTube channels.",
       "limitations": "Preprint verified at abstract level. Causation between model output and human speech is inferred for the corpus portion, not experimentally isolated."
     },
@@ -944,7 +1055,9 @@
         "LLM-modified text shows lower lexical diversity than unmodified text",
         "Expert readers nonetheless rated the LLM-modified text as more understandable and more exciting"
       ],
-      "supports_claims": ["slop-not-always-worse"],
+      "supports_claims": [
+        "slop-not-always-worse"
+      ],
       "methodology": "Over 37,000 ACL Anthology papers.",
       "limitations": "Preprint verified at abstract level. Directly complicates the premise that slop is self-evidently worse writing."
     }

@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "review_id": "review-2026-07-28-marker-cohort-brief",
+  "reference_date": "2026-07-28",
+  "artifact": {
+    "artifact_id": "drafts/marker-cohort-brief.md",
+    "surface": "prose",
+    "title": "Marker cohort rot: a briefing note for reviewers",
+    "source_uri": "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing",
+    "word_count": 1180,
+    "reviewed_paths": [
+      "drafts/marker-cohort-brief.md",
+      "drafts/snippets/cohort_table.py"
+    ]
+  },
+  "scanner_findings": [
+    {
+      "scanner": "scan_refs",
+      "rule": "refs.doi_placeholder",
+      "message": "DOI 10.1234/EXAMPLE-PLACEHOLDER is a placeholder pattern and resolves to nothing.",
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 64,
+        "start_column": 12,
+        "end_line": 64,
+        "end_column": 46,
+        "text": "Kobak and colleagues report the effect (DOI 10.1234/EXAMPLE-PLACEHOLDER)."
+      }
+    },
+    {
+      "scanner": "scan_residue",
+      "rule": "residue.gemini_cite",
+      "message": "Gemini citation residue left in body prose.",
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 31,
+        "start_column": 58,
+        "end_line": 31,
+        "end_column": 70,
+        "text": "The em dash is a population level indicator, not a per paper detector [cite: 3, 12]."
+      }
+    },
+    {
+      "scanner": "scan_residue",
+      "rule": "residue.utm_source",
+      "message": "Tracking parameter utm_source=chatgpt.com survived in a cited URL.",
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 88,
+        "start_column": 5,
+        "end_line": 88,
+        "end_column": 74,
+        "text": "See https://www.science.org/doi/10.1126/sciadv.adt3813?utm_source=chatgpt.com"
+      }
+    },
+    {
+      "scanner": "scan_placeholders",
+      "rule": "placeholder.your_field",
+      "message": "Unresolved template field left in the byline.",
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 7,
+        "start_column": 14,
+        "end_line": 7,
+        "end_column": 25,
+        "text": "Prepared by [Your Name] for the reviewer rota."
+      }
+    },
+    {
+      "scanner": "scan_packages",
+      "rule": "packages.unverified",
+      "message": "Import hyperfastyaml could not be confirmed in the PyPI registry.",
+      "evidence_span": {
+        "path": "drafts/snippets/cohort_table.py",
+        "start_line": 3,
+        "start_column": 1,
+        "end_line": 3,
+        "end_column": 26,
+        "text": "from hyperfastyaml import load"
+      }
+    },
+    {
+      "scanner": "lint_voice",
+      "rule": "voice.em_dash",
+      "message": "House style forbids the long dash in body prose.",
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 22,
+        "start_column": 30,
+        "end_line": 22,
+        "end_column": 31,
+        "text": "The committee met once and then adjourned."
+      }
+    }
+  ],
+  "marker_hits": [
+    {
+      "marker_id": "excess-vocabulary-density",
+      "marker_class": "Excess vocabulary density",
+      "tier": 1,
+      "routes_to": "deletion",
+      "ledger_source_id": "kobak-excess-vocabulary",
+      "observed": "delve, intricate, realm, underscore",
+      "occurrences": 11,
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 41,
+        "start_column": 1,
+        "end_line": 44,
+        "end_column": 92,
+        "text": "It is important to delve into the intricate realm of marker taxonomies, which underscores the multifaceted nature of the problem."
+      }
+    },
+    {
+      "marker_id": "vague-attribution",
+      "marker_class": "Vague attribution and over-attribution",
+      "tier": 1,
+      "routes_to": "attribution",
+      "ledger_source_id": "wikipedia-signs-of-ai-writing",
+      "observed": "studies show",
+      "occurrences": 3,
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 52,
+        "start_column": 1,
+        "end_line": 52,
+        "end_column": 96,
+        "text": "Studies show that detectors reliably identify machine written text across languages and registers."
+      }
+    },
+    {
+      "marker_id": "puffery-undue-emphasis",
+      "marker_class": "Puffery and undue emphasis",
+      "tier": 1,
+      "routes_to": "inversion",
+      "ledger_source_id": "wikipedia-signs-of-ai-writing",
+      "observed": "plays a crucial role",
+      "occurrences": 2,
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 58,
+        "start_column": 1,
+        "end_line": 58,
+        "end_column": 78,
+        "text": "Evidence tiering plays a crucial role in the integrity of any marker taxonomy."
+      }
+    },
+    {
+      "marker_id": "em-dash-density",
+      "marker_class": "Em dash density",
+      "tier": 2,
+      "routes_to": "deletion",
+      "ledger_source_id": "czuma-em-dash-prevalence",
+      "observed": "9 long dashes across 1180 words",
+      "occurrences": 9,
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 22,
+        "start_column": 30,
+        "end_line": 22,
+        "end_column": 31,
+        "text": "The committee met once and then adjourned."
+      }
+    },
+    {
+      "marker_id": "boldface-density",
+      "marker_class": "Boldface density",
+      "tier": 3,
+      "routes_to": "deletion",
+      "ledger_source_id": "wikipedia-signs-of-ai-writing",
+      "observed": "14 bold runs in 1180 words",
+      "occurrences": 14,
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 70,
+        "start_column": 1,
+        "end_line": 70,
+        "end_column": 64,
+        "text": "**Key insight:** tiering is **essential** for **credible** marker work."
+      }
+    },
+    {
+      "marker_id": "sycophantic-verbal-tics",
+      "marker_class": "Sycophantic verbal tics",
+      "tier": 2,
+      "routes_to": "deletion",
+      "ledger_source_id": "wu-verbal-tics",
+      "observed": "Great question, You are absolutely right",
+      "occurrences": 2,
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 12,
+        "start_column": 1,
+        "end_line": 12,
+        "end_column": 52,
+        "text": "Great question. You are absolutely right to ask this."
+      }
+    }
+  ],
+  "procedure_results": [
+    {
+      "result_id": "proc-attribution-studies-show",
+      "procedure": "attribution",
+      "outcome": "convicted",
+      "routed_from_marker_id": "vague-attribution",
+      "artifact": "Resolution attempted against every ledger entry on detection. stowe-detector-bias and liang-gpt-detectors-biased both report the opposite: detectors disproportionately flag English language learner writing. openai-classifier-withdrawal records the withdrawal of a detector for low accuracy. No ledger source supports the sentence as written, and two contradict it.",
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 52,
+        "start_column": 1,
+        "end_line": 52,
+        "end_column": 96,
+        "text": "Studies show that detectors reliably identify machine written text across languages and registers."
+      }
+    },
+    {
+      "result_id": "proc-deletion-excess-vocabulary",
+      "procedure": "deletion",
+      "outcome": "convicted",
+      "routed_from_marker_id": "excess-vocabulary-density",
+      "artifact": "Cut the whole sentence. What was lost: nothing. The following paragraph already names the three tiers and their thresholds, so the cut sentence announced a subject that the next sentence delivers.",
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 41,
+        "start_column": 1,
+        "end_line": 44,
+        "end_column": 92,
+        "text": "It is important to delve into the intricate realm of marker taxonomies, which underscores the multifaceted nature of the problem."
+      }
+    },
+    {
+      "result_id": "proc-inversion-crucial-role",
+      "procedure": "inversion",
+      "outcome": "convicted",
+      "routed_from_marker_id": "puffery-undue-emphasis",
+      "artifact": "Negation written out: Evidence tiering plays no role in the integrity of any marker taxonomy. Nobody would assert that in a document about marker taxonomies, so the original sentence carries no information a reader did not already have.",
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 58,
+        "start_column": 1,
+        "end_line": 58,
+        "end_column": 78,
+        "text": "Evidence tiering plays a crucial role in the integrity of any marker taxonomy."
+      }
+    },
+    {
+      "result_id": "proc-stranger-boldface-summary",
+      "procedure": "stranger",
+      "outcome": "convicted",
+      "routed_from_marker_id": "boldface-density",
+      "artifact": "No fact in this line requires having read the corpus studies. Someone who had read only the headline of the Wikipedia guidance could have written it. No sample size, no corpus, no source id appears anywhere in the sentence.",
+      "evidence_span": {
+        "path": "drafts/marker-cohort-brief.md",
+        "start_line": 70,
+        "start_column": 1,
+        "end_line": 70,
+        "end_column": 64,
+        "text": "**Key insight:** tiering is **essential** for **credible** marker work."
+      }
+    },
+    {
+      "result_id": "proc-load-bearing-try-except",
+      "procedure": "load-bearing",
+      "outcome": "survived",
+      "artifact": "Removed the try/except around the snapshot parse and reran the cohort diff against a snapshot with a malformed refresh_due. The script raised instead of emitting the structured refusal, so the wrapper is load bearing and stays.",
+      "evidence_span": {
+        "path": "drafts/snippets/cohort_table.py",
+        "start_line": 18,
+        "start_column": 1,
+        "end_line": 24,
+        "end_column": 20,
+        "text": "try:\n    due = date.fromisoformat(row['refresh_due'])\nexcept ValueError:\n    return refusal(row)"
+      }
+    },
+    {
+      "result_id": "proc-deletion-unlocated-claim",
+      "procedure": "deletion",
+      "outcome": "convicted",
+      "artifact": "Reviewer noted the closing paragraph felt like filler but did not record which lines were cut or what was lost."
+    }
+  ]
+}

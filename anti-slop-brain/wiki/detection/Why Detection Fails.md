@@ -120,7 +120,7 @@ routing rule is stated in [[The Firewall]] and the tier assignments live in
 [[The Deletion Test]] or [[The Stranger Test]], a suspicion about sourcing goes
 to [[The Attribution Test]], and a suspicion about a reference goes to
 deterministic resolution rather than to a probability. Markers such as
-[[Em Dash Density]] and [[Excess Vocabulary]] are population-level signals, and
+[[The Em Dash|Em Dash Density]] and [[Excess Vocabulary]] are population-level signals, and
 [[Marker Cohort Rot]] records why their diagnostic value decays.
 
 The honest summary: detection is the wrong question, not merely a poorly

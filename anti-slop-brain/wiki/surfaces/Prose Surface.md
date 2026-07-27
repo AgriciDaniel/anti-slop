@@ -11,7 +11,7 @@ tags:
   - "#confidence/practitioner"
 confidence: "practitioner"
 related:
-  - "[[Excess Vocabulary in Biomedical Abstracts]]"
+  - "[[Excess Vocabulary|Excess Vocabulary in Biomedical Abstracts]]"
   - "[[Em Dash Population Prevalence]]"
   - "[[Evidence Tiers]]"
   - "[[The Deletion Test]]"
@@ -67,20 +67,20 @@ class that is specific to this surface.
 | --- | --- | --- | --- |
 | [[Puffery and Undue Emphasis]] | 1 | [[The Inversion Test]] | book jackets, grant abstracts, and obituary prose are puffed by genre |
 | [[Excess Vocabulary]] | 1 | [[The Stranger Test]] | technical registers where `robust` and `interplay` are terms of art |
-| [[Superficial Participial Analysis]] | 1 | [[The Deletion Test]] | narrative writing where the participle carries real sequence |
-| [[Vague Attribution]] | 1 | [[The Attribution Test]] | genuine literature surveys that summarise many sources at once |
-| [[Rule of Three]] | 1 | [[The Deletion Test]] | rhetoric taught in every composition class since Cicero |
+| [[Puffery and Undue Emphasis|Superficial Participial Analysis]] | 1 | [[The Deletion Test]] | narrative writing where the participle carries real sequence |
+| [[The Attribution Test|Vague Attribution]] | 1 | [[The Attribution Test]] | genuine literature surveys that summarise many sources at once |
+| [[Tricolon and Rule of Three|Rule of Three]] | 1 | [[The Deletion Test]] | rhetoric taught in every composition class since Cicero |
 | [[Negative Parallelism]] | 1 | [[The Inversion Test]] | contrastive argument where the negated half is the point |
-| [[Hedging Density]] | 1 | [[The Attribution Test]] | scientific caution, where hedging is a correctness requirement |
-| [[Em Dash Density]] | 2 | none, routes only | house style, typographic training, and editorial software |
-| [[Uniform Sentence Length]] | 2 | [[The Deletion Test]] | plain-language and accessibility rewrites target uniformity |
-| [[Section Inflation]] | 2 | [[The Deletion Test]] | reports with a mandated section list |
-| [[Generic Positive Conclusion]] | 1 | [[The Deletion Test]] | opinion pieces that legitimately end on a position |
+| [[Hedging and Hesitancy|Hedging Density]] | 1 | [[The Attribution Test]] | scientific caution, where hedging is a correctness requirement |
+| [[The Em Dash|Em Dash Density]] | 2 | none, routes only | house style, typographic training, and editorial software |
+| [[Evidence Tiers|Uniform Sentence Length]] | 2 | [[The Deletion Test]] | plain-language and accessibility rewrites target uniformity |
+| [[Documentation Surface|Section Inflation]] | 2 | [[The Deletion Test]] | reports with a mandated section list |
+| [[Puffery and Undue Emphasis|Generic Positive Conclusion]] | 1 | [[The Deletion Test]] | opinion pieces that legitimately end on a position |
 
 Two rows deserve their citations stated inline. `bakhshi-saying-more` measured
 LLM tricolon production at nearly twice the expert human rate and hesitancy
 markers at roughly twice human density across 225 texts and about 600,000
-tokens, which is what places [[Rule of Three]] and [[Hedging Density]] in tier
+tokens, which is what places [[Tricolon and Rule of Three|Rule of Three]] and [[Hedging and Hesitancy|Hedging Density]] in tier
 1 rather than in folklore. `czuma-em-dash-prevalence` is pre-registered on OSF
 as HFT8C across 69,632 medRxiv preprints and its own conclusion is adopted
 verbatim in this vault: the em dash is a population-level indicator, not a
@@ -112,7 +112,7 @@ Third, the premise itself is contested. `miletic-lexical-diversity` examined
 over 37,000 ACL Anthology papers and found LLM-modified text lower in lexical
 diversity, yet expert readers rated the same modified text as more
 understandable and more exciting. Lower diversity is measurable; worse is a
-judgement the measurement does not support. [[Slop Is Not Always Worse]] holds
+judgement the measurement does not support. [[The Accessibility Objection|Slop Is Not Always Worse]] holds
 this argument.
 
 ## Repair on this surface degrades voice by default
@@ -158,7 +158,7 @@ own style rules.
 4. A repair diff limited to convicted spans, with the scanners re-run after.
 
 Anything that skips step 3 is a style opinion wearing a report's clothes. See
-[[Severity and Confidence]] for how the two axes are kept apart in the output.
+[[The Firewall|Severity and Confidence]] for how the two axes are kept apart in the output.
 
 ## Related
 
@@ -167,6 +167,6 @@ Anything that skips step 3 is a style opinion wearing a report's clothes. See
 - [[Knowledge Base Surface]]
 - [[Distributional Convergence]]
 - [[Why Detection Fails]]
-- [[Signs of AI Writing]]
+- [[Signs Are Not The Problem|Signs of AI Writing]]
 - [[Note Conventions]]
-- [[Slop as a Category]]
+- [[AI Slop|Slop as a Category]]

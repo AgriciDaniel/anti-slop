@@ -18,7 +18,7 @@ related:
   - "[[Prose Surface]]"
   - "[[Code Surface]]"
   - "[[Documentation Surface]]"
-  - "[[Excess Vocabulary in Biomedical Abstracts]]"
+  - "[[Excess Vocabulary|Excess Vocabulary in Biomedical Abstracts]]"
   - "[[Puffery and Undue Emphasis]]"
   - "[[Humanizer Quality Degradation]]"
 source_urls:
@@ -229,5 +229,5 @@ narrowest.
 - [[Prose Surface]]
 - [[Code Surface]]
 - [[Documentation Surface]]
-- [[Excess Vocabulary in Biomedical Abstracts]]
+- [[Excess Vocabulary|Excess Vocabulary in Biomedical Abstracts]]
 - [[Marker Cohort Rot]]

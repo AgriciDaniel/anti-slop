@@ -14,11 +14,11 @@ related:
   - "[[AI Slop]]"
   - "[[Workslop]]"
   - "[[Constraint Beats Coaxing]]"
-  - "[[Slopsquatting]]"
-  - "[[Fabricated Citations]]"
-  - "[[Attribution Test]]"
+  - "[[Package Hallucination Evidence|Slopsquatting]]"
+  - "[[The Attribution Test|Fabricated Citations]]"
+  - "[[The Attribution Test|Attribution Test]]"
   - "[[Code Surface]]"
-  - "[[Package Hallucination Rates]]"
+  - "[[Package Hallucination Evidence|Package Hallucination Rates]]"
   - "[[The Firewall]]"
   - "[[Evidence Tiers]]"
 source_urls:
@@ -106,7 +106,7 @@ So the attacker's cost is one registration. The defender's cost, absent
 tooling, is a developer noticing an unfamiliar import during review. Cutting
 hallucination rates by a factor of four changes the volume of the attack
 surface and changes nothing about its economics. That is why
-[[Slopsquatting]] is gated by a registry lookup in [[Code Surface]] rather than
+[[Package Hallucination Evidence|Slopsquatting]] is gated by a registry lookup in [[Code Surface]] rather than
 by asking a reviewer to be vigilant, and why the residual rate matters less
 than the fact that verification is one cheap deterministic call.
 
@@ -148,7 +148,7 @@ because they are the entire deterministic layer:
 Everything outside that list falls back to a human, and the vault's job there
 is not to replace the human but to spend their attention well: route them to
 the specific span, hand them the specific question, and require a written
-artifact. That is what [[Attribution Test]] and the rest of the procedures
+artifact. That is what [[The Attribution Test|Attribution Test]] and the rest of the procedures
 folder are for.
 
 ## Where the asymmetry reverses
@@ -170,10 +170,10 @@ Honesty requires the counter-case. V is not always the expensive side.
 - [[Workslop]]
 - [[Constraint Beats Coaxing]]
 - [[Signs Are Not The Problem]]
-- [[Slopsquatting]]
-- [[Fabricated Citations]]
-- [[Package Hallucination Rates]]
-- [[Attribution Test]]
+- [[Package Hallucination Evidence|Slopsquatting]]
+- [[The Attribution Test|Fabricated Citations]]
+- [[Package Hallucination Evidence|Package Hallucination Rates]]
+- [[The Attribution Test|Attribution Test]]
 - [[Code Surface]]
 - [[The Firewall]]
 - [[Evidence Tiers]]

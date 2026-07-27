@@ -14,7 +14,7 @@ related:
   - "[[The Firewall]]"
   - "[[The Generation Verification Asymmetry]]"
   - "[[Signs Are Not The Problem]]"
-  - "[[LLM As Judge Fails At Slop]]"
+  - "[[Why Structural Not Judgmental|LLM As Judge Fails At Slop]]"
   - "[[Sycophancy]]"
   - "[[Code Surface]]"
   - "[[Vendor Residue Markers]]"
@@ -132,8 +132,8 @@ ledger source in this vault covers harness behaviour.
    [[Vendor Residue Markers]].
 2. Anything undecidable becomes a structural procedure that emits a written
    artifact a human can audit, never a rating. The procedures are
-   [[Deletion Test]], [[Inversion Test]], [[Stranger Test]],
-   [[Attribution Test]] and the code-side load-bearing test.
+   [[The Deletion Test|Deletion Test]], [[The Inversion Test|Inversion Test]], [[The Stranger Test|Stranger Test]],
+   [[The Attribution Test|Attribution Test]] and the code-side load-bearing test.
 3. Nothing model-produced gates anything model-produced. After any rewrite, the
    deterministic layer runs again. That rule is stated in [[The Firewall]] and
    its justification is the rubber-stamp result above.
@@ -148,7 +148,7 @@ step in a checklist.
 ## Credit, and the boundary
 
 The framing is not original here. It comes from the Gogh vault at
-`/var/home/agricidaniel/Desktop/Vaults/Gogh`, whose
+the Gogh vault (a sibling brain covering visual and frontend slop), whose
 `wiki/concepts/Constraint Beats Coaxing.md` states the thesis for visual work:
 explicit constraints outperform generic requests to make something beautiful,
 implemented there through dials, bans, locks and a blocking pre-flight check.
@@ -174,13 +174,13 @@ the boundary between the two layers is drawn in [[Evidence Tiers]].
 ## Related
 
 - [[The Firewall]]
-- [[LLM As Judge Fails At Slop]]
+- [[Why Structural Not Judgmental|LLM As Judge Fails At Slop]]
 - [[The Generation Verification Asymmetry]]
 - [[Signs Are Not The Problem]]
 - [[Distributional Convergence]]
 - [[Sycophancy]]
 - [[Code Surface]]
 - [[Vendor Residue Markers]]
-- [[Attribution Test]]
+- [[The Attribution Test|Attribution Test]]
 - [[Evidence Tiers]]
 - [[Note Conventions]]

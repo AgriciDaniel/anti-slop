@@ -16,11 +16,11 @@ related:
   - "[[The Attribution Test]]"
   - "[[Why Structural Not Judgmental]]"
   - "[[Puffery and Undue Emphasis]]"
-  - "[[Hedging and Hesitancy Markers]]"
+  - "[[Hedging and Hesitancy|Hedging and Hesitancy Markers]]"
   - "[[Sycophancy]]"
-  - "[[Signs of AI Writing]]"
+  - "[[Signs Are Not The Problem|Signs of AI Writing]]"
   - "[[Prose Surface]]"
-  - "[[Commit and PR Surface]]"
+  - "[[Commit and Review Surface|Commit and PR Surface]]"
 source_urls:
   - "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
   - "https://arxiv.org/abs/2604.19768"
@@ -79,7 +79,7 @@ the hedged sentence passes. That is a known weakness and it is handled in the
 next section rather than by bending the negation. `bakhshi-saying-more` measured
 LLMs producing hesitancy markers at roughly twice human density, so hedges are
 exactly the population this test is worst at, and pretending otherwise would be
-worse than admitting it. See [[Hedging and Hesitancy Markers]].
+worse than admitting it. See [[Hedging and Hesitancy|Hedging and Hesitancy Markers]].
 
 **Negate the load-bearing verb in a chain.** "The framework enables teams to
 build scalable systems efficiently" has three candidate predicates. Take the
@@ -198,7 +198,7 @@ Skip them rather than forcing an answer.
 - [[The Attribution Test]]
 - [[Why Structural Not Judgmental]]
 - [[Puffery and Undue Emphasis]]
-- [[Hedging and Hesitancy Markers]]
+- [[Hedging and Hesitancy|Hedging and Hesitancy Markers]]
 - [[Sycophancy]]
-- [[Signs of AI Writing]]
+- [[Signs Are Not The Problem|Signs of AI Writing]]
 - [[Evidence Tiers]]

@@ -13,13 +13,13 @@ confidence: "practitioner"
 related:
   - "[[Distributional Convergence]]"
   - "[[AI Slop]]"
-  - "[[Human Speech Is Converging Too]]"
+  - "[[The Moving Baseline Objection|Human Speech Is Converging Too]]"
   - "[[Marker Cohort Rot]]"
   - "[[Excess Vocabulary]]"
-  - "[[Moral Panic Critique]]"
+  - "[[The Moral Panic Objection|Moral Panic Critique]]"
   - "[[Evidence Tiers]]"
   - "[[Superseded Figures]]"
-  - "[[Open Questions]]"
+  - "[[What This Brain Does Not Claim|Open Questions]]"
   - "[[Constraint Beats Coaxing]]"
 source_urls:
   - "https://doi.org/10.1038/s41586-024-07566-y"
@@ -89,7 +89,7 @@ Until the correction is read, every citation of the 2024 result in this vault
 must carry the phrase "with an unread Author Correction". A correction can be a
 typo in a figure caption or it can change a headline number. Not knowing which
 is a real limitation on the confidence of everything in this note, and it is
-tracked in [[Open Questions]] alongside the other unresolved items from the
+tracked in [[What This Brain Does Not Claim|Open Questions]] alongside the other unresolved items from the
 verification pass.
 
 ## What is real, near-term, and different
@@ -144,9 +144,9 @@ effect, and it is the near-term face of everything above.
 - [[AI Slop]]
 - [[Marker Cohort Rot]]
 - [[Excess Vocabulary]]
-- [[Human Speech Is Converging Too]]
-- [[Slop Is Not Always Worse]]
+- [[The Moving Baseline Objection|Human Speech Is Converging Too]]
+- [[The Accessibility Objection|Slop Is Not Always Worse]]
 - [[Superseded Figures]]
-- [[Moral Panic Critique]]
-- [[Open Questions]]
+- [[The Moral Panic Objection|Moral Panic Critique]]
+- [[What This Brain Does Not Claim|Open Questions]]
 - [[Evidence Tiers]]

@@ -12,14 +12,14 @@ tags:
 confidence: "practitioner"
 related:
   - "[[Evidence Tiers]]"
-  - "[[Attribution Test]]"
-  - "[[Deletion Test]]"
+  - "[[The Attribution Test|Attribution Test]]"
+  - "[[The Deletion Test|Deletion Test]]"
   - "[[Excess Vocabulary]]"
   - "[[Tricolon and Rule of Three]]"
   - "[[Detector Bias Against Language Learners]]"
-  - "[[Repair Degrades Voice]]"
+  - "[[Humanizers|Repair Degrades Voice]]"
   - "[[Prose Surface]]"
-  - "[[Chat Transcripts]]"
+  - "[[Agent Output Surface|Chat Transcripts]]"
   - "[[The Firewall]]"
 source_urls:
   - "https://arxiv.org/abs/2604.19768"
@@ -86,7 +86,7 @@ and its pattern 24 rewrites stacked modals into a single clean modal.
 | --- | --- | --- | --- |
 | in order to, as a result of, the fact that | human signal | delete as filler | leave alone |
 | very, perhaps, tends to | human signal | reduce as hedging | leave alone |
-| one of the best, was the first | human signal | not addressed | leave alone, but route to [[Attribution Test]] |
+| one of the best, was the first | human signal | not addressed | leave alone, but route to [[The Attribution Test|Attribution Test]] |
 | could potentially possibly be argued | not addressed | delete | flag as hesitancy stacking |
 | while specific details are limited, it is believed that | AI signal, speculative gap-filling | delete | flag, and treat the speculation as the finding |
 
@@ -100,7 +100,7 @@ words, contractions and first-person pronouns while increasing vocabulary
 diversity and word length, and that the shift persists even under explicit
 instructions to preserve the author's voice, with rewritten texts converging in
 feature space regardless of where they started. Stripping filler is one of the
-mechanisms by which that convergence happens. See [[Repair Degrades Voice]].
+mechanisms by which that convergence happens. See [[Humanizers|Repair Degrades Voice]].
 
 ## How this brain resolves it
 
@@ -110,7 +110,7 @@ mechanisms by which that convergence happens. See [[Repair Degrades Voice]].
    policy may affect outcomes" stacks one and stays.
 3. Flag **unresolvable hedges**: an uncertainty marker attached to a claim with
    no source, where the hedge is doing the work a citation should do. These go
-   to [[Attribution Test]], and the finding is the missing source rather than
+   to [[The Attribution Test|Attribution Test]], and the finding is the missing source rather than
    the hedge.
 4. Flag **speculative gap-filling**, the form where the text writes a paragraph
    about the absence of information and then invents plausible filler to cover
@@ -129,7 +129,7 @@ mechanisms by which that convergence happens. See [[Repair Degrades Voice]].
 | --- | --- | --- |
 | 0 | assertion | check it has a source |
 | 1 | ordinary epistemic hedge | leave |
-| 2 | stacking | run [[Deletion Test]] on the weaker marker, keep one |
+| 2 | stacking | run [[The Deletion Test|Deletion Test]] on the weaker marker, keep one |
 | 3 or more | hesitancy filler | rewrite to a single marker, and report the claim as unsourced if no source resolves |
 
 ## False positive class: who this marker wrongly flags
@@ -156,9 +156,9 @@ mechanisms by which that convergence happens. See [[Repair Degrades Voice]].
 - [[Evidence Tiers]]
 - [[Tricolon and Rule of Three]]
 - [[Excess Vocabulary]]
-- [[Attribution Test]]
-- [[Deletion Test]]
-- [[Repair Degrades Voice]]
+- [[The Attribution Test|Attribution Test]]
+- [[The Deletion Test|Deletion Test]]
+- [[Humanizers|Repair Degrades Voice]]
 - [[Detector Bias Against Language Learners]]
 - [[The Em Dash]]
 - [[The Firewall]]

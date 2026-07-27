@@ -15,13 +15,13 @@ related:
   - "[[Distributional Convergence]]"
   - "[[The Firewall]]"
   - "[[Evidence Tiers]]"
-  - "[[Deletion Test]]"
-  - "[[Inversion Test]]"
-  - "[[Stranger Test]]"
-  - "[[Attribution Test]]"
-  - "[[Fabricated Citations]]"
+  - "[[The Deletion Test|Deletion Test]]"
+  - "[[The Inversion Test|Inversion Test]]"
+  - "[[The Stranger Test|Stranger Test]]"
+  - "[[The Attribution Test|Attribution Test]]"
+  - "[[The Attribution Test|Fabricated Citations]]"
   - "[[Vendor Residue Markers]]"
-  - "[[Humanizers Degrade Quality]]"
+  - "[[Humanizers|Humanizers Degrade Quality]]"
 source_urls:
   - "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
   - "https://arxiv.org/abs/2501.03437"
@@ -69,12 +69,12 @@ synthesis and hollow analysis all survive a surface edit intact.
 | Surface sign | Defect it may co-occur with | What removing the sign accomplishes | What actually repairs the defect |
 | --- | --- | --- | --- |
 | Excess stylistic vocabulary | none by itself; the excess is verbs and adjectives, not content | flattens the prose, changes no claim | nothing to repair unless a claim fails a test |
-| Tricolons and negative parallelism | rhetorical shape standing in for an argument | the shape goes, the empty argument stays | [[Inversion Test]] on the claim inside the shape |
-| Hedging and over-attribution | a claim with no resolvable source | reads more confident, is now confidently unsourced | [[Attribution Test]], resolve to a named source or cut |
-| Generic authority phrasing | analysis anyone could have written without the source | text sounds specific, is not | [[Stranger Test]], name the fact only the worker would know |
-| Em dash density | nothing decidable at document level | breaks legitimate punctuation | not a defect; see [[Em Dash Density]] |
+| Tricolons and negative parallelism | rhetorical shape standing in for an argument | the shape goes, the empty argument stays | [[The Inversion Test|Inversion Test]] on the claim inside the shape |
+| Hedging and over-attribution | a claim with no resolvable source | reads more confident, is now confidently unsourced | [[The Attribution Test|Attribution Test]], resolve to a named source or cut |
+| Generic authority phrasing | analysis anyone could have written without the source | text sounds specific, is not | [[The Stranger Test|Stranger Test]], name the fact only the worker would know |
+| Em dash density | nothing decidable at document level | breaks legitimate punctuation | not a defect; see [[The Em Dash|Em Dash Density]] |
 | Vendor residue tokens | a real, literal artifact of a paste | this one genuinely is the defect | delete it, and this is a hard gate |
-| A citation with a DOI | the DOI may resolve to nothing or to an unrelated paper | hiding it makes it unfindable | resolve it, match the title, see [[Fabricated Citations]] |
+| A citation with a DOI | the DOI may resolve to nothing or to an unrelated paper | hiding it makes it unfindable | resolve it, match the title, see [[The Attribution Test|Fabricated Citations]] |
 
 Read the right-hand column downward. Only two rows are ones where the visible
 thing is the actual thing: vendor residue and, partially, citations. Those two
@@ -146,7 +146,7 @@ The doctrine therefore produces four standing rules, enforced elsewhere:
 2. A repair is only a repair if it changed a claim, a citation, a structure or a
    fact. Style-only edits are recorded as style edits.
 3. Anything decidable is decided by a script, not by a rewrite.
-   ([[Vendor Residue Markers]], [[Fabricated Citations]])
+   ([[Vendor Residue Markers]], [[The Attribution Test|Fabricated Citations]])
 4. No output ever states or implies who wrote the text. ([[The Firewall]])
 
 ## Related
@@ -155,11 +155,11 @@ The doctrine therefore produces four standing rules, enforced elsewhere:
 - [[Evidence Tiers]]
 - [[The Firewall]]
 - [[Distributional Convergence]]
-- [[Humanizers Degrade Quality]]
-- [[Fabricated Citations]]
+- [[Humanizers|Humanizers Degrade Quality]]
+- [[The Attribution Test|Fabricated Citations]]
 - [[Vendor Residue Markers]]
-- [[Deletion Test]]
-- [[Inversion Test]]
-- [[Stranger Test]]
-- [[Attribution Test]]
-- [[Em Dash Density]]
+- [[The Deletion Test|Deletion Test]]
+- [[The Inversion Test|Inversion Test]]
+- [[The Stranger Test|Stranger Test]]
+- [[The Attribution Test|Attribution Test]]
+- [[The Em Dash|Em Dash Density]]

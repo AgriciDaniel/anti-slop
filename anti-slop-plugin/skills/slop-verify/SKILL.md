@@ -86,10 +86,32 @@ do not guess their flags.
 
 | Script | Decides | Hard-fail |
 |---|---|---|
-| `scan_refs.py` | every DOI, ISBN, arXiv ID and URL resolves, and the DOI title matches the cited title | yes |
-| `scan_packages.py` | every imported package exists in its registry | yes |
+| `scan_refs.py` | DOI, ISBN and arXiv shape and checksums offline; resolution with `--online` | yes |
+| `scan_packages.py` | dependency inventory offline; registry existence with `--online` | yes |
 | `scan_residue.py` | vendor artifacts present | yes |
 | `scan_placeholders.py` | placeholder text present | yes |
+
+Exit codes are uniform: 0 clean, 1 findings, 2 usage error.
+
+**`scan_refs.py` and `scan_packages.py` are offline by default.** Offline,
+`scan_refs.py` checks DOI shape, arXiv identifier shape and plausible date
+range, ISBN-10 and ISBN-13 checksums, URL shape and impossible hosts.
+`scan_packages.py` enumerates dependencies. Neither decides resolution or
+existence until you pass `--online`. Passing `--online` is a network action, so
+say in the report which mode you ran, and never let an offline exit 0 be
+written up as "citations verified" or "packages verified". Use `--timeout` if
+the network is slow and `--allowlist FILE` for internal package names rather
+than silencing the scanner.
+
+**`scan_refs.py` does not compare the cited title to the resolved title.** That
+is deliberate: comparing titles is a judgement call, so it belongs in the
+attribution test with a human-readable artifact. Check 3 in the taxonomy below
+is yours to run, not the scanner's.
+
+In markdown, `scan_residue.py` and `scan_placeholders.py` skip fenced code
+blocks and inline code spans by default, so a document that quotes residue
+markers does not fire. `--include-code` turns that protection off; use it
+deliberately.
 
 Anything the scanners cannot decide, you check by hand with WebFetch, and you
 record the method next to the result.
