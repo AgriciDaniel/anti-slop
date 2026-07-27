@@ -46,4 +46,4 @@ Related: [[Hot]] | [[Index]] | [[Dashboard]]
 
 - 2026-07-28 - Anti-Slop Brain scaffolded.
 - 2026-07-28 - Ingested source [[sample-source]] from `.raw/sources/sample-source.md`.
-- 2026-07-28 - Synthesized source-cited starter deliverables. Folded 42 source-ledger canon entries.
+- 2026-07-28 - Synthesized source-cited starter deliverables. Folded 42 source-ledger canon entries. Folded 14 adapter manifest entries.

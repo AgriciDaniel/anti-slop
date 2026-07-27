@@ -110,3 +110,14 @@ Add generated notes here and keep this hub linked both ways.
 - [[CONVENTIONS]] because it owns the required note contract.
 - [[Tag Taxonomy]] because graph colors and Dataview filters depend on tags.
 - [[Claim Verification Flow]] because unsupported claims should become gaps, questions, or experiments.
+
+## Adapter Manifest Notes
+
+These vault notes were folded from `references/adapter-manifest.json`.
+
+- [[wiki/platforms/Importer ingest marker cohort|Importer ingest marker cohort]]
+- [[wiki/platforms/Importer ingest review input|Importer ingest review input]]
+- [[wiki/platforms/Input Schema cohort diff.schema|Input Schema cohort diff.schema]]
+- [[wiki/platforms/Input Schema findings.schema|Input Schema findings.schema]]
+- [[wiki/platforms/Input Schema marker cohort.schema|Input Schema marker cohort.schema]]
+- [[wiki/platforms/Input Schema review input.schema|Input Schema review input.schema]]
