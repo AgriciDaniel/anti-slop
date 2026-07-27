@@ -80,9 +80,20 @@ schemas, fixtures, and `tests/test_adapters.py` asserting determinism.
 
 ### 3. Plugin completion
 
-Missing `.claude-plugin/plugin.json`, `README.md`, `hooks/hooks.json`, and five
-of six reference files. The five SKILL.md files and two agents exist but are
-unverified: no frontmatter validation has been run against them.
+Correction to an earlier version of this file: `.claude-plugin/plugin.json`
+does exist and is valid JSON. It was missed because `ls -R` does not list
+hidden directories.
+
+Frontmatter has now been validated across all seven files. All five SKILL.md
+files and both agents parse, `name` matches the parent directory in every
+case, no description contains an angle bracket, and no file contains a long
+dash. `slop-review` correctly carries `disallowed-tools` rather than
+`allowed-tools`, which is the trap in the v2.1.220 contract. Agents correctly
+use camelCase `maxTurns` while skills use kebab-case.
+
+Still missing: `README.md`, a `hooks/hooks.json` file (the directory is
+empty), and five of six `references/` files. Only `structural-tests.md` was
+written.
 
 ### 4. Verification pass
 
