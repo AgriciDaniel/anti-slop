@@ -110,3 +110,16 @@ Add generated notes here and keep this hub linked both ways.
 - [[CONVENTIONS]] because it owns the required note contract.
 - [[Tag Taxonomy]] because graph colors and Dataview filters depend on tags.
 - [[Claim Verification Flow]] because unsupported claims should become gaps, questions, or experiments.
+
+## Adapter Manifest Notes
+
+These vault notes were folded from `references/adapter-manifest.json`.
+
+- [[wiki/entities/Fixture sample marker cohort a|Fixture sample marker cohort a]]
+- [[wiki/entities/Fixture sample marker cohort b|Fixture sample marker cohort b]]
+- [[wiki/entities/Fixture sample review input|Fixture sample review input]]
+- [[wiki/entities/Report Renderer render cohort report|Report Renderer render cohort report]]
+- [[wiki/entities/Report Renderer render findings report|Report Renderer render findings report]]
+- [[wiki/entities/Synthesis Module synthesize cohort diff|Synthesis Module synthesize cohort diff]]
+- [[wiki/entities/Synthesis Module synthesize findings|Synthesis Module synthesize findings]]
+- [[wiki/entities/Test test adapters|Test test adapters]]
