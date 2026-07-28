@@ -1,5 +1,4 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "anti-slop",
   "description": "Find and repair substance defects in AI-assisted prose, code, documentation, and agent output. Reports defects, never authorship.",
   "owner": {

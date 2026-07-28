@@ -173,7 +173,7 @@ Pro-thesis:
 
 Counter-evidence the report entirely lacks:
 
-- **Borg et al., ICSME 2025, pre-registered with In-Principle Acceptance**, arXiv 2507.00788, 151 participants: **no significant differences** in subsequent code evolution, completion time, or quality. Methodologically the strongest item in the area.
+- **Borg et al., pre-registered with In-Principle Acceptance** (granted at ICSME), arXiv 2507.00788, a **preprint** rather than a published paper, 151 participants: Phase 2 found **no significant differences** in subsequent code evolution, completion time, or quality, while observational Phase 1 found a **30.7 percent median reduction in completion time**. Methodologically the strongest item in the area, and it must be cited with both phases.
 - Greptile, vendor, several million PRs: reverts per 1,000 PRs, Codex 1.19, Claude 1.80, **human baseline 2.72**. Agent PRs revert *less* than human PRs.
 - Meta RADAR, arXiv 2605.30208, 535k+ diffs: automated low-risk review cut revert rate to 1/3 and production incidents to 1/50.
 - Mao et al., arXiv 2603.27130: real-world AI vs human differences are "rather small"; security alerts per KLOC AI 12.81 vs human 11.58.

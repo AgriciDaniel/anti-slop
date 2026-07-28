@@ -46,6 +46,12 @@ the title from the document.
 6. **No local absolute paths.** They are wrong on every other machine, and CI
    fails on them.
 
+Both gates live in the `house-style` job of `.github/workflows/ci.yml`. They
+scan `anti-slop-brain/`, `anti-slop-plugin/`, `docs/`, `research/`, `.github/`
+and `.claude-plugin/`, plus the root Markdown, `.cff` and `.yaml` files, across
+`*.md`, `*.py`, `*.json`, `*.yml`, `*.yaml`, `*.svg` and `*.cff`. Files without
+an extension, such as `LICENSE` and `NOTICE`, are outside both greps.
+
 ## Adding or editing a vault note
 
 The vault is graded by its own subject matter, mechanically.
@@ -72,11 +78,21 @@ fails the build and it is right to.
 ```bash
 cd anti-slop-brain
 python3 -m compileall -q scripts tests
-python3 tests/test_scanners.py     # 101 checks
+python3 tests/test_scanners.py     # 107 checks
 python3 tests/test_adapters.py     # 207 checks
 python3 tests/test_pipeline.py
 python3 scripts/check_links.py --vault wiki
 ```
+
+**Run the suites directly, not under pytest.** They are standalone scripts with
+their own runner, and their test functions take a positional `tmp` path that
+pytest would try to satisfy as a fixture that does not exist.
+`anti-slop-brain/conftest.py` therefore tells pytest not to collect
+`anti-slop-brain/tests/`, so `python3 -m pytest` reports `no tests ran` (exit
+code 5) instead of a wall of collection errors. A second `conftest.py` at the
+repository root prints the commands above in the pytest header, since that hook
+only fires for a conftest at the rootdir and `-q` suppresses it. CI runs those
+commands directly, and they are the only supported way to run the suites.
 
 Every fix needs a test that **fails before the fix and passes after**. Verify
 the first half by reverting your change and watching the test fail. A test that

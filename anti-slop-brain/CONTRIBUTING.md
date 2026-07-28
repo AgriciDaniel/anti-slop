@@ -16,7 +16,7 @@ Commands below run from `anti-slop-brain/`.
 
 ```bash
 python3 -m compileall -q scripts anti_slop_brain tests
-python3 tests/test_scanners.py     # 101 checks
+python3 tests/test_scanners.py     # 107 checks
 python3 tests/test_adapters.py     # 207 checks
 python3 tests/test_pipeline.py
 python3 scripts/check_links.py --vault wiki

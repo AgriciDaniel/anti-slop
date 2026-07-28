@@ -124,7 +124,8 @@
       "supports_claims": [
         "judge-bias-favors-slop"
       ],
-      "methodology": "Published at ICLR 2025."
+      "methodology": "Published at ICLR 2025.",
+      "limitations": "Verified at abstract level. The finding is that judge preference does not track factuality or safety on the benchmarks studied; it does not establish that judges are useless for every task, only that preference is not a proxy for correctness."
     },
     {
       "id": "soumik-judging-the-judges",
@@ -167,7 +168,8 @@
       "supports_claims": [
         "architecture-no-holistic-judgment"
       ],
-      "methodology": "Published at ICLR 2025."
+      "methodology": "Published at ICLR 2025.",
+      "limitations": "A theoretical result with stated assumptions, not an empirical measurement. The bound applies when the judge is no more accurate than the evaluated model. It does not forbid useful evaluation by a genuinely stronger judge or by ground truth."
     },
     {
       "id": "panickssery-self-preference",
@@ -187,7 +189,8 @@
       ],
       "supports_claims": [
         "architecture-no-holistic-judgment"
-      ]
+      ],
+      "limitations": "Verified at abstract level. The causal claim between self-recognition and self-preference is argued by the authors rather than established by intervention, and the effect is measured on a limited model set."
     },
     {
       "id": "song-rubber-stamp-regime",
@@ -377,7 +380,8 @@
       "supports_claims": [
         "model-specific-fingerprints"
       ],
-      "methodology": "Published at ICML 2025."
+      "methodology": "Published at ICML 2025.",
+      "limitations": "High attribution accuracy is a capability result, not a licence to attribute. This brain cites it only to explain why fingerprinting is refused. Model rosters age quickly, so the 97.1 percent figure is cohort-specific and will not hold for models released after the study."
     },
     {
       "id": "russell-storyscope",
@@ -447,7 +451,8 @@
       "supports_claims": [
         "human-review-beats-detectors"
       ],
-      "methodology": "Published at ACL 2025."
+      "methodology": "Published at ACL 2025.",
+      "limitations": "The annotators were self-selected frequent LLM users, so the result describes what experienced humans can do rather than what an average reviewer will do. One error in 300 is a majority-vote figure across five annotators; individual accuracy is lower, and the cost of five expert reviews is the practical constraint."
     },
     {
       "id": "stowe-detector-bias",
@@ -755,7 +760,7 @@
       "supports_claims": [
         "code-slop-contested"
       ],
-      "methodology": "151 participants. Published at ICSME 2025.",
+      "methodology": "151 participants. Preprint at arXiv 2507.00788, pre-registered with In-Principle Acceptance granted at ICSME. It carries no journal reference and is not a published paper.",
       "limitations": "PREPRINT, not published. The arXiv comment reads \"Preprint of study preregistered at ICSME 2025 with In-Principal Acceptance\", and the In-Principle Acceptance was granted at the 40th ICSME in 2024. It has no journal reference. The null result is Phase 2 only. Phase 1 of the same study was observational and found the opposite direction: a 30.7 percent median reduction in completion time using an AI assistant, and an estimated 55.9 percent speedup for habitual AI users. Any citation of this source that reports only the null is incomplete.",
       "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Does Co-Development with AI Assistants Lead to More Maintainable Code?\", which resolved to no paper. The identifier was always correct; the title was not."
     },

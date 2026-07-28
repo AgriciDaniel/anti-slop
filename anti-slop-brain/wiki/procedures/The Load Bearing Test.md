@@ -145,13 +145,15 @@ this note is not going to pretend otherwise.
 | `gitclear-copilot-quality-2025` | vendor, 211 million changed lines, 2020 to 2024 | moved or refactored code fell from 24.8 percent in 2021 to 9.5 percent in 2024; copy-pasted code rose from 8.3 to 12.3 percent; an eight-fold increase in blocks of five or more duplicated lines during 2024 | duplication rising |
 | `gitclear-maintainability-gap` | vendor, 623 million changes | block duplication rose from 40.3 per million changed lines in 2023 to 73.0 in 2026 year to date, a rise of 81 percent | duplication rising |
 | `metr-developer-slowdown` | randomized controlled trial, 16 developers, 246 real tasks | allowing AI increased completion time by 19 percent for experienced developers on mature repositories, while the same developers forecast a 24 percent speedup and still estimated a 20 percent speedup afterwards | slower, and unnoticed |
-| `borg-null-result` | pre-registered with In-Principle Acceptance, 151 participants, ICSME 2025 | no significant differences in subsequent code evolution, completion time, or quality | no effect |
+| `borg-null-result` | preprint (arXiv 2507.00788, not published; In-Principle Acceptance granted at ICSME), 151 participants | Phase 2, pre-registered: no significant differences in subsequent code evolution, completion time, or quality. Phase 1, observational: a 30.7 percent median reduction in completion time | no effect in the pre-registered phase, faster in the observational one |
 
 `borg-null-result` is methodologically the strongest single item in this
 literature. It was pre-registered with In-Principle Acceptance before data
 collection, which means the analysis was fixed before the numbers existed, and
-it has the largest participant count of the four. It found nothing. That result
-is not a footnote to be walked past on the way to the alarming figures.
+it has the largest participant count of the four. Its pre-registered phase found
+nothing. That result is not a footnote to be walked past on the way to the
+alarming figures, and neither is the observational phase that preceded it and
+pointed the other way.
 
 The pattern across the table is worth stating explicitly and leaving
 unresolved: the strongest slop figures come from vendors selling

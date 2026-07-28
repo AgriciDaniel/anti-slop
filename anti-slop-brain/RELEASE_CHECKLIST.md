@@ -58,18 +58,17 @@ thing it was verifying.
 ## Verification
 
 - [x] `python -m compileall scripts anti_slop_brain tests`
-- [x] `python tests/test_pipeline.py`. Also `tests/test_scanners.py`, 101
+- [x] `python tests/test_pipeline.py`. Also `tests/test_scanners.py`, 107
       checks, and `tests/test_adapters.py`, 207 checks. All pass.
-- [ ] `python scripts/build_demo_vault.py --reference-date 2026-07-28`, which is
+- [x] `python scripts/build_demo_vault.py --reference-date 2026-07-28`, which is
       the form CI runs, followed by the `git diff --exit-code` step in
       `.github/workflows/ci.yml` over `examples/sample-vault` and
       `references/canon`. Run-to-run determinism is verified: two consecutive runs
-      produce byte-identical output. The committed vault is a separate question
-      and is **not** ticked, because generator scripts changed after it was last
-      committed and a regeneration currently produces a diff. Regenerate and
-      commit the result before release, then re-run this step. Always pin the
-      reference date; without it the run is dated from the clock and the diff
-      means nothing.
+      produce byte-identical output. The committed vault now matches a fresh
+      regeneration: `python3 scripts/build_demo_vault.py` followed by
+      `git diff --exit-code -- examples/sample-vault references/canon` exits 0.
+      Always pin the reference date; without it the run is dated from the clock
+      and the diff means nothing.
 - [ ] `python scripts/package_release.py --version 0.1.0`. Not re-run in this
       pass. The existing `dist/RELEASE_MANIFEST.json` was generated
       2026-07-28T01:19:45+00:00, records all four of its scans as passed, and

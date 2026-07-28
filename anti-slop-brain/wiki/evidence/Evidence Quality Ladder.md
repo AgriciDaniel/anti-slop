@@ -81,12 +81,19 @@ exactly the confident unsourced assertion it was built to catch.
 
 ## Worked application: a null result outranks a vendor chart
 
-borg-null-result found no significant differences in subsequent code evolution,
-completion time, or quality between AI-assisted and unassisted development,
-across 151 participants, published at ICSME 2025, and pre-registered with
-In-Principle Acceptance before data collection. In-Principle Acceptance means
-the journal committed to publishing whatever came out. The null result could not
-have been buried.
+borg-null-result is a preprint, arXiv 2507.00788, not a published paper. Its
+In-Principle Acceptance was granted at ICSME, and it carries no journal
+reference. Across 151 participants, its pre-registered Phase 2 found no
+significant differences in subsequent code evolution, completion time, or
+quality between AI-assisted and unassisted development. In-Principle Acceptance
+means the venue committed to accepting whatever came out. The null result could
+not have been buried.
+
+The null is Phase 2 only, and citing it alone is incomplete. Phase 1 of the same
+study was observational and ran the opposite direction: a 30.7 percent median
+reduction in completion time using an AI assistant, and an estimated 55.9
+percent speedup for habitual AI users. Both phases are quoted together here or
+not at all.
 
 gitclear-maintainability-gap reports block duplication rising from 40.3 per
 million changed lines in 2023 to 73.0 in 2026 year to date, a rise of 81

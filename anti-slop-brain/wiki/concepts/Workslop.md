@@ -109,9 +109,11 @@ number in the table above inherits that. Specifically:
 5. **The comparison this needs does not exist in the ledger.** A pre-registered
    design with an unassisted control is what would settle it. The closest
    methodological model in this vault's evidence base is the pre-registered null
-   result on code maintainability (`borg-null-result`, 151 participants, In
-   Principle Acceptance before data collection), which found no significant
-   differences in subsequent code evolution, completion time or quality. That is
+   result on code maintainability (`borg-null-result`, a preprint, 151
+   participants, In Principle Acceptance before data collection), whose
+   pre-registered Phase 2 found no significant differences in subsequent code
+   evolution, completion time or quality, and whose observational Phase 1 found a
+   30.7 percent median reduction in completion time. That is
    a different question on a different surface, and it is cited here only as the
    standard of evidence the workslop survey does not meet.
 

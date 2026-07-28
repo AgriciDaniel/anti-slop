@@ -70,5 +70,7 @@ gh release create v0.1.0 --title "v0.1.0" --notes-file <(sed -n '/## \[0.1.0\]/,
 
 ## Social preview
 
-Not set. GitHub will fall back to a generated card. If you add one, 1280x640
-PNG under Settings, Social preview.
+`.github/social-preview.png` is committed and is the same image the README uses
+as its hero. It is not applied automatically: upload it under Settings, Social
+preview, which is the only way GitHub accepts one. Until that upload happens
+GitHub falls back to a generated card.

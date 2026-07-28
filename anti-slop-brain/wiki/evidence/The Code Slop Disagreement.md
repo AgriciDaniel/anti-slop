@@ -93,11 +93,17 @@ worry is to add a model-based check, and that response has evidence against it.
 
 ## The column that says it is not
 
-**The strongest single study is a null result.** `borg-null-result` had **151
-participants**, was **pre-registered with In-Principle Acceptance before data
-collection**, and was published at ICSME 2025. It found **no significant
-differences in subsequent code evolution, completion time, or quality** between
-AI-assisted and unassisted development.
+**The strongest single study is a null result, in one of its two phases.**
+`borg-null-result` had **151 participants** and was **pre-registered with
+In-Principle Acceptance before data collection**. It is a **preprint**, arXiv
+2507.00788, not a published paper: the In-Principle Acceptance was granted at
+ICSME and it carries no journal reference. Its pre-registered Phase 2 found **no
+significant differences in subsequent code evolution, completion time, or
+quality** between AI-assisted and unassisted development. Phase 1, observational,
+found the opposite direction: a **30.7 percent median reduction in completion
+time** with an AI assistant, and an estimated **55.9 percent speedup** for
+habitual AI users. A citation of this source that reports only the null is
+incomplete, including on this page.
 
 In-Principle Acceptance is the detail that makes this hard to dismiss. The venue
 committed to publishing whatever the data showed, before the data existed. The

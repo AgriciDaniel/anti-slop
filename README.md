@@ -231,9 +231,13 @@ shape and checksums only. An offline exit 0 must never be written up as
   within 18 months. Every marker carries an expiry date.
 - It does not claim the AI-code-quality literature is settled. The
   methodologically strongest study is pre-registered with In-Principle
-  Acceptance and found **no significant differences** (Borg et al., ICSME
-  2025). The strongest slop figures come from vendors selling
-  engineering-intelligence products.
+  Acceptance, and both of its phases have to be reported together: Phase 2, the
+  pre-registered comparison, found **no significant differences**, while Phase
+  1, observational, found the opposite direction, a **30.7 percent median
+  reduction in completion time** with an AI assistant (Borg et al., arXiv
+  2507.00788, a **preprint**, not a published paper; the In-Principle
+  Acceptance was granted at ICSME). The strongest slop figures come from vendors
+  selling engineering-intelligence products.
 - It does not claim its own notes are free of the defects it describes, which
   is why the substance scorer runs against its own vault in CI.
 

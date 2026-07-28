@@ -76,20 +76,33 @@ jobs:
         # A project about AI writing tells cannot ship the most cited tell.
         # This is a house style rule, not a slop verdict, and it is enforced
         # here rather than left to convention.
+        # Scope is every tracked source directory plus the root files, so that
+        # docs/, research/ and the root Markdown are gated too. The single
+        # exemption is research/ai-slop-research-report.md, a preserved archive
+        # documented in CONTRIBUTING.md.
         run: |
           if grep -rlP '\x{2014}|\x{2013}' \
               --include='*.md' --include='*.py' --include='*.json' \
               --include='*.yml' --include='*.yaml' --include='*.svg' \
-              anti-slop-brain anti-slop-plugin README.md 2>/dev/null; then
+              --include='*.cff' \
+              --exclude='ai-slop-research-report.md' \
+              anti-slop-brain anti-slop-plugin docs research .github .claude-plugin \
+              *.md *.cff *.yaml 2>/dev/null; then
             echo "Long dash found in a deliverable. Use commas, periods, colons or parentheses."
             exit 1
           fi
           echo "No long dashes found."
       - name: No local absolute paths
+        # Same scope as the gate above. The bracket expressions keep the
+        # pattern from matching this workflow file's own definition of it,
+        # so ci.yml stays inside the scanned set instead of being excluded.
         run: |
-          if grep -rn '/var/home/\|/Users/\|C:\\\\Users' \
+          if grep -rn '/var/ho[m]e/\|/Use[r]s/\|C:\\\\Use[r]s' \
               --include='*.md' --include='*.py' --include='*.json' \
-              anti-slop-brain anti-slop-plugin 2>/dev/null; then
+              --include='*.yml' --include='*.yaml' --include='*.svg' \
+              --include='*.cff' \
+              anti-slop-brain anti-slop-plugin docs research .github .claude-plugin \
+              *.md *.cff *.yaml 2>/dev/null; then
             echo "Local absolute path found. It will be wrong on every other machine."
             exit 1
           fi

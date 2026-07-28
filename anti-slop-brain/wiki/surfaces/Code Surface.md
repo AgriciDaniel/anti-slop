@@ -71,12 +71,17 @@ without AI.
 
 **What the pre-registered study measured.** `borg-null-result` is the
 methodologically strongest single item in this literature and it is a null
-result. With 151 participants, pre-registered with In-Principle Acceptance
-before data collection and published at ICSME 2025, it found no significant
-differences in subsequent code evolution, completion time, or quality between
-AI-assisted and unassisted development. Cite it whenever the vendor figures are
-cited. This vault's rule is that the two are quoted together or not at all;
-[[Evidence Quality Ladder|Vendor Evidence Conflicts]] holds the general policy.
+result. With 151 participants and pre-registered with In-Principle Acceptance
+before data collection, its Phase 2 found no significant differences in
+subsequent code evolution, completion time, or quality between AI-assisted and
+unassisted development. It is a preprint, arXiv 2507.00788, not a published
+paper: the In-Principle Acceptance was granted at ICSME and there is no journal
+reference. Phase 1 of the same study was observational and found the opposite
+direction, a 30.7 percent median reduction in completion time with an AI
+assistant, so quoting the null on its own misreports it. Cite it whenever the
+vendor figures are cited. This vault's rule is that the two are quoted together
+or not at all; [[Evidence Quality Ladder|Vendor Evidence Conflicts]] holds the
+general policy.
 
 Nothing above is resolved. What survives the disagreement is narrow and
 sufficient: duplication is measurably rising in at least one large telemetry

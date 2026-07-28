@@ -131,7 +131,8 @@ anti-slop-plugin/
     slop-verify/SKILL.md        citations, links, packages, vendor residue
   agents/
     slop-grader.md              bounded read-only second opinion
-    slop-verifier.md            fresh-context adversarial check of a review
+    slop-verifier.md            fresh-context adversarial check of a review;
+                                not read-only, also holds Bash and WebFetch
   references/
     structural-tests.md         the five tests, worked
     markers-tier1.md            corpus-validated markers
@@ -139,7 +140,8 @@ anti-slop-plugin/
     markers-tier3.md            folk wisdom, recorded and unusable
     code-markers.md             code-specific defects and the split evidence
     false-positives.md          what not to flag, and the ethics
-  hooks/hooks.json              house style gate, plugin-scoped
+  hooks/hooks.json              house style gate; not skill-gated, fires on
+                                every Write and Edit in every project
   README.md
 ```
 
@@ -262,9 +264,12 @@ to coax one out of it.
 - **The evidence on machine-written code is genuinely split**, and this plugin
   presents both sides rather than picking one. The strongest degradation
   figures come from vendors selling engineering-intelligence products; the
-  strongest null result is Borg et al., ICSME 2025, arXiv 2507.00788,
-  pre-registered with In-Principle Acceptance, 151 participants, no significant
-  differences in code evolution, completion time or quality. See
+  strongest null result is Borg et al., arXiv 2507.00788, a preprint rather than
+  a published paper, pre-registered with In-Principle Acceptance granted at
+  ICSME, 151 participants: Phase 2 found no significant differences in code
+  evolution, completion time or quality, while Phase 1, observational, found a
+  30.7 percent median reduction in completion time. Both phases belong in any
+  citation of it. See
   [`references/code-markers.md`](references/code-markers.md).
 - **The deterministic layer needs the sibling repository and, for resolution
   and registry checks, the network.** `scan_refs.py` and `scan_packages.py`

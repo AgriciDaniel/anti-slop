@@ -55,9 +55,15 @@ count is quoted elsewhere it is the 62 total unless it says otherwise.
 | Check | Command | State |
 | --- | --- | --- |
 | Substance | `score_substance.py --note-type concept,marker,procedure,surface` | 100 |
-| Dead links | `lint_vault.py --vault .` | 0 |
+| Dead links | `scripts/check_links.py --vault wiki` | 0 |
 | House style | `lint_voice.py` | clean |
-| Rubric | `brainstein audit-brain .` | SSS+ |
+| Rubric | `scripts/audit_brain.py --json` | 100, market-ready |
+
+`check_links.py` is the dead-link check for the shipped wiki, and it reports
+`OK: 62 notes, every wikilink resolves.` Do not substitute `lint_vault.py
+--vault .` here: that script validates a *client* vault and expects `CODEX.md`,
+`shipping-rules.md` and `.raw/.manifest.json`, none of which `wiki/` ships, so
+against this repository it exits 1 by design rather than by defect.
 
 ## Where the confidence tag distribution sits
 

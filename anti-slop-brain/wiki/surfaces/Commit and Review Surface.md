@@ -150,9 +150,11 @@ changes that were never going to merge, and with reviewer behaviour changing
 when the reviewer is known to be an agent. It is not a quality measurement.
 
 The counterweights are recorded for the same reason they are recorded in
-[[Code Surface]]. `borg-null-result`, pre-registered with In-Principle Acceptance
-across 151 participants, found no significant differences in subsequent code
-evolution, completion time, or quality. `gitclear-maintainability-gap` reports
+[[Code Surface]]. `borg-null-result`, a preprint pre-registered with In-Principle
+Acceptance across 151 participants, found no significant differences in
+subsequent code evolution, completion time, or quality in its pre-registered
+Phase 2, while its observational Phase 1 found a 30.7 percent median reduction in
+completion time. `gitclear-maintainability-gap` reports
 block duplication rising 81 percent from 2023 to 2026 year to date across 623
 million changes, and is vendor-produced and correlational.
 `stenberg-high-quality-chaos` reports a maintainer concluding in April 2026 that

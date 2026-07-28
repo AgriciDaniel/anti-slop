@@ -447,11 +447,14 @@ both sides or neither.
 
 **Evidence that it is not.**
 
-- Borg et al., ICSME 2025, arXiv 2507.00788, **pre-registered with In-Principle
-  Acceptance before data collection**, 151 participants: **no significant
-  differences** in subsequent code evolution, completion time, or quality.
-  Methodologically this is the strongest single item in the area, and it is a
-  null result.
+- Borg et al., arXiv 2507.00788, a **preprint** rather than a published paper,
+  **pre-registered with In-Principle Acceptance before data collection** (granted
+  at ICSME), 151 participants. Phase 2, the pre-registered comparison, found **no
+  significant differences** in subsequent code evolution, completion time, or
+  quality. Phase 1, observational, found the opposite direction: a **30.7 percent
+  median reduction in completion time**, and an estimated 55.9 percent speedup
+  for habitual AI users. Methodologically this is the strongest single item in
+  the area, and reporting only its null is an incomplete citation.
 - Greptile, across several million pull requests: reverts per 1,000 pull
   requests measured at 1.19 for one agent and 1.80 for another, against a
   **human baseline of 2.72**. Agent pull requests reverted *less* than human

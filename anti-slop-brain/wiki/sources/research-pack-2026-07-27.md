@@ -45,7 +45,7 @@ remove.
 | `soumik-judging-the-judges` | Judging the Judges | https://arxiv.org/abs/2604.23178 | 2026-04-27 | 2026-07-27 | primary | EVIDENCE-BASED |
 | `dorner-limits-scalable-eval` | Limits to scalable evaluation at the frontier | https://arxiv.org/abs/2410.13341 | 2024-10-17 | 2026-07-27 | primary | EVIDENCE-BASED |
 | `panickssery-self-preference` | LLM Evaluators Recognize and Favor Their Own Generations | https://arxiv.org/abs/2404.13076 | 2024-04-19 | 2026-07-27 | primary | EVIDENCE-BASED |
-| `song-rubber-stamp-regime` | Recursive collapse in AI self-review gates for code | https://arxiv.org/abs/2606.28438 | 2026-06-26 | 2026-07-27 | primary | CONTESTED |
+| `song-rubber-stamp-regime` | When AI Reviews Its Own Code: Recursive Self-Training Collapse in Code LLMs | https://arxiv.org/abs/2606.28438 | 2026-06-26 | 2026-07-27 | primary | CONTESTED |
 | `kobak-excess-vocabulary` | Delving into LLM-assisted writing in biomedical publications through excess vocabulary | https://www.science.org/doi/10.1126/sciadv.adt3813 | 2025-07-02 | 2026-07-27 | primary | EVIDENCE-BASED |
 | `czuma-em-dash-prevalence` | Em-ergence of the em-dash | https://arxiv.org/abs/2606.29540 | 2026-06-28 | 2026-07-27 | primary | EVIDENCE-BASED |
 | `pangram-supporting-evidence` | Pangram supporting evidence page | https://www.pangram.com/supporting-evidence | n/a | 2026-07-27 | vendor | FOLKLORE |
@@ -65,9 +65,9 @@ remove.
 | `wikipedia-llm-guideline` | Wikipedia:Writing articles with large language models RfC close | https://en.wikipedia.org/wiki/Wikipedia:Writing_articles_with_large_language_models/RfC | 2026-03-20 | 2026-07-27 | supporting | PRACTITIONER |
 | `blader-humanizer` | blader/humanizer agent skill | https://github.com/blader/humanizer | 2026-01-18 | 2026-07-27 | supporting | PRACTITIONER |
 | `spracklen-package-hallucination` | We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code Generating LLMs | https://www.usenix.org/system/files/usenixsecurity25-spracklen.pdf | 2025-08-13 | 2026-07-27 | primary | EVIDENCE-BASED |
-| `churilov-package-hallucination-2026` | Package hallucination rates in 2026 frontier models | https://arxiv.org/abs/2605.17062 | 2026-05-16 | 2026-07-27 | primary | CONTESTED |
+| `churilov-package-hallucination-2026` | The Range Shrinks, the Threat Remains: Re-evaluating LLM Package Hallucinations on the 2026 Frontier-Model Cohort | https://arxiv.org/abs/2605.17062 | 2026-05-16 | 2026-07-27 | primary | CONTESTED |
 | `metr-developer-slowdown` | Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity | https://arxiv.org/abs/2507.09089 | 2025-07-12 | 2026-07-27 | primary | EVIDENCE-BASED |
-| `borg-null-result` | Does Co-Development with AI Assistants Lead to More Maintainable Code? | https://arxiv.org/abs/2507.00788 | 2025-07-01 | 2026-07-27 | primary | EVIDENCE-BASED |
+| `borg-null-result` | Echoes of AI: Investigating the Downstream Effects of AI Assistants on Software Maintainability | https://arxiv.org/abs/2507.00788 | 2025-07-01 | 2026-07-27 | primary | CONTESTED |
 | `gitclear-maintainability-gap` | The AI Code Quality Maintainability Gap | https://www.gitclear.com/the_ai_code_quality_maintainability_gap | 2026-01-15 | 2026-07-27 | vendor | PRACTITIONER |
 | `gitclear-copilot-quality-2025` | AI Copilot Code Quality 2025 | https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf | 2025-02-01 | 2026-07-27 | vendor | PRACTITIONER |
 | `stenberg-high-quality-chaos` | High-Quality Chaos | https://daniel.haxx.se/blog/2026/04/22/high-quality-chaos/ | 2026-04-22 | 2026-07-27 | practitioner | PRACTITIONER |
@@ -76,11 +76,11 @@ remove.
 | `willison-slop` | Slop is the new name for unwanted AI-generated content | https://simonwillison.net/2024/May/8/slop/ | 2024-05-08 | 2026-07-27 | practitioner | PRACTITIONER |
 | `merriam-webster-woty-2025` | Merriam-Webster 2025 Word of the Year: slop | https://www.merriam-webster.com/wordplay/word-of-the-year | 2025-12-15 | 2026-07-27 | authority | PRACTITIONER |
 | `eu-ai-act-article-50` | EU AI Act Article 50 transparency obligations | https://artificialintelligenceact.eu/article/50/ | n/a | 2026-07-27 | regulator | PRACTITIONER |
-| `c2pa-security-analysis` | Independent security analysis of the C2PA specifications | https://arxiv.org/abs/2604.24890 | 2026-04-27 | 2026-07-27 | primary | CONTESTED |
+| `c2pa-security-analysis` | Verifying Provenance of Digital Media: Why the C2PA Specifications Fall Short | https://arxiv.org/abs/2604.24890 | 2026-04-27 | 2026-07-27 | primary | CONTESTED |
 | `cheng-elephant-sycophancy` | ELEPHANT: measuring social sycophancy in language models | https://doi.org/10.1126/science.aec8352 | 2026-01-01 | 2026-07-27 | primary | EVIDENCE-BASED |
 | `anthropic-sycophancy-study` | Anthropic study of sycophancy in production conversations | https://www.anthropic.com/research/sycophancy | 2026-04-30 | 2026-07-27 | official | PRACTITIONER |
 | `yakura-spoken-convergence` | Empirical evidence of Large Language Model's influence on human spoken communication | https://arxiv.org/abs/2409.01754 | 2024-09-03 | 2026-07-27 | primary | CONTESTED |
-| `miletic-lexical-diversity` | Lexical diversity and reader response in LLM-modified academic text | https://arxiv.org/abs/2605.19936 | 2026-05-19 | 2026-07-27 | primary | CONTESTED |
+| `miletic-lexical-diversity` | What Are LLMs Doing to Scientific Communication? Measuring Changes in Writing Practices and Reading Experience | https://arxiv.org/abs/2605.19936 | 2026-05-19 | 2026-07-27 | primary | CONTESTED |
 
 ## Background sources
 

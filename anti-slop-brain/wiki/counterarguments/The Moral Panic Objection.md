@@ -97,13 +97,16 @@ is the single strongest piece of ledger evidence for the objection. The full
 treatment is in [[The Accessibility Objection]].
 
 `borg-null-result` is the second. Pre-registered with In-Principle Acceptance
-before data collection, 151 participants, published at ICSME 2025, and it found
-no significant differences in subsequent code evolution, completion time or
-quality between AI-assisted and unassisted development. It is the most
-carefully designed single item in the AI code quality literature and it is a
-null result. Anyone arguing that the panic is outrunning the evidence should
-cite it, and this brain cites it against itself in
-[[The Code Slop Disagreement]].
+before data collection, 151 participants, and a preprint rather than a published
+paper: arXiv 2507.00788, In-Principle Acceptance granted at ICSME, no journal
+reference. Its pre-registered Phase 2 found no significant differences in
+subsequent code evolution, completion time or quality between AI-assisted and
+unassisted development. It is the most carefully designed single item in the AI
+code quality literature and that phase is a null result. The objection does not
+get the whole study, though: Phase 1 was observational and found a 30.7 percent
+median reduction in completion time with an AI assistant. Anyone arguing that
+the panic is outrunning the evidence should cite both phases, and this brain
+cites the source against itself in [[The Code Slop Disagreement]].
 
 One figure is regularly misused in the other direction and should not be. In
 `shaib-measuring-slop`, human annotators flagged spans at a rate of 0.34 while

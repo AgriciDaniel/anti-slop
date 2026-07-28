@@ -93,10 +93,15 @@ authorship has misread both this note and [[Signs Are Not The Problem]].
 **N4, the code literature.** This brain does not claim the AI code quality
 question is settled, and it names the reason first rather than in a footnote.
 `borg-null-result` was pre-registered with In-Principle Acceptance before data
-collection, ran 151 participants, published at ICSME 2025, and found no
-significant differences in subsequent code evolution, completion time or quality
-between AI-assisted and unassisted development. Methodologically it is the
-strongest single item in the area and it is a null.
+collection and ran 151 participants. It is a preprint, arXiv 2507.00788, not a
+published paper; the In-Principle Acceptance was granted at ICSME and the study
+carries no journal reference. Its pre-registered Phase 2 found no significant
+differences in subsequent code evolution, completion time or quality between
+AI-assisted and unassisted development. Methodologically it is the strongest
+single item in the area and that phase is a null. Phase 1, observational, ran
+the opposite direction: a 30.7 percent median reduction in completion time with
+an AI assistant, and an estimated 55.9 percent speedup for habitual AI users.
+Reporting only the null is an incomplete citation.
 
 The pattern around it is worth stating without softening: the strongest
 pro-slop numbers in code come from vendors selling engineering-intelligence

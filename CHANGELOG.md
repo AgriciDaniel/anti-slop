@@ -15,8 +15,10 @@ First public release.
 ### Added
 
 - **anti-slop-plugin**, a Claude Code plugin with five skills (`anti-slop`,
-  `slop-review`, `slop-rewrite`, `slop-code`, `slop-verify`), two read-only
-  subagents, and tiered marker references.
+  `slop-review`, `slop-rewrite`, `slop-code`, `slop-verify`), two subagents, and
+  tiered marker references. `slop-grader` is read-only (`Read`, `Grep`, `Glob`).
+  `slop-verifier` is not: it also holds `Bash` and `WebFetch`, so it can execute
+  commands and reach the network.
 - **anti-slop-brain**, an Obsidian knowledge base of 62 Markdown files, 58
   content notes plus 4 spine files, with a source ledger of 43 dated entries,
   30 of them `source_type: "primary"` and 4 vendor, each carrying an evidence

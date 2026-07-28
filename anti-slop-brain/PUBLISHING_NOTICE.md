@@ -37,7 +37,7 @@ Everything below follows from that one sentence.
 | `references/claim-ledger.md` | Records which claims rest on a single source and which were second-sourced. The single-source rows are the ones a critic should attack first, so they have to be visible |
 | `wiki/` | The vault itself, including `hot.md` and `log.md`. The log records this project's own errors, including a false verification claim in its own limitations note. A corrections log that nobody can read is not a corrections log |
 | `wiki/meta/dashboard.md` | Materialised counts, so a reader can check them against `find` rather than take them on trust |
-| `.obsidian/` | The vault opens as a working Obsidian vault on clone. Stripping the config would ship a folder of Markdown and call it a vault |
+| `.obsidian/` | Tracked in two places only, `examples/sample-vault/.obsidian` and `assets/template-brain/.obsidian`, so the demo output and the scaffold template each open as a working Obsidian vault rather than a bare folder of Markdown. `wiki/` ships no `.obsidian` of its own: opening it in Obsidian creates a fresh local config, which is untracked |
 | `examples/sample-vault/` | The demo output, regenerated deterministically by `scripts/build_demo_vault.py`. CI diffs it, so a drifting demo fails the build |
 | `research/verification-ledger.md`, at the repository root | The adversarial pass over the research base, including the corrections to figures this field repeats incorrectly |
 

@@ -23,7 +23,15 @@ keywords:
   - citation-verification
   - research-integrity
   - claude-code
-license: Apache-2.0
-license-url: "https://github.com/AgriciDaniel/anti-slop/blob/main/LICENSE"
+# This repository is split-licensed, so a single identifier would be wrong.
+# Code (scripts/, tests/, schemas/, anti_slop_brain/) is Apache-2.0, see LICENSE.
+# wiki/markers/ and anti-slop-plugin/references/ are CC BY-SA 4.0, copyleft,
+# adapted from Wikipedia:Signs of AI writing. All other prose is CC BY 4.0.
+# Full content terms are in LICENSE-CONTENT and attribution is in NOTICE.
+license:
+  - Apache-2.0
+  - CC-BY-4.0
+  - CC-BY-SA-4.0
+license-url: "https://github.com/AgriciDaniel/anti-slop/blob/main/LICENSE-CONTENT"
 version: 0.1.0
 date-released: "2026-07-28"

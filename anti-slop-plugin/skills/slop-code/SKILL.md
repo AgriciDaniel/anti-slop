@@ -84,9 +84,12 @@ and the counter-evidence below.
 **Be honest that the field's evidence is split.** The strongest numbers
 claiming agentic code is worse come from vendors selling engineering
 intelligence products. The strongest null result comes from academia: Borg et
-al., ICSME 2025, pre-registered with In-Principle Acceptance, arXiv 2507.00788,
-151 participants, found no significant differences in subsequent code
-evolution, completion time or quality. A peer-reviewed MSR 2026 result
+al., arXiv 2507.00788, a preprint rather than a published paper, pre-registered
+with In-Principle Acceptance granted at ICSME, 151 participants. Its Phase 2
+found no significant differences in subsequent code evolution, completion time
+or quality; its observational Phase 1 found a 30.7 percent median reduction in
+completion time, so cite both phases and never the null alone. A peer-reviewed
+MSR 2026 result
 (Chowdhury et al.) does find pull requests handled only by code review agents
 merge at 45.20% versus 68.37% for human-only. Do not present either side as
 settled and do not use either as grounds for an authorship claim about the diff
