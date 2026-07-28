@@ -45,6 +45,37 @@ mechanical procedure that emits an artifact you can inspect.
 
 Three layers, and only the bottom two may fail a build.
 
+```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"ui-sans-serif, -apple-system, Segoe UI, Helvetica, Arial, sans-serif","fontSize":"14px","lineColor":"#A6A29C","textColor":"#3A3A3C","edgeLabelBackground":"#FFFFFF","secondaryTextColor":"#3A3A3C","tertiaryTextColor":"#3A3A3C","background":"#F7F6F3"},"flowchart":{"curve":"basis","nodeSpacing":45,"rankSpacing":60}}}%%
+flowchart LR
+    IN["Draft, diff, docs,<br/>agent output"]
+    L0["Layer 0<br/>deterministic scanners"]
+    L2["Layer 2<br/>evidence-tiered markers"]
+    L1["Layer 1<br/>structural procedures"]
+    OUT["Finding<br/>severity + confidence"]
+    NO["Authorship verdict"]
+
+    IN --> L0
+    IN --> L2
+    L0 -- "decidable, may fail a build" --> OUT
+    L2 -- "never convicts alone" --> L1
+    L1 -- "must emit an artifact" --> OUT
+    OUT -. "never, by design" .-> NO
+
+    classDef card fill:#202022,stroke:#6E6A64,stroke-width:1px,color:#F5F5F5,rx:6,ry:6
+    classDef input fill:#FFFFFF,stroke:#8C8880,color:#3A3A3C,rx:6,ry:6
+    classDef accent fill:#DC3B2F,stroke:#DC3B2F,color:#FFFFFF,rx:6,ry:6
+    classDef refused fill:#F7F6F3,stroke:#C9C5BF,color:#9A968F,stroke-dasharray:5 4,rx:6,ry:6
+
+    class L0,L1,L2 card
+    class IN input
+    class OUT accent
+    class NO refused
+```
+
+A marker never becomes a finding on its own. It routes to a procedure, and the
+procedure has to produce something a person can check.
+
 | Layer | What it is | May it fail a build |
 |---|---|---|
 | 0 | Deterministic scanners: residue, placeholders, references, dependencies, house voice | Yes, these are decidable |
@@ -52,6 +83,25 @@ Three layers, and only the bottom two may fail a build.
 | 2 | Evidence-tiered signals: excess vocabulary, em dashes, burstiness | **Never alone.** They route to layer 1 |
 
 ### The five structural tests
+
+Each test is a mechanical operation, and each one ends in an artifact rather
+than an opinion.
+
+```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"ui-sans-serif, -apple-system, Segoe UI, Helvetica, Arial, sans-serif","fontSize":"14px","lineColor":"#A6A29C","textColor":"#3A3A3C","edgeLabelBackground":"#FFFFFF","secondaryTextColor":"#3A3A3C","tertiaryTextColor":"#3A3A3C","background":"#F7F6F3"},"flowchart":{"curve":"basis","nodeSpacing":22,"rankSpacing":70}}}%%
+flowchart LR
+    D["Deletion<br/>cut the span"] --> DA["the named loss<br/>nothing convicts it"]
+    I["Inversion<br/>negate the claim"] --> IA["the written negation"]
+    S["Stranger<br/>could a non-reader write it"] --> SA["the fact only a reader knows"]
+    A["Attribution<br/>studies show what, exactly"] --> AA["the resolved citation"]
+    L["Load bearing<br/>delete the wrapper or test"] --> LA["the failing command"]
+
+    classDef test fill:#202022,stroke:#6E6A64,stroke-width:1px,color:#F5F5F5,rx:6,ry:6
+    classDef artifact fill:#FFFFFF,stroke:#DC3B2F,color:#3A3A3C,rx:6,ry:6
+
+    class D,I,S,A,L test
+    class DA,IA,SA,AA,LA artifact
+```
 
 | Test | Question | Artifact it must produce |
 |---|---|---|
