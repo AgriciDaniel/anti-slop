@@ -1,3 +1,11 @@
+> **Superseded figures warning.** This is the original research report, kept
+> for provenance. Several of its figures were later found to be wrong and are
+> corrected in `research/verification-ledger.md` and in
+> `anti-slop-brain/wiki/evidence/Superseded Figures.md`. Most importantly, the
+> Kobak prevalence figures quoted below as 10 and 30 percent come from a
+> withdrawn preprint; the published figures are 13.5 and 40 percent. Do not
+> quote this file directly. Quote the ledger.
+
 # AI Slop: A Full-Depth Research Report
 
 ## TL;DR

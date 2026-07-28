@@ -1,0 +1,151 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  brain:
+    name: brain build and tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        # The workflow lives at the repository root because that is the only
+        # place GitHub reads it, but every step below targets the brain package.
+        working-directory: anti-slop-brain
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: python -m pip install -e .
+      - name: Compile
+        run: python -m compileall scripts anti_slop_brain tests
+      - name: CLI smoke
+        run: anti-slop-brain --help
+      - name: Template vault lint
+        run: python scripts/lint_vault.py --vault assets/template-brain --template
+      - name: Scanner tests
+        run: python tests/test_scanners.py
+      - name: Adapter tests
+        run: python tests/test_adapters.py
+      - name: Pipeline tests
+        run: python tests/test_pipeline.py
+      - name: Vault substance
+        # The vault is graded by its own subject matter. Note types must be
+        # named explicitly; the scorer defaults to "spoke", which this vault
+        # does not use, and an unnamed type silently scores zero.
+        run: |
+          python scripts/score_substance.py \
+            --vault wiki \
+            --ledger references/source-ledger.json \
+            --note-type concept,marker,procedure,surface
+      - name: Demo vault drift
+        run: |
+          python scripts/build_demo_vault.py
+          git diff --exit-code -- examples/sample-vault
+      - name: Release package and audit
+        run: python scripts/package_release.py --version 0.1.0
+
+  house-style:
+    name: house style
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: No em or en dashes in deliverables
+        # A project about AI writing tells cannot ship the most cited tell.
+        # This is a house style rule, not a slop verdict, and it is enforced
+        # here rather than left to convention.
+        run: |
+          if grep -rlP '\x{2014}|\x{2013}' \
+              --include='*.md' --include='*.py' --include='*.json' \
+              --include='*.yml' --include='*.yaml' --include='*.svg' \
+              anti-slop-brain anti-slop-plugin README.md 2>/dev/null; then
+            echo "Long dash found in a deliverable. Use commas, periods, colons or parentheses."
+            exit 1
+          fi
+          echo "No long dashes found."
+      - name: No local absolute paths
+        run: |
+          if grep -rn '/var/home/\|/Users/\|C:\\\\Users' \
+              --include='*.md' --include='*.py' --include='*.json' \
+              anti-slop-brain anti-slop-plugin 2>/dev/null; then
+            echo "Local absolute path found. It will be wrong on every other machine."
+            exit 1
+          fi
+          echo "No local absolute paths found."
+
+  plugin:
+    name: plugin manifests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Manifests parse
+        run: |
+          python -c "
+          import json, pathlib, sys
+          bad = []
+          for p in pathlib.Path('.').rglob('.claude-plugin/*.json'):
+              try:
+                  json.loads(p.read_text())
+              except Exception as exc:
+                  bad.append(f'{p}: {exc}')
+          print('\n'.join(bad) if bad else 'all plugin manifests parse')
+          sys.exit(1 if bad else 0)
+          "
+      - name: Skill frontmatter
+        # Checks the description VALUE, not the raw line. A leading ">" or "|"
+        # is a YAML block scalar indicator, not an angle bracket in the text.
+        # Flagging it would be a false positive, which is exactly the failure
+        # mode this project exists to avoid.
+        run: |
+          python -c "
+          import pathlib, re, sys
+          bad = []
+          def description_value(fm):
+              m = re.search(r'^description:[ \t]*(.*)$', fm, re.M)
+              if not m:
+                  return None
+              first = m.group(1).strip()
+              if first not in ('>', '|', '>-', '|-', '>+', '|+'):
+                  return first
+              lines, started = [], False
+              for line in fm[m.end():].splitlines():
+                  if not line.strip():
+                      if started: lines.append('')
+                      continue
+                  if line[:1] in (' ', '\t'):
+                      started = True
+                      lines.append(line.strip())
+                  elif started:
+                      break
+              return ' '.join(lines).strip()
+          for p in sorted(pathlib.Path('anti-slop-plugin/skills').rglob('SKILL.md')):
+              text = p.read_text()
+              if not text.startswith('---'):
+                  bad.append(f'{p}: missing frontmatter'); continue
+              fm = text.split('---', 2)[1]
+              name = re.search(r'^name:[ \t]*(\S+)', fm, re.M)
+              if not name:
+                  bad.append(f'{p}: no name')
+              elif name.group(1) != p.parent.name:
+                  bad.append(f'{p}: name {name.group(1)} != directory {p.parent.name}')
+              desc = description_value(fm)
+              if not desc:
+                  bad.append(f'{p}: no description')
+              elif '<' in desc or '>' in desc:
+                  bad.append(f'{p}: angle bracket in description value')
+          print(chr(10).join(bad) if bad else 'all skill frontmatter valid')
+          sys.exit(1 if bad else 0)
+          "
