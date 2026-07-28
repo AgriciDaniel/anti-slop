@@ -232,7 +232,7 @@
       "supports_claims": [
         "tier1-excess-vocabulary"
       ],
-      "limitations": "The widely quoted 10 percent and 30 percent figures come from the withdrawn June 2024 preprint version and must not be used.",
+      "limitations": "The widely quoted 10 percent and 30 percent figures come from the superseded June 2024 preprint version and must not be used. The preprint at arXiv 2406.07016 has five live versions and carries no withdrawal notice, so it was revised rather than withdrawn; describing it as withdrawn would itself be a citation defect.",
       "methodology": "Over 15 million PubMed abstracts, 2010 to 2024. Peer reviewed, Science Advances 11(27), DOI 10.1126/sciadv.adt3813.",
       "source_date_note": "Crossref reports the publication date as 2025-07-04 while this ledger records 2025-07-02. Most likely an online-first versus issue date difference, but that was not confirmed. Both dates are recorded rather than one being silently overwritten. Crossref independently confirms the title, journal, volume 11 and issue 27; science.org returns HTTP 403 to automated fetch, which is a publisher block rather than non-resolution."
     },

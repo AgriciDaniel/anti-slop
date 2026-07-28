@@ -1,0 +1,57 @@
+name: Accuracy report
+description: A citation does not say what this project claims it says
+title: "accuracy: "
+labels: ["accuracy", "priority"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the most valuable kind of report and it gets priority.
+
+        There is precedent: an adversarial review found five ledger entries
+        whose titles matched no real paper, and a false verification claim in
+        the file that exists to state this project's limits. Both were fixed
+        and documented rather than quietly corrected.
+  - type: input
+    id: location
+    attributes:
+      label: Where the claim appears
+      description: File path, and a line number or heading if you have one.
+      placeholder: anti-slop-brain/wiki/detection/Watermarking.md, the SynthID table
+    validations:
+      required: true
+  - type: input
+    id: ledger-id
+    attributes:
+      label: Ledger id
+      description: The source id cited, if the claim cites one.
+      placeholder: masrour-damage-humanizers
+  - type: textarea
+    id: claim
+    attributes:
+      label: What this project claims
+      description: Quote it verbatim.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What the source actually says
+      description: Quote it verbatim, and give the URL you read it at.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of defect
+      options:
+        - Figure is wrong
+        - Figure is right but attached to the wrong comparison
+        - Identifier resolves to a different document
+        - Title does not match the real document
+        - Source is a preprint presented as published
+        - Caveat omitted, for example sample size or vendor conflict
+        - Superseded by a newer version of the same work
+        - Something else
+    validations:
+      required: true

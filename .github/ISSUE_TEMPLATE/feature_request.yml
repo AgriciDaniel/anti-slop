@@ -1,0 +1,45 @@
+name: Feature request
+description: Suggest a capability or a new marker, procedure, or surface
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before opening this, note two things this project will decline:
+
+        - Anything that determines whether a person used AI. It cannot, it is
+          built so it cannot, and adding it is out of scope.
+        - Anything that removes surface tells without addressing the substance
+          underneath. That is the failure mode this project argues against.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What goes wrong today, concretely.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: >
+        If this adds or changes a marker, give the source. Markers need corpus
+        evidence, not intuition, and each needs a stated false-positive class.
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Which layer does this belong to
+      options:
+        - Layer 0, a deterministic scanner
+        - Layer 1, a structural procedure
+        - Layer 2, an evidence-tiered marker
+        - Not sure
+    validations:
+      required: true

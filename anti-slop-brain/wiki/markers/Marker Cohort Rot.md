@@ -181,7 +181,7 @@ immediately, regardless of when the last one ran.
   in a cohort table. One report is enough to trigger a check.
 - Withdrawal, correction, or version replacement of any cited paper. This is
   what happened to the widely quoted excess-vocabulary figures, whose 10 and 30
-  percent numbers come from a withdrawn preprint version and must not be used.
+  percent numbers come from a superseded preprint version and must not be used.
 
 ## The false positives that rot manufactures
 

@@ -94,10 +94,10 @@ anti-slop/
 
 | Piece | What |
 |---|---|
-| `wiki/` | 56 notes: concepts, markers, procedures, surfaces, detection, evidence, counterarguments |
-| `references/source-ledger.json` | 42 sources, 37 primary-type, each with retrieval date, refresh date, evidence tier, and stated limitations |
+| `wiki/` | 62 notes: concepts, markers, procedures, surfaces, detection, evidence, counterarguments |
+| `references/source-ledger.json` | 43 sources, 38 primary-type, each with retrieval date, refresh date, evidence tier, and stated limitations |
 | `scripts/` | Six deterministic scanners plus two adapter lanes |
-| `tests/` | 244 checks |
+| `tests/` | 308 checks: 101 scanner, 207 adapter |
 
 ## Install
 
@@ -159,7 +159,9 @@ base, including **eight corrections to figures the field repeats incorrectly**.
 Two examples:
 
 - The widely quoted Kobak prevalence of 10 and 30 percent comes from a
-  **withdrawn preprint**. The published figures are 13.5 and 40 percent.
+  **superseded preprint version**. The published figures in Science Advances
+  are 13.5 and 40 percent. (The preprint was revised, not withdrawn; saying
+  "withdrawn" would itself be a citation defect.)
 - GitClear's 7.1 percent code churn is a **discarded projection**, never a
   measurement. The 2024 actual was 5.7 percent.
 
@@ -167,6 +169,22 @@ Where a source could not be read, that is recorded rather than guessed around.
 Where a citation could not be resolved, the claim is blocked from deliverables
 and filed as an open question rather than quietly dropped. See
 `anti-slop-brain/wiki/questions/`.
+
+## Contributing
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) first. The rules are unusual and they
+exist for reasons: every factual claim needs a ledger source with a real title
+copied from the real document, markers may never convict alone, and every fix
+needs a test verified to fail before the fix.
+
+- [Code of conduct](CODE_OF_CONDUCT.md)
+- [Security policy](SECURITY.md), including what counts as a firewall bypass
+- [Support and where answers already live](SUPPORT.md)
+- [Changelog](CHANGELOG.md)
+
+The most valuable issue you can open is an **accuracy report**: a citation that
+does not say what this project claims. There is a template for it, and it gets
+priority.
 
 ## Licence
 

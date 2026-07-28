@@ -1,1 +1,8 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/AgriciDaniel/anti-slop/security/advisories/new
+    about: Report privately through a security advisory, not a public issue.
+  - name: Question about using it
+    url: https://github.com/AgriciDaniel/anti-slop/blob/main/SUPPORT.md
+    about: Most answers are already written down. Start here.
