@@ -1,6 +1,6 @@
 ---
 type: "canon"
-title: "042. Lexical diversity and reader response in LLM-modified academic text"
+title: "007. When AI Reviews Its Own Code Recursive Self-Training Collapse in Code LLMs"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "active"
 created: "2026-07-28"
@@ -11,7 +11,7 @@ tags:
   - "#confidence/practitioner"
 confidence: "practitioner"
 related:
-  - "[[Lexical diversity and reader response in LLM-modified academic text]]"
+  - "[[When AI Reviews Its Own Code Recursive Self-Training Collapse in Code LLMs]]"
   - "[[Index]]"
   - "[[Dashboard]]"
   - "[[CONVENTIONS]]"
@@ -28,24 +28,23 @@ related:
   - "[[Weekly Report]]"
   - "[[Approval Queue]]"
 source_urls:
-  - "https://arxiv.org/abs/2605.19936"
+  - "https://arxiv.org/abs/2606.28438"
 ---
 
-# 042. Lexical diversity and reader response in LLM-modified academic text
+# 007. When AI Reviews Its Own Code Recursive Self-Training Collapse in Code LLMs
 
-Ledger: 042 | source: Lexical diversity and reader response in LLM-modified academic text | confidence: practitioner | fold: [[Lexical diversity and reader response in LLM-modified academic text]] | status: captured.
+Ledger: 007 | source: When AI Reviews Its Own Code Recursive Self-Training Collapse in Code LLMs | confidence: practitioner | fold: [[When AI Reviews Its Own Code Recursive Self-Training Collapse in Code LLMs]] | status: captured.
 
 ## What It Says
 
-- LLM-modified text shows lower lexical diversity than unmodified text
-- Expert readers nonetheless rated the LLM-modified text as more understandable and more exciting
+- AI self-review gates enter a rubber-stamp regime where acceptance scores rise while benchmark correctness falls
 
 ## Source
 
-Source: [Lexical diversity and reader response in LLM-modified academic text](https://arxiv.org/abs/2605.19936); type primary; retrieved 2026-07-27; refresh_due 2026-10-25.
+Source: [When AI Reviews Its Own Code Recursive Self-Training Collapse in Code LLMs](https://arxiv.org/abs/2606.28438); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
 
 ## Brain Hooks
 
-- Folded concept: [[Lexical diversity and reader response in LLM-modified academic text]]
+- Folded concept: [[When AI Reviews Its Own Code Recursive Self-Training Collapse in Code LLMs]]
 - Source ledger: `references/source-ledger.json`
 - Verification path: [[Claim Verification Flow]]

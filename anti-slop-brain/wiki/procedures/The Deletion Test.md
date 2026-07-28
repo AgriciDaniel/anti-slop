@@ -20,7 +20,7 @@ related:
   - "[[Documentation Surface]]"
   - "[[Excess Vocabulary|Excess Vocabulary in Biomedical Abstracts]]"
   - "[[Puffery and Undue Emphasis]]"
-  - "[[Humanizer Quality Degradation]]"
+  - "[[Humanizers|Humanizer Quality Degradation]]"
 source_urls:
   - "https://arxiv.org/abs/2509.19163"
   - "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"

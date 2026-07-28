@@ -95,13 +95,15 @@
       "section": "detection",
       "claims": [
         "GPT-4 preferred LLM-written product pitches 89 percent of the time versus human raters at 36 percent",
-        "The same bias appears for papers at 78 versus 61 percent and movies at 70 versus 58 percent, p below 10 to the minus 16"
+        "The same direction appears for papers at 78 versus 61 percent and movies at 70 versus 58 percent",
+        "The p below 10 to the minus 16 figures describe LLM selectors preferring LLM text over human text in the product and movie experiments; the papers experiment is at P equal to 0.001"
       ],
       "supports_claims": [
         "architecture-no-holistic-judgment",
         "judge-bias-favors-slop"
       ],
-      "methodology": "Peer reviewed in PNAS 122(31):e2415697122."
+      "methodology": "Peer reviewed in PNAS 122(31):e2415697122.",
+      "limitations": "The human baseline is n equal to 13 in total, 6 per dataset, and the authors write that the findings are not definitive. That n must travel with any quotation of the human-versus-model preference gap. The reported p-values test whether LLM selectors prefer LLM text, NOT the human-rater-versus-LLM-rater gap the percentages describe. That gap has no significance test in the paper. Do not attach a p-value to it."
     },
     {
       "id": "feuer-style-over-substance",
@@ -189,7 +191,7 @@
     },
     {
       "id": "song-rubber-stamp-regime",
-      "title": "Recursive collapse in AI self-review gates for code",
+      "title": "When AI Reviews Its Own Code: Recursive Self-Training Collapse in Code LLMs",
       "url": "https://arxiv.org/abs/2606.28438",
       "source_type": "primary",
       "published": "2026-06-26",
@@ -206,7 +208,8 @@
       "supports_claims": [
         "firewall-no-self-gating"
       ],
-      "limitations": "Preprint verified at abstract level only."
+      "limitations": "Preprint verified at abstract level only.",
+      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Recursive collapse in AI self-review gates for code\", which resolved to no paper. The identifier was always correct; the title was not."
     },
     {
       "id": "kobak-excess-vocabulary",
@@ -683,7 +686,7 @@
     },
     {
       "id": "churilov-package-hallucination-2026",
-      "title": "Package hallucination rates in 2026 frontier models",
+      "title": "The Range Shrinks, the Threat Remains: Re-evaluating LLM Package Hallucinations on the 2026 Frontier-Model Cohort",
       "url": "https://arxiv.org/abs/2605.17062",
       "source_type": "primary",
       "published": "2026-05-16",
@@ -703,7 +706,8 @@
         "slopsquatting-gate"
       ],
       "methodology": "Corroborated by Socket, 2026-07-22, across 199,845 responses.",
-      "limitations": "Preprint verified at abstract level."
+      "limitations": "Preprint verified at abstract level.",
+      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Package hallucination rates in 2026 frontier models\", which resolved to no paper. The identifier was always correct; the title was not."
     },
     {
       "id": "metr-developer-slowdown",
@@ -732,26 +736,28 @@
     },
     {
       "id": "borg-null-result",
-      "title": "Does Co-Development with AI Assistants Lead to More Maintainable Code?",
+      "title": "Echoes of AI: Investigating the Downstream Effects of AI Assistants on Software Maintainability",
       "url": "https://arxiv.org/abs/2507.00788",
       "source_type": "primary",
       "published": "2025-07-01",
       "retrieved": "2026-07-27",
       "last_verified": "2026-07-27",
       "refresh_due": "2026-10-25",
-      "confidence": "high",
-      "evidence_tier": "EVIDENCE-BASED",
+      "confidence": "medium",
+      "evidence_tier": "CONTESTED",
       "date_precision": "day",
       "section": "code",
       "claims": [
-        "No significant differences were found in subsequent code evolution, completion time, or quality between AI-assisted and unassisted development",
-        "The study was pre-registered with In-Principle Acceptance before data collection"
+        "Phase 2 found no significant differences in subsequent code evolution, completion time, or quality between AI-assisted and unassisted development",
+        "Phase 1, observational, found a 30.7 percent median reduction in completion time with an AI assistant, and an estimated 55.9 percent speedup for habitual AI users",
+        "The study was preregistered with In-Principle Acceptance before data collection"
       ],
       "supports_claims": [
         "code-slop-contested"
       ],
       "methodology": "151 participants. Published at ICSME 2025.",
-      "limitations": "Methodologically the strongest single item in the AI code quality literature, and it is a null result. Cite it whenever vendor code-slop figures are cited."
+      "limitations": "PREPRINT, not published. The arXiv comment reads \"Preprint of study preregistered at ICSME 2025 with In-Principal Acceptance\", and the In-Principle Acceptance was granted at the 40th ICSME in 2024. It has no journal reference. The null result is Phase 2 only. Phase 1 of the same study was observational and found the opposite direction: a 30.7 percent median reduction in completion time using an AI assistant, and an estimated 55.9 percent speedup for habitual AI users. Any citation of this source that reports only the null is incomplete.",
+      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Does Co-Development with AI Assistants Lead to More Maintainable Code?\", which resolved to no paper. The identifier was always correct; the title was not."
     },
     {
       "id": "gitclear-maintainability-gap",
@@ -945,7 +951,7 @@
     },
     {
       "id": "c2pa-security-analysis",
-      "title": "Independent security analysis of the C2PA specifications",
+      "title": "Verifying Provenance of Digital Media: Why the C2PA Specifications Fall Short",
       "url": "https://arxiv.org/abs/2604.24890",
       "source_type": "primary",
       "published": "2026-04-27",
@@ -964,7 +970,8 @@
       "supports_claims": [
         "provenance-immature"
       ],
-      "limitations": "Preprint verified at abstract level. Claims that C2PA is now ISO/IEC 22144 could not be verified against any primary source and appear only in marketing material."
+      "limitations": "Preprint verified at abstract level. Claims that C2PA is now ISO/IEC 22144 could not be verified against any primary source and appear only in marketing material.",
+      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Independent security analysis of the C2PA specifications\", which resolved to no paper. The identifier was always correct; the title was not."
     },
     {
       "id": "cheng-elephant-sycophancy",
@@ -1040,7 +1047,7 @@
     },
     {
       "id": "miletic-lexical-diversity",
-      "title": "Lexical diversity and reader response in LLM-modified academic text",
+      "title": "What Are LLMs Doing to Scientific Communication? Measuring Changes in Writing Practices and Reading Experience",
       "url": "https://arxiv.org/abs/2605.19936",
       "source_type": "primary",
       "published": "2026-05-19",
@@ -1053,13 +1060,38 @@
       "section": "counterarguments",
       "claims": [
         "LLM-modified text shows lower lexical diversity than unmodified text",
-        "Expert readers nonetheless rated the LLM-modified text as more understandable and more exciting"
+        "Domain experts rated LLM-improved texts as more understandable and more exciting",
+        "The same experts expressed negative qualitative attitudes towards LLMs, so the quantitative rating and the stated attitude point in opposite directions"
       ],
       "supports_claims": [
         "slop-not-always-worse"
       ],
       "methodology": "Over 37,000 ACL Anthology papers.",
-      "limitations": "Preprint verified at abstract level. Directly complicates the premise that slop is self-evidently worse writing."
+      "limitations": "Preprint verified at abstract level. Directly complicates the premise that slop is self-evidently worse writing.",
+      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Lexical diversity and reader response in LLM-modified academic text\", which resolved to no paper. The identifier was always correct; the title was not."
+    },
+    {
+      "id": "chowdhury-code-review-agents",
+      "title": "From Industry Claims to Empirical Reality: An Empirical Study of Code Review Agents in Pull Requests",
+      "url": "https://arxiv.org/abs/2604.03196",
+      "source_type": "primary",
+      "published": "2026-04-03",
+      "retrieved": "2026-07-28",
+      "last_verified": "2026-07-28",
+      "refresh_due": "2026-10-26",
+      "confidence": "medium",
+      "evidence_tier": "EVIDENCE-BASED",
+      "date_precision": "day",
+      "section": "code",
+      "claims": [
+        "Pull requests handled only by code review agents achieve a 45.20 percent merge rate, 23.17 percentage points lower than human-only pull requests at 68.37 percent",
+        "60.2 percent of closed agent-only pull requests fall into the 0 to 30 percent signal range"
+      ],
+      "supports_claims": [
+        "agentic-review-weak"
+      ],
+      "methodology": "Accepted at the 23rd International Conference on Mining Software Repositories, MSR 2026. Authors Kowshik Chowdhury, Dipayan Banik, K M Ferdous, Shazibul Islam Shamim.",
+      "limitations": "Previously blocked from this ledger because an earlier research pass recorded the wrong arXiv identifier, 2603.28592, which is Liu et al. on technical debt. The correct identifier is 2604.03196, resolved 2026-07-28. Accepted at MSR 2026; verified at abstract level."
     }
   ]
 }

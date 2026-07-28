@@ -27,9 +27,19 @@ the text. None of them asks whether the writing is good, and none of them
 asks who wrote it. A vault that pads notes to hit a line floor fails these
 counts, which is the point.
 
+Note types are not guessable, so they are not guessed. `--note-type` defaults
+to `spoke`, which is the type the original scorer was written against. A vault
+that uses other types must name them. If the filter selects nothing while the
+vault does hold typed notes, this is a bad invocation and it exits 2 naming the
+types actually present. A score of zero means measured and bad; it never means
+the wrong flag was passed.
+
 Usage:
-    python3 scripts/score_substance.py --vault wiki --ledger references/source-ledger.json
-    python3 scripts/score_substance.py --vault wiki --format json
+    python3 scripts/score_substance.py --vault wiki \
+        --ledger references/source-ledger.json \
+        --note-type concept,marker,procedure,surface
+    python3 scripts/score_substance.py --vault wiki \
+        --note-type concept,marker,procedure,surface --format json
 
 Exit codes: 0 clean, 1 findings, 2 usage error.
 """
@@ -241,6 +251,19 @@ def load_spoke_notes(
     return spoke_notes
 
 
+def present_note_types(vault_root: Path) -> list[str]:
+    """Return every frontmatter type value that actually occurs in the vault."""
+    found: set[str] = set()
+    for path in sorted(vault_root.rglob("*.md")):
+        if path.name == "_index.md":
+            continue
+        frontmatter, _ = split_frontmatter(path.read_text(encoding="utf-8", errors="replace"))
+        note_type = frontmatter_type(frontmatter)
+        if note_type:
+            found.add(note_type)
+    return sorted(found)
+
+
 def find_near_duplicate_pairs(spoke_notes: list[dict[str, Any]]) -> list[dict[str, Any]]:
     inverted: dict[int, list[int]] = defaultdict(list)
     for index, note in enumerate(spoke_notes):
@@ -368,10 +391,22 @@ def check_wiki_substance(
     source_id_pattern = compile_source_id_pattern(source_ids)
     spoke_notes = load_spoke_notes(vault_root, source_id_pattern, url_to_source_ids, note_type)
     if not spoke_notes:
+        wanted = sorted({note_type} if isinstance(note_type, str) else note_type)
+        available = present_note_types(vault_root)
+        if available:
+            raise UsageError(
+                "--note-type "
+                + ",".join(wanted)
+                + f" matched no notes under {vault_root}, but the vault does contain "
+                + f"typed notes. Types present: {', '.join(available)}. "
+                + "Rerun with --note-type "
+                + ",".join(available)
+                + ". A score is only reported for a population that was measured."
+            )
         return {
             "ok": False,
             "score": 0,
-            "notes": [f"no type: {note_type} notes found under {vault_root}"],
+            "notes": [f"no typed notes at all found under {vault_root}"],
             "critical": [],
             "metrics": {},
             "offenders": {},
@@ -509,8 +544,9 @@ def main(argv: list[str] | None = None) -> int:
         help=(
             "Comma separated frontmatter type: values to score. Default spoke. "
             "A vault that splits content across several types, for example "
-            "concept,marker,procedure,surface, must name them all or the scored "
-            "population will be empty and the score will read zero."
+            "concept,marker,procedure,surface, must name them all. If the filter "
+            "selects nothing while the vault does hold typed notes, this exits 2 "
+            "and names the types present rather than reporting a score of zero."
         ),
     )
     parser.add_argument("--format", choices=("text", "json"), default="text")

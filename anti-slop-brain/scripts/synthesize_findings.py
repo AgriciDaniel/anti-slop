@@ -37,7 +37,13 @@ The severity rubric
             routing evidence was a Tier 2 or Tier 3 marker. Tier 2 is a
             population level indicator and Tier 3 is folklore, so the
             impact claim that rests on it is weak even when the procedure
-            convicted the span.
+            convicted the span. A routed marker whose tier cannot be
+            resolved lands here too, because unresolvable routing evidence
+            fails closed rather than defaulting to MEDIUM.
+
+Rule 5. The envelope is validated, not trusted. `require_envelope` runs the
+same schema and the same cross field checks `ingest_review_input.py` runs.
+A hand written envelope that skipped the importer buys nothing.
 
 The confidence rubric
 
@@ -94,10 +100,23 @@ from adapter_common import (  # noqa: E402
     spans_overlap,
     stable_id,
     validate_instance,
+    validate_or_refuse,
 )
 
 TOOL = "synthesize_findings"
 SCHEMA = "findings.schema.json"
+ENVELOPE_SCHEMA = "review-input.schema.json"
+
+# The keys the envelope inherits from the review input document. Everything
+# else on the envelope is bookkeeping this module checks by hand.
+ENVELOPE_PAYLOAD_KEYS = (
+    "review_id",
+    "reference_date",
+    "artifact",
+    "scanner_findings",
+    "marker_hits",
+    "procedure_results",
+)
 
 FIREWALL = [
     "This report names defects. It does not report origin and it carries no authorship field.",
@@ -179,8 +198,20 @@ def routing_for_scanner(scanner: str, rule: str) -> tuple[str, str]:
     return SCANNER_ROUTING[scanner]
 
 
-def severity_for(defect_kind: str, procedure: str, tier: int | None) -> tuple[str, str]:
-    """Return the impact severity and the sentence that justifies it."""
+def severity_for(
+    defect_kind: str,
+    procedure: str,
+    tier: int | None,
+    routed_marker_unresolved: bool = False,
+) -> tuple[str, str]:
+    """Return the impact severity and the sentence that justifies it.
+
+    `routed_marker_unresolved` is the fail closed path. A finding that claims a
+    routed marker whose tier cannot be resolved is untrusted routing evidence,
+    and untrusted evidence must not buy a stronger severity than the weakest
+    marker would have. Defaulting it to MEDIUM would make a Tier 3 folklore
+    marker worth more when its record is missing than when it is present.
+    """
     if defect_kind in {
         "fabricated_citation",
         "fabricated_reference",
@@ -190,6 +221,12 @@ def severity_for(defect_kind: str, procedure: str, tier: int | None) -> tuple[st
         return "HIGH", (
             "HIGH because a fabricated fact, citation or API is the defect class that "
             "carries real downstream harm, regardless of which marker pointed at it."
+        )
+    if procedure != "attribution" and routed_marker_unresolved:
+        return "LOW", (
+            "LOW because this finding claims a routed marker whose tier could not be "
+            "resolved from marker_hits. Unresolvable routing evidence is treated as "
+            "untrusted rather than assumed to be strong."
         )
     if procedure != "attribution" and tier in (2, 3):
         return "LOW", (
@@ -357,11 +394,14 @@ def build_procedure_findings(
             continue
 
         tier = marker["tier"] if marker else None
+        marker_unresolved = bool(marker_id) and marker is None
         defect_kind = PROCEDURE_DEFECT_KIND[procedure]
         corroborated = sorted(
             {rule for rule, other in scanner_spans if spans_overlap(span, other)}
         )
-        severity, why_severity = severity_for(defect_kind, procedure, tier)
+        severity, why_severity = severity_for(
+            defect_kind, procedure, tier, routed_marker_unresolved=marker_unresolved
+        )
         confidence, why_confidence = confidence_for(
             "layer1-procedure", bool(artifact), corroborated, tier
         )
@@ -464,7 +504,84 @@ def synthesize(envelope: dict, reference_date: str) -> dict:
     }
 
 
+def envelope_as_review_input(envelope: dict) -> dict:
+    """Project the envelope back onto the shape review-input.schema.json declares.
+
+    The envelope is the normalized review input plus four bookkeeping keys, so
+    stripping the bookkeeping gives a document the existing schema can judge.
+    No second schema file is introduced, and no rule can drift between the two.
+    """
+    document: dict = {"schema_version": ENVELOPE_VERSION}
+    for key in ENVELOPE_PAYLOAD_KEYS:
+        if key in envelope:
+            document[key] = envelope[key]
+    return document
+
+
+def require_envelope_invariants(envelope: dict) -> None:
+    """Re-check the cross field rules the importer enforces.
+
+    JSON Schema cannot express a reference from one array into another, so the
+    importer checks these by hand. A caller that skipped the importer would
+    otherwise inherit none of them, and a dangling routing claim is exactly the
+    thing that lets an untraceable marker reach a finding.
+    """
+    marker_ids: set[str] = set()
+    for index, hit in enumerate(envelope.get("marker_hits", [])):
+        marker_id = hit.get("marker_id")
+        if marker_id in marker_ids:
+            raise AdapterError(
+                "duplicate_marker_id",
+                f"marker_id {marker_id!r} appears more than once",
+                [
+                    {
+                        "pointer": f"/marker_hits/{index}/marker_id",
+                        "keyword": "unique",
+                        "message": "each marker class is recorded once per review",
+                    }
+                ],
+            )
+        marker_ids.add(marker_id)
+
+    result_ids: set[str] = set()
+    for index, row in enumerate(envelope.get("procedure_results", [])):
+        result_id = row.get("result_id")
+        if result_id in result_ids:
+            raise AdapterError(
+                "duplicate_result_id",
+                f"result_id {result_id!r} appears more than once",
+                [
+                    {
+                        "pointer": f"/procedure_results/{index}/result_id",
+                        "keyword": "unique",
+                        "message": "each procedure run is recorded once",
+                    }
+                ],
+            )
+        result_ids.add(result_id)
+        routed_from = row.get("routed_from_marker_id")
+        if isinstance(routed_from, str) and routed_from not in marker_ids:
+            raise AdapterError(
+                "dangling_marker_reference",
+                f"procedure result {result_id!r} routes from unknown marker {routed_from!r}",
+                [
+                    {
+                        "pointer": f"/procedure_results/{index}/routed_from_marker_id",
+                        "keyword": "reference",
+                        "message": "every routed_from_marker_id must appear in marker_hits",
+                    }
+                ],
+            )
+
+
 def require_envelope(envelope: dict) -> None:
+    """Refuse anything that is not a valid, importer-shaped review envelope.
+
+    Checking the two header keys is not enough. Every guarantee the importer
+    provides would be optional if a caller could hand write an envelope, so the
+    envelope is validated against the same schema and the same cross field rules
+    the importer applies before a single finding is derived from it.
+    """
     if envelope.get("tool") != "ingest_review_input" or envelope.get("ok") is not True:
         raise AdapterError(
             "not_a_review_envelope",
@@ -484,6 +601,8 @@ def require_envelope(envelope: dict) -> None:
                 f"envelope is missing {key}",
                 [{"pointer": f"/{key}", "keyword": "required", "message": "is required and missing"}],
             )
+    validate_or_refuse(envelope_as_review_input(envelope), ENVELOPE_SCHEMA, "review envelope")
+    require_envelope_invariants(envelope)
 
 
 def main(argv: list[str] | None = None) -> int:

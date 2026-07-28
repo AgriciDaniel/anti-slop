@@ -17,7 +17,7 @@ related:
   - "[[Evidence Tiers]]"
   - "[[The Firewall|Severity and Confidence]]"
   - "[[The Firewall]]"
-  - "[[Package Hallucination and Slopsquatting]]"
+  - "[[Package Hallucination Evidence|Package Hallucination and Slopsquatting]]"
   - "[[Evidence Quality Ladder|Vendor Evidence Conflicts]]"
   - "[[The Generation Verification Asymmetry|Generation-Verification Asymmetry]]"
   - "[[Prose Surface]]"
@@ -154,7 +154,7 @@ the rate seen through 2025, the confirmed-vulnerability rate returned to 15 to
 16 percent, and curl returned to HackerOne on 2026-03-01 without a bounty. It is
 a maintainer account rather than a controlled study, but it directly contradicts
 the common claim that curl abandoned bug bounties permanently. The lesson it
-supports is [[Code Surface|Triage Over Bans]]: raise the cost of submitting an unverified
+supports is Triage Over Bans: raise the cost of submitting an unverified
 artifact, do not ban a tool.
 
 ## Related
@@ -163,7 +163,7 @@ artifact, do not ban a tool.
 - [[Commit and Review Surface]]
 - [[Agent Output Surface]]
 - [[The Load Bearing Test|The Load-Bearing Test]]
-- [[Workslop Downstream Cost]]
+- [[Workslop|Workslop Downstream Cost]]
 - [[Marker Cohort Rot]]
 - [[Note Conventions]]
 - [[overview|Overview]]

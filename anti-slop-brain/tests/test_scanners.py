@@ -151,6 +151,155 @@ def test_scan_residue(tmp: Path) -> None:
     expect_exit("returns exit 2 for a missing path", missing_run, 2)
 
 
+def test_scan_residue_code_and_quote_exemptions(tmp: Path) -> None:
+    """Regression: an indented code block is a code block, a quote is a quote.
+
+    Before the fix `scan_common.fenced_line_numbers` tracked only backtick and
+    tilde fences, so a residue token in a four-space indented block fired, and
+    `scan_residue.py` had no quoted-source exemption even though `lint_voice.py`
+    documented one. Both made it impossible to describe a residue token in the
+    project's own prose without suppressing the scanner.
+    """
+    print("scan_residue, indented code and quoted source")
+
+    indented = write(
+        tmp,
+        "residue-indented.md",
+        "# How residue markers look\n\n"
+        "The tokens below are shown in a four-space indented code block, which\n"
+        "markdown renders exactly like a fenced one:\n\n"
+        "    :contentReference[oaicite:0]{index=0}\n"
+        "    [cite: 3, 12]\n"
+        "    [attached_file:1]\n\n"
+        "That block is a code sample, not a defect in this document.\n",
+    )
+    indented_run = run("scan_residue.py", [str(indented), "--format", "json"])
+    expect_exit("stays silent on residue inside an indented code block", indented_run, 0)
+
+    quoted = write(
+        tmp,
+        "residue-quoted.md",
+        "# Reviewing a defective source\n\n"
+        "The reviewer recorded what the pasted text actually said:\n\n"
+        '> The pasted text read: "the study found X oaicite and Y".\n'
+        "> [cite: 3, 12] survived in the same sentence.\n\n"
+        "Quoted source text is not ours to edit.\n",
+    )
+    quoted_run = run("scan_residue.py", [str(quoted), "--format", "json"])
+    expect_exit("stays silent on residue inside a quoted source line", quoted_run, 0)
+    payload = json.loads(quoted_run.stdout)
+    check(
+        "records the quoted matches it deliberately skipped",
+        payload["inventory"]["quoted_lines_exempt"] >= 2,
+        str(payload.get("inventory")),
+    )
+
+    include_quotes_run = run(
+        "scan_residue.py", [str(quoted), "--include-quotes", "--format", "json"]
+    )
+    expect_exit("can be asked to scan quoted lines too", include_quotes_run, 1)
+
+    # The exemptions must not become a blanket amnesty.
+    prose = write(
+        tmp,
+        "residue-prose.md",
+        "# Draft\n\n"
+        "The finding held across every trial oaicite and the effect persisted.\n\n"
+        "- a list item\n\n"
+        "  A continuation paragraph that still carries [cite: 3, 12] inline.\n",
+    )
+    prose_run = run("scan_residue.py", [str(prose), "--format", "json"])
+    expect_exit("still fires on a token in ordinary prose", prose_run, 1)
+    found = rules_in(prose_run)
+    for rule in ("residue.oaicite", "residue.gemini_cite"):
+        check(
+            f"indent handling does not suppress {rule} in prose",
+            rule in found,
+            f"(found {sorted(found)})",
+        )
+
+
+def test_scan_refs_is_code_aware_and_deterministic(tmp: Path) -> None:
+    """Regression: fences were invisible to scan_refs, and it read the clock.
+
+    `extract_references` walked raw lines, so a deliberately fake DOI inside a
+    bibtex fence produced a finding, which is the opposite of what scan_residue
+    does. Separately, `date.today()` made `refs.arxiv_future` change with the
+    calendar in a project that claims determinism everywhere else.
+    """
+    print("scan_refs, code awareness and time determinism")
+
+    fenced = write(
+        tmp,
+        "refs-fenced.md",
+        "# What a fabricated citation looks like\n\n"
+        "The entry below is deliberately fake and is quoted as an example:\n\n"
+        "```bibtex\n"
+        "@article{fake2026,\n"
+        "  doi = {10.0000/xxxx},\n"
+        "  url = {https://example.com/paper},\n"
+        "}\n"
+        "```\n\n"
+        "An inline sample such as `doi:10.0000/xxxx` is a literal too.\n\n"
+        "    doi:10.0000/xxxx\n"
+        "    https://example.com/paper\n",
+    )
+    fenced_run = run("scan_refs.py", [str(fenced), "--format", "json"])
+    expect_exit("stays silent on a fake DOI inside a code block", fenced_run, 0)
+
+    prose = write(
+        tmp,
+        "refs-prose-doi.md",
+        "# References\n\n"
+        "1. A study, doi:10.0000/xxxx, at https://example.com/paper reported it.\n",
+    )
+    prose_run = run("scan_refs.py", [str(prose), "--format", "json"])
+    expect_exit("still fires on the same DOI written in prose", prose_run, 1)
+    found = rules_in(prose_run)
+    for rule in ("refs.doi_placeholder", "refs.url_placeholder_host"):
+        check(f"detects {rule} outside code", rule in found, f"(found {sorted(found)})")
+
+    include_code_run = run("scan_refs.py", [str(fenced), "--include-code", "--format", "json"])
+    expect_exit("can be asked to extract from code blocks too", include_code_run, 1)
+
+    future = write(
+        tmp,
+        "refs-future-arxiv.md",
+        "# References\n\n1. A preprint, arXiv:2812.09999, is dated in the future.\n",
+    )
+    pinned = ["--format", "json", "--reference-date", "2026-07-28"]
+    first = run("scan_refs.py", [str(future), *pinned])
+    second = run("scan_refs.py", [str(future), *pinned])
+    expect_exit("a pinned reference date still reports the future arXiv ID", first, 1)
+    check(
+        "two runs at a pinned reference date are byte identical",
+        first.stdout == second.stdout,
+        "scan_refs output differs between two runs at the same reference date",
+    )
+    payload = json.loads(first.stdout)
+    check(
+        "records the reference date it was anchored to",
+        payload["inventory"]["reference_date"] == "2026-07-28",
+        str(payload["inventory"].get("reference_date")),
+    )
+    check(
+        "the future arXiv rule is the one that fired",
+        "refs.arxiv_future" in rules_in(first),
+        str(sorted(rules_in(first))),
+    )
+
+    # The same identifier is not in the future when the date is moved past it.
+    later = run("scan_refs.py", [str(future), "--format", "json", "--reference-date", "2029-01-15"])
+    check(
+        "the future arXiv rule is anchored to the reference date, not the clock",
+        "refs.arxiv_future" not in rules_in(later),
+        str(sorted(rules_in(later))),
+    )
+
+    bad_date = run("scan_refs.py", [str(future), "--reference-date", "28-07-2026"])
+    expect_exit("rejects a non ISO reference date with exit 2", bad_date, 2)
+
+
 def test_scan_placeholders(tmp: Path) -> None:
     print("scan_placeholders")
     dirty = write(
@@ -532,6 +681,84 @@ def test_score_substance(tmp: Path) -> None:
     expect_exit("returns exit 2 for a missing vault", missing_run, 2)
 
 
+def test_score_substance_wrong_note_type_is_a_usage_error(tmp: Path) -> None:
+    """Regression: the default note type was a trap.
+
+    `--note-type` defaults to spoke and the usage block documented an
+    invocation without the flag, so running the documented command against a
+    vault that uses other types returned score 0, ok false, exit 1. A score of
+    zero has to mean measured and bad. It must never mean the wrong flag was
+    passed, because a build reading that number cannot tell the two apart.
+    """
+    print("score_substance, wrong note type")
+    ledger = write(
+        tmp,
+        "note-type-ledger.json",
+        json.dumps(
+            {
+                "sources": [
+                    {"id": "SRC-001", "url": "https://arxiv.org/abs/2509.19163"},
+                    {"id": "SRC-002", "url": "https://doi.org/10.1126/sciadv.adt3813"},
+                    {"id": "SRC-003", "url": "https://arxiv.org/abs/2606.29540"},
+                    {"id": "SRC-004", "url": "https://arxiv.org/abs/2512.09292"},
+                ]
+            },
+            indent=2,
+        )
+        + "\n",
+    )
+    vault = tmp / "vault-typed"
+    write(vault, "concepts/first.md", build_note("kappa", ("SRC-001", "SRC-002"), "Judge agreement"))
+    write(vault, "concepts/second.md", build_note("omega", ("SRC-003", "SRC-004"), "Dash evidence"))
+    for path in sorted(vault.rglob("*.md")):
+        path.write_text(
+            path.read_text(encoding="utf-8").replace("type: spoke", "type: concept", 1),
+            encoding="utf-8",
+        )
+
+    wrong = run("score_substance.py", ["--vault", str(vault), "--format", "json"])
+    expect_exit("a note type that matches nothing is a usage error, not a score", wrong, 2)
+    message = wrong.stdout + wrong.stderr
+    check(
+        "the usage error names the note types actually present",
+        "concept" in message and "spoke" in message,
+        message,
+    )
+    check(
+        "the usage error does not report a score",
+        '"score"' not in wrong.stdout,
+        wrong.stdout,
+    )
+
+    right = run(
+        "score_substance.py",
+        [
+            "--vault", str(vault),
+            "--ledger", str(ledger),
+            "--note-type", "concept",
+            "--format", "json",
+        ],
+    )
+    expect_exit("the named note type scores normally", right, 0)
+    check(
+        "a measured population reports a real score",
+        json.loads(right.stdout)["metrics"]["spoke_count"] == 2,
+        right.stdout[:200],
+    )
+
+    # An untyped vault is still measured, not refused: there is no other flag
+    # value that would have worked, so exit 2 would be misleading.
+    untyped = tmp / "vault-untyped"
+    write(untyped, "notes/plain.md", "# Plain note\n\nNo frontmatter at all.\n")
+    empty = run("score_substance.py", ["--vault", str(untyped), "--format", "json"])
+    expect_exit("a vault with no typed notes at all is still measured", empty, 1)
+    check(
+        "an unmeasurable vault reports score zero rather than a usage error",
+        json.loads(empty.stdout)["score"] == 0,
+        empty.stdout[:200],
+    )
+
+
 def test_no_forbidden_characters() -> None:
     print("house style of the scanners themselves")
     offenders: list[str] = []
@@ -574,11 +801,14 @@ def main() -> int:
     with tempfile.TemporaryDirectory(prefix="anti-slop-scanners-") as raw:
         tmp = Path(raw)
         test_scan_residue(tmp)
+        test_scan_residue_code_and_quote_exemptions(tmp)
+        test_scan_refs_is_code_aware_and_deterministic(tmp)
         test_scan_placeholders(tmp)
         test_scan_refs(tmp)
         test_scan_packages(tmp)
         test_lint_voice(tmp)
         test_score_substance(tmp)
+        test_score_substance_wrong_note_type_is_a_usage_error(tmp)
         test_no_forbidden_characters()
         test_never_emits_authorship_verdict(tmp)
     print()

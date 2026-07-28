@@ -169,9 +169,38 @@ elsewhere or demoted.
 Three further limits on the research itself. Most 2026 entries in the ledger are
 arXiv preprints verified at abstract level only, and are tiered `CONTESTED`
 accordingly. The search budget was exhausted before three loose ends could be
-closed, including the Nature correction above. And every arXiv identifier in the
-ledger was confirmed to resolve to a document with a matching title, which is a
-weaker guarantee than having read the paper and is not presented as more.
+closed, including the Nature correction above.
+
+### A false claim that used to sit here
+
+An earlier version of this note asserted that "every arXiv identifier in the
+ledger was confirmed to resolve to a document with a matching title." That was
+untrue when it was written. An adversarial pass on 2026-07-28 resolved all 23
+identifiers and found **five whose ledger title matched no paper**: the entries
+now corrected as `song-rubber-stamp-regime`,
+`churilov-package-hallucination-2026`, `c2pa-security-analysis`,
+`miletic-lexical-diversity`, and `borg-null-result` all carried invented
+descriptive titles rather than real ones.
+
+The identifiers themselves were all correct, and no citation was fabricated.
+But a brain built to catch unverified assertions had published an unverified
+assertion about its own verification, which is the exact failure its
+[[The Attribution Test]] describes at rung two: a real, correctly named source
+stapled to a claim it does not support.
+
+What is true now, stated precisely:
+
+| Claim | Status |
+| --- | --- |
+| All 23 arXiv identifiers resolve | Verified 2026-07-28 |
+| Each resolves to a paper on the claimed topic | Verified 2026-07-28 |
+| Ledger titles match the real titles | Verified after five corrections |
+| Papers were read in full | **No.** Most are abstract level only |
+| Every quoted figure appears in the source | **Not established.** Spot-checked, not exhaustive |
+
+The corrected entries carry a `title_correction_note` recording what they used
+to say. The record of the error is kept rather than quietly overwritten, on the
+same reasoning as [[Superseded Figures]].
 
 ## Adding a limit
 

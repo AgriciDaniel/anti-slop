@@ -12,14 +12,14 @@ tags:
 confidence: "practitioner"
 related:
   - "[[Excess Vocabulary|Excess Vocabulary in Biomedical Abstracts]]"
-  - "[[Em Dash Population Prevalence]]"
+  - "[[The Em Dash|Em Dash Population Prevalence]]"
   - "[[Evidence Tiers]]"
   - "[[The Deletion Test]]"
   - "[[The Stranger Test]]"
   - "[[The Attribution Test]]"
   - "[[Detector Bias Against Language Learners]]"
   - "[[Marker Cohort Rot]]"
-  - "[[Humanizer Quality Degradation]]"
+  - "[[Humanizers|Humanizer Quality Degradation]]"
   - "[[The Firewall]]"
 source_urls:
   - "https://www.science.org/doi/10.1126/sciadv.adt3813"

@@ -1,6 +1,6 @@
 ---
 type: "concept"
-title: "Package hallucination rates in 2026 frontier models"
+title: "The Range Shrinks, the Threat Remains Re-evaluating LLM Package Hallucinations o"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "active"
 created: "2026-07-28"
@@ -31,7 +31,7 @@ source_urls:
   - "https://arxiv.org/abs/2605.17062"
 ---
 
-# Package hallucination rates in 2026 frontier models
+# The Range Shrinks, the Threat Remains Re-evaluating LLM Package Hallucinations o
 
 ## What It Says
 
@@ -41,14 +41,14 @@ source_urls:
 
 ## Source
 
-Source: [Package hallucination rates in 2026 frontier models](https://arxiv.org/abs/2605.17062); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [The Range Shrinks, the Threat Remains Re-evaluating LLM Package Hallucinations o](https://arxiv.org/abs/2605.17062); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
 
 > [!gap]
 > Ledger confidence is medium/practitioner. Treat this as useful operating evidence, not settled authority, until stronger support is captured.
 
 ## Canon Backlink
 
-- Canon ledger entry: [references/canon/027-package-hallucination-rates-in-2026-frontier-models.md](../../../../references/canon/027-package-hallucination-rates-in-2026-frontier-models.md)
+- Canon ledger entry: [references/canon/027-the-range-shrinks-the-threat-remains-re-evaluating-llm-package-h.md](../../../../references/canon/027-the-range-shrinks-the-threat-remains-re-evaluating-llm-package-h.md)
 - Source ledger: `references/source-ledger.json`
 
 ## Related

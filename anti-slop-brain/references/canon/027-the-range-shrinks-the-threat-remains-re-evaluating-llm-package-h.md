@@ -1,6 +1,6 @@
 ---
 type: "canon"
-title: "027. Package hallucination rates in 2026 frontier models"
+title: "027. The Range Shrinks, the Threat Remains Re-evaluating LLM Package Hallucinations o"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "active"
 created: "2026-07-28"
@@ -11,7 +11,7 @@ tags:
   - "#confidence/practitioner"
 confidence: "practitioner"
 related:
-  - "[[Package hallucination rates in 2026 frontier models]]"
+  - "[[The Range Shrinks, the Threat Remains Re-evaluating LLM Package Hallucinations o]]"
   - "[[Index]]"
   - "[[Dashboard]]"
   - "[[CONVENTIONS]]"
@@ -31,9 +31,9 @@ source_urls:
   - "https://arxiv.org/abs/2605.17062"
 ---
 
-# 027. Package hallucination rates in 2026 frontier models
+# 027. The Range Shrinks, the Threat Remains Re-evaluating LLM Package Hallucinations o
 
-Ledger: 027 | source: Package hallucination rates in 2026 frontier models | confidence: practitioner | fold: [[Package hallucination rates in 2026 frontier models]] | status: captured.
+Ledger: 027 | source: The Range Shrinks, the Threat Remains Re-evaluating LLM Package Hallucinations o | confidence: practitioner | fold: [[The Range Shrinks, the Threat Remains Re-evaluating LLM Package Hallucinations o]] | status: captured.
 
 ## What It Says
 
@@ -43,10 +43,10 @@ Ledger: 027 | source: Package hallucination rates in 2026 frontier models | conf
 
 ## Source
 
-Source: [Package hallucination rates in 2026 frontier models](https://arxiv.org/abs/2605.17062); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [The Range Shrinks, the Threat Remains Re-evaluating LLM Package Hallucinations o](https://arxiv.org/abs/2605.17062); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
 
 ## Brain Hooks
 
-- Folded concept: [[Package hallucination rates in 2026 frontier models]]
+- Folded concept: [[The Range Shrinks, the Threat Remains Re-evaluating LLM Package Hallucinations o]]
 - Source ledger: `references/source-ledger.json`
 - Verification path: [[Claim Verification Flow]]

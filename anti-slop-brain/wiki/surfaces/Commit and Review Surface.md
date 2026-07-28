@@ -178,6 +178,6 @@ that none of it licenses a statement about who or what wrote a given commit. See
 - [[Agent Output Surface]]
 - [[Dependency Surface]]
 - [[Marker Cohort Rot]]
-- [[Workslop Downstream Cost]]
+- [[Workslop|Workslop Downstream Cost]]
 - [[Note Conventions]]
 - [[index|Index]]

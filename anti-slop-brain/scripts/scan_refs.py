@@ -35,8 +35,18 @@ procedure with a human-readable artifact.
 This scanner reports mechanical defects only. A defective citation is a
 defect no matter who wrote it. No authorship verdict is ever emitted.
 
+Code awareness: references are extracted through the same shared masking
+`scan_residue.py` uses, so a deliberately fake DOI inside a ```bibtex fence,
+an indented code block or an inline code span is a code sample rather than a
+citation. `--include-code` extracts from code regions anyway.
+
+Determinism: the only calendar-dependent rule is the future arXiv check.
+It reads `--reference-date`, which defaults to today, so a pinned date makes
+two runs byte identical. Nothing else here reads the clock.
+
 Usage:
     python3 scripts/scan_refs.py [PATH ...] [--format text|json]
+    python3 scripts/scan_refs.py paper.md --reference-date 2026-07-28
     python3 scripts/scan_refs.py paper.md --online --timeout 10
 
 Exit codes: 0 clean, 1 findings, 2 usage error.
@@ -63,6 +73,7 @@ from scan_common import (  # noqa: E402
     load_documents,
     run_cli,
     snippet_for,
+    starts_in,
 )
 
 TOOL = "scan_refs"
@@ -118,44 +129,69 @@ def strip_trailing(value: str) -> str:
     return value.rstrip(TRAILING_PUNCTUATION)
 
 
-def extract_references(document: Document) -> list[Reference]:
-    """Extract every DOI, arXiv ID, ISBN and http(s) URL in the document."""
+def parse_reference_date(value: str | None) -> date:
+    """Return the calendar date the arXiv range checks are anchored to.
+
+    The clock is read exactly once, here, and only when the caller declined to
+    pin a date. Everything else in this scanner is pure.
+    """
+    if value is None:
+        return date.today()
+    try:
+        return date.fromisoformat(value.strip())
+    except ValueError as exc:
+        raise UsageError(
+            f"--reference-date must be an ISO calendar date in YYYY-MM-DD form: {value!r}"
+        ) from exc
+
+
+def prose_spans_for(document: Document, line_no: int, include_code: bool) -> list[tuple[int, int]] | None:
+    """Return the non-code spans of a line, or None when the line is all code.
+
+    An empty list also means all code, so callers test for the sentinel and
+    for emptiness through `is_prose`.
+    """
+    if include_code or not document.is_markdown:
+        return None
+    if line_no in document.code_lines:
+        return []
+    return document.code_free_spans(line_no)
+
+
+def is_prose(spans: list[tuple[int, int]] | None, start: int, end: int) -> bool:
+    return spans is None or starts_in((start, end), spans)
+
+
+def extract_references(document: Document, include_code: bool = False) -> list[Reference]:
+    """Extract every DOI, arXiv ID, ISBN and http(s) URL in the document.
+
+    In markdown, code regions are skipped. A fake DOI written to demonstrate
+    what a fake DOI looks like is a code sample, and reporting it would leave
+    the scanner unable to document itself.
+    """
+    patterns = (
+        ("doi", DOI_RE, lambda m: strip_trailing(m.group(0))),
+        ("arxiv", ARXIV_NEW_RE, lambda m: f"{m.group(1)}.{m.group(2)}{m.group(3) or ''}"),
+        ("arxiv-old", ARXIV_OLD_RE, lambda m: m.group(1) + (m.group(2) or "")),
+        ("isbn", ISBN_RE, lambda m: m.group(1).strip()),
+        ("url", URL_RE, lambda m: strip_trailing(m.group(0))),
+    )
     references: list[Reference] = []
     for line_no, line in enumerate(document.lines, 1):
-        for match in DOI_RE.finditer(line):
-            value = strip_trailing(match.group(0))
-            if not value:
-                continue
-            references.append(
-                Reference("doi", value, document.label, line_no, match.start() + 1,
-                          snippet_for(line, match.start(), match.end()))
-            )
-        for match in ARXIV_NEW_RE.finditer(line):
-            value = f"{match.group(1)}.{match.group(2)}{match.group(3) or ''}"
-            references.append(
-                Reference("arxiv", value, document.label, line_no, match.start() + 1,
-                          snippet_for(line, match.start(), match.end()))
-            )
-        for match in ARXIV_OLD_RE.finditer(line):
-            value = match.group(1) + (match.group(2) or "")
-            references.append(
-                Reference("arxiv-old", value, document.label, line_no, match.start() + 1,
-                          snippet_for(line, match.start(), match.end()))
-            )
-        for match in ISBN_RE.finditer(line):
-            value = match.group(1).strip()
-            references.append(
-                Reference("isbn", value, document.label, line_no, match.start() + 1,
-                          snippet_for(line, match.start(), match.end()))
-            )
-        for match in URL_RE.finditer(line):
-            value = strip_trailing(match.group(0))
-            if not value:
-                continue
-            references.append(
-                Reference("url", value, document.label, line_no, match.start() + 1,
-                          snippet_for(line, match.start(), match.end()))
-            )
+        spans = prose_spans_for(document, line_no, include_code)
+        if spans is not None and not spans:
+            continue
+        for kind, pattern, extract in patterns:
+            for match in pattern.finditer(line):
+                if not is_prose(spans, match.start(), match.end()):
+                    continue
+                value = extract(match)
+                if not value:
+                    continue
+                references.append(
+                    Reference(kind, value, document.label, line_no, match.start() + 1,
+                              snippet_for(line, match.start(), match.end()))
+                )
     return references
 
 
@@ -377,15 +413,27 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--list", action="store_true", help="Print the extracted reference inventory."
     )
+    parser.add_argument(
+        "--include-code",
+        action="store_true",
+        help="Also extract references from code blocks and inline code spans.",
+    )
+    parser.add_argument(
+        "--reference-date",
+        default=None,
+        metavar="YYYY-MM-DD",
+        help="Calendar date the future-arXiv check is anchored to. Defaults to "
+             "today. Pin it to make two runs byte identical.",
+    )
     args = parser.parse_args(argv)
     if args.timeout <= 0:
         raise UsageError("--timeout must be positive")
+    today = parse_reference_date(args.reference_date)
 
     references: list[Reference] = []
     for document in load_documents(args):
-        references.extend(extract_references(document))
+        references.extend(extract_references(document, include_code=args.include_code))
 
-    today = date.today()
     findings: list[Finding] = []
     for reference in references:
         if reference.kind == "doi":
@@ -401,6 +449,7 @@ def main(argv: list[str] | None = None) -> int:
 
     inventory = {
         "mode": "online" if args.online else "offline",
+        "reference_date": today.isoformat(),
         "counts": {
             kind: sum(1 for reference in references if reference.kind == kind)
             for kind in ("doi", "arxiv", "arxiv-old", "isbn", "url")

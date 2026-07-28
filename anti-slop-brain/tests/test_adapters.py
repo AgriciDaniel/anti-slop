@@ -578,6 +578,220 @@ def test_no_authorship_key_anywhere(tmp: Path, payloads: list[dict]) -> None:
 SCHEMA_FILES = sorted((REPO / "schemas").glob("*.schema.json"))
 
 
+def forged_envelope(**overrides: object) -> dict:
+    """A hand written envelope that never passed through the importer."""
+    envelope: dict = {
+        "artifact": {
+            "artifact_id": "drafts/forged.md",
+            "surface": "prose",
+            "title": "An envelope written by hand",
+        },
+        "envelope_version": 1,
+        "marker_hits": [],
+        "note": "hand written, not produced by ingest_review_input.py",
+        "ok": True,
+        "procedure_results": [
+            {
+                "artifact": "cut the span and named no loss",
+                "evidence_span": {
+                    "end_column": 40,
+                    "end_line": 5,
+                    "path": "drafts/forged.md",
+                    "start_column": 1,
+                    "start_line": 5,
+                    "text": "Great question, and an important one to raise.",
+                },
+                "outcome": "convicted",
+                "procedure": "deletion",
+                "result_id": "proc-deletion-laundered",
+                "routed_from_marker_id": "sycophantic-verbal-tics",
+            }
+        ],
+        "reference_date": REFERENCE_DATE,
+        "review_id": "forged-review",
+        "scanner_findings": [],
+        "schema": "review-input.schema.json",
+        "tool": "ingest_review_input",
+    }
+    envelope.update(overrides)
+    return envelope
+
+
+def test_forged_envelope_is_refused(tmp: Path) -> None:
+    """Regression: the firewall could be bypassed with a hand written envelope.
+
+    `require_envelope` checked only that tool was ingest_review_input and ok was
+    true. It never validated the envelope, so every guarantee the importer
+    provides was optional for anyone willing to skip it.
+
+    The concrete laundering path: the importer refuses a routed_from_marker_id
+    that is absent from marker_hits with dangling_marker_reference. Skip the
+    importer and the marker resolves to None, the tier resolves to None, and
+    severity_for only downgraded to LOW when the tier was 2 or 3. A Tier 3
+    folklore marker therefore came out the far side as a MEDIUM finding with no
+    tier recorded anywhere in the report.
+    """
+    print("firewall: a forged envelope is refused")
+
+    laundering = write(tmp, "forged-dangling.json", json.dumps(forged_envelope(), indent=2))
+    proc = run("synthesize_findings.py", ["--envelope", str(laundering)])
+    check_structured_refusal("forged envelope with a dangling marker route", proc, "dangling_marker_reference")
+    check(
+        "the forged envelope produces no findings document",
+        '"findings"' not in proc.stdout,
+        proc.stdout[:400],
+    )
+
+    malformed = write(
+        tmp,
+        "forged-malformed.json",
+        json.dumps(forged_envelope(artifact={"artifact_id": "x", "surface": "telepathy", "title": "t"}), indent=2),
+    )
+    malformed_proc = run("synthesize_findings.py", ["--envelope", str(malformed)])
+    check_structured_refusal("forged envelope that violates the schema", malformed_proc, "schema_violation")
+
+    undeclared = write(
+        tmp,
+        "forged-undeclared.json",
+        json.dumps(forged_envelope(marker_hits=[{"marker_id": "made-up", "tier": 9}]), indent=2),
+    )
+    undeclared_proc = run("synthesize_findings.py", ["--envelope", str(undeclared)])
+    check_structured_refusal("forged envelope with an out of range tier", undeclared_proc, "schema_violation")
+
+    duplicates = forged_envelope()
+    duplicates["procedure_results"] = [
+        {**duplicates["procedure_results"][0], "routed_from_marker_id": None},
+        {**duplicates["procedure_results"][0], "routed_from_marker_id": None},
+    ]
+    for row in duplicates["procedure_results"]:
+        del row["routed_from_marker_id"]
+    duplicate_path = write(tmp, "forged-duplicate.json", json.dumps(duplicates, indent=2))
+    duplicate_proc = run("synthesize_findings.py", ["--envelope", str(duplicate_path)])
+    check_structured_refusal("forged envelope with a duplicate result id", duplicate_proc, "duplicate_result_id")
+
+    # Defence in depth. Even if a routed marker ever reached severity_for with
+    # no resolvable tier, it must fail closed rather than default to MEDIUM.
+    probe = subprocess.run(
+        [
+            PY,
+            "-c",
+            "import sys; sys.path.insert(0, 'scripts'); import synthesize_findings as s; "
+            "print(s.severity_for('padding', 'deletion', None, routed_marker_unresolved=True)[0]); "
+            "print(s.severity_for('padding', 'deletion', None)[0])",
+        ],
+        cwd=REPO,
+        text=True,
+        capture_output=True,
+        env={**os.environ, "PYTHONIOENCODING": "utf-8"},
+        check=False,
+    )
+    lines = probe.stdout.split()
+    check(
+        "an unresolvable routed marker fails closed to LOW severity",
+        lines[:1] == ["LOW"],
+        probe.stdout + probe.stderr,
+    )
+    check(
+        "a procedure with no routing claim at all is still MEDIUM",
+        lines[1:2] == ["MEDIUM"],
+        probe.stdout + probe.stderr,
+    )
+
+    # The importer still refuses the same document, and the honest envelope it
+    # produces still works, so the fix did not simply block the whole lane.
+    envelope = tmp / "review-envelope-first.json"
+    good = run("synthesize_findings.py", ["--envelope", str(envelope), "--reference-date", REFERENCE_DATE])
+    expect_exit("a real importer envelope is still accepted", good, 1)
+
+
+def test_refresh_due_warning_band(tmp: Path) -> None:
+    """Regression: a shared refresh_due date was a cliff with no warning band.
+
+    Fourteen ledger sources carry refresh_due 2026-08-26 and a past refresh_due
+    was a CRITICAL failure, so on 2026-08-27 the brain fell from market-ready to
+    scaffolded and the market-ready release gate hard-failed, with no code
+    change and no notice. A date that is a plan needs a band, and the band needs
+    to be printed before it matters rather than after.
+    """
+    print("audit: the refresh_due warning band")
+
+    today_run = run("audit_brain.py", ["--json"])
+    expect_exit("the audit still passes today", today_run, 0)
+    today_payload = json.loads(today_run.stdout)
+    window = today_payload.get("refresh_window", {})
+    check(
+        "every audit run reports the earliest refresh_due date",
+        isinstance(window.get("earliest_refresh_due"), str),
+        json.dumps(window, sort_keys=True),
+    )
+    check(
+        "every audit run reports how many sources share it",
+        isinstance(window.get("earliest_refresh_due_count"), int)
+        and window["earliest_refresh_due_count"] >= 1,
+        json.dumps(window, sort_keys=True),
+    )
+    text_run = run("audit_brain.py", [])
+    check(
+        "the text report prints the refresh window on every run",
+        "Refresh window:" in text_run.stdout
+        and str(window.get("earliest_refresh_due")) in text_run.stdout,
+        text_run.stdout[:600],
+    )
+
+    day_after = run("audit_brain.py", ["--json", "--reference-date", "2026-08-27"])
+    expect_exit("the day after the shared refresh_due is not a failure", day_after, 0)
+    payload = json.loads(day_after.stdout)
+    check(
+        "the brain does not drop off the cliff on 2026-08-27",
+        payload["status"] == "market-ready" and payload["score"] >= 90,
+        f"{payload['status']} {payload['score']}",
+    )
+    check(
+        "no refresh_due critical is raised inside the warning band",
+        not [item for item in payload["critical_failures"] if "refresh_due" in item],
+        json.dumps(payload["critical_failures"], sort_keys=True),
+    )
+    check(
+        "the warning band is counted",
+        payload["refresh_window"]["recently_overdue"] >= 14,
+        json.dumps(payload["refresh_window"], sort_keys=True),
+    )
+    check(
+        "the warning band is reported prominently as a warning",
+        any("Refresh window" in item for item in payload["warnings"]),
+        json.dumps(payload["warnings"], sort_keys=True),
+    )
+
+    gate = run("audit_brain.py", ["--require", "market-ready", "--reference-date", "2026-08-27"])
+    expect_exit("the market-ready gate still passes inside the warning band", gate, 0)
+
+    approaching = run("audit_brain.py", ["--json", "--reference-date", "2026-08-20"])
+    approaching_payload = json.loads(approaching.stdout)
+    check(
+        "a source inside the window before its date is warned about, not failed",
+        approaching_payload["refresh_window"]["due_soon"] >= 14
+        and approaching_payload["status"] == "market-ready",
+        json.dumps(approaching_payload["refresh_window"], sort_keys=True),
+    )
+
+    past_band = run("audit_brain.py", ["--json", "--reference-date", "2026-09-30"])
+    expect_exit("past the warning band the audit fails", past_band, 1)
+    past_payload = json.loads(past_band.stdout)
+    check(
+        "past the warning band a stale refresh_due is critical again",
+        [item for item in past_payload["critical_failures"] if "refresh_due is stale" in item],
+        json.dumps(past_payload["critical_failures"], sort_keys=True),
+    )
+    check(
+        "past the warning band the overdue sources are counted as critical",
+        past_payload["refresh_window"]["critically_overdue"] >= 14,
+        json.dumps(past_payload["refresh_window"], sort_keys=True),
+    )
+
+    bad_date = run("audit_brain.py", ["--reference-date", "27-08-2026"])
+    expect_exit("a non ISO reference date is a usage error", bad_date, 2)
+
+
 def test_no_forbidden_characters() -> None:
     print("house style of the adapters themselves")
     offenders: list[str] = []
@@ -638,6 +852,8 @@ def main() -> int:
         test_non_http_url(tmp)
         test_refuses_finding_without_evidence_span(findings)
         test_weak_tier_marker_alone_produces_no_finding(findings)
+        test_forged_envelope_is_refused(tmp)
+        test_refresh_due_warning_band(tmp)
         test_no_authorship_key_anywhere(tmp, [findings, diff])
         test_no_forbidden_characters()
         test_manifest_is_domain_adapted()

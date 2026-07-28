@@ -11,7 +11,7 @@ tags:
   - "#confidence/practitioner"
 confidence: "practitioner"
 related:
-  - "[[Package Hallucination and Slopsquatting]]"
+  - "[[Package Hallucination Evidence|Package Hallucination and Slopsquatting]]"
   - "[[Code Surface]]"
   - "[[The Load Bearing Test|The Load-Bearing Test]]"
   - "[[The Firewall]]"
@@ -152,7 +152,7 @@ is the easy case, and the easy case should be automated first.
 - [[Code Surface]]
 - [[Documentation Surface]]
 - [[Agent Output Surface]]
-- [[Package Hallucination and Slopsquatting]]
+- [[Package Hallucination Evidence|Package Hallucination and Slopsquatting]]
 - [[The Attribution Test|Fabricated Citations]]
 - [[Provenance Trace Policy]]
 - [[Note Conventions]]
