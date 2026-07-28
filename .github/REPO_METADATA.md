@@ -44,6 +44,38 @@ gh repo edit --homepage "https://github.com/AgriciDaniel/anti-slop#readme"
 gh repo edit --enable-issues --enable-discussions --enable-wiki=false --enable-projects=false
 ```
 
+## Applied state, verified 2026-07-29
+
+These are set on the live repository. Verified through the API, not assumed.
+
+| Setting | State |
+|---|---|
+| Visibility | public |
+| Default branch | `main` |
+| Topics | 15 |
+| Description | set |
+| Secret scanning | enabled |
+| Secret scanning push protection | enabled |
+| Dependabot alerts and security updates | enabled |
+| Discussions | enabled |
+| Wiki, Projects | disabled |
+| Delete branch on merge | enabled |
+| Auto-merge | enabled |
+| Branch protection on `main` | requires all three CI checks; force pushes and deletions blocked |
+
+Two things the API cannot set:
+
+- **Social preview.** Neither the REST API nor `gh repo edit` exposes it. Upload
+  `.github/social-preview.png` at Settings, Social preview. The image is already
+  the README header, so the repository page is unaffected either way.
+- **Extended secret scanning patterns.** `secret_scanning_non_provider_patterns`
+  and `secret_scanning_validity_checks` returned disabled after an enable call.
+  Toggle them under Settings, Code security if you want them.
+
+The homepage currently points at a Skool community rather than the README. That
+is a deliberate-looking marketing choice rather than a defect, so it was left
+alone; change it under Settings if it was not intended.
+
 ## Settings worth enabling
 
 | Setting | Value | Why |
