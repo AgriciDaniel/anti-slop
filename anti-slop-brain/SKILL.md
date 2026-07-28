@@ -6,7 +6,7 @@ description: >
   "import sources", "synthesize plan", "render report", or wants a persistent
   vault-backed operating system for detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection.
 argument-hint: "new | ingest | synthesize | report | visuals | lint | next"
-license: Custom license
+license: Apache-2.0 AND CC-BY-SA-4.0 AND CC-BY-4.0
 ---
 
 # Anti-Slop Brain

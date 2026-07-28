@@ -39,10 +39,16 @@ counting; do not add a Dataview block.
 | `markers/` | 10 | Yes |
 | `procedures/` | 7 | Yes |
 | `surfaces/` | 7 | Yes |
-| `meta/` | 4 | No |
+| `meta/` | 5 | No |
 | `questions/` | 1 | No |
 | `sources/` | 1 | No |
-| spine | 4 | No |
+| **Content notes** | **58** | |
+| spine: `index`, `hot`, `log`, `overview` | 4 | No |
+| **Total Markdown files** | **62** | |
+
+Check it with `find wiki -name '*.md' | wc -l`, which returns 62, and
+`scripts/check_links.py --vault wiki`, which reports the same 62. Where a
+count is quoted elsewhere it is the 62 total unless it says otherwise.
 
 ## Health
 

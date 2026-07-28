@@ -7,8 +7,15 @@ import re
 import shutil
 import stat
 import sys
-from datetime import date
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from reference_date import (  # noqa: E402
+    ReferenceDateError,
+    add_reference_date_argument,
+    resolve_reference_date,
+)
 
 
 REPO = Path(__file__).resolve().parent.parent
@@ -22,7 +29,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--owner", required=True)
     parser.add_argument("--out-dir", required=True)
     parser.add_argument("--force", action="store_true")
+    add_reference_date_argument(parser)
     args = parser.parse_args(argv)
+    try:
+        stamp = resolve_reference_date(args.reference_date).isoformat()
+    except ReferenceDateError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 2
     slug = safe_slug(args.client)
     out_dir = Path(args.out_dir).expanduser().resolve()
     vault = out_dir / slug
@@ -35,7 +48,7 @@ def main(argv: list[str] | None = None) -> int:
     if vault.exists():
         shutil.rmtree(vault)
     copy_template(TEMPLATE, vault, {
-        "{{date}}": date.today().isoformat(),
+        "{{date}}": stamp,
         "{{client_slug}}": slug,
         "{{client_name}}": args.client_name or slug,
         "{{owner}}": args.owner,
@@ -47,7 +60,7 @@ def main(argv: list[str] | None = None) -> int:
             "client": slug,
             "client_name": args.client_name or slug,
             "owner": args.owner,
-            "created": date.today().isoformat(),
+            "created": stamp,
         }],
         "sources": [],
     }, indent=2) + "\n", encoding="utf-8")

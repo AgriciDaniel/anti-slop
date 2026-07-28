@@ -70,10 +70,11 @@ from scan_common import (  # noqa: E402
     UsageError,
     add_io_arguments,
     emit,
+    is_prose,
     load_documents,
+    prose_spans_for,
     run_cli,
     snippet_for,
-    starts_in,
 )
 
 TOOL = "scan_refs"
@@ -143,23 +144,6 @@ def parse_reference_date(value: str | None) -> date:
         raise UsageError(
             f"--reference-date must be an ISO calendar date in YYYY-MM-DD form: {value!r}"
         ) from exc
-
-
-def prose_spans_for(document: Document, line_no: int, include_code: bool) -> list[tuple[int, int]] | None:
-    """Return the non-code spans of a line, or None when the line is all code.
-
-    An empty list also means all code, so callers test for the sentinel and
-    for emptiness through `is_prose`.
-    """
-    if include_code or not document.is_markdown:
-        return None
-    if line_no in document.code_lines:
-        return []
-    return document.code_free_spans(line_no)
-
-
-def is_prose(spans: list[tuple[int, int]] | None, start: int, end: int) -> bool:
-    return spans is None or starts_in((start, end), spans)
 
 
 def extract_references(document: Document, include_code: bool = False) -> list[Reference]:

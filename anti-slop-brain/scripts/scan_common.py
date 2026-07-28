@@ -236,6 +236,28 @@ def code_line_numbers(text: str) -> set[int]:
     return fenced | indented_code_line_numbers(text, fenced)
 
 
+def prose_spans_for(
+    document: Document, line_no: int, include_code: bool = False
+) -> list[tuple[int, int]] | None:
+    """Return the non-code spans of a line, or None when nothing is masked.
+
+    None means every column counts as prose, which is the case for a non
+    markdown document and for a caller that asked to include code. An empty
+    list means the opposite: the whole line is code. Callers test both
+    through `is_prose` rather than unpacking the sentinel themselves.
+    """
+    if include_code or not document.is_markdown:
+        return None
+    if line_no in document.code_lines:
+        return []
+    return document.code_free_spans(line_no)
+
+
+def is_prose(spans: list[tuple[int, int]] | None, start: int, end: int) -> bool:
+    """True when a match starting at `start` sits in prose rather than code."""
+    return spans is None or starts_in((start, end), spans)
+
+
 def url_spans(line: str) -> list[tuple[int, int]]:
     """Return character spans of http(s) URLs in the line."""
     return [(m.start(), m.end()) for m in URL_RE.finditer(line)]

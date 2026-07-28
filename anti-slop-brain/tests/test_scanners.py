@@ -38,14 +38,26 @@ CHECKS = 0
 SKIPS: list[str] = []
 
 
-def run(script: str, args: list[str], stdin_text: str | None = None) -> subprocess.CompletedProcess[str]:
+def run(
+    script: str,
+    args: list[str],
+    stdin_text: str | None = None,
+    env: dict[str, str | None] | None = None,
+) -> subprocess.CompletedProcess[str]:
+    """Run a scanner. An env value of None unsets that variable for the child."""
+    environment = {**os.environ, "PYTHONIOENCODING": "utf-8"}
+    for name, value in (env or {}).items():
+        if value is None:
+            environment.pop(name, None)
+        else:
+            environment[name] = value
     return subprocess.run(
         [PY, str(SCRIPTS / script), *args],
         cwd=REPO,
         text=True,
         capture_output=True,
         input=stdin_text,
-        env={**os.environ, "PYTHONIOENCODING": "utf-8"},
+        env=environment,
         check=False,
     )
 
@@ -503,21 +515,59 @@ def test_scan_packages(tmp: Path) -> None:
         check(f"flags {name}", name in names, f"(unverified {sorted(names)})")
 
 
-def lint_prose_available() -> bool:
-    probe = run("lint_voice.py", ["--format", "json"], stdin_text="plain text\n")
-    return probe.returncode != 2
+def test_lint_voice_is_self_contained(tmp: Path) -> None:
+    """Regression: the linter used to execute code from an unpublished project.
+
+    `lint_voice.py` imported `lint_prose.py` out of a claude-blog plugin cache
+    found by globbing the home directory. That resolved on exactly one machine.
+    Everywhere else the linter exited 2, the plugin hook silently no-opped, and
+    this suite SKIPPED its own lint_voice tests while still reporting success.
+    A dependency that only one person can satisfy is an undeclared dependency,
+    and it contradicted the standard-library-only claim in README.md, NOTICE,
+    SECURITY.md and CHANGELOG.md.
+    """
+    print("lint_voice, self containment")
+    source = (SCRIPTS / "lint_voice.py").read_text(encoding="utf-8")
+    for marker, why in (
+        (".claude/plugins", "globs a plugin cache"),
+        ("spec_from_file_location", "loads a module from an arbitrary path"),
+        ("ANTI_SLOP_LINT_PROSE", "reads an escape-hatch path variable"),
+    ):
+        check(
+            f"lint_voice no longer {why}",
+            marker not in source,
+            f"({marker!r} still present in lint_voice.py)",
+        )
+
+    # The real proof: run it with a home directory that cannot contain the
+    # plugin cache, and with the escape hatch removed from the environment.
+    empty_home = tmp / "empty-home"
+    empty_home.mkdir(parents=True, exist_ok=True)
+    sealed = {
+        "HOME": str(empty_home),
+        "USERPROFILE": str(empty_home),
+        "ANTI_SLOP_LINT_PROSE": None,
+    }
+    sealed_clean = run(
+        "lint_voice.py", ["--format", "json"], stdin_text="plain prose text\n", env=sealed
+    )
+    expect_exit("runs clean with no plugin cache reachable", sealed_clean, 0)
+    sealed_dirty = run(
+        "lint_voice.py",
+        ["--format", "json"],
+        stdin_text=f"A sentence{EM}with a long dash.\n",
+        env=sealed,
+    )
+    expect_exit("still detects a violation with no plugin cache reachable", sealed_dirty, 1)
+    check(
+        "the detection is the em dash rule, computed in this repository",
+        "voice.em_dash" in rules_in(sealed_dirty),
+        str(sorted(rules_in(sealed_dirty))),
+    )
 
 
 def test_lint_voice(tmp: Path) -> None:
     print("lint_voice")
-    if not lint_prose_available():
-        SKIPS.append(
-            "lint_voice: claude-blog lint_prose.py was not found on this machine, "
-            "so the wrapper tests did not run. Set ANTI_SLOP_LINT_PROSE."
-        )
-        print("  SKIP: claude-blog lint_prose.py not found")
-        return
-
     voice = write(tmp, "voice.txt", "# banned tokens\ndelve\nleverage\n")
 
     dirty = write(
@@ -806,14 +856,22 @@ def main() -> int:
         test_scan_placeholders(tmp)
         test_scan_refs(tmp)
         test_scan_packages(tmp)
+        test_lint_voice_is_self_contained(tmp)
         test_lint_voice(tmp)
         test_score_substance(tmp)
         test_score_substance_wrong_note_type_is_a_usage_error(tmp)
         test_no_forbidden_characters()
         test_never_emits_authorship_verdict(tmp)
     print()
-    for note in SKIPS:
-        print(f"SKIPPED: {note}")
+    # A skipped suite that still reports success is the rubber stamp this
+    # project argues against, so a skip is a failure here. SKIPS is kept as a
+    # tripwire: nothing appends to it today, and anything that starts to must
+    # justify itself by turning the run red.
+    if SKIPS:
+        print(f"FAILED: {len(SKIPS)} suite(s) skipped, of {CHECKS} checks")
+        for note in SKIPS:
+            print(f"  - SKIPPED: {note}")
+        return 1
     if FAILURES:
         print(f"FAILED: {len(FAILURES)} of {CHECKS} checks")
         for failure in FAILURES:

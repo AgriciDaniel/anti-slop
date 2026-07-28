@@ -17,7 +17,7 @@ when_to_use: >
   A diagnosis is wanted, not a repair, and the surface is prose or documentation
   rather than source code.
 disallowed-tools: Write, Edit, NotebookEdit
-license: MIT
+license: CC-BY-4.0
 ---
 
 # Slop review

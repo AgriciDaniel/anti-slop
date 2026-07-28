@@ -1,3 +1,13 @@
+<!--
+Adapted from "Wikipedia:Signs of AI writing" and WikiProject AI Cleanup,
+https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing , retrieved
+2026-07-27, by Wikipedia contributors. Licensed CC BY-SA 4.0,
+https://creativecommons.org/licenses/by-sa/4.0/ . Changes: reorganised into
+evidence tiers, false-positive classes added, routed to structural procedures,
+and figures replaced with the sources recorded in this project's ledger.
+This file and adaptations of it remain under CC BY-SA 4.0.
+-->
+
 # False positives, and the ethics
 
 Read this before writing any finding whose evidence is style rather than

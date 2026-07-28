@@ -31,8 +31,8 @@ reader should look at before anything else.
 
 | Item | State |
 | --- | --- |
-| Ledger sources | 43, of which 38 primary type |
-| Vault notes | 60 |
+| Ledger sources | 43, of which 30 are `source_type: primary` and 4 are vendor |
+| Vault notes | 62 Markdown files: 58 content notes plus 4 spine files |
 | Earliest refresh due | 2026-08-26, affecting 14 sources |
 | Open questions | 0 blocking, 1 resolved and retained |
 | Known false claims | 0 outstanding |

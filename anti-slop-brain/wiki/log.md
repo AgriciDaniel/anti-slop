@@ -62,3 +62,9 @@ and gates for long dashes, local paths, manifest validity and skill frontmatter.
 Brain scaffolded, 42 source ledger entries captured, 56 notes written, six
 deterministic scanners and two adapter lanes built. Reached SSS+ on the
 Brainstein rubric.
+
+Those two counts are the state on this date, not the current state. Release
+preparation on 2026-07-28 took the ledger to 43 entries and the vault to 62
+Markdown files, 58 content notes plus the four spine files. The current figures
+live in [[dashboard|Dashboard]] and [[hot|Hot]]; this entry is history and is
+left as written.

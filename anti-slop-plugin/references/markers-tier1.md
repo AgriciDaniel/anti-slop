@@ -1,3 +1,13 @@
+<!--
+Adapted from "Wikipedia:Signs of AI writing" and WikiProject AI Cleanup,
+https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing , retrieved
+2026-07-27, by Wikipedia contributors. Licensed CC BY-SA 4.0,
+https://creativecommons.org/licenses/by-sa/4.0/ . Changes: reorganised into
+evidence tiers, false-positive classes added, routed to structural procedures,
+and figures replaced with the sources recorded in this project's ledger.
+This file and adaptations of it remain under CC BY-SA 4.0.
+-->
+
 # Tier 1 markers: corpus-validated
 
 Load this when you are selecting spans to test, or when a finding needs to name

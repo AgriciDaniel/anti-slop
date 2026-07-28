@@ -15,7 +15,7 @@ description: >
 when_to_use: >
   Citations, external links, package imports or vendor residue need checking,
   independently of any style or structure review.
-license: MIT
+license: CC-BY-4.0
 ---
 
 # Slop verify

@@ -6,8 +6,16 @@
 
 Anti-Slop Brain is an evidence-gated Obsidian brain for detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection.
 
-**Current maturity:** scaffolded. This repo is not market-ready until research,
-domain adapters, demo verification, audit, and release gates pass.
+**This directory is a component of the [`anti-slop`](../README.md) repository,
+not a standalone project.** Start at the repository root. Licence, changelog,
+contributing rules, security policy and support all live there and govern this
+directory too; the files in here point back to them rather than restating them.
+
+**Current maturity: market-ready.** Verified 2026-07-28 by
+`python3 scripts/audit_brain.py --json`, which returned score 100, status
+`market-ready`, all eleven audit categories at 100, zero critical failures and
+zero warnings. Re-run it rather than trusting this line. The audit is the
+authority; this sentence is a dated snapshot of what it said.
 
 It ships two artifacts:
 
@@ -54,18 +62,23 @@ pipelines, publishing tools, customer records, or live production data.
 Domain claims are release-blocked until `references/current-requirements.md`,
 `references/market-research.md`, `references/source-map.md`, and
 `references/source-ledger.json` contain dated source material from trustworthy
-sources.
+sources. That gate is satisfied as of 2026-07-28: the ledger carries 43 dated
+entries, each with a retrieval date, a refresh date, an evidence tier and
+stated limitations, and none is past its refresh date.
 
 ## Maturity Gates
 
-1. Scaffolded: product shell, vault, source pack, scripts, tests, and demo exist.
-2. Researched: dated trustworthy sources replace placeholder research.
-3. Domain-adapted: real domain importer, synthesis, reports, fixtures, and tests exist.
-4. Demo-verified: sample vault regenerates deterministically and reports cite sources.
-5. Market-ready: audit score is at least 90 with no critical failures.
+| # | Gate | Passed |
+|---|---|---|
+| 1 | Scaffolded: product shell, vault, source pack, scripts, tests, and demo exist | yes |
+| 2 | Researched: dated trustworthy sources replace placeholder research | yes |
+| 3 | Domain-adapted: real domain importer, synthesis, reports, fixtures, and tests exist | yes |
+| 4 | Demo-verified: sample vault regenerates deterministically and reports cite sources | yes |
+| 5 | Market-ready: audit score is at least 90 with no critical failures | yes, at 100 |
 
 Scores are capped by maturity. A scaffold cannot become market-ready by edited
-markdown alone.
+markdown alone, and this table cannot promote itself either. The gate that
+counts is `scripts/audit_brain.py --require market-ready`.
 
 ## Research Policy
 

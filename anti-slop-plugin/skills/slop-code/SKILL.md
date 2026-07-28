@@ -16,7 +16,7 @@ description: >
 when_to_use: >
   The artifact under review is source code, tests, configuration, generated
   documentation, a commit message, or a pull request description.
-license: MIT
+license: CC-BY-4.0
 ---
 
 # Slop code

@@ -28,7 +28,7 @@ hooks:
             - "sh"
             - "${tool_input.file_path}"
             - "${CLAUDE_PLUGIN_ROOT}"
-license: MIT
+license: CC-BY-4.0
 ---
 
 # Slop rewrite

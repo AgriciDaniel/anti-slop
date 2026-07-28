@@ -1,8 +1,26 @@
 # Anti-Slop: build plan
 
-Status: proposed, awaiting approval. Written 2026-07-27.
-Evidence base: `.research/verification-ledger.md`, `.research/prior-art-humanizer-wikipedia.md`,
-`.research/raw/`, and the existing `compass_artifact_*.md` research report.
+**Status: historical. Written 2026-07-27, before the build. Superseded and
+kept as the record of what was planned, not as a description of what shipped.**
+It was approved and built; where this document and the shipped repository
+disagree, the repository is right. For what actually shipped, read the root
+[`README.md`](../README.md) and [`CHANGELOG.md`](../CHANGELOG.md). For what a
+public-release review found wrong afterwards, read
+[`release-review.md`](release-review.md), which is also historical.
+
+Evidence base, as it stands today:
+
+| Source cited below | Where it is now |
+|---|---|
+| Verification ledger | Published at [`research/verification-ledger.md`](../research/verification-ledger.md) |
+| The original research report, then named `compass_artifact_*.md` | Published, renamed, at [`research/ai-slop-research-report.md`](../research/ai-slop-research-report.md). It is a preserved archive and is the one file exempt from the house dash rule |
+| `.research/prior-art-humanizer-wikipedia.md` | Not published. Working notes on prior art, kept locally under the gitignored `.research/` directory. Its conclusions are in this document and in the `blader-humanizer` entry of `anti-slop-brain/references/source-ledger.json` |
+| `.research/raw/` | Not published. Raw captures, including the Wikipedia wikitext snapshot. Third-party material is linked and attributed rather than mirrored; see `anti-slop-brain/THIRD_PARTY_NOTICES.md` |
+
+Anything below that names a `.research/...` path, or "the existing research
+report", refers to that unpublished working directory as it stood on
+2026-07-27. Those paths will not resolve in a clone. The two live pointers are
+the first two rows of the table above.
 
 ---
 
@@ -64,9 +82,11 @@ hard-fail, because they are the only things that are actually decidable.
 | `scan_packages.py` | every imported package exists in its registry | slopsquatting gate |
 | `lint_voice.py` | house style: no U+2014, U+2013, ` -- `; banned tokens from a voice file | house rule, explicitly **not** a slop verdict |
 
-`lint_voice.py` wraps the existing, already-tested `lint_prose.py` from
-claude-blog 2.1.0 rather than reimplementing it. Fence-aware and
-backtick-aware behaviour is already solved there.
+`lint_voice.py` takes its rule set and its fence-aware and backtick-aware
+behaviour from `lint_prose.py` in claude-blog 2.1.0, which solved that problem
+first, but implements them here against `scan_common.py`. Wrapping the original
+was tried and reverted: claude-blog is not published, so the wrapper resolved
+on one machine and left the linter dead everywhere else.
 
 ### Layer 1, structural procedures (the model executes, and must show work)
 
@@ -208,7 +228,7 @@ Authoring constraints taken from the live v2.1.220 contract:
 
 | Asset | Action |
 |---|---|
-| claude-blog `lint_prose.py` | wrap as a dependency, do not rewrite |
+| claude-blog `lint_prose.py` | reimplement its rules against `scan_common.py`, credit the design; wrapping it would add an unpublished dependency |
 | claude-blog `style_learn.py` | reuse for per-author calibration, the honest answer to the ESL false-positive problem |
 | claude-blog structural thresholds | generalize the 12 numeric diagnostics beyond blog prose |
 | Claude Blog Brain substance scorer | port and adapt |

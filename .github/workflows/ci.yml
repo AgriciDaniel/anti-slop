@@ -51,9 +51,16 @@ jobs:
             --ledger references/source-ledger.json \
             --note-type concept,marker,procedure,surface
       - name: Demo vault drift
+        # The demo vault is a committed generated artifact, so the date it
+        # stamps is pinned. Without the pin this step passes only on the day
+        # the vault was committed and is red on every pull request after it.
+        # references/canon is folded by the same build and is diffed here too,
+        # because a check that ignores half the generated output is not a
+        # check. The date must match DEFAULT_REFERENCE_DATE in
+        # scripts/build_demo_vault.py.
         run: |
-          python scripts/build_demo_vault.py
-          git diff --exit-code -- examples/sample-vault
+          python scripts/build_demo_vault.py --reference-date 2026-07-28
+          git diff --exit-code -- examples/sample-vault references/canon
       - name: Release package and audit
         run: python scripts/package_release.py --version 0.1.0
 

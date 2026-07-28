@@ -11,9 +11,11 @@ Source: https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
 Licence: Creative Commons Attribution-ShareAlike 4.0 International.
 Used for: the marker taxonomy, the ineffective-indicators list, the citations
 and markup defect categories, and the doctrine that the signs are not the
-problem itself. A wikitext snapshot is retained under `.raw/sources/`.
-Attribution is required by the licence and is given in every note that draws
-on the guide.
+problem itself. A wikitext snapshot was captured during the build and is
+retained locally under the repository-root `.research/` directory, which is
+gitignored and therefore not published; readers get the live guide at the URL
+above instead of a mirrored copy. Attribution is required by the licence and is
+given in every note that draws on the guide.
 
 ### blader/humanizer
 
@@ -35,8 +37,11 @@ docstring.
 ### claude-blog prose linter
 
 Source: local sibling project, `scripts/lint_prose.py`.
-Used for: `scripts/lint_voice.py` wraps rather than reimplements the
-fence-aware and backtick-aware dash detection logic.
+Used for: `scripts/lint_voice.py` is a clean reimplementation of its rule set
+and of its fence-aware and backtick-aware dash detection, built against this
+repository's own `scripts/scan_common.py` helpers. The origin is credited in
+the module docstring. It is a design credit, not a dependency: `lint_voice.py`
+imports nothing from that project and runs on the standard library alone.
 
 ### impeccable plugin
 

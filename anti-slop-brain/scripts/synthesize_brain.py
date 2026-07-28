@@ -5,9 +5,16 @@ import argparse
 import json
 import re
 import sys
-from datetime import date
 from pathlib import Path
 from typing import Any
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from reference_date import (  # noqa: E402
+    ReferenceDateError,
+    add_reference_date_argument,
+    resolve_reference_date,
+)
 
 
 REPO = Path(__file__).resolve().parent.parent
@@ -44,7 +51,21 @@ SPINE_RELATED = [
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Synthesize source-cited starter deliverables.")
     parser.add_argument("--vault", required=True)
+    parser.add_argument(
+        "--canon-dir",
+        default=None,
+        help="Where to write the folded canon reference layer. Defaults to this "
+             "repository's references/canon. Point it at a scratch directory when "
+             "synthesizing a throwaway vault, so the run leaves the repository alone.",
+    )
+    add_reference_date_argument(parser)
     args = parser.parse_args(argv)
+    try:
+        stamp = resolve_reference_date(args.reference_date).isoformat()
+    except ReferenceDateError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 2
+    canon_dir = Path(args.canon_dir).expanduser().resolve() if args.canon_dir else REPO / "references" / "canon"
     vault = Path(args.vault).expanduser().resolve()
     manifest_path = vault / ".raw" / ".manifest.json"
     if not manifest_path.exists():
@@ -58,8 +79,8 @@ type: "deliverable"
 title: "Health Scorecard"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "draft"
-created: "{date.today().isoformat()}"
-updated: "{date.today().isoformat()}"
+created: "{stamp}"
+updated: "{stamp}"
 tags:
   - "#domain/detection-and-repair-of-ai-slop-in-prose-code-documentation-and"
   - "#type/deliverable"
@@ -93,8 +114,8 @@ type: "deliverable"
 title: "Action Roadmap"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "draft"
-created: "{date.today().isoformat()}"
-updated: "{date.today().isoformat()}"
+created: "{stamp}"
+updated: "{stamp}"
 tags:
   - "#domain/detection-and-repair-of-ai-slop-in-prose-code-documentation-and"
   - "#type/deliverable"
@@ -127,8 +148,8 @@ type: "report"
 title: "Weekly Report"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "draft"
-created: "{date.today().isoformat()}"
-updated: "{date.today().isoformat()}"
+created: "{stamp}"
+updated: "{stamp}"
 tags:
   - "#domain/detection-and-repair-of-ai-slop-in-prose-code-documentation-and"
   - "#type/report"
@@ -157,19 +178,19 @@ the manifest.
 
 Related: [[Reporting Workflow]] | [[Approval Queue]]
 """)
-    folded_sources = fold_source_ledger(vault)
-    folded_adapters = fold_adapter_manifest(vault)
+    folded_sources = fold_source_ledger(vault, stamp, canon_dir)
+    folded_adapters = fold_adapter_manifest(vault, stamp)
     message = "Synthesized source-cited starter deliverables."
     if folded_sources:
         message += f" Folded {folded_sources} source-ledger canon entr{'y' if folded_sources == 1 else 'ies'}."
     if folded_adapters:
         message += f" Folded {folded_adapters} adapter manifest entr{'y' if folded_adapters == 1 else 'ies'}."
-    append_log(vault, message)
+    append_log(vault, message, stamp)
     print("Synthesis complete")
     return 0
 
 
-def fold_source_ledger(vault: Path) -> int:
+def fold_source_ledger(vault: Path, stamp: str, canon_dir: Path) -> int:
     ledger = load_json_object(REPO / "references" / "source-ledger.json") or load_json_object(vault / "references" / "source-ledger.json")
     if not ledger:
         return 0
@@ -180,7 +201,6 @@ def fold_source_ledger(vault: Path) -> int:
     if not real_sources:
         return 0
 
-    canon_dir = REPO / "references" / "canon"
     canon_dir.mkdir(parents=True, exist_ok=True)
     for path in canon_dir.glob("*.md"):
         if path.name != "_index.md":
@@ -193,15 +213,15 @@ def fold_source_ledger(vault: Path) -> int:
         level = confidence_level(source.get("confidence", "medium"))
         canon_name = f"{index:03d}-{safe_slug(title, f'source-{index:03d}')}.md"
         concept_title = unique_concept_title(vault, title, index)
-        write(canon_dir / canon_name, canon_source_note(index, title, source, level, concept_title))
-        write(vault / "wiki" / "concepts" / f"{concept_title}.md", concept_source_note(index, title, source, level, canon_name))
+        write(canon_dir / canon_name, canon_source_note(index, title, source, level, concept_title, stamp))
+        write(vault / "wiki" / "concepts" / f"{concept_title}.md", concept_source_note(index, title, source, level, canon_name, stamp))
         index_rows.append(f"| {index:03d} | [{title}]({canon_name}) | {level} | [[{concept_title}]] | captured | {url} |")
 
-    write(canon_dir / "_index.md", canon_source_index(index_rows))
+    write(canon_dir / "_index.md", canon_source_index(index_rows, stamp))
     return len(real_sources)
 
 
-def fold_adapter_manifest(vault: Path) -> int:
+def fold_adapter_manifest(vault: Path, stamp: str) -> int:
     manifest = load_json_object(REPO / "references" / "adapter-manifest.json") or load_json_object(vault / "references" / "adapter-manifest.json")
     if not manifest or manifest.get("generic_only") is True:
         return 0
@@ -226,7 +246,7 @@ def fold_adapter_manifest(vault: Path) -> int:
             note_name = safe_note_name(title, f"{label} {index}")
             body = adapter_note_body(section, label, entry)
             urls = adapter_urls(entry)
-            write(vault / "wiki" / folder / f"{note_name}.md", f"""{note_frontmatter(type_, title, status="active", confidence="practitioner", related=[f"[[wiki/{folder}/_index|{folder.title()} Hub]]"], source_urls=urls)}
+            write(vault / "wiki" / folder / f"{note_name}.md", f"""{note_frontmatter(type_, title, stamp, status="active", confidence="practitioner", related=[f"[[wiki/{folder}/_index|{folder.title()} Hub]]"], source_urls=urls)}
 
 # {title}
 
@@ -270,12 +290,12 @@ def update_adapter_hub_links(vault: Path, hub_links: dict[str, list[str]]) -> No
         hub.write_text(text.rstrip() + "\n", encoding="utf-8")
 
 
-def canon_source_index(rows: list[str]) -> str:
+def canon_source_index(rows: list[str], stamp: str) -> str:
     return f"""---
 type: "reference"
 title: "Canon Reference Layer"
-created: "{date.today().isoformat()}"
-updated: "{date.today().isoformat()}"
+created: "{stamp}"
+updated: "{stamp}"
 status: "active"
 ---
 
@@ -291,13 +311,13 @@ This index was folded from captured entries in `references/source-ledger.json`. 
 """
 
 
-def canon_source_note(index: int, title: str, source: dict[str, Any], level: str, concept_title: str) -> str:
+def canon_source_note(index: int, title: str, source: dict[str, Any], level: str, concept_title: str, stamp: str) -> str:
     source_lines = claim_lines(source)
     url = str(source.get("url", "")).strip()
     retrieved = str(source.get("retrieved", "")).strip()
     refresh_due = str(source.get("refresh_due", "")).strip()
     source_type = str(source.get("source_type", "")).strip()
-    return f"""{note_frontmatter("canon", f"{index:03d}. {title}", status="active", confidence=level, related=[f"[[{concept_title}]]"], source_urls=[url])}
+    return f"""{note_frontmatter("canon", f"{index:03d}. {title}", stamp, status="active", confidence=level, related=[f"[[{concept_title}]]"], source_urls=[url])}
 
 # {index:03d}. {title}
 
@@ -319,13 +339,13 @@ Source: [{title}]({url}){source_suffix(retrieved, refresh_due, source_type)}.
 """
 
 
-def concept_source_note(index: int, title: str, source: dict[str, Any], level: str, canon_name: str) -> str:
+def concept_source_note(index: int, title: str, source: dict[str, Any], level: str, canon_name: str, stamp: str) -> str:
     url = str(source.get("url", "")).strip()
     retrieved = str(source.get("retrieved", "")).strip()
     refresh_due = str(source.get("refresh_due", "")).strip()
     source_type = str(source.get("source_type", "")).strip()
     caveat = confidence_callout(level)
-    return f"""{note_frontmatter("concept", title, status="active", confidence=level, related=["[[wiki/concepts/_index|Concepts Hub]]", "[[Claim Verification Flow]]"], source_urls=[url])}
+    return f"""{note_frontmatter("concept", title, stamp, status="active", confidence=level, related=["[[wiki/concepts/_index|Concepts Hub]]", "[[Claim Verification Flow]]"], source_urls=[url])}
 
 # {title}
 
@@ -468,6 +488,7 @@ def unique_concept_title(vault: Path, title: str, index: int) -> str:
 def note_frontmatter(
     type_: str,
     title: str,
+    stamp: str,
     *,
     status: str = "active",
     confidence: str = "practitioner",
@@ -484,8 +505,8 @@ def note_frontmatter(
         f"title: {yaml_scalar(title)}",
         f"domain: {yaml_scalar(DOMAIN)}",
         f"status: {yaml_scalar(status)}",
-        f"created: {yaml_scalar(date.today().isoformat())}",
-        f"updated: {yaml_scalar(date.today().isoformat())}",
+        f"created: {yaml_scalar(stamp)}",
+        f"updated: {yaml_scalar(stamp)}",
         yaml_list("tags", tags),
         f"confidence: {yaml_scalar(level)}",
         yaml_list("related", links),
@@ -541,10 +562,10 @@ def write(path: Path, text: str) -> None:
     path.write_text(text.rstrip() + "\n", encoding="utf-8")
 
 
-def append_log(vault: Path, message: str) -> None:
+def append_log(vault: Path, message: str, stamp: str) -> None:
     log = vault / "wiki" / "log.md"
     if log.exists():
-        log.write_text(log.read_text(encoding="utf-8").rstrip() + f"\n- {date.today().isoformat()} - {message}\n", encoding="utf-8")
+        log.write_text(log.read_text(encoding="utf-8").rstrip() + f"\n- {stamp} - {message}\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

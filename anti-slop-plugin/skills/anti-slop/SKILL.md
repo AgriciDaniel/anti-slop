@@ -17,7 +17,7 @@ description: >
 when_to_use: >
   The user wants slop detection or repair but has not said which surface (prose,
   code, docs, citations) or which operation (review, rewrite, verify) applies.
-license: MIT
+license: CC-BY-4.0
 ---
 
 # Anti-slop

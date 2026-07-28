@@ -1,0 +1,33 @@
+Licences for this plugin directory
+==================================
+
+This directory is installed standalone through the `git-subdir` marketplace
+source, so it carries its own licence texts. Anyone receiving only this
+subdirectory receives these terms.
+
+  skills/**, agents/**, README.md        CC BY 4.0 (original work)
+  hooks/**                               Apache 2.0 (code)
+  references/structural-tests.md         CC BY 4.0 (original work)
+
+  references/markers-tier1.md            CC BY-SA 4.0
+  references/markers-tier2.md            CC BY-SA 4.0
+  references/markers-tier3.md            CC BY-SA 4.0
+  references/false-positives.md          CC BY-SA 4.0
+  references/code-markers.md             CC BY-SA 4.0
+
+The five files above adapt the English Wikipedia page
+"Wikipedia:Signs of AI writing" and WikiProject AI Cleanup, retrieved
+2026-07-27, specifically the marker taxonomy, the words-to-watch lists, the
+ineffective-indicators list, the vendor residue token table, and the citation
+defect categories.
+
+CC BY-SA 4.0 is a copyleft licence. Adaptations of that material must remain
+under CC BY-SA 4.0 and must carry attribution. It cannot be relicensed under
+Apache 2.0, MIT, or any other non-compatible licence.
+
+  https://creativecommons.org/licenses/by-sa/4.0/
+  https://creativecommons.org/licenses/by/4.0/
+  https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
+
+Attribution detail is in NOTICE. Full repository terms are at
+https://github.com/AgriciDaniel/anti-slop

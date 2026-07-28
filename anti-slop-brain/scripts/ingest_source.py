@@ -7,8 +7,15 @@ import json
 import re
 import shutil
 import sys
-from datetime import date
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from reference_date import (  # noqa: E402
+    ReferenceDateError,
+    add_reference_date_argument,
+    resolve_reference_date,
+)
 
 
 MAX_BYTES = 10 * 1024 * 1024
@@ -19,7 +26,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--vault", required=True)
     parser.add_argument("--file", required=True)
     parser.add_argument("--source-type", default="manual")
+    add_reference_date_argument(parser)
     args = parser.parse_args(argv)
+    try:
+        stamp = resolve_reference_date(args.reference_date).isoformat()
+    except ReferenceDateError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 2
     vault = Path(args.vault).expanduser().resolve()
     source = Path(args.file).expanduser().resolve()
     if not (vault / "CODEX.md").exists():
@@ -37,7 +50,7 @@ def main(argv: list[str] | None = None) -> int:
     target = collision_safe_path(raw_dir, source.name, source_digest)
     shutil.copy2(source, target)
     digest = sha256_file(target)
-    update_manifest(vault, target.relative_to(vault).as_posix(), digest, args.source_type)
+    update_manifest(vault, target.relative_to(vault).as_posix(), digest, args.source_type, stamp)
     source_note = collision_safe_path(vault / "wiki" / "sources", f"{safe_title(source.stem)}.md", digest)
     source_note.parent.mkdir(parents=True, exist_ok=True)
     source_note.write_text(f"""---
@@ -45,8 +58,8 @@ type: "source"
 title: "{source.stem}"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "active"
-created: "{date.today().isoformat()}"
-updated: "{date.today().isoformat()}"
+created: "{stamp}"
+updated: "{stamp}"
 tags:
   - "#domain/detection-and-repair-of-ai-slop-in-prose-code-documentation-and"
   - "#type/source"
@@ -67,7 +80,7 @@ sources:
 
 - Path: `{target.relative_to(vault).as_posix()}`
 - Hash: `{digest}`
-- Retrieved: {date.today().isoformat()}
+- Retrieved: {stamp}
 - Type: {args.source_type}
 
 ## Compiled Truth
@@ -76,7 +89,7 @@ Summarize this source without copying it wholesale.
 
 Related: [[Source Manifest Guide]] | [[wiki/sources/_index|Sources Hub]]
 """, encoding="utf-8")
-    append_log(vault, f"Ingested source [[{source.stem}]] from `{target.relative_to(vault).as_posix()}`.")
+    append_log(vault, f"Ingested source [[{source.stem}]] from `{target.relative_to(vault).as_posix()}`.", stamp)
     print(json.dumps({"copied": str(target), "sha256": digest}, indent=2))
     return 0
 
@@ -113,7 +126,7 @@ def safe_filename(value: str) -> str:
     return cleaned[:120] or "source"
 
 
-def update_manifest(vault: Path, rel: str, digest: str, source_type: str) -> None:
+def update_manifest(vault: Path, rel: str, digest: str, source_type: str, stamp: str) -> None:
     path = vault / ".raw" / ".manifest.json"
     data = {"sources": []}
     if path.exists():
@@ -126,7 +139,7 @@ def update_manifest(vault: Path, rel: str, digest: str, source_type: str) -> Non
     data.setdefault("sources", []).append({
         "path": rel,
         "sha256": digest,
-        "retrieved": date.today().isoformat(),
+        "retrieved": stamp,
         "source_type": source_type,
     })
     path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
@@ -138,10 +151,10 @@ def safe_title(value: str) -> str:
     return cleaned[:90]
 
 
-def append_log(vault: Path, message: str) -> None:
+def append_log(vault: Path, message: str, stamp: str) -> None:
     log = vault / "wiki" / "log.md"
     if log.exists():
-        text = log.read_text(encoding="utf-8").rstrip() + f"\n- {date.today().isoformat()} - {message}\n"
+        text = log.read_text(encoding="utf-8").rstrip() + f"\n- {stamp} - {message}\n"
         log.write_text(text, encoding="utf-8")
 
 

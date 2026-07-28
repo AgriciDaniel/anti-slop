@@ -1,5 +1,7 @@
 # anti-slop
 
+![Anti Slop: find and repair substance defects in AI-assisted prose, code, docs, and agent output. Reports defects, never authorship.](.github/social-preview.png)
+
 Find and repair substance defects in AI-assisted prose, code, documentation,
 and agent output.
 
@@ -74,7 +76,8 @@ correctness falls" (arXiv 2606.28438).
 
 ```
 anti-slop/
-  anti-slop-plugin/     Claude Code plugin: 5 skills, 2 subagents, marker references
+  anti-slop-plugin/     Claude Code plugin: 5 skills, 2 subagents, marker references,
+                        and one PostToolUse hook (read SECURITY.md before installing)
   anti-slop-brain/      Obsidian knowledge base, scanners, adapters, tests
   research/             The verification ledger and the original research report
   docs/                 Design plan and release review
@@ -94,27 +97,66 @@ anti-slop/
 
 | Piece | What |
 |---|---|
-| `wiki/` | 62 notes: concepts, markers, procedures, surfaces, detection, evidence, counterarguments |
-| `references/source-ledger.json` | 43 sources, 38 primary-type, each with retrieval date, refresh date, evidence tier, and stated limitations |
+| `wiki/` | 62 Markdown files: 58 content notes across concepts, markers, procedures, surfaces, detection, evidence, counterarguments, meta, questions and sources, plus 4 spine files (index, hot, log, overview) |
+| `references/source-ledger.json` | 43 sources: 30 `primary`, 4 vendor, 3 supporting, 2 official, 2 practitioner, 1 authority, 1 regulator. Each carries a retrieval date, refresh date, evidence tier and stated limitations |
 | `scripts/` | Six deterministic scanners plus two adapter lanes |
 | `tests/` | 308 checks: 101 scanner, 207 adapter |
 
 ## Install
 
-Nothing is published to a marketplace yet, so install from a clone.
-
 ```bash
 git clone https://github.com/AgriciDaniel/anti-slop.git
 cd anti-slop
+```
 
-# Claude Code plugin
-ln -s "$PWD/anti-slop-plugin/skills/anti-slop"    ~/.claude/skills/anti-slop
-ln -s "$PWD/anti-slop-plugin/skills/slop-review"  ~/.claude/skills/slop-review
-ln -s "$PWD/anti-slop-plugin/skills/slop-rewrite" ~/.claude/skills/slop-rewrite
-ln -s "$PWD/anti-slop-plugin/skills/slop-code"    ~/.claude/skills/slop-code
-ln -s "$PWD/anti-slop-plugin/skills/slop-verify"  ~/.claude/skills/slop-verify
+### Claude Code plugin
 
-# Scanners, standard library only, no dependencies
+The plugin is five skills, two subagents and a hook. Symlinking the five skill
+directories installs the skills only, and leaves out the subagents and the
+hook. Link the **plugin directory**, once:
+
+```bash
+mkdir -p ~/.claude/skills
+ln -s "$PWD/anti-slop-plugin" ~/.claude/skills/anti-slop
+```
+
+`mkdir -p` is not decoration. On a machine that has never created a personal
+skill, `~/.claude/skills/` does not exist and `ln` fails with
+`No such file or directory`.
+
+Anything under `~/.claude/skills/<name>/` that contains a
+`.claude-plugin/plugin.json`, as `anti-slop-plugin` does, loads as a plugin
+named `<name>@skills-dir` on the next session, bringing its `skills/`,
+`agents/` and `hooks/` with it. Confirm with `claude plugin list`. Validate
+first if you like, with `claude plugin validate ./anti-slop-plugin`.
+
+**Read [Security policy](SECURITY.md) before installing.** The bundled hook is
+not scoped to this plugin's skills. It runs on every `Write` and `Edit` in
+every session, in every project, for as long as the plugin is installed.
+
+**Marketplace install.** `anti-slop-plugin/.claude-plugin/marketplace.json`
+exists and points at this repository, so once the repository is public the path
+is:
+
+```bash
+/plugin marketplace add AgriciDaniel/anti-slop
+/plugin install anti-slop@anti-slop
+```
+
+The manifest's source is `git-subdir` on `anti-slop-plugin` at `main`, so a
+marketplace install fetches the plugin subdirectory and not the brain. The
+scanners live in the brain, so a marketplace install still needs this
+repository cloned next to it for Layer 0 to work. The skills say so rather than
+substituting judgement for a scanner.
+
+**Uninstall.** Remove the symlink. The hook goes with it. Nothing was written
+to `~/.claude/settings.json`.
+
+### Scanners
+
+Standard library only, no dependencies.
+
+```bash
 cd anti-slop-brain
 python3 scripts/scan_residue.py path/to/file.md
 python3 scripts/scan_refs.py path/to/file.md          # --online to resolve
@@ -153,6 +195,18 @@ Every numeric claim traces to an id in `references/source-ledger.json` carrying
 a URL, retrieval date, evidence tier, and explicit limitations. Vendor sources
 are marked, and a conflict of interest is recorded where the finding would sell
 the vendor's product.
+
+Count the ledger the strict way. It has 43 entries, of which **30 are
+`source_type: "primary"`**. The ledger's `rules.accepted_primary_types` enum
+also admits `vendor`, `official`, `regulator` and `authority`, which sums to
+38, and an earlier version of this README quoted that 38 as the primary count.
+That enum decides whether a source may be cited at all, not whether it is
+independent, and reporting it as "primary" on the front page of a project whose
+selling point is marking vendor conflicts was generous. The four vendor sources
+are `pangram-supporting-evidence`, `gitclear-maintainability-gap`,
+`gitclear-copilot-quality-2025` and `betterup-workslop`. None is tiered
+`EVIDENCE-BASED`: three are `PRACTITIONER` and one is `FOLKLORE`, recorded so
+the project can explain why it is not used rather than quietly dropping it.
 
 `research/verification-ledger.md` records an adversarial pass over the research
 base, including **eight corrections to figures the field repeats incorrectly**.

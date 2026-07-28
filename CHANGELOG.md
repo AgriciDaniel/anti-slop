@@ -17,9 +17,10 @@ First public release.
 - **anti-slop-plugin**, a Claude Code plugin with five skills (`anti-slop`,
   `slop-review`, `slop-rewrite`, `slop-code`, `slop-verify`), two read-only
   subagents, and tiered marker references.
-- **anti-slop-brain**, an Obsidian knowledge base of 62 notes with a source
-  ledger of 43 dated entries, 38 of them primary type, each carrying an
-  evidence tier and stated limitations.
+- **anti-slop-brain**, an Obsidian knowledge base of 62 Markdown files, 58
+  content notes plus 4 spine files, with a source ledger of 43 dated entries,
+  30 of them `source_type: "primary"` and 4 vendor, each carrying an evidence
+  tier and stated limitations.
 - **Six deterministic scanners**: residue, placeholders, reference integrity,
   package existence, house voice, and vault substance. Offline by default; no
   third-party dependencies.
