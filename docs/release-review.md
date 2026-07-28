@@ -3,6 +3,13 @@
 Scope: everything tracked in this repository, judged against what a stranger
 needs in order to trust, install, and legally reuse it. Written 2026-07-28.
 
+**Status: all blockers and quality issues resolved 2026-07-28.** A separate
+adversarial verification pass ran afterwards and found further defects,
+including a false verification claim in the vault's own limitations note.
+Those are recorded in `anti-slop-brain/wiki/log.md` and are also fixed. The
+findings below are kept as the record of what was wrong, not as outstanding
+work.
+
 ## Blockers, must fix before the repo is public
 
 ### B1. The LICENSE file forbids the thing you are about to do
