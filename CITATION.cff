@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: "anti-slop: structural detection and repair of substance defects in AI-assisted work"
+message: "If you use this project or its verification ledger, please cite it."
+type: software
+authors:
+  - family-names: Agrici
+    given-names: Daniel
+repository-code: "https://github.com/AgriciDaniel/anti-slop"
+abstract: >
+  A structural approach to finding and repairing substance defects in
+  AI-assisted prose, code, documentation, and agent output. It reports defects
+  and never reports authorship. The design follows from a measurement: LLM
+  judges agree with human slop labels at approximately chance, and their errors
+  favour the surface features that define slop, so every check is a mechanical
+  procedure producing a verifiable artifact rather than a model judgement.
+  Ships a source ledger of 43 dated entries with evidence tiers and stated
+  limitations, and a verification ledger recording eight corrections to figures
+  that circulate incorrectly in this field.
+keywords:
+  - ai-slop
+  - writing-quality
+  - code-quality
+  - citation-verification
+  - research-integrity
+  - claude-code
+license: Apache-2.0
+license-url: "https://github.com/AgriciDaniel/anti-slop/blob/main/LICENSE"
+version: 0.1.0
+date-released: "2026-07-28"

@@ -47,7 +47,7 @@ source is Science Advances 11(27), published 2025-07-02, DOI
 10.1126/sciadv.adt3813.
 
 The pair you will see everywhere else is 10 percent and 30 percent. Those
-numbers come from the withdrawn June 2024 preprint version of the same work.
+numbers come from the superseded June 2024 preprint version of the same work.
 They are superseded, not merely rounded, and this brain treats quoting them as
 a citation defect rather than a rounding difference. The correction is recorded
 in [[Superseded Figures]] rather than applied silently, so that a reader
@@ -57,8 +57,8 @@ arriving with the old numbers finds out what happened to them.
 | --- | --- | --- |
 | at least 13.5 percent of 2024 abstracts | current | Science Advances 11(27), 2025-07-02 |
 | up to 40 percent in some subcorpora | current | same paper |
-| 10 percent | superseded | withdrawn June 2024 preprint |
-| 30 percent | superseded | withdrawn June 2024 preprint |
+| 10 percent | superseded | superseded June 2024 preprint |
+| 30 percent | superseded | superseded June 2024 preprint |
 
 ## What the excess words actually are
 

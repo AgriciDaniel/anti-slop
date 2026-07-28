@@ -1,0 +1,18 @@
+# Normalise line endings so a Windows clone does not rewrite every file and
+# break the deterministic sample-vault hashes.
+* text=auto eol=lf
+
+*.py    text eol=lf diff=python
+*.md    text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.sh    text eol=lf
+*.canvas text eol=lf
+
+# Vendored or generated. Excluded from GitHub language stats and diffs.
+anti-slop-brain/examples/sample-vault/** linguist-generated=true
+research/ai-slop-research-report.md      linguist-documentation=true
+docs/**                                  linguist-documentation=true
+anti-slop-brain/wiki/**                  linguist-documentation=true
+anti-slop-plugin/references/**           linguist-documentation=true

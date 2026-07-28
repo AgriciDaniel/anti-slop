@@ -34,6 +34,14 @@ source_urls:
 
 # Superseded Figures
 
+> **A correction to this note.** It previously said the Kobak figures came
+> from a *withdrawn* preprint. arXiv 2406.07016 has five live versions and
+> carries no withdrawal notice, so the figures were superseded by revision,
+> not withdrawn. A note cataloguing other people's citation errors has to
+> hold itself to the same standard, so the wording is corrected throughout
+> and the change is recorded here rather than made silently.
+
+
 Seven numbers and characterisations circulate widely in writing about AI slop.
 This brain uses none of them. Each one is recorded here with the correction
 attached rather than quietly dropped, because a figure that is deleted comes
@@ -48,7 +56,7 @@ register that discusses weak sources cannot outrank them.
 
 | Id | Circulating figure | Status | Replacement |
 | --- | --- | --- | --- |
-| S1 | Kobak 10 percent and 30 percent | withdrawn preprint version | 13.5 percent floor, up to 40 percent |
+| S1 | Kobak 10 percent and 30 percent | superseded preprint version | 13.5 percent floor, up to 40 percent |
 | S2 | GitClear 7.1 percent code churn | discarded projection | 5.7 percent actual for 2024 |
 | S3 | Pangram human em-dash baseline | self-contradictory vendor page | 32.3 per 10,000 words, independently measured |
 | S4 | SynthID robustness "100 to 21 percent" | unverifiable | 87.6 to 5.4 percent from a named table |

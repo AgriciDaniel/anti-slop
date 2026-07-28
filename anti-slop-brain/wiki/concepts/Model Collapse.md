@@ -126,7 +126,7 @@ vault treats them as separate phenomena with separate notes.
 3. Published corpora are measurably shifting toward model-preferred vocabulary.
    Asserted, with `kobak-excess-vocabulary` as the peer-reviewed anchor. Note
    that the widely quoted 10 percent and 30 percent figures come from a
-   withdrawn preprint version and must not be used. See [[Superseded Figures]].
+   superseded preprint version and must not be used. See [[Superseded Figures]].
 4. That shift will degrade future models. Not asserted. It is a plausible
    mechanism with no measurement attached in this ledger.
 5. That shift already degrades marker-based detection, because the baseline
