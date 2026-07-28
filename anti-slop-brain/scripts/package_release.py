@@ -15,7 +15,10 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 TEXT_SUFFIXES = {".base", ".canvas", ".css", ".csv", ".html", ".json", ".md", ".py", ".sh", ".toml", ".txt", ".yaml", ".yml"}
-SKIP_PARTS = {".git", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".venv", "__pycache__", "build", "dist", "venv"}
+SKIP_PARTS = {".git", ".obsidian", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".venv", "__pycache__", "build", "dist", "venv"}
+# .obsidian holds local editor state. It is gitignored at the brain root and
+# never part of a release, so scanning it would fail the build on a machine
+# where someone simply opened the vault.
 SKIP_SUFFIXES = {".pyc", ".pyo", ".log"}
 FORBIDDEN_ENTRY_NAMES = {".env", ".env.local", ".env.production", ".DS_Store", "Thumbs.db", "workspace.json"}
 MAX_SCAN_BYTES = 25 * 1024 * 1024

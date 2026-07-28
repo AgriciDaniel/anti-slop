@@ -33,7 +33,7 @@ First public release.
   and load bearing. Each terminates in a verifiable artifact.
 - **`research/verification-ledger.md`**, recording eight corrections to figures
   that circulate incorrectly in this field.
-- 308 tests, and continuous integration that runs all of them plus gates for
+- 314 tests, and continuous integration that runs all of them plus gates for
   long dashes, local absolute paths, dead wikilinks, manifest validity, and
   skill frontmatter.
 

@@ -296,7 +296,7 @@ The adapted material is in `references/markers-tier1.md`,
 `references/markers-tier2.md`, `references/markers-tier3.md`,
 `references/code-markers.md` and `references/false-positives.md`, and each file
 carries the attribution. Adaptations of that material remain under CC BY-SA
-4.0; the rest of this plugin is MIT.
+4.0. The rest of this plugin is Apache-2.0 for code and CC BY 4.0 for prose. See LICENSE-CONTENT in this directory.
 
 **blader/humanizer** (https://github.com/blader/humanizer), MIT, v2.9.1 as of
 2026-07-22, is the best packaged prior art in this space and is credited as
@@ -319,5 +319,5 @@ ledger.
 
 ## Licence
 
-MIT, except for material adapted from Wikipedia:Signs of AI writing, which
+Apache-2.0 for code and CC BY 4.0 for prose, except for material adapted from Wikipedia:Signs of AI writing, which
 remains under CC BY-SA 4.0 and is attributed at the point of use.

@@ -13,3 +13,6 @@ dist/
 !.env.example
 .raw/secrets/
 *.secret
+
+# Local Obsidian workspace state, never part of a release
+/.obsidian/

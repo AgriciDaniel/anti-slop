@@ -4,9 +4,7 @@
   "type": "module",
   "scripts": {
     "sanitize": "node scripts/sanitize-public.mjs",
-    "build": "quartz build && node scripts/sanitize-public.mjs"
+    "build": "npx quartz build && node scripts/sanitize-public.mjs"
   },
-  "devDependencies": {
-    "@quartz-org/quartz": "^4.5.2"
-  }
+  "_comment_quartz": "Quartz v4 is not published to npm as an installable dependency. It is used by cloning quartzjs/quartz and running its build, or through npx. Declaring it here as a devDependency would be a fabricated package name."
 }

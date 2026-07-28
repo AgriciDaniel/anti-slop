@@ -27,7 +27,7 @@ release-preparation pass.
 | Vault | 62 Markdown files: 58 content notes across ten folders plus four spine files (`index`, `hot`, `log`, `overview`) | `find wiki -name '*.md' \| wc -l` |
 | Scanners | Six deterministic scanners, standard library only | `scripts/` |
 | Adapter lanes | Two, review run and marker cohort refresh, with schemas, fixtures and determinism tests | `references/adapter-manifest.json` |
-| Tests | 308 checks: 101 scanner, 207 adapter, plus the pipeline test | `tests/` |
+| Tests | 314 checks: 107 scanner, 207 adapter, plus the pipeline test | `tests/` |
 
 Note on `source_type`: the ledger's `rules.accepted_primary_types` enum counts
 `vendor`, `official`, `regulator` and `authority` alongside `primary`, which

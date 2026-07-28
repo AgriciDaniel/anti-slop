@@ -19,9 +19,6 @@
     "citations",
     "provenance"
   ],
-  "skills": [
-    "./SKILL.md"
-  ],
   "allowed-tools": [
     "Read",
     "Grep",
@@ -29,5 +26,6 @@
     "Bash",
     "Write",
     "Edit"
-  ]
+  ],
+  "_comment_skills": "No explicit skills array. This directory's SKILL.md sits at the root and is discovered automatically. Pointing skills at ./SKILL.md fails claude plugin validate, which requires directory entries."
 }

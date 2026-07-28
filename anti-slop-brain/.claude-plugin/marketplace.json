@@ -17,7 +17,7 @@
         "name": "Daniel Agrici"
       },
       "repository": "https://github.com/AgriciDaniel/anti-slop",
-      "license": "Custom license",
+      "license": "Apache-2.0 AND CC-BY-SA-4.0 AND CC-BY-4.0",
       "category": "anti-slop",
       "tags": [
         "obsidian",

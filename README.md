@@ -150,7 +150,7 @@ anti-slop/
 | `wiki/` | 62 Markdown files: 58 content notes across concepts, markers, procedures, surfaces, detection, evidence, counterarguments, meta, questions and sources, plus 4 spine files (index, hot, log, overview) |
 | `references/source-ledger.json` | 43 sources: 30 `primary`, 4 vendor, 3 supporting, 2 official, 2 practitioner, 1 authority, 1 regulator. Each carries a retrieval date, refresh date, evidence tier and stated limitations |
 | `scripts/` | Six deterministic scanners plus two adapter lanes |
-| `tests/` | 308 checks: 101 scanner, 207 adapter |
+| `tests/` | 314 checks: 107 scanner, 207 adapter |
 
 ## Install
 
