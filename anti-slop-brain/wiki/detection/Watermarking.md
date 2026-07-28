@@ -20,7 +20,7 @@ related:
   - "[[The Firewall]]"
   - "[[Evidence Tiers]]"
   - "[[Agent Output Surface|Agent Transcripts]]"
-  - "[[Humanizer Quality Degradation]]"
+  - "[[Humanizers|Humanizer Quality Degradation]]"
 source_urls:
   - "https://arxiv.org/abs/2501.03437"
   - "https://arxiv.org/abs/2605.19516"
@@ -158,5 +158,5 @@ is an inference you cannot support. The obligations are set out in
 - [[Why Pangram Is Not Cited]]
 - [[The Firewall]]
 - [[Evidence Tiers]]
-- [[Humanizer Quality Degradation]]
+- [[Humanizers|Humanizer Quality Degradation]]
 - [[Agent Output Surface|Agent Transcripts]]

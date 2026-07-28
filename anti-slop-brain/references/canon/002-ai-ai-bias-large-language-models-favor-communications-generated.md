@@ -38,7 +38,8 @@ Ledger: 002 | source: AI-AI bias large language models favor communications gene
 ## What It Says
 
 - GPT-4 preferred LLM-written product pitches 89 percent of the time versus human raters at 36 percent
-- The same bias appears for papers at 78 versus 61 percent and movies at 70 versus 58 percent, p below 10 to the minus 16
+- The same direction appears for papers at 78 versus 61 percent and movies at 70 versus 58 percent
+- The p below 10 to the minus 16 figures describe LLM selectors preferring LLM text over human text in the product and movie experiments; the papers experiment is at P equal to 0.001
 
 ## Source
 

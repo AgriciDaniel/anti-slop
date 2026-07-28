@@ -10,6 +10,14 @@ Fence tracking mirrors the approach proven in claude-blog 2.1.0
 nested fence with a different delimiter, or a shorter run of the same
 character, does not toggle state.
 
+Markdown has two code block syntaxes, not one. An indented code block is
+four spaces of leading whitespace after a blank line, and it is exactly as
+much a code block as a fenced one. `code_line_numbers` covers both, so a
+document that demonstrates a defect token in an indented block is not
+punished for it. Indentation inside a list is measured from the list item
+content column, which is what CommonMark specifies, so an ordinary wrapped
+list paragraph is still prose.
+
 Standard library only. No network access anywhere in this module.
 """
 
@@ -44,6 +52,13 @@ FENCE_RE = re.compile(r"(`{3,}|~{3,})")
 URL_RE = re.compile(r"https?://[^\s<>\]\"'`)]+")
 DOUBLE_TICK_RE = re.compile(r"``[^\n]*?``")
 SINGLE_TICK_RE = re.compile(r"`[^`\n]*`")
+LIST_MARKER_RE = re.compile(r"^(\s*)(?:[-*+]|\d{1,9}[.)])(\s+)\S")
+BLOCKQUOTE_RE = re.compile(r"^\s{0,3}>")
+
+# A markdown indented code block starts four columns past the enclosing
+# content column. Tabs are expanded to this many columns when measuring.
+INDENT_CODE_COLUMNS = 4
+TAB_WIDTH = 4
 
 EXIT_CLEAN = 0
 EXIT_FINDINGS = 1
@@ -78,7 +93,20 @@ class Document:
         self.text = text
         self.is_markdown = is_markdown
         self.lines = text.splitlines()
-        self.fenced_lines = fenced_line_numbers(text) if is_markdown else set()
+        self.code_lines = code_line_numbers(text) if is_markdown else set()
+        # Kept under the original name because the scanners read it, and
+        # because both syntaxes are code blocks for every purpose here.
+        self.fenced_lines = self.code_lines
+
+    def is_quoted(self, line_no: int) -> bool:
+        """True when the line is a markdown blockquote.
+
+        A blockquote is somebody else's sentence. Quoting a defective source
+        in order to describe the defect is the normal way to document one.
+        """
+        if not self.is_markdown:
+            return False
+        return bool(BLOCKQUOTE_RE.match(self.lines[line_no - 1]))
 
     def code_free_spans(self, line_no: int) -> list[tuple[int, int]]:
         """Return character spans of the line that are outside inline code.
@@ -139,6 +167,73 @@ def fenced_line_numbers(text: str) -> set[int]:
         ):
             fence_open = None
     return inside
+
+
+def indent_columns(line: str) -> int:
+    """Return the visual indentation width of the line, tabs expanded."""
+    width = 0
+    for char in line:
+        if char == " ":
+            width += 1
+        elif char == "\t":
+            width += TAB_WIDTH - (width % TAB_WIDTH)
+        else:
+            break
+    return width
+
+
+def indented_code_line_numbers(text: str, fenced: set[int]) -> set[int]:
+    """Return the 1 based line numbers inside a markdown indented code block.
+
+    An indented code block cannot interrupt a paragraph, so a run only opens
+    after a blank line or at the start of the document. Inside a list the
+    threshold moves to the list item content column plus four, which is what
+    keeps an ordinary indented list continuation classified as prose.
+    """
+    inside: set[int] = set()
+    in_code = False
+    threshold = INDENT_CODE_COLUMNS
+    list_indent = 0
+    after_blank = True
+    for number, line in enumerate(text.splitlines(), 1):
+        if number in fenced:
+            in_code = False
+            after_blank = False
+            continue
+        if not line.strip():
+            after_blank = True
+            continue
+        width = indent_columns(line)
+        if in_code:
+            if width >= threshold:
+                inside.add(number)
+                after_blank = False
+                continue
+            in_code = False
+        if after_blank and width >= list_indent + INDENT_CODE_COLUMNS:
+            in_code = True
+            threshold = list_indent + INDENT_CODE_COLUMNS
+            inside.add(number)
+            after_blank = False
+            continue
+        marker = LIST_MARKER_RE.match(line)
+        if marker is not None:
+            list_indent = marker.end(2)
+        elif width < list_indent:
+            list_indent = 0
+        after_blank = False
+    return inside
+
+
+def code_line_numbers(text: str) -> set[int]:
+    """Return every 1 based line number that markdown treats as code.
+
+    Both syntaxes count: a fenced block and an indented block. This is the
+    set the scanners mask, so a document is free to demonstrate the exact
+    token it warns about without tripping its own scanner.
+    """
+    fenced = fenced_line_numbers(text)
+    return fenced | indented_code_line_numbers(text, fenced)
 
 
 def url_spans(line: str) -> list[tuple[int, int]]:

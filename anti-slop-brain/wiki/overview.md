@@ -41,11 +41,22 @@ performing at chance.
 
 The bias then runs the wrong way. GPT-4 preferred model-written pitches 89
 percent of the time against human raters at 36 percent (`laurito-ai-ai-bias`,
-peer reviewed in PNAS). Judge preference does not track factuality or safety
-(`feuer-style-over-substance`). Markdown-heavy formatting is preferred over
-plain text with a style bias up to 0.76 (`soumik-judging-the-judges`). And when
-a model gates its own output, acceptance rises while correctness falls, a
-measured rubber-stamp regime (`song-rubber-stamp-regime`).
+peer reviewed in PNAS, though the human baseline is only n equal to 13 across
+both datasets and the authors call the findings not definitive). Judge
+preference does not track factuality or safety (`feuer-style-over-substance`).
+Markdown-heavy formatting is preferred over plain text with a style bias up to
+0.76 (`soumik-judging-the-judges`).
+
+There is a related finding about self-gating, and it must be scoped carefully.
+`song-rubber-stamp-regime` measures **recursive self-training across model
+generations**, not single-pass self-review before delivery: when a code model
+is repeatedly retrained on its own gated output, AI self-gating "degenerates to
+ungated self-training" and enters a "rubber-stamp regime where acceptance
+scores rise while benchmark correctness falls." That is a strong result about
+training loops and a suggestive one about review loops, not a measurement of
+the latter. It is tiered `CONTESTED` in the ledger. The same paper also finds
+that human gates slow but do not stop the collapse, which cuts against the
+obvious remedy.
 
 So the judge is both inaccurate and biased toward the exact features that
 define the thing it is supposed to catch. See [[Why Structural Not Judgmental]].
@@ -87,8 +98,11 @@ problem itself, and that treating the signs as the thing to fix "could just
 make detection harder" (`wikipedia-signs-of-ai-writing`). The measurement
 agrees: humanizers degrade the text they edit, winning a fluency comparison
 against the original only 26.0 percent of the time at best tier
-(`masrour-damage-humanizers`). See [[Signs Are Not The Problem]] and
-[[Humanizers]].
+(`masrour-damage-humanizers`). Those win rates are **GPT-4o judgements over 25
+samples per tool, not human ratings**, which matters given everything above
+about model judges; [[Humanizers]] sets out why the finding still carries
+weight despite that and despite its detector-vendor authorship. See
+[[Signs Are Not The Problem]].
 
 ## What it is graded by
 

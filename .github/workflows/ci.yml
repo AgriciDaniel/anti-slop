@@ -36,6 +36,11 @@ jobs:
         run: python tests/test_adapters.py
       - name: Pipeline tests
         run: python tests/test_pipeline.py
+      - name: Vault links
+        # lint_vault validates a client vault and expects client vault
+        # furniture, so it cannot be pointed at the shipped wiki. This
+        # checks the part that matters: every wikilink resolves.
+        run: python scripts/check_links.py --vault wiki
       - name: Vault substance
         # The vault is graded by its own subject matter. Note types must be
         # named explicitly; the scorer defaults to "spoke", which this vault

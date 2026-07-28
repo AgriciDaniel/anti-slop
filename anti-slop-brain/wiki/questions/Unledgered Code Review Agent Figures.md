@@ -2,14 +2,14 @@
 type: "question"
 title: "Unledgered Code Review Agent Figures"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
-status: "active"
+status: "evergreen"
 created: "2026-07-28"
 updated: "2026-07-28"
 tags:
   - "#domain/anti-slop"
   - "#type/question"
-  - "#confidence/contested"
-confidence: "contested"
+  - "#confidence/evidence-based"
+confidence: "evidence-based"
 related:
   - "[[index|Index]]"
   - "[[The Code Slop Disagreement]]"
@@ -25,8 +25,35 @@ source_urls: []
 
 # Unledgered Code Review Agent Figures
 
-An open question, recorded because two notes wanted a figure this brain cannot
-currently cite.
+**RESOLVED 2026-07-28.** Kept as the worked record of how a blocked citation
+gets unblocked, because the resolution took two lookups and the block had
+stood for a full build cycle.
+
+## Resolution
+
+The paper is real and the framing was correct all along. The block was a wrong
+identifier, not a missing study.
+
+| Item | Value |
+| --- | --- |
+| Correct identifier | arXiv 2604.03196 |
+| Title | From Industry Claims to Empirical Reality: An Empirical Study of Code Review Agents in Pull Requests |
+| Authors | Kowshik Chowdhury, Dipayan Banik, K M Ferdous, Shazibul Islam Shamim |
+| Venue | Accepted at the 23rd International Conference on Mining Software Repositories, MSR 2026 |
+| Ledger id | `chowdhury-code-review-agents`, added 2026-07-28 |
+
+All three figures appear verbatim in the abstract: a 45.20 percent merge rate
+for agent-only pull requests, 23.17 percentage points below human-only at 68.37
+percent, and 60.2 percent of closed agent-only pull requests in the 0 to 30
+percent signal range.
+
+The identifier that caused the block, arXiv 2603.28592, is Liu et al. on
+technical debt. That attribution in the ledger was always correct. The error
+was assigning the same identifier to this paper as well.
+
+The figures are now quotable in deliverables.
+
+## The original question, kept for the record
 
 ## What happened
 

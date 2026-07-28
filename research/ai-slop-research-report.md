@@ -6,6 +6,11 @@
 > withdrawn preprint; the published figures are 13.5 and 40 percent. Do not
 > quote this file directly. Quote the ledger.
 
+> This file is preserved verbatim as a historical record, so it retains the
+> em dashes and the original figures. It is deliberately excluded from the
+> house style gate in CI: editing an archived document to satisfy a lint
+> rule would falsify the archive.
+
 # AI Slop: A Full-Depth Research Report
 
 ## TL;DR

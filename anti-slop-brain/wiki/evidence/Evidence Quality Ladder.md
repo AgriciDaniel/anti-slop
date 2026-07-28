@@ -15,8 +15,8 @@ related:
   - "[[Superseded Figures]]"
   - "[[Why Pangram Is Not Cited]]"
   - "[[The Code Slop Disagreement]]"
-  - "[[Humanizer Quality Degradation]]"
-  - "[[Em Dash Population Prevalence]]"
+  - "[[Humanizers|Humanizer Quality Degradation]]"
+  - "[[The Em Dash|Em Dash Population Prevalence]]"
   - "[[Corpus Study Method]]"
   - "[[Note Conventions]]"
   - "[[Provenance Trace Policy]]"
@@ -141,7 +141,7 @@ points, and this paper makes two distinct claims that point opposite ways.
 A finding that cuts against the author's commercial interest is stronger
 evidence than the same finding from a disinterested party, because the incentive
 to publish it was negative. The ledger records this reasoning in the entry's
-limitations rather than leaving it to the reader. [[Humanizer Quality Degradation]]
+limitations rather than leaving it to the reader. [[Humanizers|Humanizer Quality Degradation]]
 is where the result is applied.
 
 ## Promotion is forbidden
@@ -169,7 +169,7 @@ lying to its own maintainers.
 - [[Superseded Figures]]
 - [[Why Pangram Is Not Cited]]
 - [[The Code Slop Disagreement]]
-- [[Humanizer Quality Degradation]]
+- [[Humanizers|Humanizer Quality Degradation]]
 - [[Corpus Study Method]]
 - [[Note Conventions]]
 - [[Provenance Trace Policy]]

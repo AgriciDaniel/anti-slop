@@ -1,6 +1,6 @@
 ---
 type: "concept"
-title: "Recursive collapse in AI self-review gates for code"
+title: "What Are LLMs Doing to Scientific Communication Measuring Changes in Writing Pra"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "active"
 created: "2026-07-28"
@@ -28,25 +28,27 @@ related:
   - "[[Weekly Report]]"
   - "[[Approval Queue]]"
 source_urls:
-  - "https://arxiv.org/abs/2606.28438"
+  - "https://arxiv.org/abs/2605.19936"
 ---
 
-# Recursive collapse in AI self-review gates for code
+# What Are LLMs Doing to Scientific Communication Measuring Changes in Writing Pra
 
 ## What It Says
 
-- AI self-review gates enter a rubber-stamp regime where acceptance scores rise while benchmark correctness falls
+- LLM-modified text shows lower lexical diversity than unmodified text
+- Domain experts rated LLM-improved texts as more understandable and more exciting
+- The same experts expressed negative qualitative attitudes towards LLMs, so the quantitative rating and the stated attitude point in opposite directions
 
 ## Source
 
-Source: [Recursive collapse in AI self-review gates for code](https://arxiv.org/abs/2606.28438); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [What Are LLMs Doing to Scientific Communication Measuring Changes in Writing Pra](https://arxiv.org/abs/2605.19936); type primary; retrieved 2026-07-27; refresh_due 2026-10-25.
 
 > [!gap]
 > Ledger confidence is medium/practitioner. Treat this as useful operating evidence, not settled authority, until stronger support is captured.
 
 ## Canon Backlink
 
-- Canon ledger entry: [references/canon/007-recursive-collapse-in-ai-self-review-gates-for-code.md](../../../../references/canon/007-recursive-collapse-in-ai-self-review-gates-for-code.md)
+- Canon ledger entry: [references/canon/042-what-are-llms-doing-to-scientific-communication-measuring-change.md](../../../../references/canon/042-what-are-llms-doing-to-scientific-communication-measuring-change.md)
 - Source ledger: `references/source-ledger.json`
 
 ## Related

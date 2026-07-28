@@ -12,7 +12,7 @@ tags:
 confidence: "evidence-based"
 related:
   - "[[Excess Vocabulary|Excess Vocabulary in Biomedical Abstracts]]"
-  - "[[Em Dash Population Prevalence]]"
+  - "[[The Em Dash|Em Dash Population Prevalence]]"
   - "[[Evidence Quality Ladder]]"
   - "[[Superseded Figures]]"
   - "[[Why Detection Fails]]"
@@ -154,7 +154,7 @@ looking for. It never tells you what any one document is.
 ## Related
 
 - [[Excess Vocabulary|Excess Vocabulary in Biomedical Abstracts]]
-- [[Em Dash Population Prevalence]]
+- [[The Em Dash|Em Dash Population Prevalence]]
 - [[Evidence Quality Ladder]]
 - [[Superseded Figures]]
 - [[Why Detection Fails]]

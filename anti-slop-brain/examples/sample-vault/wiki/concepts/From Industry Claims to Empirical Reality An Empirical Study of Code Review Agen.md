@@ -1,6 +1,6 @@
 ---
 type: "concept"
-title: "Lexical diversity and reader response in LLM-modified academic text"
+title: "From Industry Claims to Empirical Reality An Empirical Study of Code Review Agen"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "active"
 created: "2026-07-28"
@@ -28,26 +28,26 @@ related:
   - "[[Weekly Report]]"
   - "[[Approval Queue]]"
 source_urls:
-  - "https://arxiv.org/abs/2605.19936"
+  - "https://arxiv.org/abs/2604.03196"
 ---
 
-# Lexical diversity and reader response in LLM-modified academic text
+# From Industry Claims to Empirical Reality An Empirical Study of Code Review Agen
 
 ## What It Says
 
-- LLM-modified text shows lower lexical diversity than unmodified text
-- Expert readers nonetheless rated the LLM-modified text as more understandable and more exciting
+- Pull requests handled only by code review agents achieve a 45.20 percent merge rate, 23.17 percentage points lower than human-only pull requests at 68.37 percent
+- 60.2 percent of closed agent-only pull requests fall into the 0 to 30 percent signal range
 
 ## Source
 
-Source: [Lexical diversity and reader response in LLM-modified academic text](https://arxiv.org/abs/2605.19936); type primary; retrieved 2026-07-27; refresh_due 2026-10-25.
+Source: [From Industry Claims to Empirical Reality An Empirical Study of Code Review Agen](https://arxiv.org/abs/2604.03196); type primary; retrieved 2026-07-28; refresh_due 2026-10-26.
 
 > [!gap]
 > Ledger confidence is medium/practitioner. Treat this as useful operating evidence, not settled authority, until stronger support is captured.
 
 ## Canon Backlink
 
-- Canon ledger entry: [references/canon/042-lexical-diversity-and-reader-response-in-llm-modified-academic-t.md](../../../../references/canon/042-lexical-diversity-and-reader-response-in-llm-modified-academic-t.md)
+- Canon ledger entry: [references/canon/043-from-industry-claims-to-empirical-reality-an-empirical-study-of.md](../../../../references/canon/043-from-industry-claims-to-empirical-reality-an-empirical-study-of.md)
 - Source ledger: `references/source-ledger.json`
 
 ## Related

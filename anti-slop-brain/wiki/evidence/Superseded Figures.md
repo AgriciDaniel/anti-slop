@@ -17,7 +17,7 @@ related:
   - "[[Corpus Study Method]]"
   - "[[The Code Slop Disagreement]]"
   - "[[Package Hallucination Evidence]]"
-  - "[[Em Dash Population Prevalence]]"
+  - "[[The Em Dash|Em Dash Population Prevalence]]"
   - "[[Marker Cohort Rot]]"
   - "[[Evidence Tiers]]"
   - "[[Provenance Trace Policy]]"

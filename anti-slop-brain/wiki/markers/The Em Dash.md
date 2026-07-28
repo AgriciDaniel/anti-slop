@@ -13,7 +13,7 @@ confidence: "contested"
 related:
   - "[[Evidence Tiers]]"
   - "[[Why Pangram Is Not Cited]]"
-  - "[[The Em Dash|House Style Voice File]]"
+  - "House Style Voice File"
   - "[[The Firewall]]"
   - "[[Marker Cohort Rot]]"
   - "[[Why Detection Fails|Why Detectors Fail]]"
@@ -175,7 +175,7 @@ This is the generalisable part, and it applies well beyond punctuation.
 - [[Why Pangram Is Not Cited]]
 - [[Marker Cohort Rot]]
 - [[The Firewall]]
-- [[The Em Dash|House Style Voice File]]
+- House Style Voice File
 - [[The Firewall|Layer 0 Scanners]]
 - [[Why Detection Fails|Why Detectors Fail]]
 - [[Superseded Figures]]

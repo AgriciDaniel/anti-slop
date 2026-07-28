@@ -17,6 +17,13 @@ mechanical defect in the document. Removing it is correct regardless of
 who wrote the sentence around it, and its presence is not reported here as
 evidence of authorship.
 
+Quoted source protection: markdown blockquote lines are exempt by default,
+on the same reasoning `lint_voice.py` already documents. You do not edit
+somebody else's sentence, so a residue token inside a quotation of a
+defective source is a description of the defect rather than the defect. The
+skipped lines are counted and reported as `quoted_lines_exempt` rather than
+silently dropped, and `--include-quotes` scans them anyway.
+
 Usage:
     python3 scripts/scan_residue.py [PATH ...] [--format text|json]
     cat draft.md | python3 scripts/scan_residue.py
@@ -140,23 +147,34 @@ RULES: tuple[tuple[str, re.Pattern[str], str], ...] = (
 )
 
 
-def scan_document(document: Document, include_code: bool = False) -> list[Finding]:
-    """Return residue findings for one document.
+def scan_document(
+    document: Document,
+    include_code: bool = False,
+    include_quotes: bool = False,
+) -> tuple[list[Finding], int]:
+    """Return residue findings for one document, and the quoted-line skip count.
 
-    In markdown, matches inside fenced code blocks and inline code spans are
-    skipped, because documents about residue markers quote them. A match that
-    lands inside a URL is always reported: a fenced block is not a licence to
-    ship a tracking parameter.
+    In markdown, matches inside code blocks, fenced or indented, and inside
+    inline code spans are skipped, because documents about residue markers
+    quote them. A match that lands inside a URL is still reported: a code
+    block is not a licence to ship a tracking parameter. A match on a
+    blockquote line is skipped and counted, because quoted source text is not
+    yours to edit.
     """
     findings: list[Finding] = []
+    quoted_exempt = 0
     for line_no, line in enumerate(document.lines, 1):
         urls = url_spans(line)
-        fenced = document.is_markdown and line_no in document.fenced_lines
+        fenced = document.is_markdown and line_no in document.code_lines
+        quoted = not include_quotes and document.is_quoted(line_no)
         prose_spans = document.code_free_spans(line_no) if document.is_markdown else None
         for rule, pattern, message in RULES:
             for match in pattern.finditer(line):
                 span = (match.start(), match.end())
                 in_url = in_span_list(span, urls)
+                if quoted:
+                    quoted_exempt += 1
+                    continue
                 if not include_code and not in_url:
                     if fenced:
                         continue
@@ -173,7 +191,7 @@ def scan_document(document: Document, include_code: bool = False) -> list[Findin
                         snippet=snippet_for(line, match.start(), match.end()),
                     )
                 )
-    return findings
+    return findings, quoted_exempt
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -185,13 +203,29 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--include-code",
         action="store_true",
-        help="Also scan fenced code blocks and inline code spans in markdown.",
+        help="Also scan code blocks and inline code spans in markdown.",
+    )
+    parser.add_argument(
+        "--include-quotes",
+        action="store_true",
+        help="Also scan markdown blockquote lines. Off by default: quoted source "
+             "text is not yours to edit.",
     )
     args = parser.parse_args(argv)
     findings: list[Finding] = []
+    quoted_exempt = 0
     for document in load_documents(args):
-        findings.extend(scan_document(document, include_code=args.include_code))
-    return emit(findings, args.format, TOOL)
+        document_findings, exempt = scan_document(
+            document, include_code=args.include_code, include_quotes=args.include_quotes
+        )
+        findings.extend(document_findings)
+        quoted_exempt += exempt
+    inventory = {"quoted_lines_exempt": quoted_exempt}
+    if args.format == "text" and quoted_exempt:
+        print(
+            f"exempt: {quoted_exempt} match(es) inside quoted source lines were not reported."
+        )
+    return emit(findings, args.format, TOOL, inventory=inventory)
 
 
 if __name__ == "__main__":

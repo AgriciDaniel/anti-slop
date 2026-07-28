@@ -197,6 +197,6 @@ land on the same people every time.
 - [[Evidence Tiers]]
 - [[Why Detection Fails]]
 - [[Detector Bias Against Language Learners]]
-- [[Em Dash Population Prevalence]]
+- [[The Em Dash|Em Dash Population Prevalence]]
 - [[Marker Cohort Rot]]
 - [[Note Conventions]]

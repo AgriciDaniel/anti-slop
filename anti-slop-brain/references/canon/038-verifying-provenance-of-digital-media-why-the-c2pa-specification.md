@@ -1,24 +1,24 @@
 ---
-type: "concept"
-title: "Independent security analysis of the C2PA specifications"
+type: "canon"
+title: "038. Verifying Provenance of Digital Media Why the C2PA Specifications Fall Short"
 domain: "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection"
 status: "active"
 created: "2026-07-28"
 updated: "2026-07-28"
 tags:
   - "#domain/detection-and-repair-of-ai-slop-in-prose-code-documentation-and"
-  - "#type/concept"
+  - "#type/canon"
   - "#confidence/practitioner"
 confidence: "practitioner"
 related:
-  - "[[wiki/concepts/_index|Concepts Hub]]"
-  - "[[Claim Verification Flow]]"
+  - "[[Verifying Provenance of Digital Media Why the C2PA Specifications Fall Short]]"
   - "[[Index]]"
   - "[[Dashboard]]"
   - "[[CONVENTIONS]]"
   - "[[Tag Taxonomy]]"
   - "[[Source Intake Workflow]]"
   - "[[Research Refresh Workflow]]"
+  - "[[Claim Verification Flow]]"
   - "[[Synthesis Workflow]]"
   - "[[Reporting Workflow]]"
   - "[[Source Manifest Guide]]"
@@ -31,7 +31,9 @@ source_urls:
   - "https://arxiv.org/abs/2604.24890"
 ---
 
-# Independent security analysis of the C2PA specifications
+# 038. Verifying Provenance of Digital Media Why the C2PA Specifications Fall Short
+
+Ledger: 038 | source: Verifying Provenance of Digital Media Why the C2PA Specifications Fall Short | confidence: practitioner | fold: [[Verifying Provenance of Digital Media Why the C2PA Specifications Fall Short]] | status: captured.
 
 ## What It Says
 
@@ -41,18 +43,10 @@ source_urls:
 
 ## Source
 
-Source: [Independent security analysis of the C2PA specifications](https://arxiv.org/abs/2604.24890); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [Verifying Provenance of Digital Media Why the C2PA Specifications Fall Short](https://arxiv.org/abs/2604.24890); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
 
-> [!gap]
-> Ledger confidence is medium/practitioner. Treat this as useful operating evidence, not settled authority, until stronger support is captured.
+## Brain Hooks
 
-## Canon Backlink
-
-- Canon ledger entry: [references/canon/038-independent-security-analysis-of-the-c2pa-specifications.md](../../../../references/canon/038-independent-security-analysis-of-the-c2pa-specifications.md)
+- Folded concept: [[Verifying Provenance of Digital Media Why the C2PA Specifications Fall Short]]
 - Source ledger: `references/source-ledger.json`
-
-## Related
-
-- [[Claim Verification Flow]]
-- [[Source Intake Workflow]]
-- [[Research Refresh Workflow]]
+- Verification path: [[Claim Verification Flow]]

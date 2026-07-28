@@ -18,7 +18,7 @@ related:
   - "[[The Deletion Test]]"
   - "[[The Stranger Test]]"
   - "[[Evidence Tiers]]"
-  - "[[Workslop Downstream Cost]]"
+  - "[[Workslop|Workslop Downstream Cost]]"
   - "[[The Firewall]]"
 source_urls:
   - "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
@@ -136,12 +136,12 @@ page contains none, nobody ran the thing.
 
 | Marker | Tier | Procedure | Acquitting genre |
 | --- | --- | --- | --- |
-| [[Documentation Surface|Section Inflation]] | 2 | [[The Deletion Test]] on the heading | mandated compliance document structure |
+| Section Inflation | 2 | [[The Deletion Test]] on the heading | mandated compliance document structure |
 | Unsupported superlative | 1 | [[The Inversion Test]] | marketing landing copy, which is a different artifact |
 | [[Commit and Review Surface|Diff-Anchored Writing]] | 1 | genre check first | changelog, release notes, migration guide |
 | Passive voice | 3 | none, routes only | reference prose where the actor is irrelevant |
 | Title case heading | 3 | house style check only | any project whose style guide chooses it |
-| [[Documentation Surface|Inline-Header Vertical Lists]] | 2 | [[The Deletion Test]] | option tables and parameter lists |
+| Inline-Header Vertical Lists | 2 | [[The Deletion Test]] | option tables and parameter lists |
 | Template convergence across pages | 2 | none on this surface | API reference, where it is required |
 | Broken anchor or link | Layer 0 | scanner | none |
 | Unrunnable example | Layer 0 | doc test | none |

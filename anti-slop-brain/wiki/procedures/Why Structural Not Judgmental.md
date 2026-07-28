@@ -12,8 +12,8 @@ tags:
 confidence: "evidence-based"
 related:
   - "[[The Firewall]]"
-  - "[[Why Structural Not Judgmental|Measuring AI Slop in Text]]"
-  - "[[AI-AI Evaluator Bias]]"
+  - "Measuring AI Slop in Text"
+  - "AI-AI Evaluator Bias"
   - "[[Why Detection Fails]]"
   - "[[The Deletion Test]]"
   - "[[The Inversion Test]]"
@@ -77,10 +77,20 @@ question worse, because the errors are not random. They lean toward slop.
 `laurito-ai-ai-bias`, peer reviewed in PNAS 122(31), ran the same items past
 model judges and human raters. GPT-4 preferred LLM-written product pitches 89
 percent of the time where human raters preferred them 36 percent of the time.
-The gap replicates across domains: papers at 78 percent versus 61 percent,
-movies at 70 percent versus 58 percent, at p below 10 to the minus 16. A judge
-built from a model prefers what models write, by a wide and statistically
-brutal margin. See [[AI-AI Evaluator Bias]].
+The gap replicates across domains: papers at 78 percent versus 61 percent, and
+movies at 70 percent versus 58 percent.
+
+Two caveats that an earlier version of this note dropped, and that matter more
+than the headline. First, the human baseline is **n equal to 13 in total, six
+per dataset**, and the authors write that the findings are not definitive. This
+brain imposes a standing rule that Liang's n equals 91 must travel with its 61.3
+percent figure; the same rule applies here, and applies harder. Second, the
+paper's p-values, including the p below 10 to the minus 16 figures for the
+product and movie experiments and P equal to 0.001 for papers, test whether
+**model selectors prefer model-written text over human-written text**. They do
+not test the human-rater-versus-model-rater gap that the percentages above
+describe. That comparison carries no significance test in the paper, so none is
+quoted here. See AI-AI Evaluator Bias.
 
 `feuer-style-over-substance`, published at ICLR 2025, isolates what the
 preference tracks. Judge preferences do not correlate with factuality or with
@@ -180,12 +190,12 @@ gap is recorded rather than papered over.
 ## Related
 
 - [[The Firewall]]
-- [[Why Structural Not Judgmental|Measuring AI Slop in Text]]
-- [[AI-AI Evaluator Bias]]
+- Measuring AI Slop in Text
+- AI-AI Evaluator Bias
 - [[The Deletion Test]]
 - [[The Attribution Test]]
 - [[The Load Bearing Test]]
 - [[Why Detection Fails]]
 - [[Evidence Tiers]]
 - [[Distributional Convergence]]
-- [[Humanizer Quality Degradation]]
+- [[Humanizers|Humanizer Quality Degradation]]

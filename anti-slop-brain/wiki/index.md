@@ -28,6 +28,8 @@ Entry point for the Anti-Slop Brain. Start at [[overview|Overview]] for the argu
 [[The Firewall]] for the rules, or [[Evidence Tiers]] for how a signal becomes
 an action.
 
+New here? [[Start Here]].
+
 ## Read order for a new reader
 
 1. [[overview|Overview]], for what this brain claims and what it refuses to claim.
@@ -49,7 +51,7 @@ an action.
 | `evidence/` | The studies, and the figures this brain refuses to use | [[Superseded Figures]] |
 | `counterarguments/` | The strongest objections, taken seriously | [[The ESL Objection]] |
 | `sources/` | The dated research pack | [[research-pack-2026-07-27|Research Pack 2026-07-27]] |
-| `meta/` | Conventions and operating policy | [[Note Conventions]] |
+| `meta/` | Conventions and operating policy | [[Note Conventions]], [[dashboard]] |
 
 ## The three layers
 

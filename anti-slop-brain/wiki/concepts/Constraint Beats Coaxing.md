@@ -72,9 +72,10 @@ approve its own output.
 **Judges prefer the thing they are supposed to catch.** GPT-4 preferred
 LLM-written product pitches 89 percent of the time against human raters at 36
 percent, with the same bias appearing for papers at 78 versus 61 percent and
-movies at 70 versus 58 percent, p below 10 to the minus 16
-(`laurito-ai-ai-bias`, peer reviewed in PNAS). A judge with that prior is not a
-neutral gate on machine-shaped text.
+movies at 70 versus 58 percent (`laurito-ai-ai-bias`, peer reviewed in PNAS,
+human baseline n equal to 13; the paper's p-values test model-versus-human text
+preference, not this rater gap). A judge with that prior is not a neutral gate
+on machine-shaped text.
 
 **Self-recognition drives self-preference.** Panickssery and colleagues found
 that a model's ability to recognise its own generations correlates linearly with
