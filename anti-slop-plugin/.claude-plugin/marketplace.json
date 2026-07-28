@@ -1,0 +1,34 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "anti-slop",
+  "description": "Find and repair substance defects in AI-assisted prose, code, documentation, and agent output. Reports defects, never authorship.",
+  "owner": {
+    "name": "Daniel Agrici",
+    "url": "https://github.com/AgriciDaniel"
+  },
+  "plugins": [
+    {
+      "name": "anti-slop",
+      "displayName": "Anti-Slop",
+      "description": "Detect and repair AI slop in prose, code, documentation, commits and agent output. Reports defects, never authorship. Runs deterministic scanners for vendor residue, placeholders, citations and packages, then structural procedures (deletion, inversion, stranger, attribution, load-bearing) that each emit a verifiable artifact. Stylistic markers are evidence-tiered and route to structural tests instead of failing on their own.",
+      "author": "Daniel Agrici",
+      "category": "writing",
+      "version": "0.1.0",
+      "homepage": "https://github.com/AgriciDaniel/anti-slop",
+      "keywords": [
+        "anti-slop",
+        "ai-slop",
+        "writing-quality",
+        "code-review",
+        "citations",
+        "provenance"
+      ],
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/AgriciDaniel/anti-slop.git",
+        "path": "anti-slop-plugin",
+        "ref": "main"
+      }
+    }
+  ]
+}

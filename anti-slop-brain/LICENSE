@@ -1,6 +1,19 @@
-# Custom license
+Licensing for anti-slop-brain
+=============================
 
-Copyright (c) Daniel Agrici.
+This directory is part of the `anti-slop` repository and inherits its
+licences. It is not separately licensed.
 
-Replace this file with the final license before distribution. Until then, all
-rights are reserved by Daniel Agrici.
+  Code (scripts/, tests/, schemas/, anti_slop_brain/)
+      Apache License 2.0, see ../LICENSE
+
+  Vault notes under wiki/markers/
+      CC BY-SA 4.0, adapted from Wikipedia:Signs of AI writing.
+      Copyleft: adaptations must stay CC BY-SA 4.0 and carry attribution.
+
+  All other prose, notes, and documentation
+      CC BY 4.0
+
+Full terms are in ../LICENSE-CONTENT. Attribution is in ../NOTICE.
+
+Copyright 2026 Daniel Agrici.

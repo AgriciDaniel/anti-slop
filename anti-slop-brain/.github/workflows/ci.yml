@@ -1,3 +1,17 @@
+# Component workflow for anti-slop-brain.
+#
+# GitHub only executes workflows found in the repository root .github/
+# directory, so within the anti-slop monorepo THIS FILE DOES NOT RUN. The
+# executable job lives at ../../.github/workflows/ci.yml and invokes the same
+# steps with working-directory set to anti-slop-brain.
+#
+# This file is kept because anti-slop-brain is independently installable: it
+# has its own pyproject.toml, install.sh, marketplace.json and console script.
+# If the brain is ever extracted into a standalone repository, this workflow is
+# already correct and needs no edits.
+#
+# Keep the two in sync. If you add a step here, add it at the root as well.
+
 name: ci
 
 on:
@@ -24,8 +38,20 @@ jobs:
         run: anti-slop-brain --help
       - name: Template vault lint
         run: python scripts/lint_vault.py --vault assets/template-brain --template
+      - name: Scanner tests
+        run: python tests/test_scanners.py
+      - name: Adapter tests
+        run: python tests/test_adapters.py
       - name: Pipeline tests
         run: python tests/test_pipeline.py
+      - name: Vault substance
+        # Note types must be named explicitly. The scorer defaults to "spoke",
+        # which this vault does not use, and an unnamed type scores zero.
+        run: |
+          python scripts/score_substance.py \
+            --vault wiki \
+            --ledger references/source-ledger.json \
+            --note-type concept,marker,procedure,surface
       - name: Demo vault drift
         run: |
           python scripts/build_demo_vault.py

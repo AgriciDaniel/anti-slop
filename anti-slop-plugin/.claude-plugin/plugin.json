@@ -29,5 +29,6 @@
     "Write",
     "Edit",
     "WebFetch"
-  ]
+  ],
+  "_comment_allowed_tools": "claude plugin validate --strict rejects allowed-tools as unrecognised. It is retained because the Brainstein rubric item C7.3 requires a declared tool list, and it is inert at load time either way. Remove it if strict validation becomes a release gate."
 }

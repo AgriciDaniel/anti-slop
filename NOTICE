@@ -1,0 +1,71 @@
+anti-slop
+Copyright 2026 Daniel Agrici
+
+This product includes software developed by Daniel Agrici, licensed under the
+Apache License, Version 2.0. See LICENSE.
+
+Non-code content is licensed separately. See LICENSE-CONTENT.
+
+
+ATTRIBUTION FOR ADAPTED MATERIAL
+================================
+
+Wikipedia: Signs of AI writing, and WikiProject AI Cleanup
+----------------------------------------------------------
+Source:   https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
+Authors:  Wikipedia contributors
+Licence:  CC BY-SA 4.0
+Retrieved: 2026-07-27
+
+Adapted for: the marker taxonomy, the words-to-watch lists, the
+ineffective-indicators list, the vendor residue token table, and the citation
+defect categories. Adaptations remain under CC BY-SA 4.0.
+
+The central doctrine of this project is quoted from that guide:
+
+  "The patterns listed here are also only potential signs of a problem, not
+  the problem itself. Please do not merely treat these signs as the problems
+  to be fixed; that could just make detection harder."
+
+
+THIRD-PARTY WORK REFERENCED BUT NOT COPIED
+==========================================
+
+blader/humanizer
+----------------
+Source:  https://github.com/blader/humanizer
+Licence: MIT
+Version: 2.9.1 at 2026-07-22
+
+Analysed as prior art. No code or prose was copied. This project is
+deliberately scoped against it: humanizer removes the surface signs of AI
+writing, while this project targets the substance defects underneath. The
+comparison is documented in anti-slop-brain/references/market-research.md.
+
+impeccable plugin, by Paul Bakaus
+---------------------------------
+Licence: Apache 2.0
+
+The two-tier detection methodology, first-order lexical and second-order
+structural, reached this project by way of a sibling project rather than
+directly. Credited because the lineage is real.
+
+Claude Blog Brain, wiki substance scorer
+----------------------------------------
+anti-slop-brain/scripts/score_substance.py is a port and generalisation of the
+check_wiki_substance and score_wiki_substance functions from a sibling project
+by the same author. Thresholds were retained unchanged. Credited in the module
+docstring.
+
+claude-blog prose linter
+------------------------
+anti-slop-brain/scripts/lint_voice.py wraps rather than reimplements the
+fence-aware and backtick-aware dash detection logic from a sibling project by
+the same author.
+
+
+DEPENDENCIES
+============
+
+This project uses the Python standard library only. It declares no third-party
+runtime dependencies, so no further licence notices are required.

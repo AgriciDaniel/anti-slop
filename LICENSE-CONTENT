@@ -1,0 +1,82 @@
+Licences for non-code content in this repository
+================================================
+
+Code in this repository is licensed under Apache License 2.0. See LICENSE.
+
+Prose, documentation, marker taxonomies, and Obsidian vault notes are licensed
+as set out below. Where a file mixes both, the code blocks are Apache 2.0 and
+the surrounding prose follows this file.
+
+
+1. Material adapted from Wikipedia: CC BY-SA 4.0
+------------------------------------------------
+
+The following are adapted from the English Wikipedia page
+"Wikipedia:Signs of AI writing" and from WikiProject AI Cleanup, retrieved
+2026-07-27:
+
+  anti-slop-plugin/references/markers-tier1.md
+  anti-slop-plugin/references/markers-tier2.md
+  anti-slop-plugin/references/markers-tier3.md
+  anti-slop-plugin/references/false-positives.md
+  anti-slop-plugin/references/code-markers.md
+  anti-slop-brain/wiki/markers/*.md
+
+Specifically: the marker taxonomy, the words-to-watch lists, the
+ineffective-indicators list, the vendor residue token table, and the citation
+defect categories.
+
+These are licensed under the Creative Commons Attribution-ShareAlike 4.0
+International Licence (CC BY-SA 4.0).
+
+  https://creativecommons.org/licenses/by-sa/4.0/
+
+CC BY-SA 4.0 is a copyleft licence. Adaptations of this material must remain
+under CC BY-SA 4.0 and must carry attribution. You may not relicense it under
+Apache 2.0, MIT, or any other non-compatible licence. Attribution is given at
+the point of use in each file and in NOTICE.
+
+Source page:
+  https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
+
+
+2. Original prose and vault notes: CC BY 4.0
+---------------------------------------------
+
+All other prose in this repository, including the Obsidian vault notes outside
+anti-slop-brain/wiki/markers/, the source ledger, the research pack, the
+structural test procedures, and the README files, is original work by
+Daniel Agrici and is licensed under the Creative Commons Attribution 4.0
+International Licence (CC BY 4.0).
+
+  https://creativecommons.org/licenses/by/4.0/
+
+You may share and adapt this material for any purpose, including commercially,
+provided you give appropriate credit.
+
+
+3. Cited sources
+----------------
+
+The source ledger at anti-slop-brain/references/source-ledger.json records
+titles, URLs, retrieval dates, and short factual claims from third-party
+research. Facts and figures are not copyrightable. Nothing in this repository
+reproduces a substantial portion of any cited paper. Where a source is quoted,
+the quotation is short, attributed, and used for commentary and criticism.
+
+The raw snapshots that informed this work are described in
+anti-slop-brain/wiki/sources/research-pack-2026-07-27.md. The Wikipedia
+wikitext snapshot is CC BY-SA 4.0 and is not redistributed in this repository.
+
+
+4. Summary table
+----------------
+
+  Path                                        Licence
+  -----------------------------------------   ---------------
+  scripts/**, tests/**, schemas/**, *.py      Apache 2.0
+  anti-slop-plugin/references/**              CC BY-SA 4.0
+  anti-slop-brain/wiki/markers/**             CC BY-SA 4.0
+  everything else (prose, notes, docs)        CC BY 4.0
+
+When in doubt about a specific file, the more restrictive licence applies.
