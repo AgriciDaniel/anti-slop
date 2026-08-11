@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -95,6 +96,48 @@ def test_demo_build_is_reproducible() -> None:
         )
 
 
+def test_installers_run_without_a_bare_python() -> None:
+    """The installers must not assume a `python` on PATH.
+
+    Regression: `install.sh` and `uninstall.sh` invoked bare `python` for the
+    Gemini loader edit. macOS has shipped no `python` since Monterey removed
+    the Python 2 stub, so `./install.sh --target all` exited 127 after it had
+    already copied five skill trees, leaving a half-installed surface and no
+    loader. `uninstall.sh` failed at the same point and stranded the loader
+    block inside `GEMINI.md`, which the next install then had to repair.
+
+    The ambient-PATH run in `main` cannot catch this. `actions/setup-python`
+    puts a `python` on PATH, so CI is green, and so is any developer machine
+    with a virtualenv active. This test builds a sanitized PATH carrying
+    `python3` and the utilities the scripts shell out to, and no `python` under
+    any name, which is the arrangement that actually failed.
+    """
+    with tempfile.TemporaryDirectory(prefix="anti-slop-brain-nopython-") as tmp:
+        root = Path(tmp)
+        bin_dir = root / "bin"
+        bin_dir.mkdir()
+        for tool in ("bash", "cp", "mkdir", "rm", "chmod", "dirname", "find"):
+            resolved = shutil.which(tool)
+            assert resolved, f"cannot build a sanitized PATH without {tool}"
+            (bin_dir / tool).symlink_to(resolved)
+        # The interpreter is present under its versioned name only.
+        (bin_dir / "python3").symlink_to(PY)
+        assert shutil.which("python", path=str(bin_dir)) is None, "sanitized PATH still exposes a bare python"
+
+        env = {"PATH": str(bin_dir), "ANTI_SLOP_BRAIN_INSTALL_HOME": str(root / "home")}
+        loader = root / "home" / ".gemini" / "GEMINI.md"
+        # subprocess resolves argv[0] against the parent PATH rather than the
+        # env passed here, so bash is named absolutely. Everything the script
+        # itself looks up goes through the sanitized PATH.
+        bash = str(bin_dir / "bash")
+
+        run_cmd([bash, "install.sh", "--target", "gemini"], env=env)
+        assert "anti-slop-brain-install:start" in loader.read_text(encoding="utf-8"), "install wrote no loader block"
+
+        run_cmd([bash, "uninstall.sh", "--target", "gemini"], env=env)
+        assert not loader.exists(), "uninstall left the loader block behind"
+
+
 def main() -> int:
     run(["-m", "compileall", "scripts", "anti_slop_brain", "tests"])
     run(["scripts/lint_vault.py", "--vault", "assets/template-brain", "--template"])
@@ -145,6 +188,7 @@ def main() -> int:
         assert not (Path(tmp) / ".gemini" / "GEMINI.md").exists()
         run_cmd(["bash", "uninstall.sh", "--target", "custom", "--path", str(custom_root)], env=env)
         assert not (custom_root / "anti-slop-brain").exists()
+    test_installers_run_without_a_bare_python()
     print("Pipeline tests passed")
     return 0
 
