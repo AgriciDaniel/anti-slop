@@ -33,8 +33,8 @@ runtimes that load project-level `AGENTS.md` instructions.
 ## Verification
 
 ```bash
-python -m compileall scripts anti_slop_brain tests
-python tests/test_pipeline.py
-python scripts/audit_brain.py --json
-python scripts/package_release.py --version 0.1.0
+python3 -m compileall scripts anti_slop_brain tests
+python3 tests/test_pipeline.py
+python3 scripts/audit_brain.py --json
+python3 scripts/package_release.py --version 0.1.0
 ```

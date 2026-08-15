@@ -3,7 +3,7 @@
 ## Five-Minute Path
 
 ```bash
-python -m pip install -e .
+python3 -m pip install -e .
 anti-slop-brain demo
 anti-slop-brain lint --vault examples/sample-vault
 anti-slop-brain report --vault examples/sample-vault --html-only

@@ -56,13 +56,13 @@ anti-slop-brain report --vault <path> --html-only
 
 ## Script Mapping
 
-- `new` -> `python scripts/scaffold_vault.py`
-- `ingest` -> `python scripts/ingest_source.py`
-- `synthesize` -> `python scripts/synthesize_brain.py`
-- `report` -> `python scripts/render_brain_report.py`
-- `visuals` -> `python scripts/generate_vault_visuals.py`
-- `lint` -> `python scripts/lint_vault.py`
-- `next` -> `python scripts/guide_next_action.py`
+- `new` -> `python3 scripts/scaffold_vault.py`
+- `ingest` -> `python3 scripts/ingest_source.py`
+- `synthesize` -> `python3 scripts/synthesize_brain.py`
+- `report` -> `python3 scripts/render_brain_report.py`
+- `visuals` -> `python3 scripts/generate_vault_visuals.py`
+- `lint` -> `python3 scripts/lint_vault.py`
+- `next` -> `python3 scripts/guide_next_action.py`
 
 ## Quality Gates
 
