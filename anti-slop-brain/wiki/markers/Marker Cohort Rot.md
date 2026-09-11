@@ -74,13 +74,11 @@ boldface. This clock ticks on release schedules, which is to say without
 warning.
 
 **The measurement clock: the model roster the study used stops existing.**
-`wu-verbal-tics` reports a Verbal Tic Index across eight frontier models:
-Gemini 3.1 Pro at 0.590 as the worst, GPT-5.4 at 0.411, Claude Opus 4.7 at
-0.317, DeepSeek V3.2 at 0.295 as the best, over 160,000 responses. The ledger
-records that the model roster differs between versions of the paper, so the
-per-model numbers are cohort-specific by the authors' own account. A per-model
-index is a statement about named artifacts, and named artifacts are retired.
-The ranking may survive a generation. The numbers will not.
+`wu-verbal-tics` illustrates a faster failure. Its current arXiv abstract
+metadata and rendered v3 paper name different model cohorts. The ledger blocks
+the rendered per-model rankings until the source is internally consistent. A
+per-model index is a statement about named artifacts, and named artifacts are
+retired. Even a verified ranking would need a dated cohort and rapid refresh.
 
 **The baseline clock: humans absorb the vocabulary.**
 `yakura-spoken-convergence` analysed over 740,000 hours across 824,634 podcast

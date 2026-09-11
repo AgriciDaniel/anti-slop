@@ -24,7 +24,7 @@ related:
 source_urls:
   - "https://arxiv.org/abs/2507.00788"
   - "https://arxiv.org/abs/2606.29540"
-  - "https://www.pangram.com/supporting-evidence"
+  - "https://www.pangram.com/signs-of-ai-writing"
   - "https://arxiv.org/abs/2501.03437"
   - "https://www.gitclear.com/the_ai_code_quality_maintainability_gap"
   - "https://arxiv.org/abs/2603.27006"

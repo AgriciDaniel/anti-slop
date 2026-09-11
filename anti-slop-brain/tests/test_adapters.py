@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -70,10 +71,12 @@ FAILURES: list[str] = []
 CHECKS = 0
 
 
-def run(script: str, args: list[str]) -> subprocess.CompletedProcess[str]:
+def run(
+    script: str, args: list[str], *, repo: Path = REPO
+) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        [PY, str(SCRIPTS / script), *args],
-        cwd=REPO,
+        [PY, str(repo / "scripts" / script), *args],
+        cwd=repo,
         text=True,
         capture_output=True,
         env={**os.environ, "PYTHONIOENCODING": "utf-8"},
@@ -105,6 +108,42 @@ def write(directory: Path, name: str, text: str) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
     return path
+
+
+def refresh_window_fixture(tmp: Path) -> Path:
+    """Copy the brain and replace its live ledger with a stable test ledger."""
+    fixture_repo = tmp / "refresh-window-brain"
+    shutil.copytree(
+        REPO,
+        fixture_repo,
+        ignore=shutil.ignore_patterns(".git", "__pycache__", "dist"),
+    )
+    sources = []
+    for index in range(14):
+        sources.append(
+            {
+                "id": f"refresh-window-fixture-{index + 1}",
+                "title": f"Refresh window fixture {index + 1}",
+                "url": f"https://fixture.test/refresh-window/{index + 1}",
+                "source_type": "primary" if index < 2 else "fixture",
+                "retrieved": "2026-07-28",
+                "refresh_due": "2026-08-26",
+                "claims": ["Synthetic source used only to test refresh boundaries."],
+            }
+        )
+    ledger = {
+        "schema": "brainstein.source-ledger.v1",
+        "generated_at": "2026-07-28",
+        "domain": "deterministic refresh-window regression fixture",
+        "status": "researched",
+        "sources": sources,
+    }
+    write(
+        fixture_repo / "references",
+        "source-ledger.json",
+        json.dumps(ledger, indent=2, sort_keys=True) + "\n",
+    )
+    return fixture_repo
 
 
 def banned_keys(value: object, trail: str = "") -> list[str]:
@@ -714,11 +753,14 @@ def test_refresh_due_warning_band(tmp: Path) -> None:
     to be printed before it matters rather than after.
     """
     print("audit: the refresh_due warning band")
+    fixture_repo = refresh_window_fixture(tmp)
 
-    today_run = run("audit_brain.py", ["--json"])
-    expect_exit("the audit still passes today", today_run, 0)
-    today_payload = json.loads(today_run.stdout)
-    window = today_payload.get("refresh_window", {})
+    fixture_run = run(
+        "audit_brain.py", ["--json", "--reference-date", REFERENCE_DATE], repo=fixture_repo
+    )
+    expect_exit("the audit passes at the fixture reference date", fixture_run, 0)
+    fixture_payload = json.loads(fixture_run.stdout)
+    window = fixture_payload.get("refresh_window", {})
     check(
         "every audit run reports the earliest refresh_due date",
         isinstance(window.get("earliest_refresh_due"), str),
@@ -730,7 +772,9 @@ def test_refresh_due_warning_band(tmp: Path) -> None:
         and window["earliest_refresh_due_count"] >= 1,
         json.dumps(window, sort_keys=True),
     )
-    text_run = run("audit_brain.py", [])
+    text_run = run(
+        "audit_brain.py", ["--reference-date", REFERENCE_DATE], repo=fixture_repo
+    )
     check(
         "the text report prints the refresh window on every run",
         "Refresh window:" in text_run.stdout
@@ -738,7 +782,9 @@ def test_refresh_due_warning_band(tmp: Path) -> None:
         text_run.stdout[:600],
     )
 
-    day_after = run("audit_brain.py", ["--json", "--reference-date", "2026-08-27"])
+    day_after = run(
+        "audit_brain.py", ["--json", "--reference-date", "2026-08-27"], repo=fixture_repo
+    )
     expect_exit("the day after the shared refresh_due is not a failure", day_after, 0)
     payload = json.loads(day_after.stdout)
     check(
@@ -762,10 +808,16 @@ def test_refresh_due_warning_band(tmp: Path) -> None:
         json.dumps(payload["warnings"], sort_keys=True),
     )
 
-    gate = run("audit_brain.py", ["--require", "market-ready", "--reference-date", "2026-08-27"])
+    gate = run(
+        "audit_brain.py",
+        ["--require", "market-ready", "--reference-date", "2026-08-27"],
+        repo=fixture_repo,
+    )
     expect_exit("the market-ready gate still passes inside the warning band", gate, 0)
 
-    approaching = run("audit_brain.py", ["--json", "--reference-date", "2026-08-20"])
+    approaching = run(
+        "audit_brain.py", ["--json", "--reference-date", "2026-08-20"], repo=fixture_repo
+    )
     approaching_payload = json.loads(approaching.stdout)
     check(
         "a source inside the window before its date is warned about, not failed",
@@ -774,7 +826,9 @@ def test_refresh_due_warning_band(tmp: Path) -> None:
         json.dumps(approaching_payload["refresh_window"], sort_keys=True),
     )
 
-    past_band = run("audit_brain.py", ["--json", "--reference-date", "2026-09-30"])
+    past_band = run(
+        "audit_brain.py", ["--json", "--reference-date", "2026-09-30"], repo=fixture_repo
+    )
     expect_exit("past the warning band the audit fails", past_band, 1)
     past_payload = json.loads(past_band.stdout)
     check(
@@ -788,7 +842,9 @@ def test_refresh_due_warning_band(tmp: Path) -> None:
         json.dumps(past_payload["refresh_window"], sort_keys=True),
     )
 
-    bad_date = run("audit_brain.py", ["--reference-date", "27-08-2026"])
+    bad_date = run(
+        "audit_brain.py", ["--reference-date", "27-08-2026"], repo=fixture_repo
+    )
     expect_exit("a non ISO reference date is a usage error", bad_date, 2)
 
 

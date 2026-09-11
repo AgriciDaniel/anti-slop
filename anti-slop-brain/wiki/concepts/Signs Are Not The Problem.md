@@ -119,25 +119,22 @@ construction cannot fix the defects the signs indicated. See
 the process rather than a fixable prompt failure.
 
 There is a third result worth carrying as an outer bound. Xu and colleagues
-found that iterative paraphrasing reaches 100 percent human probability under a
-detector by round ten, while semantic preservation collapses from a 99 to 100
-range down to a 33 to 99 range (`xu-base-models-look-human`, preprint verified
-at abstract level). Perfect evasion is achievable. It costs the meaning.
+found that iterative paraphrasing can move detector-assigned human probability,
+with a tradeoff against semantic preservation that varies by model, detector,
+and text (`xu-base-models-look-human`, preprint v1). The paper does not support
+the former universal claim of perfect round-ten evasion and semantic collapse.
 
 ## What this rules out, by name
 
-The best-packaged prior art in this space, `blader/humanizer` v2.9.1, enumerates
-33 patterns derived directly from the Wikipedia guide and has no coverage of
-fabricated citations, vendor residue markers, or code
-(`blader-humanizer`, snapshot 2026-07-27; the repository changes continuously).
-Its no-fabrication rule is a prompt instruction with no verification mechanism,
-it has no severity or confidence system, and its own runtime prompt contains an
-em dash in violation of its stated hard constraint.
+The open prior art `blader/humanizer` declared v3.0.0 on 2026-09-11 and
+enumerated 25 patterns (`blader-humanizer`; the repository changes
+continuously). Its instructions preserve supported claims and file-mode code,
+data, metadata, and links, while its no-fabrication rule remains a prompt
+instruction with no external verification mechanism.
 
 The distribution discipline of that project is worth copying. Its substance is
-what this note exists to reject. A tool that removes the 33 signs and leaves the
-citations unchecked has implemented case two of the trap above, at scale, with a
-persuasive interface.
+what this note exists to qualify. A pattern rewrite can improve prose, but it
+does not by itself verify the claims or citations that the patterns route to.
 
 The doctrine therefore produces four standing rules, enforced elsewhere:
 

@@ -1,0 +1,28 @@
+# Source refresh verification, 2026-09-11
+
+This is the retained review record for the 14 source-ledger entries whose
+`refresh_due` was 2026-08-26. It records what was checked before changing a
+date. A source that describes its own advice is evidence of that advice, not
+empirical proof that the advice detects authorship.
+
+| Ledger id | Current source checked | Result |
+|---|---|---|
+| `song-rubber-stamp-regime` | [arXiv 2606.28438](https://arxiv.org/abs/2606.28438), current abstract | Supported. The abstract still reports the rubber-stamp regime and need for exogenous verification. No newer version was listed. |
+| `pangram-supporting-evidence` | [Pangram signs page](https://www.pangram.com/signs-of-ai-writing) | Supported only as a record of the vendor's page. The page still gives conflicting human em-dash baselines of 2 and 5 per 10,000 words and a four-times triad claim. It says its corpus has millions of documents but provides no reproducible method or sample composition. |
+| `freeburg-last-fingerprint` | [arXiv 2603.27006v1 HTML](https://arxiv.org/html/2603.27006v1) | Supported with existing contested limits. The paper reports the 3.23 per 1,000 human mean, model-specific rates, and Llama 3.1 8B base at 0.49 versus instruct at 0.00. |
+| `wu-verbal-tics` | [arXiv abstract](https://arxiv.org/abs/2604.19139), [v3 HTML](https://arxiv.org/html/2604.19139v3), and the arXiv Atom record | Blocked for operational use. The current abstract names GPT-5.5, Claude Opus 4.8, and DeepSeek V4 Pro, while v3 HTML names GPT-5.4, Claude Opus 4.7, and DeepSeek V3.2 and supplies the recorded values. The ledger now records the conflict and supports no operating claim. |
+| `xu-base-models-look-human` | [arXiv 2605.19516v1 HTML](https://arxiv.org/html/2605.19516v1) | Partially corrected. The 98.8 percent Pangram result is specific to Llama3-8B base-model continuations with human prefixes. The paper supports a tested tradeoff, while its qualitative round-ten examples do not support the former universal semantic-collapse wording. |
+| `wikipedia-signs-of-ai-writing` | [Wikipedia advice page](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) | Supported only as current community advice. The signs-not-problems warning and residue, citation, ineffective-indicator, and historical taxonomies remain. The page now warns that its recent-model sections need updating. |
+| `blader-humanizer` | [GitHub repository](https://github.com/blader/humanizer), GitHub repository and contents APIs | Corrected for current main. The plugin manifest is v3.0.0 at blob `7a7ba2bd3e8daa0405644343b246e9c79438d5a3`; `SKILL.md` has 25 patterns at blob `d375fbf3e3ee8fb047c379bced82df3713c6ed3b`. The former v2.9.1, 33-pattern, unconditional dash-ban, and self-violation claims were removed. |
+| `churilov-package-hallucination-2026` | [arXiv 2605.17062v3](https://arxiv.org/abs/2605.17062v3) | Supported. The August 2026 revision retains 199,845 responses, rates of 4.62 to 6.10 percent, and 53 registrable names. It states that headline rates are unchanged. |
+| `gitclear-maintainability-gap` | [GitClear 2026 report page](https://www.gitclear.com/the_ai_code_quality_maintainability_gap) | Supported as vendor research. The page retains 623 million analyzed changes, the 81 percent block-duplication increase, and the 15 percent two-week churn increase. Its commercial interest and correlational design remain explicit. |
+| `gitclear-copilot-quality-2025` | [GitClear 2025 PDF](https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf) | Supported as vendor research. The PDF retains the 211 million line sample and the moved, copy-paste, duplicate-block, and churn values. Numeric use still requires checking before every release. |
+| `stenberg-high-quality-chaos` | [Daniel Stenberg's maintainer post](https://daniel.haxx.se/blog/2026/04/22/high-quality-chaos/) | Supported as a first-hand practitioner account. The post retains the return to HackerOne, doubled report rate, 15 to 16 percent confirmed-vulnerability rate, and statement that slop was no longer the problem. |
+| `eu-ai-act-article-50` | [Consolidated Regulation EU 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/eng) and [amending Regulation EU 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj) | Corrected to primary legal text. Articles 50, 99, 111, and 113 support the marking duty, general application date, transition for pre-existing systems, and penalty ceiling. Article 99 applies the lower applicable cap to SMEs and eligible small mid-cap enterprises. The consolidated text is documentation; authentic Official Journal acts control. |
+| `c2pa-security-analysis` | [arXiv 2604.24890v1 HTML](https://arxiv.org/html/2604.24890v1) | Supported with contested preprint limits. The paper reports failures against the evaluated goals, warns against high-stakes reliance, and says version 2.4 addresses none of the authors' concerns. |
+| `anthropic-sycophancy-study` | [Anthropic personal-guidance study](https://www.anthropic.com/research/claude-personal-guidance) | Supported as first-party vendor research. The page retains the roughly 639,000-conversation sample, 9 percent overall rate, 25 percent relationship rate, 38 percent spirituality rate, and Opus 4.7 versus 4.6 comparison. |
+
+All source-ledger entries retain their source URL, retrieval date, claim scope,
+confidence tier, and limitations. The next review is 2026-10-11 for fast-moving
+sources and 2026-12-10 for the enacted EU text. Numeric claims remain subject
+to the ledger's before-every-release rule.

@@ -40,7 +40,7 @@ source_urls:
 
 ## Source
 
-Source: [The AI Code Quality Maintainability Gap](https://www.gitclear.com/the_ai_code_quality_maintainability_gap); type vendor; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [The AI Code Quality Maintainability Gap](https://www.gitclear.com/the_ai_code_quality_maintainability_gap); type vendor; retrieved 2026-09-11; refresh_due 2026-10-11.
 
 > [!gap]
 > Ledger confidence is medium/practitioner. Treat this as useful operating evidence, not settled authority, until stronger support is captured.

@@ -43,7 +43,7 @@ Ledger: 038 | source: Verifying Provenance of Digital Media Why the C2PA Specifi
 
 ## Source
 
-Source: [Verifying Provenance of Digital Media Why the C2PA Specifications Fall Short](https://arxiv.org/abs/2604.24890); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [Verifying Provenance of Digital Media Why the C2PA Specifications Fall Short](https://arxiv.org/abs/2604.24890); type primary; retrieved 2026-09-11; refresh_due 2026-10-11.
 
 ## Brain Hooks
 

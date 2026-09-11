@@ -88,16 +88,17 @@ whether to run one of these tools over a real document:
 
 ## The paraphrase tradeoff, quantified
 
-`xu-base-models-look-human`, a Carnegie Mellon preprint verified at abstract
-level, measured what iterative paraphrasing buys and what it costs. Detector
-evasion succeeds completely: text reaches **100 percent human probability by
-round 10**. Meaning does not survive the trip. Semantic preservation collapses
-from a starting band of **99 to 100** down to a range of **33 to 99**.
+`xu-base-models-look-human`, a Carnegie Mellon preprint checked against its v1
+methods and qualitative appendix, measured iterative paraphrasing across tested
+Llama3 and Qwen3 families. HIP improved the reported tradeoff between semantic
+preservation and detector-assigned human probability. Its round-ten examples
+varied in both semantic score and detector outcome, so they do not establish a
+universal detector-evasion result or a universal collapse in meaning.
 
-The lower bound is the number to hold onto. A document can come out of that
-process retaining a third of its meaning while scoring perfectly on the metric
-the process was optimising. That is the exact shape of Goodhart's problem, and
-it is why [[Signs Are Not The Problem]] is doctrine here rather than advice.
+The useful result is the tradeoff itself. Optimising detector score can change
+meaning, and the size of that change depends on the model, detector, and
+example. That is one reason [[Signs Are Not The Problem]] is doctrine here
+rather than advice.
 
 ## Voice does not survive revision either
 
@@ -120,23 +121,22 @@ is manufacturing the defect it claims to remove.
 
 ## What the prior art actually does
 
-`blader-humanizer` is the most widely used open implementation, MIT licensed,
-at version 2.9.1 as of 2026-07-22, with 33 patterns derived from the Wikipedia
-signs guide. It is a fair specimen of the category's design assumptions:
+`blader-humanizer` is an open MIT-licensed implementation. Its main branch
+declared version 3.0.0 on 2026-09-11 and enumerated 25 patterns. It is a fair
+specimen of the category's design assumptions:
 
-- no severity system, no confidence system, no per-pattern weights;
+- the first five patterns permit an edit on one sighting, while patterns marked
+  weak alone require corroborating tells in the same passage;
 - a no-fabrication rule that is a prompt instruction with no verification
   mechanism behind it;
-- no coverage of fabricated citations, vendor residue markers, or code;
-- a section that bans en dashes outright, which breaks legitimate numeric and
-  date ranges;
-- a runtime prompt that itself contains an em dash, violating its own stated
-  hard constraint.
+- file-mode preservation rules for code, commands, paths, YAML metadata, data,
+  and link targets;
+- a conditional ban on em and en dashes unless the supplied writer sample uses
+  them, with exceptions for code, commands, paths, and URLs.
 
-The last two are not cheap shots. They show what happens when a marker list is
-promoted to a rule without a procedure behind it: the rule fires on correct
-usage and fails to fire on its own author. [[The Em Dash]] and
-[[Excess Vocabulary]] are held as routing signals here for exactly this reason.
+These remain prompt instructions rather than external checks. This brain keeps
+[[The Em Dash]] and [[Excess Vocabulary]] as routing signals because valid use
+cannot be decided from a marker alone.
 
 The source that most of this field derives from says so directly.
 `wikipedia-signs-of-ai-writing` warns in bold that the listed patterns are only

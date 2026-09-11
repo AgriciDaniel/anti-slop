@@ -35,17 +35,15 @@ source_urls:
 
 ## What It Says
 
-- Version 2.9.1 as of 2026-07-22, MIT licensed, 31,520 stars and 2,879 forks at retrieval
-- It enumerates 33 patterns derived from the Wikipedia signs guide
-- It has no severity system, no confidence system, and no per-pattern weights
-- Its no-fabrication rule is a prompt instruction with no verification mechanism
-- It has no coverage of fabricated citations, vendor residue markers, or code
-- Its section 14 bans en dashes outright, which breaks legitimate numeric and date ranges
-- Its own runtime prompt contains an em dash, violating its own stated hard constraint
+- The main branch declares version 3.0.0 and an MIT license
+- The skill now enumerates 25 patterns, with the first five permitting an edit on one sighting and weak-alone patterns requiring corroborating tells in the same passage
+- Its rewrite instructions preserve supported claims and forbid adding unsupported facts, but this remains a prompt instruction rather than an external verification mechanism
+- Section 8 bars em and en dashes unless the supplied writer sample uses them, while exempting code, commands, paths, and URLs
+- File mode says to preserve code blocks, inline code, commands, paths, YAML metadata, data, and link targets
 
 ## Source
 
-Source: [blader humanizer agent skill](https://github.com/blader/humanizer); type supporting; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [blader humanizer agent skill](https://github.com/blader/humanizer); type supporting; retrieved 2026-09-11; refresh_due 2026-10-11.
 
 
 

@@ -30,15 +30,17 @@ Downgrade rules live in `references/source-ledger.json` under
 
 ## Current Regulatory Position
 
-EU AI Act Article 50 transparency duties apply from 2026-08-02 and were not
-amended by the Digital Omnibus, which deferred high-risk deadlines only.
-Generative systems already on the market before that date have until
-2026-12-02 for the Article 50(2) machine-readable marking requirement.
-Penalties reach 15 million euro or 3 percent of turnover. Source
-eu-ai-act-article-50, retrieved 2026-07-27. That source is a consolidated
-third-party rendering rather than the Official Journal text, so it is
-confidence medium and must be checked against EUR-Lex before any compliance
-advice is given.
+The EU AI Act generally applies from 2026-08-02, including Article 50 subject
+to its scope, exceptions, and transition. Generative systems already on the
+market before that date have until 2026-12-02 for the Article 50(2)
+machine-readable marking requirement. Article 99 permits fines up to 15
+million euro or 3 percent of worldwide annual turnover, whichever is higher,
+with the lower applicable cap controlling for SMEs and eligible small mid-cap
+enterprises. Source
+eu-ai-act-article-50, retrieved 2026-09-11. The source is the 2026-07-27
+consolidated EUR-Lex text, which is a documentation tool rather than the
+authentic Official Journal act. These are enacted provisions and dates, not
+individualized compliance guidance.
 
 Wikipedia has prohibited LLM-generated or LLM-rewritten article content since
 its RfC closed 2026-03-20 by 44 to 2 under SNOW. It is a content guideline,

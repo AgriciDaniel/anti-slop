@@ -35,13 +35,13 @@ source_urls:
 
 ## What It Says
 
-- Llama3-8B base model output was rated 98.8 percent human by Pangram
-- The authors conclude that detectors capture artifacts of instruction tuning rather than machine generation
-- Iterative paraphrasing reaches 100 percent human probability by round 10 while semantic preservation collapses from 99 to 100 down to a 33 to 99 range
+- For Llama3-8B continuations conditioned on human prefixes, GPTZero and Pangram assigned the base model 96.7 percent and 98.8 percent human probability, respectively
+- The authors conclude that the tested detectors respond more to instruction-tuning artifacts and local context than to an invariant property of machine-generated text
+- Across the tested Llama3 and Qwen3 families, HIP improves the reported tradeoff between semantic preservation and detector-assigned human probability; qualitative round-ten examples vary in both semantic score and detector outcome
 
 ## Source
 
-Source: [Base Models Look Human To AI Detectors](https://arxiv.org/abs/2605.19516); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [Base Models Look Human To AI Detectors](https://arxiv.org/abs/2605.19516); type primary; retrieved 2026-09-11; refresh_due 2026-10-11.
 
 > [!gap]
 > Ledger confidence is medium/practitioner. Treat this as useful operating evidence, not settled authority, until stronger support is captured.
