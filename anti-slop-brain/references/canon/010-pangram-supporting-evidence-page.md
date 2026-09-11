@@ -28,7 +28,7 @@ related:
   - "[[Weekly Report]]"
   - "[[Approval Queue]]"
 source_urls:
-  - "https://www.pangram.com/supporting-evidence"
+  - "https://www.pangram.com/signs-of-ai-writing"
 ---
 
 # 010. Pangram supporting evidence page
@@ -43,7 +43,7 @@ Ledger: 010 | source: Pangram supporting evidence page | confidence: contested |
 
 ## Source
 
-Source: [Pangram supporting evidence page](https://www.pangram.com/supporting-evidence); type vendor; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [Pangram supporting evidence page](https://www.pangram.com/signs-of-ai-writing); type vendor; retrieved 2026-09-11; refresh_due 2026-10-11.
 
 ## Brain Hooks
 

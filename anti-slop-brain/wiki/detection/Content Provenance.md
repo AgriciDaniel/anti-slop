@@ -23,7 +23,7 @@ related:
   - "[[Human Expert Review]]"
 source_urls:
   - "https://arxiv.org/abs/2604.24890"
-  - "https://artificialintelligenceact.eu/article/50/"
+  - "https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/eng"
   - "https://en.wikipedia.org/wiki/Wikipedia:Writing_articles_with_large_language_models/RfC"
 ---
 

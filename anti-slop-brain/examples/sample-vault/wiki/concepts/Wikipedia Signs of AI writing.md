@@ -44,7 +44,7 @@ source_urls:
 
 ## Source
 
-Source: [Wikipedia Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing); type supporting; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [Wikipedia Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing); type supporting; retrieved 2026-09-11; refresh_due 2026-10-11.
 
 
 

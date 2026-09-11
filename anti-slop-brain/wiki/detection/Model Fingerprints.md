@@ -43,10 +43,10 @@ Two studies carry the claim. Neither is a vendor product page.
 `sun-idiosyncrasies`, published at ICML 2025, reports **97.1 percent accuracy on
 five-way model attribution** across ChatGPT, Claude, Grok, Gemini, and DeepSeek.
 The result that makes it interesting is not the headline number but its
-robustness: the signal survives rewriting, translation, and summarization. A
-paraphrase pass that walks an origin detector out of its decision boundary, the
-effect reported in `xu-base-models-look-human` at 100 percent human probability
-by round 10, does not remove the family signature.
+robustness: the signal survives rewriting, translation, and summarization. The
+separate `xu-base-models-look-human` preprint reports varied detector and
+semantic outcomes under iterative paraphrasing, so it does not establish a
+universal round-ten result.
 
 `russell-storyscope` approaches the same question from narrative structure
 rather than surface form. Across **61,608 stories**, it separates human from AI
@@ -64,12 +64,13 @@ less steeply than a human writer's does.
 | StoryScope | human against AI, narrative features only | 93.2 percent macro-F1 | not tested under paraphrase attack | `russell-storyscope` |
 | StoryScope | six-way model attribution | 68.4 percent accuracy | same | `russell-storyscope` |
 | StoryScope | Claude-specific signature | flat event escalation | structural, not lexical | `russell-storyscope` |
-| Verbal Tic Index | per-model tic density | Gemini 3.1 Pro 0.590, Claude Opus 4.7 0.317 | cohort-specific, rots with releases | `wu-verbal-tics` |
+| Verbal Tic Index | per-model tic density | blocked, current source versions name different cohorts | cohort-specific, rots with releases | `wu-verbal-tics` |
 
 `sun-idiosyncrasies` is `high` confidence and tier EVIDENCE-BASED.
-`russell-storyscope` and `wu-verbal-tics` are preprints verified at abstract
-level, capped at `medium` and tier CONTESTED, which is why this note is tagged
-`practitioner` overall.
+`russell-storyscope` is a preprint capped at `medium` and tier CONTESTED.
+`wu-verbal-tics` is capped at `low` and maps to no operational claim while its
+current source versions disagree. This is why the note is tagged `practitioner`
+overall.
 
 ## Where the capability stops
 

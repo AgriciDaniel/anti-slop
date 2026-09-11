@@ -25,7 +25,7 @@ source_urls:
   - "https://arxiv.org/abs/2606.29540"
   - "https://arxiv.org/abs/2603.27006"
   - "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
-  - "https://www.pangram.com/supporting-evidence"
+  - "https://www.pangram.com/signs-of-ai-writing"
   - "https://github.com/blader/humanizer"
 ---
 

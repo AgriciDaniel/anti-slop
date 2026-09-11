@@ -83,13 +83,11 @@ maintaining the most-copied marker list in existence found it necessary to
 version their vocabulary by period. They would not have done that if the list
 were stable.
 
-`wu-verbal-tics` supplies the per-model version. Its Verbal Tic Index across
-eight frontier models runs from Gemini 3.1 Pro at 0.590, through GPT-5.4 at
-0.411 and Claude Opus 4.7 at 0.317, down to DeepSeek V3.2 at 0.295, measured
-over 160,000 responses. The ledger records the crucial limitation: the model
-roster differs between versions of the paper, so the per-model numbers are
-cohort-specific and will rot. A number attached to a model name expires when
-that model is replaced, which in this field is measured in months.
+`wu-verbal-tics` supplies a warning about per-model evidence. Its current arXiv
+abstract metadata and rendered v3 paper name different model cohorts, so the
+ledger blocks the rendered rankings from operational use. Even after that
+discrepancy is resolved, a number attached to a model name expires when that
+model is replaced, which in this field is measured in months.
 
 `freeburg-last-fingerprint` shows the third and least intuitive mechanism. It
 reports base Llama 3.1 8B at 0.49 em dashes per 1,000 words against its

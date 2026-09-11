@@ -45,8 +45,8 @@ dishonest but because it is content-free text occupying content positions.
 | Sycophancy rate in guidance conversations | 9 percent overall | roughly 639,000 production conversations | `anthropic-sycophancy-study`, first-party vendor research |
 | Highest-rate topic areas | 25 percent relationships, 38 percent spirituality | same corpus | `anthropic-sycophancy-study` |
 | Version-over-version change | Opus 4.7 roughly half the rate of Opus 4.6 | same corpus | `anthropic-sycophancy-study` |
-| Verbal Tic Index across a frontier cohort | Gemini 3.1 Pro 0.590 worst, GPT-5.4 0.411, Claude Opus 4.7 0.317, DeepSeek V3.2 0.295 best | 160,000 responses across 8 models | `wu-verbal-tics`, preprint |
-| Correlation of sycophancy with perceived naturalness | minus 0.87 | human evaluation, n equal to 120 | `wu-verbal-tics` |
+| Verbal Tic Index across a frontier cohort | blocked: current abstract and v3 HTML name different model cohorts | 160,000 responses claimed across 8 models | `wu-verbal-tics`, internally inconsistent preprint |
+| Correlation of sycophancy with perceived naturalness | minus 0.87 in rendered v3, blocked from operational use with the inconsistent cohort | human evaluation, n equal to 120 | `wu-verbal-tics` |
 
 Three things about this table are worth stating rather than leaving to the
 reader.

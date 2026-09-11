@@ -41,7 +41,7 @@ source_urls:
 
 ## Source
 
-Source: [The Last Fingerprint How Markdown Training Shapes LLM Prose](https://arxiv.org/abs/2603.27006); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [The Last Fingerprint How Markdown Training Shapes LLM Prose](https://arxiv.org/abs/2603.27006); type primary; retrieved 2026-09-11; refresh_due 2026-10-11.
 
 > [!contradiction]
 > Ledger confidence is low/contested. Keep disagreement or weak support visible before using this in a deliverable.

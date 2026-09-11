@@ -101,14 +101,12 @@ conversations**, with **Opus 4.7 at roughly half the rate of Opus 4.6**. It is
 first-party vendor research about the vendor's own models and is flagged as such
 here and in [[Sycophancy Evidence]].
 
-`wu-verbal-tics` supplies the cost. Across 160,000 responses from eight models,
-the Verbal Tic Index runs from **Gemini 3.1 Pro at 0.590** to **Claude Opus 4.7
-at 0.317** to **DeepSeek V3.2 at 0.295**, and a human evaluation with **n equal
-to 120** found a correlation of **minus 0.87 between sycophancy and perceived
-naturalness**. Preprint, abstract-level verification, so the sign is the finding
-and the magnitude is provisional. Its named tics, including "That's a great
-question" and "It's important to note", are the literal strings in row one of
-the table.
+`wu-verbal-tics` cannot currently support an operational claim. Its arXiv
+abstract metadata and rendered v3 paper name different model cohorts. The
+rendered paper contains per-model indices and a small human evaluation, but the
+ledger blocks both until arXiv serves a consistent version. Its named tics,
+including "That's a great question" and "It's important to note", remain useful
+search strings rather than validated per-model rankings.
 
 One more result shapes the over-structuring row. `soumik-judging-the-judges`
 reports judge style bias ranging from **0.10 to 0.76**, with **markdown
