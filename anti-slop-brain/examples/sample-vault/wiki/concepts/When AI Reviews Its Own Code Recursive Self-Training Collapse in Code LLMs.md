@@ -39,7 +39,7 @@ source_urls:
 
 ## Source
 
-Source: [When AI Reviews Its Own Code Recursive Self-Training Collapse in Code LLMs](https://arxiv.org/abs/2606.28438); type primary; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [When AI Reviews Its Own Code Recursive Self-Training Collapse in Code LLMs](https://arxiv.org/abs/2606.28438); type primary; retrieved 2026-09-11; refresh_due 2026-10-11.
 
 > [!gap]
 > Ledger confidence is medium/practitioner. Treat this as useful operating evidence, not settled authority, until stronger support is captured.

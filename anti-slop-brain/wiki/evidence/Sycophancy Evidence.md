@@ -45,9 +45,7 @@ column is the point.
 | Relationships topic | 25 percent | first-party vendor research | **no** | `anthropic-sycophancy-study` |
 | Spirituality topic | 38 percent | first-party vendor research | **no** | `anthropic-sycophancy-study` |
 | Release-over-release change | Opus 4.7 roughly half of Opus 4.6 | first-party vendor research | **no** | `anthropic-sycophancy-study` |
-| Verbal Tic Index, worst | Gemini 3.1 Pro 0.590 | preprint, abstract-level | yes | `wu-verbal-tics` |
-| Verbal Tic Index, Claude | Claude Opus 4.7 0.317 | preprint, abstract-level | yes | `wu-verbal-tics` |
-| Sycophancy against perceived naturalness | r equals minus 0.87, n equals 120 | preprint, abstract-level | yes | `wu-verbal-tics` |
+| Verbal Tic Index and naturalness correlation | blocked because current arXiv metadata and rendered v3 name different cohorts | internally inconsistent preprint | yes | `wu-verbal-tics` |
 
 ## ELEPHANT: the independent measurement
 
@@ -103,26 +101,13 @@ whole note is tagged `practitioner`.
 
 ## The tic index and the naturalness correlation
 
-`wu-verbal-tics` scored **160,000 responses across eight frontier models** on a
-Verbal Tic Index. The reported range runs from **Gemini 3.1 Pro at 0.590**, the
-worst, through **GPT-5.4 at 0.411** and **Claude Opus 4.7 at 0.317**, to
-**DeepSeek V3.2 at 0.295**, the best. Its named tics include "Absolutely",
-"That's a great question", "It's important to note", and "delve".
+`wu-verbal-tics` reports indices and a human evaluation in its rendered v3
+paper, but the current arXiv abstract metadata names a different model cohort.
+The ledger therefore maps it to no operational claims. Its model rankings and
+naturalness correlation remain blocked until the source is internally
+consistent.
 
-The finding that carries weight beyond this cohort is the human evaluation. With
-**n equal to 120**, the correlation between sycophancy and perceived naturalness
-was **minus 0.87**. Strongly negative, on a small sample, in a preprint verified
-at abstract level. Treat the sign as informative and the magnitude as
-provisional.
-
-The direction is what makes sycophancy worth a marker at all. If flattery were
-merely harmless decoration, it would belong in the same tier as house
-punctuation style. A strong negative association with perceived naturalness says
-readers are paying for it. That is what places sycophancy markers in tier 1
-under [[Evidence Tiers]] rather than in the routing-only tier where
-[[The Em Dash]] sits.
-
-The per-model numbers rot fastest of anything on this page. The ledger says so
+Per-model numbers rot fastest of anything on this page. The ledger says so
 directly: the model roster differs between versions, so those figures are
 cohort-specific. Quote them with the cohort attached or not at all, per
 [[Marker Cohort Rot]].

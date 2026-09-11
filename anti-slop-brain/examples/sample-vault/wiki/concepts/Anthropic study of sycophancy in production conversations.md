@@ -28,7 +28,7 @@ related:
   - "[[Weekly Report]]"
   - "[[Approval Queue]]"
 source_urls:
-  - "https://www.anthropic.com/research/sycophancy"
+  - "https://www.anthropic.com/research/claude-personal-guidance"
 ---
 
 # Anthropic study of sycophancy in production conversations
@@ -41,7 +41,7 @@ source_urls:
 
 ## Source
 
-Source: [Anthropic study of sycophancy in production conversations](https://www.anthropic.com/research/sycophancy); type official; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [Anthropic study of sycophancy in production conversations](https://www.anthropic.com/research/claude-personal-guidance); type official; retrieved 2026-09-11; refresh_due 2026-10-11.
 
 > [!gap]
 > Ledger confidence is medium/practitioner. Treat this as useful operating evidence, not settled authority, until stronger support is captured.

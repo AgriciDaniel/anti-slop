@@ -22,7 +22,7 @@ related:
   - "[[The Moral Panic Objection]]"
   - "[[What This Brain Does Not Claim]]"
 source_urls:
-  - "https://artificialintelligenceact.eu/article/50/"
+  - "https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/eng"
   - "https://en.wikipedia.org/wiki/Wikipedia:Writing_articles_with_large_language_models/RfC"
   - "https://arxiv.org/abs/2604.24890"
   - "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
@@ -41,9 +41,7 @@ the errors become visible.
 | --- | --- | --- | --- |
 | 2026-03-20 | Wikipedia RfC closes 44 to 2 under SNOW | in force, content guideline | `wikipedia-llm-guideline` |
 | 2026-04-27 | First independent C2PA security analysis published | preprint, abstract-level verification | `c2pa-security-analysis` |
-| 2026-06-16 | Digital Omnibus adopted by the European Parliament | adopted | `eu-ai-act-article-50` |
-| 2026-06-29 | Digital Omnibus adopted by the Council | adopted | `eu-ai-act-article-50` |
-| 2026-08-02 | EU AI Act Article 50 transparency duties apply | applies, not amended by the Omnibus | `eu-ai-act-article-50` |
+| 2026-08-02 | EU AI Act generally applies, including Article 50 subject to its scope, exceptions, and transition | applies | `eu-ai-act-article-50` |
 | 2026-12-02 | Article 50(2) machine-readable marking deadline for systems already on the market | forthcoming | `eu-ai-act-article-50` |
 
 ## 2026-03-20: a knowledge base writes its own rule
@@ -74,16 +72,16 @@ problem rather than the problem.
 ## 2026-08-02: Article 50 starts to apply
 
 Article 50 of the EU AI Act sets transparency duties on providers and deployers
-of systems that generate synthetic content, and it applies from **2026-08-02**
-(`eu-ai-act-article-50`).
+of covered systems, and the regulation generally applies from **2026-08-02**
+subject to its scope, exceptions, and transitions (`eu-ai-act-article-50`).
+Article 50(2) requires providers of covered generative systems to mark outputs
+in a machine-readable, detectable format, within its stated technical limits
+and exceptions.
 
-The confusion worth clearing up concerns the Digital Omnibus, adopted by the
-Parliament on 2026-06-16 and by the Council on 2026-06-29. It **deferred
-high-risk deadlines only**. Article 50 was **not amended by it**. A briefing
-that says "the Omnibus pushed everything back" is wrong about the one article
-that governs marking of generated content.
-
-Penalties under this regime reach **15 million euro or 3 percent of turnover**.
+Article 99 permits fines for Article 50 non-compliance up to **15 million euro
+or 3 percent of worldwide annual turnover**, whichever is higher. For SMEs and
+eligible small mid-cap enterprises, the lower applicable cap controls. These
+are enacted ceilings, not a prediction of the penalty in any individual case.
 
 ## 2026-12-02: the transitional deadline
 
@@ -104,7 +102,7 @@ independent security review of the specifications, concludes that they fail to
 achieve their claimed security goals and should not yet be relied upon for
 high-stakes uses such as financial disclosures, journalism, or legal evidence,
 and that version 2.4 does not address the identified problems. It is a preprint
-verified at abstract level, so it is tier CONTESTED, and it still points the
+verified through its v1 text, so it is tier CONTESTED, and it still points the
 same way as every other robustness result in [[Content Provenance]].
 
 ## What the timeline does not contain

@@ -24,7 +24,7 @@ related:
 source_urls:
   - "https://arxiv.org/abs/2604.19768"
   - "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
-  - "https://www.pangram.com/supporting-evidence"
+  - "https://www.pangram.com/signs-of-ai-writing"
 ---
 
 # Tricolon and Rule of Three

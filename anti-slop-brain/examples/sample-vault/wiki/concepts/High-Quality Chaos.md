@@ -42,7 +42,7 @@ source_urls:
 
 ## Source
 
-Source: [High-Quality Chaos](https://daniel.haxx.se/blog/2026/04/22/high-quality-chaos/); type practitioner; retrieved 2026-07-27; refresh_due 2026-08-26.
+Source: [High-Quality Chaos](https://daniel.haxx.se/blog/2026/04/22/high-quality-chaos/); type practitioner; retrieved 2026-09-11; refresh_due 2026-10-11.
 
 
 

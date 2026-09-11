@@ -1,6 +1,8 @@
 # Market Research
 
-Status: researched. Last verification pass 2026-07-27.
+Status: researched. Last full verification pass 2026-07-27. The
+`blader-humanizer` competitive row was refreshed against its current source on
+2026-09-11.
 
 ## Buyer Hypothesis
 
@@ -28,7 +30,7 @@ retrieved 2026-07-27.
 
 | Prior art | What it does | What it lacks | Source |
 |---|---|---|---|
-| blader/humanizer v2.9.1 | 33 surface patterns, strong packaging | citations, residue markers, code, severity, confidence | blader-humanizer |
+| blader/humanizer v3.0.0 | 25 surface patterns, strong packaging | citations, residue markers, severity, confidence | blader-humanizer |
 | Wikipedia signs guide | The definitive taxonomy, descriptive | not executable, not packaged, wiki-specific | wikipedia-signs-of-ai-writing |
 | Commercial detectors | An origin verdict | accuracy, explainability, demographic fairness | stowe-detector-bias |
 | Commercial humanizers | Detector evasion | they measurably degrade the text they edit | masrour-damage-humanizers |

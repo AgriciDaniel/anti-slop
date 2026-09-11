@@ -25,7 +25,7 @@ source_urls:
   - "https://www.science.org/doi/10.1126/sciadv.adt3813"
   - "https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf"
   - "https://www.gitclear.com/the_ai_code_quality_maintainability_gap"
-  - "https://www.pangram.com/supporting-evidence"
+  - "https://www.pangram.com/signs-of-ai-writing"
   - "https://arxiv.org/abs/2501.03437"
   - "https://www.merriam-webster.com/wordplay/word-of-the-year"
   - "https://en.wikipedia.org/wiki/Wikipedia:Writing_articles_with_large_language_models/RfC"

@@ -22,7 +22,7 @@ related:
   - "[[Marker Cohort Rot]]"
   - "[[Humanizers]]"
 source_urls:
-  - "https://www.pangram.com/supporting-evidence"
+  - "https://www.pangram.com/signs-of-ai-writing"
   - "https://arxiv.org/abs/2606.29540"
   - "https://arxiv.org/abs/2603.27006"
   - "https://arxiv.org/abs/2605.19516"
@@ -104,19 +104,21 @@ and [[Corpus Study Method]] for the general shape.
 
 ## Exhibit D: the detector rated a base model as human
 
-`xu-base-models-look-human` ran output from the Llama3-8B base model through
-Pangram and recorded a rating of 98.8 percent human. The authors conclude that
-detectors capture artifacts of instruction tuning rather than machine
-generation. The same paper reports that iterative paraphrasing reaches 100
-percent human probability by round 10, while semantic preservation collapses
-from a 99 to 100 range down to a 33 to 99 range.
+`xu-base-models-look-human` ran Llama3-8B base-model continuations conditioned
+on human prefixes through Pangram and recorded 98.8 percent human probability.
+The authors conclude that the tested detectors respond more to instruction
+tuning artifacts and local context than to an invariant property of machine
+generation. Their iterative-paraphrasing experiments report a tradeoff between
+detector score and semantic preservation, with varied outcomes rather than a
+universal round-ten result.
 
 This exhibit is about the product rather than the marketing page, and it is
 included because the page's authority rests on the product. If a detector rates
 raw base-model output as almost certainly human, then what it has learned is
 the fingerprint of a fine-tuning procedure, and a baseline it publishes for
 human writing is a baseline for whatever its training data happened to contain.
-That is a preprint verified at abstract level only, capped at `CONTESTED`, and
+That is a preprint verified through its v1 methods and results, capped at
+`CONTESTED`, and
 it is offered here as one exhibit rather than as a refutation.
 
 ## Applying the downgrade rules

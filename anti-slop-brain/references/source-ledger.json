@@ -1,6 +1,6 @@
 {
   "schema": "brainstein.source-ledger.v1",
-  "generated_at": "2026-07-27",
+  "generated_at": "2026-09-11",
   "domain": "detection and repair of AI slop in prose, code, documentation, and agent output, grounded in corpus evidence rather than authorship detection",
   "refresh_cadence": "30 days for model-specific marker cohorts and detector claims; 90 days for corpus studies and regulation; before every release for any numeric claim",
   "status": "researched",
@@ -198,9 +198,9 @@
       "url": "https://arxiv.org/abs/2606.28438",
       "source_type": "primary",
       "published": "2026-06-26",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "medium",
       "evidence_tier": "CONTESTED",
       "date_precision": "day",
@@ -212,7 +212,8 @@
         "firewall-no-self-gating"
       ],
       "limitations": "Preprint verified at abstract level only.",
-      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Recursive collapse in AI self-review gates for code\", which resolved to no paper. The identifier was always correct; the title was not."
+      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Recursive collapse in AI self-review gates for code\", which resolved to no paper. The identifier was always correct; the title was not.",
+      "verification_notes": "Current arXiv abstract still states the rubber-stamp result. No newer version was listed on 2026-09-11."
     },
     {
       "id": "kobak-excess-vocabulary",
@@ -267,11 +268,11 @@
     {
       "id": "pangram-supporting-evidence",
       "title": "Pangram supporting evidence page",
-      "url": "https://www.pangram.com/supporting-evidence",
+      "url": "https://www.pangram.com/signs-of-ai-writing",
       "source_type": "vendor",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "low",
       "evidence_tier": "FOLKLORE",
       "date_precision": "unknown",
@@ -283,8 +284,9 @@
         "The page claims AI uses tricolons about four times as often as humans"
       ],
       "supports_claims": [],
-      "limitations": "No sample size, no corpus description, no methodology, no citation, and no date. States two different human baselines on the same page. Contradicted by the independently measured baseline in the Freeburg preprint. Recorded so the brain can explain why it is not used; never quoted as a measured figure.",
-      "methodology": "None published."
+      "limitations": "No precise sample size or corpus composition, no reproducible methodology, no citation, and no date. States two different human baselines on the same page. Contradicted by the independently measured baseline in the Freeburg preprint. Recorded so the brain can explain why it is not used; never quoted as a measured figure.",
+      "methodology": "None published.",
+      "verification_notes": "Current vendor page still reports both conflicting human em-dash baselines and the four-times triad claim. It now says the corpus contains millions of documents but still publishes no sample composition or reproducible method."
     },
     {
       "id": "freeburg-last-fingerprint",
@@ -292,9 +294,9 @@
       "url": "https://arxiv.org/abs/2603.27006",
       "source_type": "primary",
       "published": "2026-03-27",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "low",
       "evidence_tier": "CONTESTED",
       "date_precision": "day",
@@ -309,7 +311,8 @@
         "marker-cohort-rot"
       ],
       "limitations": "Single-author, unaffiliated, non-peer-reviewed preprint. Must not be cited alongside peer-reviewed work without this flag.",
-      "methodology": "12 models across 5 providers, roughly 240,000 words."
+      "methodology": "12 models across 5 providers, roughly 240,000 words.",
+      "verification_notes": "arXiv v1 HTML supports the human baseline, cross-model variation, and Llama base-versus-instruct figures. No newer version was listed on 2026-09-11."
     },
     {
       "id": "bakhshi-saying-more",
@@ -341,24 +344,23 @@
       "url": "https://arxiv.org/abs/2604.19139",
       "source_type": "primary",
       "published": "2026-04-21",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
-      "confidence": "medium",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
+      "confidence": "low",
       "evidence_tier": "CONTESTED",
       "date_precision": "day",
       "section": "markers",
       "claims": [
-        "Verbal Tic Index across eight frontier models: Gemini 3.1 Pro 0.590 worst, GPT-5.4 0.411, Claude Opus 4.7 0.317, DeepSeek V3.2 0.295 best",
-        "Human evaluation with n equal to 120 found a correlation of minus 0.87 between sycophancy and perceived naturalness",
-        "Top tics include Absolutely, That's a great question, It's important to note, and delve"
+        "The current arXiv abstract metadata and the rendered v3 paper disagree on the evaluated model roster",
+        "The rendered v3 paper reports VTI values of 0.590 for Gemini 3.1 Pro, 0.411 for GPT-5.4, 0.317 for Claude Opus 4.7, and 0.295 for DeepSeek V3.2, but those rankings are blocked from operational use until the version discrepancy is resolved",
+        "The rendered v3 paper reports a human evaluation with n equal to 120 and a correlation of minus 0.87 between sycophancy and perceived naturalness"
       ],
-      "supports_claims": [
-        "tier1-sycophancy",
-        "marker-cohort-rot"
-      ],
+      "supports_claims": [],
       "methodology": "160,000 responses across 8 frontier models.",
-      "limitations": "Preprint. The model roster differs between versions, so per-model numbers are cohort-specific and will rot."
+      "limitations": "Current source is internally inconsistent. The arXiv abstract names GPT-5.5, Claude Opus 4.8, and DeepSeek V4 Pro, while the rendered v3 HTML names GPT-5.4, Claude Opus 4.7, and DeepSeek V3.2 and supplies the recorded results. Treat all model rankings as unsupported until arXiv serves a consistent version.",
+      "verification_notes": "Compared the current arXiv Atom abstract with arXiv v3 HTML on 2026-09-11; the model cohorts conflict.",
+      "last_updated": "2026-07-05"
     },
     {
       "id": "sun-idiosyncrasies",
@@ -559,33 +561,33 @@
       "url": "https://arxiv.org/abs/2605.19516",
       "source_type": "primary",
       "published": "2026-05-19",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "medium",
       "evidence_tier": "CONTESTED",
       "date_precision": "day",
       "section": "detection",
       "claims": [
-        "Llama3-8B base model output was rated 98.8 percent human by Pangram",
-        "The authors conclude that detectors capture artifacts of instruction tuning rather than machine generation",
-        "Iterative paraphrasing reaches 100 percent human probability by round 10 while semantic preservation collapses from 99 to 100 down to a 33 to 99 range"
+        "For Llama3-8B continuations conditioned on human prefixes, GPTZero and Pangram assigned the base model 96.7 percent and 98.8 percent human probability, respectively",
+        "The authors conclude that the tested detectors respond more to instruction-tuning artifacts and local context than to an invariant property of machine-generated text",
+        "Across the tested Llama3 and Qwen3 families, HIP improves the reported tradeoff between semantic preservation and detector-assigned human probability; qualitative round-ten examples vary in both semantic score and detector outcome"
       ],
       "supports_claims": [
-        "detection-unreliable",
-        "humanizers-degrade-quality"
+        "detection-unreliable"
       ],
       "methodology": "Carnegie Mellon University.",
-      "limitations": "Preprint verified at abstract level."
+      "limitations": "Preprint v1. The 98.8 percent Pangram figure is specific to Llama3-8B base-model continuations with human prefixes. Semantic preservation is rated by GPT-5-nano on a 0 to 10 scale, and the qualitative round-ten results do not support a universal detector-evasion or semantic-collapse claim.",
+      "verification_notes": "Checked arXiv v1 abstract, Section 1, evaluation metrics, and qualitative appendix on 2026-09-11."
     },
     {
       "id": "wikipedia-signs-of-ai-writing",
       "title": "Wikipedia:Signs of AI writing",
       "url": "https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing",
       "source_type": "supporting",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "high",
       "evidence_tier": "PRACTITIONER",
       "date_precision": "unknown",
@@ -607,7 +609,8 @@
         "citation-defects",
         "marker-cohort-rot"
       ],
-      "limitations": "A living community guide, descriptive rather than prescriptive. Snapshot captured 2026-07-27; the page changes continuously."
+      "limitations": "A living community advice page, descriptive rather than prescriptive. The current page retains the recorded general caveats and taxonomies, but displays an August 2026 notice that recent-model sections need updating. It is evidence of Wikipedia community advice, not empirical proof of authorship.",
+      "verification_notes": "Current page retained the signs-not-problems warning, residue and citation taxonomies, ineffective indicators, and historical indicators on 2026-09-11."
     },
     {
       "id": "wikipedia-llm-guideline",
@@ -639,10 +642,10 @@
       "url": "https://github.com/blader/humanizer",
       "source_type": "supporting",
       "published": "2026-01-18",
-      "last_updated": "2026-07-22",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "last_updated": "2026-09-06",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "high",
       "evidence_tier": "PRACTITIONER",
       "date_precision": "day",
@@ -651,18 +654,17 @@
       "raw_snapshot_path": ".raw/sources/humanizer-SKILL.md",
       "hash_algorithm": "sha256",
       "claims": [
-        "Version 2.9.1 as of 2026-07-22, MIT licensed, 31,520 stars and 2,879 forks at retrieval",
-        "It enumerates 33 patterns derived from the Wikipedia signs guide",
-        "It has no severity system, no confidence system, and no per-pattern weights",
-        "Its no-fabrication rule is a prompt instruction with no verification mechanism",
-        "It has no coverage of fabricated citations, vendor residue markers, or code",
-        "Its section 14 bans en dashes outright, which breaks legitimate numeric and date ranges",
-        "Its own runtime prompt contains an em dash, violating its own stated hard constraint"
+        "The main branch declares version 3.0.0 and an MIT license",
+        "The skill now enumerates 25 patterns, with the first five permitting an edit on one sighting and weak-alone patterns requiring corroborating tells in the same passage",
+        "Its rewrite instructions preserve supported claims and forbid adding unsupported facts, but this remains a prompt instruction rather than an external verification mechanism",
+        "Section 8 bars em and en dashes unless the supplied writer sample uses them, while exempting code, commands, paths, and URLs",
+        "File mode says to preserve code blocks, inline code, commands, paths, YAML metadata, data, and link targets"
       ],
       "supports_claims": [
         "prior-art-gap"
       ],
-      "limitations": "Repository state changes continuously; snapshot taken 2026-07-27. Star count is a moving figure and must be re-checked before quoting."
+      "limitations": "Repository state changes continuously. Verified against main branch content on 2026-09-11: plugin manifest blob 7a7ba2bd3e8daa0405644343b246e9c79438d5a3 and SKILL.md blob d375fbf3e3ee8fb047c379bced82df3713c6ed3b. This source documents its own advice and behavior, not empirical evidence that its patterns identify authorship.",
+      "verification_notes": "GitHub API reported main pushed 2026-09-06. Removed stale v2.9.1, 33-pattern, unconditional dash-ban, and self-violation claims."
     },
     {
       "id": "spracklen-package-hallucination",
@@ -695,9 +697,9 @@
       "url": "https://arxiv.org/abs/2605.17062",
       "source_type": "primary",
       "published": "2026-05-16",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "medium",
       "evidence_tier": "CONTESTED",
       "date_precision": "day",
@@ -712,7 +714,9 @@
       ],
       "methodology": "Corroborated by Socket, 2026-07-22, across 199,845 responses.",
       "limitations": "Preprint verified at abstract level.",
-      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Package hallucination rates in 2026 frontier models\", which resolved to no paper. The identifier was always correct; the title was not."
+      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Package hallucination rates in 2026 frontier models\", which resolved to no paper. The identifier was always correct; the title was not.",
+      "last_updated": "2026-08-09",
+      "verification_notes": "arXiv v3 retains the 4.62 to 6.10 percent rates, 199,845-response method, and 53 registrable names. The August 2026 revision says headline rates are unchanged."
     },
     {
       "id": "metr-developer-slowdown",
@@ -770,9 +774,9 @@
       "url": "https://www.gitclear.com/the_ai_code_quality_maintainability_gap",
       "source_type": "vendor",
       "published": "2026-01-15",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "medium",
       "evidence_tier": "PRACTITIONER",
       "date_precision": "month",
@@ -785,7 +789,8 @@
         "code-duplication-rising"
       ],
       "methodology": "623 million changes analysed.",
-      "limitations": "Correlational, not causal. GitClear sells code-quality tooling, so the finding serves its commercial interest. The often-quoted 7.1 percent churn figure is a discarded 2024 projection, never an actual measurement; the 2024 actual was 5.7 percent."
+      "limitations": "Correlational, not causal. GitClear sells code-quality tooling, so the finding serves its commercial interest. The often-quoted 7.1 percent churn figure is a discarded 2024 projection, never an actual measurement; the 2024 actual was 5.7 percent.",
+      "verification_notes": "Current vendor page retains 623 million analyzed changes, 81 percent block-duplication increase, and 15 percent two-week churn increase. Correlational and commercially interested."
     },
     {
       "id": "gitclear-copilot-quality-2025",
@@ -793,9 +798,9 @@
       "url": "https://gitclear-public.s3.us-west-2.amazonaws.com/GitClear-AI-Copilot-Code-Quality-2025.pdf",
       "source_type": "vendor",
       "published": "2025-02-01",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "medium",
       "evidence_tier": "PRACTITIONER",
       "date_precision": "month",
@@ -810,7 +815,8 @@
         "code-duplication-rising"
       ],
       "methodology": "211 million changed lines, 2020 to 2024.",
-      "limitations": "Vendor-produced and correlational."
+      "limitations": "Vendor-produced and correlational.",
+      "verification_notes": "The vendor PDF v2025.2.5 retains the 211 million line sample and the moved, copy-paste, duplicate-block, and churn figures. Numeric claims still require re-check before every release."
     },
     {
       "id": "stenberg-high-quality-chaos",
@@ -818,9 +824,9 @@
       "url": "https://daniel.haxx.se/blog/2026/04/22/high-quality-chaos/",
       "source_type": "practitioner",
       "published": "2026-04-22",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "high",
       "evidence_tier": "PRACTITIONER",
       "date_precision": "day",
@@ -834,7 +840,8 @@
       "supports_claims": [
         "triage-not-bans"
       ],
-      "limitations": "First-hand maintainer account, not a controlled study. Directly contradicts the common narrative that curl abandoned bug bounties permanently."
+      "limitations": "First-hand maintainer account, not a controlled study. Directly contradicts the common narrative that curl abandoned bug bounties permanently.",
+      "verification_notes": "The maintainer post still supports all recorded first-hand statements. It is practitioner evidence, not a controlled study."
     },
     {
       "id": "betterup-workslop",
@@ -933,26 +940,26 @@
     {
       "id": "eu-ai-act-article-50",
       "title": "EU AI Act Article 50 transparency obligations",
-      "url": "https://artificialintelligenceact.eu/article/50/",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/eng",
       "source_type": "regulator",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-12-10",
       "confidence": "medium",
       "evidence_tier": "PRACTITIONER",
       "date_precision": "unknown",
       "living_doc": true,
       "section": "governance",
       "claims": [
-        "Article 50 transparency duties apply from 2026-08-02 and were not amended by the Digital Omnibus",
-        "The Digital Omnibus, adopted by Parliament 2026-06-16 and Council 2026-06-29, deferred high-risk deadlines only",
-        "Generative systems already on the market before 2026-08-02 have until 2026-12-02 for the Article 50(2) machine-readable marking requirement",
-        "Penalties reach 15 million euro or 3 percent of turnover"
+        "Regulation EU 2024/1689 applies from 2 August 2026, and Article 50(2) requires providers of covered generative systems to mark outputs in a machine-readable and detectable format, subject to the stated exceptions and technical-feasibility limits",
+        "Regulation EU 2026/1744 gives systems placed on the market before 2 August 2026 until 2 December 2026 to comply with Article 50(2)",
+        "Article 99 permits fines for Article 50 non-compliance up to 15 million euro or 3 percent of worldwide annual turnover, whichever is higher, with the lower applicable cap controlling for SMEs and eligible small mid-cap enterprises"
       ],
       "supports_claims": [
         "governance-norms"
       ],
-      "limitations": "A consolidated third-party rendering of the regulation rather than the Official Journal text. Verify against EUR-Lex before relying on it for compliance advice."
+      "limitations": "Primary legal text from the 27 July 2026 consolidated EUR-Lex version. The consolidation is a documentation tool; authentic Official Journal acts control. These are enacted provisions and application dates, not individualized compliance guidance.",
+      "verification_notes": "Checked Articles 50, 99, 111, and 113 in the consolidated text, plus amending Regulation EU 2026/1744, on 2026-09-11."
     },
     {
       "id": "c2pa-security-analysis",
@@ -960,9 +967,9 @@
       "url": "https://arxiv.org/abs/2604.24890",
       "source_type": "primary",
       "published": "2026-04-27",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "medium",
       "evidence_tier": "CONTESTED",
       "date_precision": "day",
@@ -976,7 +983,8 @@
         "provenance-immature"
       ],
       "limitations": "Preprint verified at abstract level. Claims that C2PA is now ISO/IEC 22144 could not be verified against any primary source and appear only in marketing material.",
-      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Independent security analysis of the C2PA specifications\", which resolved to no paper. The identifier was always correct; the title was not."
+      "title_correction_note": "Title corrected 2026-07-28 after independent arXiv resolution. The ledger previously carried the descriptive placeholder \"Independent security analysis of the C2PA specifications\", which resolved to no paper. The identifier was always correct; the title was not.",
+      "verification_notes": "arXiv v1 HTML supports all three recorded claims, including the statement that C2PA versions 2.2 through 2.4 fail the evaluated goals and version 2.4 addresses none of the authors concerns."
     },
     {
       "id": "cheng-elephant-sycophancy",
@@ -1003,12 +1011,12 @@
     {
       "id": "anthropic-sycophancy-study",
       "title": "Anthropic study of sycophancy in production conversations",
-      "url": "https://www.anthropic.com/research/sycophancy",
+      "url": "https://www.anthropic.com/research/claude-personal-guidance",
       "source_type": "official",
       "published": "2026-04-30",
-      "retrieved": "2026-07-27",
-      "last_verified": "2026-07-27",
-      "refresh_due": "2026-08-26",
+      "retrieved": "2026-09-11",
+      "last_verified": "2026-09-11",
+      "refresh_due": "2026-10-11",
       "confidence": "medium",
       "evidence_tier": "PRACTITIONER",
       "date_precision": "day",
@@ -1023,7 +1031,8 @@
         "tier1-sycophancy"
       ],
       "methodology": "Roughly 639,000 conversations analysed.",
-      "limitations": "First-party vendor research about the vendor's own models. No published study counts the specific phrase You're absolutely right in coding-agent transcripts."
+      "limitations": "First-party vendor research about the vendor's own models. No published study counts the specific phrase You're absolutely right in coding-agent transcripts.",
+      "verification_notes": "Current Anthropic research page supports the 639,000-conversation sample, overall and domain rates, and the Opus 4.7 versus 4.6 comparison. It remains first-party research using an automatic classifier."
     },
     {
       "id": "yakura-spoken-convergence",

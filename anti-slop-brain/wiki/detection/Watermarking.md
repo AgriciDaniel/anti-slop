@@ -24,7 +24,7 @@ related:
 source_urls:
   - "https://arxiv.org/abs/2501.03437"
   - "https://arxiv.org/abs/2605.19516"
-  - "https://artificialintelligenceact.eu/article/50/"
+  - "https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/eng"
   - "https://arxiv.org/abs/2604.24890"
 ---
 
