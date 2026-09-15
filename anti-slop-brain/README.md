@@ -37,7 +37,7 @@ Writers, engineers, and agent operators who ship AI-assisted work and need a def
 ## Quick Start
 
 ```bash
-python -m pip install -e .
+python3 -m pip install -e .
 anti-slop-brain demo
 anti-slop-brain lint --vault examples/sample-vault
 anti-slop-brain report --vault examples/sample-vault --html-only
@@ -90,8 +90,8 @@ research notes do not satisfy the gate.
 ## Release
 
 ```bash
-python scripts/package_release.py --version 0.1.0
-python scripts/package_release.py --version 1.0.0 --release-type market-ready
+python3 scripts/package_release.py --version 0.1.0
+python3 scripts/package_release.py --version 1.0.0 --release-type market-ready
 ```
 
 Release packaging scans for secrets, local paths, symlinks, untracked drift,

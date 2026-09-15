@@ -44,4 +44,4 @@ Then read vault-root instructions in this order: `<vault>/CODEX.md`, `<vault>/wi
 
 - Keep vault-root-relative `<vault>/wiki/hot.md`, `<vault>/wiki/index.md`, `<vault>/wiki/log.md`, and `<vault>/wiki/meta/CONVENTIONS.md` current.
 - Keep public publishing aligned with `PUBLISHING_NOTICE.md`.
-- Run `python scripts/lint_vault.py --vault <vault>` before release-affecting vault changes.
+- Run `python3 scripts/lint_vault.py --vault <vault>` before release-affecting vault changes.
