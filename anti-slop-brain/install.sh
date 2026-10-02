@@ -72,12 +72,33 @@ install_one() {
   echo "Anti-Slop Brain installed to ${dest}"
 }
 
+# The Gemini loader edit is the only step that needs an interpreter, so resolve
+# one lazily rather than at startup: --help must still work on a machine with no
+# Python at all. Prefer python3. macOS has not shipped a bare `python` since
+# Monterey removed the Python 2 stub, so hardcoding it fails there with 127.
+resolve_python() {
+  if [ -n "${PYTHON:-}" ]; then
+    return
+  fi
+  local candidate
+  for candidate in python3 python; do
+    if command -v "${candidate}" >/dev/null 2>&1 &&
+       "${candidate}" -c 'import sys; sys.exit(0 if sys.version_info[0] == 3 else 1)' >/dev/null 2>&1; then
+      PYTHON="${candidate}"
+      return
+    fi
+  done
+  echo "ERROR: no Python 3 interpreter on PATH. Looked for python3, then python." >&2
+  exit 1
+}
+
 install_gemini() {
   local dest="${base_home}/.gemini/anti-slop-brain"
   local loader="${base_home}/.gemini/GEMINI.md"
   install_one "${dest}"
   mkdir -p "$(dirname "${loader}")"
-  python - "${loader}" "@./anti-slop-brain/GEMINI.md" <<'PY'
+  resolve_python
+  "${PYTHON}" - "${loader}" "@./anti-slop-brain/GEMINI.md" <<'PY'
 from __future__ import annotations
 
 import re

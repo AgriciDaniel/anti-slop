@@ -40,12 +40,34 @@ remove_one() {
   fi
 }
 
+# The Gemini loader cleanup is the only step that needs an interpreter, so
+# resolve one lazily rather than at startup: --help must still work on a machine
+# with no Python at all. Prefer python3. macOS has not shipped a bare `python`
+# since Monterey removed the Python 2 stub, so hardcoding it fails with 127,
+# which would strand the loader block in GEMINI.md after an uninstall.
+resolve_python() {
+  if [ -n "${PYTHON:-}" ]; then
+    return
+  fi
+  local candidate
+  for candidate in python3 python; do
+    if command -v "${candidate}" >/dev/null 2>&1 &&
+       "${candidate}" -c 'import sys; sys.exit(0 if sys.version_info[0] == 3 else 1)' >/dev/null 2>&1; then
+      PYTHON="${candidate}"
+      return
+    fi
+  done
+  echo "ERROR: no Python 3 interpreter on PATH. Looked for python3, then python." >&2
+  exit 1
+}
+
 remove_gemini() {
   local dir="${base_home}/.gemini/anti-slop-brain"
   local loader="${base_home}/.gemini/GEMINI.md"
   remove_one "${dir}"
   if [ -f "${loader}" ]; then
-    python - "${loader}" <<'PY'
+    resolve_python
+    "${PYTHON}" - "${loader}" <<'PY'
 from __future__ import annotations
 
 import re
