@@ -181,8 +181,9 @@ named `<name>@skills-dir` on the next session, bringing its `skills/`,
 first if you like, with `claude plugin validate ./anti-slop-plugin`.
 
 **Read [Security policy](SECURITY.md) before installing.** The bundled hook is
-not scoped to this plugin's skills. It runs on every `Write` and `Edit` in
-every session, in every project, for as long as the plugin is installed.
+not scoped to this plugin's skills. It runs after every `Write` and `Edit` of
+a prose file (`.md`, `.markdown`, `.mdx`, `.txt`, `.rst`) inside the current
+project, in every session where the plugin is enabled.
 
 **Marketplace install.** `anti-slop-plugin/.claude-plugin/marketplace.json`
 exists and points at this repository, so once the repository is public the path

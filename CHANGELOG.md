@@ -6,7 +6,22 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-Nothing yet.
+### Changed
+
+- The house style hook now lints only prose files (`.md`, `.markdown`,
+  `.mdx`, `.txt`, `.rst`) that resolve to a path inside the current project
+  (`CLAUDE_PROJECT_DIR`). It no longer flags the spaced double hyphen in shell
+  commands and test fixtures, and it no longer restyles files outside the
+  project the session was started in. Docs no longer claim exit 2 blocks the
+  write: `PostToolUse` runs after it.
+
+### Fixed
+
+- `anti-slop-plugin/hooks/hooks.json` carried a top-level `comment` object that
+  Claude Code does not recognise, so every session started with
+  `hooks.json: unknown key "comment" ignored`. The notes moved to
+  `anti-slop-plugin/hooks/README.md`; the file now holds only `description`
+  and `hooks`.
 
 ## [0.1.0] - 2026-07-28
 

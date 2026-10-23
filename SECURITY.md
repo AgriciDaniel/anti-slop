@@ -9,7 +9,7 @@ credentials. The realistic risk surface is narrow but not empty.
 |---|---|
 | `scan_packages.py --online` | queries public package registries; leaks the dependency names being checked |
 | `scan_refs.py --online` | resolves DOIs and URLs found in the scanned file |
-| `hooks/hooks.json` | **not skill-gated.** Runs `lint_voice.py` after every `Write` and `Edit`, in every session and every project, for as long as the plugin is installed |
+| `hooks/hooks.json` | **not skill-gated.** Runs `lint_voice.py` after every `Write` and `Edit` of a prose file inside the current project, in every session where the plugin is enabled |
 | Adapter input | untrusted JSON is schema-validated before use, and refusals are structured |
 
 Everything else is offline and standard library only. There are no third-party
@@ -20,11 +20,14 @@ runtime dependencies, so there is no dependency supply chain to compromise.
 `anti-slop-plugin/hooks/hooks.json` registers one `PostToolUse` hook with
 `"matcher": "Write|Edit"`. There is no condition on which skill is active, so:
 
-- It fires on **every** `Write` and `Edit` you make, including in repositories
-  that have nothing to do with this project.
+- It fires on every `Write` and `Edit` in any project where the plugin is
+  enabled, but lints only prose files (`.md`, `.markdown`, `.mdx`, `.txt`,
+  `.rst`) that resolve to a path inside that project (`CLAUDE_PROJECT_DIR`).
+  Files outside the project, and code or config files, pass untouched.
 - It runs `anti-slop-brain/scripts/lint_voice.py` over the file just written.
-  On a house style hit it exits 2, which **blocks** the write and feeds the
-  linter output back to the model to correct. House style here means no em
+  On a house style hit it exits 2, which feeds the linter output back to the
+  model to correct. The write has already happened; a `PostToolUse` hook
+  cannot undo it. House style here means no em
   dash, no en dash, no spaced double hyphen, plus banned tokens. That is a
   punctuation preference chosen by this repository's owner, and it will be
   applied to your files too.

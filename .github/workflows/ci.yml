@@ -116,6 +116,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - name: Hook scope regression
+        run: python anti-slop-plugin/tests/test_hook_scope.py
       - name: Manifests parse
         run: |
           python -c "

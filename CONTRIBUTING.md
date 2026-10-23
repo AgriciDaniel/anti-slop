@@ -75,6 +75,14 @@ fails the build and it is right to.
 
 ## Running everything locally
 
+Run the plugin hook scope regression from the repository root:
+
+```bash
+python3 anti-slop-plugin/tests/test_hook_scope.py
+```
+
+Run the brain suites directly:
+
 ```bash
 cd anti-slop-brain
 python3 -m compileall -q scripts tests
